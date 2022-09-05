@@ -14,6 +14,7 @@ Lo que deben hacer para tener la base de datos es lo siguiente
 7. TABLA: Marca Atrbituos: id, codigo,nombre,descripcion (Falta agregar Paises)
 8. Listo
 
+
 ## NetBeans
 
 Lo unico que deben hacer es agregar el JDBC en las librerias, prueben ejecutarlo y me avisan si no les funca.
