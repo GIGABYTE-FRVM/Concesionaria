@@ -41,7 +41,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         cboPais = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JToggleButton();
         btnActualizar = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnEliminar = new javax.swing.JToggleButton();
+        btnCancelar = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
@@ -99,11 +100,18 @@ public class MarcaABMC extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Eliminar");
-        jToggleButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -114,22 +122,22 @@ public class MarcaABMC extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigo))
-                            .addComponent(txtDescripcion)
-                            .addComponent(txtNombre)
-                            .addComponent(cboPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigo))
+                    .addComponent(txtDescripcion)
+                    .addComponent(txtNombre)
+                    .addComponent(cboPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRegistrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +156,8 @@ public class MarcaABMC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnActualizar)
-                    .addComponent(jToggleButton1))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -243,6 +252,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         gestor.registrarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
+        habilitarBotones(true);
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
@@ -252,6 +263,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
+        habilitarBotones(false);
+
         //this.cboPais
     }//GEN-LAST:event_tablaDatosMouseClicked
 
@@ -260,14 +273,24 @@ public class MarcaABMC extends javax.swing.JFrame {
         gestor.modificarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText(), txtId.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
+        habilitarBotones(true);
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         gestor.eliminarMarca(txtId.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        habilitarBotones(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarEntradas();
+        tablaDatos.setCellSelectionEnabled(true);
+        habilitarBotones(true);
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,13 +329,14 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnActualizar;
+    private javax.swing.JToggleButton btnCancelar;
+    private javax.swing.JToggleButton btnEliminar;
     private javax.swing.JToggleButton btnRegistrar;
     private javax.swing.JComboBox<String> cboPais;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tablaDatos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
@@ -326,4 +350,10 @@ public class MarcaABMC extends javax.swing.JFrame {
         txtNombre.setText("");
         txtDescripcion.setText("");
     }
+    private void habilitarBotones(boolean estado){
+        btnRegistrar.setEnabled(estado);
+        btnActualizar.setEnabled(!estado);
+        btnEliminar.setEnabled(!estado);
+    }
+ 
 }

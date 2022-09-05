@@ -83,8 +83,15 @@ public class GestorMarcaABMC {
             ps.setString(2, nombre);
             ps.setString(3, descripcion);
             //ps.setString(4, cboPais.getSelectedItem().toString());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            System.out.println((codigo.length()!=0));
+            System.out.println((codigo.isEmpty()));
+            if((codigo.length()!=0)&&(nombre.length()!=0)&&(descripcion.length()!=0)){
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            }else{
+                JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
+            }
+
 
         } catch (SQLException e) {
             System.out.println("ERROR AL REGISTRAR CLIENTE" + e);
@@ -93,9 +100,13 @@ public class GestorMarcaABMC {
     public void eliminarMarca(String id){
     try{
             PreparedStatement ps = cn.prepareStatement("DELETE FROM Marca WHERE id='"+id+"'");
-            JOptionPane.showConfirmDialog(null, ps);
-            ps.executeUpdate();
-            
+            int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (pantallaConfirmarEliminacion == 0) {
+                ps.executeUpdate(); // si selecciona SI (primer boton) ejecuta la eliminacion
+            } else {
+                //No hace nada
+            }
+
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
     }
