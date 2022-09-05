@@ -4,10 +4,8 @@
  */
 package concesionaria;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class MarcaABMC extends javax.swing.JFrame {
 
-    ConexionMySQL con = new ConexionMySQL();
-    Connection cn =con.conectar();
-            
+    GestorMarcaABMC gestor = new GestorMarcaABMC();
+
     public MarcaABMC() {
         initComponents();
-        mostrarDatos();
+        DefaultTableModel modelo = new DefaultTableModel();
+        tablaDatos.setModel(gestor.mostrarDatos());
+
     }
 
     /**
@@ -241,24 +240,14 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        try{
-            PreparedStatement ps=cn.prepareStatement("INSERT INTO Marca (codigo,nombre,descripcion) VALUES (?,?,?)");
-            ps.setString(1, txtCodigo.getText());
-            ps.setString(2, txtNombre.getText());
-            ps.setString(3, txtDescripcion.getText());
-            //ps.setString(4, cboPais.getSelectedItem().toString());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null,"DATOS GUARDADOS CORRECTAMENTE");
-            mostrarDatos();
-            limpiarEntradas();
-        }catch (SQLException e){
-            System.out.println("ERROR AL REGISTRAR CLIENTE"+e);
-        }
+        gestor.registrarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText());
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
-        int fila=this.tablaDatos.getSelectedRow();
+        int fila = this.tablaDatos.getSelectedRow();
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
         this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
@@ -268,30 +257,15 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        try{
-            PreparedStatement ps=cn.prepareStatement("UPDATE Marca SET codigo='"+txtCodigo.getText()+"',nombre='"+txtNombre.getText()+"',descripcion='"+txtDescripcion.getText()+"' WHERE id='"+txtId.getText()+"'");
-            int indice=ps.executeUpdate();
-            if(indice>0){
-            JOptionPane.showMessageDialog(rootPane,"DATOS ACTUALIZADOS CORRECTAMENTE");
-            mostrarDatos();
-            }else{
-                JOptionPane.showMessageDialog(null,"ERROR AL ACTUALIZAR DATOS");
-            }
-        }catch(SQLException e){
-            System.out.println("ERROR: "+e);}
+        gestor.modificarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText(), txtId.getText());
+        tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        try{
-            PreparedStatement ps = cn.prepareStatement("DELETE FROM Marca WHERE id='"+txtId.getText()+"'");
-            JOptionPane.showConfirmDialog(rootPane, ps);
-            ps.executeUpdate();
-            
-        }catch (SQLException e){
-            System.out.println("ERROR:"+e);}
-        mostrarDatos();
+        gestor.eliminarMarca(txtId.getText());
+        tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -346,36 +320,10 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarDatos() {
-        DefaultTableModel modelo=new DefaultTableModel();
-        modelo.addColumn("id");
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Descripcion");
-        tablaDatos.setModel(modelo);
-        String consultasql="SELECT * FROM Marca";
-        String data[]=new String[4];
-        
-        Statement st;
-        try{
-            st=(Statement) cn.createStatement();
-            ResultSet rs=st.executeQuery(consultasql);
-            while(rs.next()){
-                data[0]=rs.getString(1);
-                data[1]=rs.getString(2);
-                data[2]=rs.getString(3);
-                data[3]=rs.getString(4);
-                modelo.addRow(data);
-            }
-        }catch(SQLException e){
-            System.out.println("Error al mostrar datos"+e);
-        }
-    }
-
     private void limpiarEntradas() {
-       txtId.setText("");
-       txtCodigo.setText("");
-       txtNombre.setText("");
-       txtDescripcion.setText("");
-       }
+        txtId.setText("");
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtDescripcion.setText("");
+    }
 }
