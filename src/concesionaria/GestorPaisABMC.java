@@ -13,13 +13,29 @@ public class GestorPaisABMC {
 
     ConexionMySQL con = new ConexionMySQL();
     Connection cn = con.conectar();
-    private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
+    private ArrayList<Pais> listaPaises = new ArrayList<Pais>();
     public GestorPaisABMC() {
     }
-    
-    public void modificarMarca(String codigo, String nombre, String descripcion, String id) {
+    public void registrarPais(String nombre) {
         try {
-            PreparedStatement ps = cn.prepareStatement("UPDATE Marca SET codigo='" + codigo + "',nombre='" + nombre + "',descripcion='" + descripcion + "' WHERE id='" + id + "'");
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO Pais (nombre) VALUES (?)");
+            ps.setString(1,nombre);
+            
+            if((nombre.length()!=0)){
+                ps.executeUpdate();
+                System.out.println("Hola");
+                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            }else{
+                JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR AL REGISTRAR PAIS" + e);
+        }
+    }
+    
+    public void modificarPais(String nombre, String id) {
+        try {
+            PreparedStatement ps = cn.prepareStatement("UPDATE Pais SET nombre='" + nombre + "' WHERE id='" + id + "'");
             int indice = ps.executeUpdate();
             if (indice > 0) {
                 JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
@@ -32,43 +48,34 @@ public class GestorPaisABMC {
         }
     };
 
-    public void conocerMarcas(){
-        String consultasql = "SELECT * FROM Marca";
+    public void conocerPais(){
+        String consultasql = "SELECT * FROM Pais";
         Statement st;
-        listaMarcas.clear();
+        listaPaises.clear();
         try {
             st = (Statement) cn.createStatement();
             ResultSet rs = st.executeQuery(consultasql);
             int id;
-            String codigo;
             String nombre;
-            String descripcion;
             while (rs.next()) {
                 id = Integer.valueOf(rs.getString(1));
-                codigo = rs.getString(2);
-                nombre = rs.getString(3);
-                descripcion = rs.getString(4);
-                Marca marca = new Marca(id,codigo,nombre,descripcion);
-                listaMarcas.add(marca);
+                nombre = rs.getString(2);
+                Pais pais = new Pais(id,nombre);
+                listaPaises.add(pais);
             }
         } catch (SQLException e) {
             System.out.println("Error al mostrar datos" + e);
         }
     }
     public DefaultTableModel mostrarDatos() {
-        this.conocerMarcas();
+        this.conocerPais();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
-        modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Descripcion");
-        String data[] = new String[4];
-        try {
-            for(Marca marca : listaMarcas){
-                data[0] = Integer.toString(marca.getId());
-                data[1] = marca.getCodigo();
-                data[2] = marca.getNombre();
-                data[3] = marca.getDescripcion();
+        String data[] = new String[2];
+        try {for(Pais pais : listaPaises){
+                data[0] = Integer.toString(pais.getId());
+                data[2] = pais.getNombre();
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -76,29 +83,11 @@ public class GestorPaisABMC {
         }
         return modelo;
     }
-    public void registrarMarca(String codigo, String nombre, String descripcion) {
-        try {
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO Marca (codigo,nombre,descripcion) VALUES (?,?,?)");
-            ps.setString(1, codigo);
-            ps.setString(2, nombre);
-            ps.setString(3, descripcion);
-            //ps.setString(4, cboPais.getSelectedItem().toString());
-            if((codigo.length()!=0)&&(nombre.length()!=0)&&(descripcion.length()!=0)){
-                ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-            }else{
-                JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
-            }
-
-
-        } catch (SQLException e) {
-            System.out.println("ERROR AL REGISTRAR CLIENTE" + e);
-        }
-    }
-    public void eliminarMarca(String id){
+    
+    public void eliminarPais(String id){
     try{
-            PreparedStatement ps = cn.prepareStatement("DELETE FROM Marca WHERE id='"+id+"'");
-            int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            PreparedStatement ps = cn.prepareStatement("DELETE FROM Pais WHERE id='"+id+"'");
+            int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este pais?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (pantallaConfirmarEliminacion == 0) {
                 ps.executeUpdate(); // si selecciona SI (primer boton) ejecuta la eliminacion
             } else {

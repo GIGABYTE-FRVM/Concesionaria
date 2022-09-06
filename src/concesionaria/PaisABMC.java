@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class PaisABMC extends javax.swing.JFrame {
 
-    GestorMarcaABMC gestor = new GestorMarcaABMC();
+    GestorPaisABMC gestor = new GestorPaisABMC();
 
     public PaisABMC() {
         initComponents();
@@ -34,11 +34,8 @@ public class PaisABMC extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtCodigo = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
-        txtDescripcion = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        cboPais = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JToggleButton();
         btnActualizar = new javax.swing.JToggleButton();
         btnEliminar = new javax.swing.JToggleButton();
@@ -54,25 +51,11 @@ public class PaisABMC extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese la siguiente información"));
 
-        txtCodigo.setBorder(javax.swing.BorderFactory.createTitledBorder("Codigo"));
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-
         txtId.setEditable(false);
         txtId.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
-            }
-        });
-
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("Descripcion"));
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
             }
         });
 
@@ -82,9 +65,6 @@ public class PaisABMC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-
-        cboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
-        cboPais.setBorder(javax.swing.BorderFactory.createTitledBorder("Pais"));
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +104,8 @@ public class PaisABMC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo))
-                    .addComponent(txtDescripcion)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txtNombre)
-                    .addComponent(cboPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRegistrar)
                         .addGap(18, 18, 18)
@@ -143,26 +120,20 @@ public class PaisABMC extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cboPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(197, 197, 197)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado clientes"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado paises"));
 
         tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,24 +203,16 @@ public class PaisABMC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        gestor.registrarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText());
+        gestor.registrarPais(txtNombre.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -260,9 +223,7 @@ public class PaisABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
-        this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
         habilitarBotones(false);
 
         //this.cboPais
@@ -270,7 +231,7 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        gestor.modificarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText(), txtId.getText());
+        gestor.modificarPais(txtNombre.getText(), txtId.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -279,7 +240,7 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        gestor.eliminarMarca(txtId.getText());
+        gestor.eliminarPais(txtId.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -335,23 +296,18 @@ public class PaisABMC extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnEliminar;
     private javax.swing.JToggleButton btnRegistrar;
-    private javax.swing.JComboBox<String> cboPais;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaDatos;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarEntradas() {
         txtId.setText("");
-        txtCodigo.setText("");
         txtNombre.setText("");
-        txtDescripcion.setText("");
     }
     private void habilitarBotones(boolean estado){
         btnRegistrar.setEnabled(estado);
