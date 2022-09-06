@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class GestorMarcaABMC {
+public class GestorPaisABMC {
 
     ConexionMySQL con = new ConexionMySQL();
     Connection cn = con.conectar();
     private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
-    public GestorMarcaABMC() {
+    public GestorPaisABMC() {
     }
     
     public void modificarMarca(String codigo, String nombre, String descripcion, String id) {
