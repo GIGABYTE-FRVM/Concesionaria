@@ -15,8 +15,12 @@ public class GestorMarcaABMC {
     Connection cn = con.conectar();
     private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
     GestorPaisABMC gestorPais = new GestorPaisABMC();
+    
+    
     public GestorMarcaABMC() {
-        
+        System.out.println("GESTOR");
+        MarcaABMC marca = new MarcaABMC(this);
+        marca.setVisible(true);
     }
     public void conocerPaises(){
         if (!(listaPaises==null)){
@@ -114,6 +118,10 @@ public class GestorMarcaABMC {
 
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
+    }
+
+    void mostrarPaisABMC() {
+        gestorPais.mostrarPantalla();
     }
     
 }

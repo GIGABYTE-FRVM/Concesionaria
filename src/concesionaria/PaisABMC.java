@@ -14,13 +14,18 @@ import javax.swing.JOptionPane;
  */
 public class PaisABMC extends javax.swing.JFrame {
 
-    GestorPaisABMC gestor = new GestorPaisABMC();
+    GestorPaisABMC gestor;
 
-    public PaisABMC() {
+    public PaisABMC(GestorPaisABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
+        conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+    }
+    
+     public void conocerGestor(GestorPaisABMC gestor) {
+        this.gestor = gestor;
     }
 
     /**
@@ -283,7 +288,7 @@ public class PaisABMC extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaisABMC().setVisible(true);
+                //
                 
             }
         });
