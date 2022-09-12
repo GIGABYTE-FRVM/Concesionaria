@@ -312,19 +312,6 @@ public class MarcaABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.eliminarMarca(txtId.getText());
         tablaDatos.setModel(gestor.mostrarDatos());
-        try{
-            PreparedStatement ps = cn.prepareStatement("DELETE FROM Marca WHERE id='"+txtId.getText()+"'");
-            int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            if (pantallaConfirmarEliminacion == 0) {
-                ps.executeUpdate(); // si selecciona SI (primer boton) ejecuta la eliminacion
-            } else {
-                //No hace nada
-            }
-            
-            
-        }catch (SQLException e){
-            System.out.println("ERROR:"+e);}
-        mostrarDatos();
         limpiarEntradas();
         habilitarBotones(true);
     }//GEN-LAST:event_btnEliminarActionPerformed
