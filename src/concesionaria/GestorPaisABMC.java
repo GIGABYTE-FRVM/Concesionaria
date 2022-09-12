@@ -14,8 +14,12 @@ public class GestorPaisABMC {
     ConexionMySQL con = new ConexionMySQL();
     Connection cn = con.conectar();
     private ArrayList<Pais> listaPaises = new ArrayList<Pais>();
+    PaisABMC pantallaPais;
+    
     public GestorPaisABMC() {
+        pantallaPais = new PaisABMC(this);
     }
+    
     public void registrarPais(String nombre) {
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO Pais (nombre) VALUES (?)");
@@ -98,5 +102,9 @@ public class GestorPaisABMC {
 
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
+    }
+    
+    public void mostrarPantalla() {
+        pantallaPais.setVisible(true);
     }
 }

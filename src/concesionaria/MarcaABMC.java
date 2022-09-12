@@ -14,14 +14,21 @@ import javax.swing.JOptionPane;
  */
 public class MarcaABMC extends javax.swing.JFrame {
 
-    GestorMarcaABMC gestor = new GestorMarcaABMC();
+    GestorMarcaABMC gestor;
 
-    public MarcaABMC() {
+    public MarcaABMC(GestorMarcaABMC gestorPadre) {
         initComponents();
+        this.setDefaultCloseOperation(2);
+        System.out.println("FORM MARCA");
         DefaultTableModel modelo = new DefaultTableModel();
+        conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
         
         actualizarComboPaises();
+    }
+    
+    public void conocerGestor(GestorMarcaABMC gestor) {
+        this.gestor = gestor;
     }
 
     /**
@@ -331,8 +338,7 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        PaisABMC formPais = new PaisABMC();
-        formPais.setVisible(true);
+        gestor.mostrarPaisABMC();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void cboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPaisActionPerformed
@@ -342,37 +348,14 @@ public class MarcaABMC extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MarcaABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MarcaABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MarcaABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MarcaABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+    
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MarcaABMC().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnActualizar;
