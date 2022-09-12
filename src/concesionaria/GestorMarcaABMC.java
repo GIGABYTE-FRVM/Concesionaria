@@ -10,13 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class GestorMarcaABMC {
-
+    ArrayList<Pais> listaPaises;
     ConexionMySQL con = new ConexionMySQL();
     Connection cn = con.conectar();
     private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
+    GestorPaisABMC gestorPais = new GestorPaisABMC();
     public GestorMarcaABMC() {
+        
     }
-    
+    public void conocerPaises(){
+        if (!(listaPaises==null)){
+            listaPaises.clear();
+        }
+        listaPaises = gestorPais.conocerPaises();
+    }
     public void modificarMarca(String codigo, String nombre, String descripcion, String id) {
         try {
             PreparedStatement ps = cn.prepareStatement("UPDATE Marca SET codigo='" + codigo + "',nombre='" + nombre + "',descripcion='" + descripcion + "' WHERE id='" + id + "'");
@@ -83,8 +90,6 @@ public class GestorMarcaABMC {
             ps.setString(2, nombre);
             ps.setString(3, descripcion);
             //ps.setString(4, cboPais.getSelectedItem().toString());
-            System.out.println((codigo.length()!=0));
-            System.out.println((codigo.isEmpty()));
             if((codigo.length()!=0)&&(nombre.length()!=0)&&(descripcion.length()!=0)){
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
@@ -110,4 +115,5 @@ public class GestorMarcaABMC {
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
     }
+    
 }
