@@ -23,7 +23,6 @@ public class GestorPaisABMC {
             
             if((nombre.length()!=0)){
                 ps.executeUpdate();
-                System.out.println("Hola");
                 JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             }else{
                 JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -47,7 +46,10 @@ public class GestorPaisABMC {
             System.out.println("ERROR: " + e);
         }
     };
-
+    public ArrayList<Pais> conocerPaises(){
+        conocerPais();
+        return listaPaises;
+    }
     public void conocerPais(){
         String consultasql = "SELECT * FROM Pais";
         Statement st;
@@ -64,7 +66,7 @@ public class GestorPaisABMC {
                 listaPaises.add(pais);
             }
         } catch (SQLException e) {
-            System.out.println("Error al mostrar datos" + e);
+            System.out.println("Error al mostrar datos " + e);
         }
     }
     public DefaultTableModel mostrarDatos() {
@@ -75,7 +77,7 @@ public class GestorPaisABMC {
         String data[] = new String[2];
         try {for(Pais pais : listaPaises){
                 data[0] = Integer.toString(pais.getId());
-                data[2] = pais.getNombre();
+                data[1] = pais.getNombre();
                 modelo.addRow(data);
             }
         } catch (Exception e) {

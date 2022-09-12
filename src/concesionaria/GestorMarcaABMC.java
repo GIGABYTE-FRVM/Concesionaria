@@ -10,13 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class GestorMarcaABMC {
-
+    ArrayList<Pais> listaPaises;
     ConexionMySQL con = new ConexionMySQL();
     Connection cn = con.conectar();
     private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
+    GestorPaisABMC gestorPais = new GestorPaisABMC();
     public GestorMarcaABMC() {
+        
     }
-    
+    public void conocerPaises(){
+        if (!(listaPaises==null)){
+            listaPaises.clear();
+        }
+        listaPaises = gestorPais.conocerPaises();
+    }
     public void modificarMarca(String codigo, String nombre, String descripcion, String id) {
         try {
             PreparedStatement ps = cn.prepareStatement("UPDATE Marca SET codigo='" + codigo + "',nombre='" + nombre + "',descripcion='" + descripcion + "' WHERE id='" + id + "'");
@@ -108,4 +115,5 @@ public class GestorMarcaABMC {
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
     }
+    
 }

@@ -20,7 +20,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel modelo = new DefaultTableModel();
         tablaDatos.setModel(gestor.mostrarDatos());
-
+        
+        actualizarComboPaises();
     }
 
     /**
@@ -86,6 +87,11 @@ public class MarcaABMC extends javax.swing.JFrame {
 
         cboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboPais.setBorder(javax.swing.BorderFactory.createTitledBorder("Pais"));
+        cboPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPaisActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +274,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
+        actualizarComboPaises();
+
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -289,6 +297,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
+        actualizarComboPaises();
 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -312,6 +321,10 @@ public class MarcaABMC extends javax.swing.JFrame {
         PaisABMC formPais = new PaisABMC();
         formPais.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void cboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboPaisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,6 +389,15 @@ public class MarcaABMC extends javax.swing.JFrame {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
+    }
+
+    private void actualizarComboPaises() {
+        cboPais.removeAllItems();
+        gestor.conocerPaises();
+        System.out.println("gestor.listaPaises = " + gestor.listaPaises);
+        for(Pais p : gestor.listaPaises){
+            cboPais.addItem(p.getNombre());
+        }
     }
  
 }
