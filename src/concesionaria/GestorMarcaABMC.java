@@ -18,7 +18,6 @@ public class GestorMarcaABMC {
     MarcaABMC marca;
     
     public GestorMarcaABMC() {
-        System.out.println("GESTOR");
         marca = new MarcaABMC(this);
         marca.setVisible(true);
     }

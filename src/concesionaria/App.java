@@ -16,7 +16,6 @@ public class App extends javax.swing.JFrame {
     GestorApp gestor;
     public App() {
         initComponents();
-        System.out.println("B");
     }
     
     public void conocerGestor(GestorApp gestor) {
@@ -97,12 +96,10 @@ public class App extends javax.swing.JFrame {
 
     private void menuPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPaisActionPerformed
         gestor.menuPaisActionPerformed();
-        System.out.println("APAIS");
     }//GEN-LAST:event_menuPaisActionPerformed
 
     private void menuMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMarcaActionPerformed
         gestor.menuMarcaActionPerformed();
-        System.out.println("AMARCA");
     }//GEN-LAST:event_menuMarcaActionPerformed
 
     /**

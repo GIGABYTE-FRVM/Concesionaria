@@ -20,7 +20,6 @@ public class MarcaABMC extends javax.swing.JFrame {
     public MarcaABMC(GestorMarcaABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
-        System.out.println("FORM MARCA");
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
@@ -395,7 +394,6 @@ public class MarcaABMC extends javax.swing.JFrame {
     private void actualizarComboPaises() {
         cboPais.removeAllItems();
         gestor.conocerPaises();
-        System.out.println("gestor.listaPaises = " + gestor.listaPaises);
         for(Pais p : gestor.listaPaises){
             cboPais.addItem(p.getNombre());
         }
