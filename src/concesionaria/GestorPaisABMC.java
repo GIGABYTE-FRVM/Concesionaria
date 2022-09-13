@@ -20,9 +20,10 @@ public class GestorPaisABMC {
         pantallaPais = new PaisABMC(this);
     }
     
-    public void registrarPais(String nombre) {
+    public void registrarPais() {
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO Pais (nombre) VALUES (?)");
+            String nombre = pantallaPais.getTxtNombre();
             ps.setString(1,nombre);
             
             if((nombre.length()!=0)){
@@ -36,8 +37,11 @@ public class GestorPaisABMC {
         }
     }
     
-    public void modificarPais(String nombre, String id) {
+    public void modificarPais() {
         try {
+            String nombre = pantallaPais.getTxtNombre();
+            String id = pantallaPais.getTxtId();
+
             PreparedStatement ps = cn.prepareStatement("UPDATE Pais SET nombre='" + nombre + "' WHERE id='" + id + "'");
             int indice = ps.executeUpdate();
             if (indice > 0) {
@@ -90,8 +94,9 @@ public class GestorPaisABMC {
         return modelo;
     }
     
-    public void eliminarPais(String id){
+    public void eliminarPais(){
     try{
+            String id = pantallaPais.getTxtId();
             PreparedStatement ps = cn.prepareStatement("DELETE FROM Pais WHERE id='"+id+"'");
             int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este pais?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (pantallaConfirmarEliminacion == 0) {

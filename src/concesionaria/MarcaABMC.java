@@ -7,6 +7,7 @@ package concesionaria;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -277,7 +278,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        gestor.registrarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText());
+        gestor.registrarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -300,7 +301,7 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        gestor.modificarMarca(txtCodigo.getText(), txtNombre.getText(), txtDescripcion.getText(), txtId.getText());
+        gestor.modificarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -310,7 +311,7 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        gestor.eliminarMarca(txtId.getText());
+        gestor.eliminarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -368,6 +369,23 @@ public class MarcaABMC extends javax.swing.JFrame {
         txtNombre.setText("");
         txtDescripcion.setText("");
     }
+
+    public String getTxtCodigo() {
+        return txtCodigo.getText();
+    }
+
+    public String getTxtDescripcion() {
+        return txtDescripcion.getText();
+    }
+
+    public String getTxtId() {
+        return txtId.getText();
+    }
+
+    public String getTxtNombre() {
+        return txtNombre.getText();
+    }
+
     private void habilitarBotones(boolean estado){
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
