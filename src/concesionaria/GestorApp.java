@@ -24,7 +24,7 @@ public class GestorApp {
     }
     
     public void conocerPantalla() {
-        app.conocerGestor(this);
+        app.conocergestor(this);
     }
     
     public void menuPaisActionPerformed() {

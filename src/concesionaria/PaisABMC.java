@@ -20,11 +20,11 @@ public class PaisABMC extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
-        conocerGestor(gestorPadre);
+        conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
     }
     
-     public void conocerGestor(GestorPaisABMC gestor) {
+     public void conocergestor(GestorPaisABMC gestor) {
         this.gestor = gestor;
     }
 

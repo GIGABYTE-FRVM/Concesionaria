@@ -19,7 +19,7 @@ public class App extends javax.swing.JFrame {
         System.out.println("B");
     }
     
-    public void conocerGestor(GestorApp gestor) {
+    public void conocergestor(GestorApp gestor) {
         this.gestor = gestor;
     }
 

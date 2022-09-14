@@ -6,7 +6,6 @@ package concesionaria;
 
 
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,13 +20,13 @@ public class MarcaABMC extends javax.swing.JFrame {
         this.setDefaultCloseOperation(2);
         System.out.println("FORM MARCA");
         DefaultTableModel modelo = new DefaultTableModel();
-        conocerGestor(gestorPadre);
+        conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
         
         actualizarComboPaises();
     }
     
-    public void conocerGestor(GestorMarcaABMC gestor) {
+    public void conocergestor(GestorMarcaABMC gestor) {
         this.gestor = gestor;
     }
 
