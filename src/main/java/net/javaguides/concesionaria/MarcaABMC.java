@@ -290,6 +290,14 @@ public class MarcaABMC extends javax.swing.JFrame {
         this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
+        for(int i=0; i<cboPais.getItemCount();i++){
+            this.cboPais.setSelectedIndex(i);
+            if(this.cboPais.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString()))
+            {
+                break;
+            }
+        }
+        
         habilitarBotones(false);
 
         //this.cboPais
@@ -380,6 +388,9 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     public String getTxtNombre() {
         return txtNombre.getText();
+    }
+    public int getPais(){
+        return cboPais.getSelectedIndex();
     }
 
     private void habilitarBotones(boolean estado){
