@@ -15,7 +15,7 @@ import net.javaguides.hibernate.dao.MarcaDao;
 public class app {
     public static void main(String[] args) {
         MarcaDao marcaDao = new MarcaDao();
-        Marca marca = new Marca("HIB2","Hibernate33","Logré conectar con hibernate2");
+        Marca marca = new Marca("HIB2","Hibernate33","Logré conectar con hibernate2",null);
         // REGISTRAR
         marcaDao.saveMarca(marca);
         
