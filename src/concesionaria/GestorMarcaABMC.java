@@ -15,8 +15,11 @@ public class GestorMarcaABMC {
     Connection cn = con.conectar();
     private ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
     GestorPaisABMC gestorPais = new GestorPaisABMC();
+    MarcaABMC marca;
+    
     public GestorMarcaABMC() {
-        
+        marca = new MarcaABMC(this);
+        marca.setVisible(true);
     }
     public void conocerPaises(){
         if (!(listaPaises==null)){
@@ -24,9 +27,9 @@ public class GestorMarcaABMC {
         }
         listaPaises = gestorPais.conocerPaises();
     }
-    public void modificarMarca(String codigo, String nombre, String descripcion, String id) {
+    public void modificarMarca() {
         try {
-            PreparedStatement ps = cn.prepareStatement("UPDATE Marca SET codigo='" + codigo + "',nombre='" + nombre + "',descripcion='" + descripcion + "' WHERE id='" + id + "'");
+            PreparedStatement ps = cn.prepareStatement("UPDATE Marca SET codigo='" + marca.getTxtCodigo() + "',nombre='" + marca.getTxtNombre() + "',descripcion='" + marca.getTxtDescripcion() + "' WHERE id='" + marca.getTxtId() + "'");
             int indice = ps.executeUpdate();
             if (indice > 0) {
                 JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
@@ -83,9 +86,12 @@ public class GestorMarcaABMC {
         }
         return modelo;
     }
-    public void registrarMarca(String codigo, String nombre, String descripcion) {
+    public void registrarMarca() {
         try {
             PreparedStatement ps = cn.prepareStatement("INSERT INTO Marca (codigo,nombre,descripcion) VALUES (?,?,?)");
+            String codigo = marca.getTxtCodigo();
+            String nombre= marca.getTxtNombre();
+            String descripcion = marca.getTxtDescripcion();
             ps.setString(1, codigo);
             ps.setString(2, nombre);
             ps.setString(3, descripcion);
@@ -102,8 +108,9 @@ public class GestorMarcaABMC {
             System.out.println("ERROR AL REGISTRAR CLIENTE" + e);
         }
     }
-    public void eliminarMarca(String id){
+    public void eliminarMarca(){
     try{
+            String id = marca.getTxtId();
             PreparedStatement ps = cn.prepareStatement("DELETE FROM Marca WHERE id='"+id+"'");
             int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (pantallaConfirmarEliminacion == 0) {
@@ -114,6 +121,10 @@ public class GestorMarcaABMC {
 
         }catch (SQLException e){
             System.out.println("ERROR:"+e);}
+    }
+
+    void mostrarPaisABMC() {
+        gestorPais.mostrarPantalla();
     }
     
 }

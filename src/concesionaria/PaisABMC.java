@@ -14,13 +14,18 @@ import javax.swing.JOptionPane;
  */
 public class PaisABMC extends javax.swing.JFrame {
 
-    GestorPaisABMC gestor = new GestorPaisABMC();
+    GestorPaisABMC gestor;
 
-    public PaisABMC() {
+    public PaisABMC(GestorPaisABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
+        conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+    }
+    
+     public void conocerGestor(GestorPaisABMC gestor) {
+        this.gestor = gestor;
     }
 
     /**
@@ -209,7 +214,7 @@ public class PaisABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        gestor.registrarPais(txtNombre.getText());
+        gestor.registrarPais();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -228,7 +233,7 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        gestor.modificarPais(txtNombre.getText(), txtId.getText());
+        gestor.modificarPais();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -237,7 +242,7 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        gestor.eliminarPais(txtId.getText());
+        gestor.eliminarPais();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -283,7 +288,7 @@ public class PaisABMC extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaisABMC().setVisible(true);
+                //
                 
             }
         });
@@ -311,6 +316,14 @@ public class PaisABMC extends javax.swing.JFrame {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
+    }
+
+    String getTxtNombre() {
+        return txtNombre.getText();
+    }
+
+    String getTxtId() {
+        return txtId.getText();
     }
     
     
