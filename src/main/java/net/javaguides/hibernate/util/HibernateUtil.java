@@ -10,6 +10,8 @@ import org.hibernate.service.ServiceRegistry;
 
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Pais;
+import net.javaguides.hibernate.model.Personal;
+
 import org.hibernate.HibernateException;
 
 public class HibernateUtil {
@@ -38,6 +40,7 @@ public class HibernateUtil {
 
                 configuration.addAnnotatedClass(Marca.class);
                 configuration.addAnnotatedClass(Pais.class);
+                configuration.addAnnotatedClass(Personal.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

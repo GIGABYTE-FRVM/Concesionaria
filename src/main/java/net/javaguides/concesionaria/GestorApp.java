@@ -32,6 +32,11 @@ public class GestorApp {
         gestorPais.mostrarPantalla();
     }
     
+    public void menuPersonalActionPerformed() {
+        GestorPersonalABMC gestorPersonal = new GestorPersonalABMC();
+        gestorPersonal.mostrarPantalla();
+    }
+    
     public void menuMarcaActionPerformed() {
         GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
     }
