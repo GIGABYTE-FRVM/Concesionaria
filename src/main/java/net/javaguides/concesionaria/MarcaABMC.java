@@ -19,11 +19,11 @@ public class MarcaABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
-        
+
         actualizarComboPaises();
     }
-    
-    public void conocergestor(GestorMarcaABMC gestor) {
+
+    public void conocerGestor(GestorMarcaABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -289,14 +289,13 @@ public class MarcaABMC extends javax.swing.JFrame {
         this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
-        for(int i=0; i<cboPais.getItemCount();i++){
+        for (int i = 0; i < cboPais.getItemCount(); i++) {
             this.cboPais.setSelectedIndex(i);
-            if(this.cboPais.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString()))
-            {
+            if (this.cboPais.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString())) {
                 break;
             }
         }
-        
+
         habilitarBotones(false);
 
         //this.cboPais
@@ -324,22 +323,23 @@ public class MarcaABMC extends javax.swing.JFrame {
         limpiarEntradas();
         tablaDatos.setCellSelectionEnabled(true);
         habilitarBotones(true);
-        
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         gestor.mostrarPaisABMC();
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void cboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPaisActionPerformed
         // TODO add your handling code here:
+        actualizarComboPaises();
     }//GEN-LAST:event_cboPaisActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
     /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -388,11 +388,12 @@ public class MarcaABMC extends javax.swing.JFrame {
     public String getTxtNombre() {
         return txtNombre.getText();
     }
-    public int getPais(){
+
+    public int getPais() {
         return cboPais.getSelectedIndex();
     }
 
-    private void habilitarBotones(boolean estado){
+    private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
@@ -401,11 +402,11 @@ public class MarcaABMC extends javax.swing.JFrame {
     private void actualizarComboPaises() {
         cboPais.removeAllItems();
         gestor.conocerPaises();
-        
-        for(Pais p : gestor.listaPaises){
+
+        for (Pais p : gestor.listaPaises) {
             cboPais.addItem(p.getNombre());
         }
-        
+
     }
- 
+
 }
