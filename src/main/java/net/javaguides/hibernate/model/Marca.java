@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,15 +31,31 @@ public class Marca {
 
     @Column(name = "descripcion")
     private String descripcion;
-
+    
+    @ManyToOne
+    @JoinColumn(name="id_pais",referencedColumnName="id")
+    private Pais pais;
 
     public Marca() {
     }
 
-    public Marca(String codigo, String nombre, String descripcion) {
+    public Marca(String codigo, String nombre, String descripcion,Pais pais) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.pais = pais;
+    }
+
+    public Marca(String hiB2, String hibernate33, String logré_conectar_con_hibernate2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 
     public int getId() {

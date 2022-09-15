@@ -9,6 +9,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import net.javaguides.hibernate.model.Marca;
+import net.javaguides.hibernate.model.Pais;
+import org.hibernate.HibernateException;
 
 public class HibernateUtil {
 
@@ -35,13 +37,13 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Marca.class);
+                configuration.addAnnotatedClass(Pais.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (HibernateException e) {
             }
         }
         return sessionFactory;

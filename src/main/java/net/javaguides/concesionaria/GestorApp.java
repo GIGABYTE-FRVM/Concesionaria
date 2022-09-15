@@ -34,6 +34,5 @@ public class GestorApp {
     
     public void menuMarcaActionPerformed() {
         GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-        
     }
 }

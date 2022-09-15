@@ -8,7 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import net.javaguides.hibernate.model.Pais;
-import net.javaguides.hibernate.util.HibernateUtil;
+import main.java.net.javaguides.hibernate.util.HibernateUtil;
 
 /**
  *
@@ -74,12 +74,8 @@ public class PaisDao implements iPaisDao {
         List<Pais> paises = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
             paises = session.createQuery("from Pais").list();
-
             transaction.commit();
-                
-
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

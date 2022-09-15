@@ -8,7 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import net.javaguides.hibernate.model.Marca;
-import net.javaguides.hibernate.util.HibernateUtil;
+import main.java.net.javaguides.hibernate.util.HibernateUtil;
 
 /**
  *

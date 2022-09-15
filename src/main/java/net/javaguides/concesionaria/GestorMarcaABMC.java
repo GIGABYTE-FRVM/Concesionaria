@@ -1,4 +1,4 @@
-package main.java.net.javaguides.concesionaria;
+package net.javaguides.concesionaria;
 
 
 
@@ -7,34 +7,37 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.MarcaDao;
+import net.javaguides.hibernate.dao.PaisDao;
 import net.javaguides.hibernate.model.Marca;
+import net.javaguides.hibernate.model.Pais;
 
 public class GestorMarcaABMC {
 
-    //ArrayList<Pais> listaPaises;
+    List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    //GestorPaisABMC gestorPais = new GestorPaisABMC();
+    GestorPaisABMC gestorPais = new GestorPaisABMC();
     MarcaABMC marca;
     MarcaDao marcaDao = new MarcaDao();
+    PaisDao paisDao = new PaisDao();
 
     public GestorMarcaABMC() {
         marca = new MarcaABMC(this);
         marca.setVisible(true);
     }
 
-    /*
+    
     public void conocerPaises(){
         if (!(listaPaises==null)){
             listaPaises.clear();
         }
-        listaPaises = gestorPais.conocerPaises();
-    }*/
+        listaPaises = gestorPais.conocerListPaises();
+    }
     public void modificarMarca() {
         Marca marcaObject = marcaDao.getMarcaById(Integer.parseInt(marca.getTxtId()));
         marcaObject.setNombre(marca.getTxtNombre());
         marcaObject.setCodigo(marca.getTxtCodigo());
         marcaObject.setDescripcion(marca.getTxtDescripcion());
-        
+        marcaObject.setPais(listaPaises.get(marca.getPais()));
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             marcaDao.updateMarca(marcaObject);
@@ -55,13 +58,15 @@ public class GestorMarcaABMC {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
-        String data[] = new String[4];
+        modelo.addColumn("Pais");
+        String data[] = new String[5];
         try {
             for (Marca marca : listaMarcas) {
                 data[0] = Integer.toString((int) marca.getId());
                 data[1] = marca.getCodigo();
                 data[2] = marca.getNombre();
                 data[3] = marca.getDescripcion();
+                data[4] = marca.getPais().getNombre();
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -74,7 +79,8 @@ public class GestorMarcaABMC {
         String codigo = marca.getTxtCodigo();
         String nombre = marca.getTxtNombre();
         String descripcion = marca.getTxtDescripcion();
-        Marca marcaObject = new Marca(codigo, nombre, descripcion);
+        Pais pais = listaPaises.get(marca.getPais());
+        Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
         //ps.setString(4, cboPais.getSelectedItem().toString());
         if ((codigo.length() != 0) && (nombre.length() != 0) && (descripcion.length() != 0)) {
             marcaDao.saveMarca(marcaObject);
@@ -97,7 +103,7 @@ public class GestorMarcaABMC {
     }
 
     void mostrarPaisABMC() {
-        //gestorPais.mostrarPantalla();
+        gestorPais.mostrarPantalla();
     }
 
 }
