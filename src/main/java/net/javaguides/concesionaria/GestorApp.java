@@ -4,8 +4,6 @@
  */
 package net.javaguides.concesionaria;
 
-import concesionaria.GestorMarcaABMC;
-
 /**
  *
  * @author Usuario
