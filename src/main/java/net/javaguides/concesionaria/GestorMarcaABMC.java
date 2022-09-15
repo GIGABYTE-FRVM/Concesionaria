@@ -6,12 +6,13 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.MarcaDao;
 import net.javaguides.hibernate.model.Marca;
+import net.javaguides.hibernate.model.Pais;
 
 public class GestorMarcaABMC {
 
-    //ArrayList<Pais> listaPaises;
+    List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    //GestorPaisABMC gestorPais = new GestorPaisABMC();
+    GestorPaisABMC gestorPais = new GestorPaisABMC();
     MarcaABMC marca;
     MarcaDao marcaDao = new MarcaDao();
 
@@ -20,13 +21,13 @@ public class GestorMarcaABMC {
         marca.setVisible(true);
     }
 
-    /*
+    
     public void conocerPaises(){
         if (!(listaPaises==null)){
             listaPaises.clear();
         }
-        listaPaises = gestorPais.conocerPaises();
-    }*/
+        listaPaises = gestorPais.conocerListPaises();
+    }
     public void modificarMarca() {
         Marca marcaObject = marcaDao.getMarcaById(Integer.parseInt(marca.getTxtId()));
         marcaObject.setNombre(marca.getTxtNombre());
@@ -95,7 +96,7 @@ public class GestorMarcaABMC {
     }
 
     void mostrarPaisABMC() {
-        //gestorPais.mostrarPantalla();
+        gestorPais.mostrarPantalla();
     }
 
 }

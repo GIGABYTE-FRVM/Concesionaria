@@ -4,6 +4,7 @@ package net.javaguides.concesionaria;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import net.javaguides.hibernate.model.Pais;
 
 /**
  *
@@ -389,12 +390,12 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void actualizarComboPaises() {
         cboPais.removeAllItems();
-        //gestor.conocerPaises();
-        /*
+        gestor.conocerPaises();
+        
         for(Pais p : gestor.listaPaises){
             cboPais.addItem(p.getNombre());
         }
-        */
+        
     }
  
 }

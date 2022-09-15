@@ -74,12 +74,8 @@ public class PaisDao implements iPaisDao {
         List<Pais> paises = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
             paises = session.createQuery("from Pais").list();
-
             transaction.commit();
-                
-
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

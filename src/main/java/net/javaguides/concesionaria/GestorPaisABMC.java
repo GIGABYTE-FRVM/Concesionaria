@@ -47,15 +47,16 @@ public class GestorPaisABMC {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         } 
     };
-    public List<Pais> conocerPaises(){
-        conocerPais();
-        return listaPaises;
-    }
-    public void conocerPais(){
+    
+    public void conocerPaises(){
         listaPaises = paisDao.getAllPais();
     }
+    public List<Pais> conocerListPaises(){
+        conocerPaises();
+        return listaPaises;
+    }
     public DefaultTableModel mostrarDatos() {
-        this.conocerPais();
+        this.conocerPaises();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
         modelo.addColumn("Nombre");
