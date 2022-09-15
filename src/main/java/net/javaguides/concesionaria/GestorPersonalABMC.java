@@ -41,13 +41,14 @@ public class GestorPersonalABMC {
         Personal personalObject;
         personalObject = personalDao.getPersonalById(Integer.parseInt(pantallaPersonal.getTxtId()));
         personalObject.setNombre(pantallaPersonal.getTxtNombre());
-        personalObject.setNombre(pantallaPersonal.getTxtApellido());
-        personalObject.setNombre(pantallaPersonal.getTxtDireccion());
-        personalObject.setNombre(pantallaPersonal.getTxtDNI());
-        personalObject.setNombre(pantallaPersonal.getTxtEmail());
-        personalObject.setNombre(pantallaPersonal.getTxtTelefono());
-        personalObject.setNombre(pantallaPersonal.getTxtFechaNacimiento());
-
+        personalObject.setApellido(pantallaPersonal.getTxtApellido());
+        personalObject.setDireccion(pantallaPersonal.getTxtDireccion());
+        personalObject.setDocumento(pantallaPersonal.getTxtDNI());
+        personalObject.setEmail(pantallaPersonal.getTxtEmail());
+        personalObject.setTelefono(pantallaPersonal.getTxtTelefono());
+        personalObject.setFechaNacimiento(pantallaPersonal.getTxtFechaNacimiento());
+        System.out.println(personalObject);
+        
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             personalDao.updatePersonal(personalObject);
