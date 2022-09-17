@@ -13,3 +13,9 @@ DROP TABLE IF EXISTS `pais`;
 CREATE TABLE `pais` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ~~~
 
+## Combustible
+~~~
+DROP TABLE IF EXISTS `combustible`;
+CREATE TABLE `combustible` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+~~~
+
