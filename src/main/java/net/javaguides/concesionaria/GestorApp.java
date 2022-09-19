@@ -34,6 +34,11 @@ public class GestorApp {
     
     public void menuMarcaActionPerformed() {
         GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-        
+        //gestorMarca.mostrarPantalla(); 
+    }
+    
+    public void menuCombustibleActionPerformed() {
+        GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
+        gestorCombustible.mostrarPantalla();
     }
 }
