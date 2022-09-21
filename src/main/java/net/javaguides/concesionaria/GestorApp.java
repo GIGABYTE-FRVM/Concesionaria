@@ -14,6 +14,9 @@ public class GestorApp {
      * @param args the command line arguments
      */
     static App app;
+    GestorMarcaABMC gestorMarca;
+    GestorPaisABMC gestorPais;
+
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -21,6 +24,11 @@ public class GestorApp {
         app.setVisible(true);
         var gestor = new GestorApp();
         gestor.conocerPantalla();
+        
+    }
+
+    public GestorApp() {
+        
     }
     
     public void conocerPantalla() {
@@ -28,13 +36,15 @@ public class GestorApp {
     }
     
     public void menuPaisActionPerformed() {
-        GestorPaisABMC gestorPais = new GestorPaisABMC();
+        menuMarcaActionPerformed();
+        gestorMarca.mostrarPantalla(false);
+        this.gestorPais = new GestorPaisABMC(gestorMarca);
         gestorPais.mostrarPantalla();
     }
     
     public void menuMarcaActionPerformed() {
-        GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-        //gestorMarca.mostrarPantalla(); 
+        this.gestorMarca = new GestorMarcaABMC();
+        gestorMarca.mostrarPantalla(true); 
     }
     
     public void menuCombustibleActionPerformed() {
