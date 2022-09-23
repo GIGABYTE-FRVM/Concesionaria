@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -19,6 +20,7 @@ public class PaisABMC extends javax.swing.JFrame {
     GestorPaisABMC gestor;
     int xMouse, yMouse;
     Color colorBackgroundButton = new Color(255,153,51);
+    Color colorBorderButton = new Color(204, 204, 204);
     
     
     public PaisABMC(GestorPaisABMC gestorPadre) {
@@ -45,24 +47,25 @@ public class PaisABMC extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
         separadorId = new javax.swing.JSeparator();
         separadorNombre = new javax.swing.JSeparator();
+        lblNombre = new javax.swing.JLabel();
         panelBtnRegistrar = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JLabel();
         panelBtnActualizar = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JLabel();
-        panelBtnActualizar1 = new javax.swing.JPanel();
+        panelBtnEliminar = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JLabel();
         panelBtnCancelar = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JLabel();
         panelTablaDatos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
-        tituloTabla = new javax.swing.JLabel();
-        barraSuperior = new javax.swing.JPanel();
-        btnCerrarVentana = new javax.swing.JPanel();
-        lblCerrarVentana = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        barraSuperiorVentana = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
+        lblBtnCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -73,6 +76,7 @@ public class PaisABMC extends javax.swing.JFrame {
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         txtId.setBorder(null);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,15 +99,16 @@ public class PaisABMC extends javax.swing.JFrame {
         lblId.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         lblId.setText("ID");
 
-        lblNombre.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        lblNombre.setText("NOMBRE");
-
         separadorId.setEnabled(false);
 
         separadorNombre.setEnabled(false);
 
+        lblNombre.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        lblNombre.setText("NOMBRE");
+
         panelBtnRegistrar.setBackground(new java.awt.Color(255, 153, 51));
 
+        btnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,21 +124,17 @@ public class PaisABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setLayout(panelBtnRegistrarLayout);
         panelBtnRegistrarLayout.setHorizontalGroup(
             panelBtnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
         );
         panelBtnRegistrarLayout.setVerticalGroup(
             panelBtnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
         panelBtnActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        panelBtnActualizar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelBtnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelBtnActualizarMouseEntered(evt);
-            }
-        });
+        panelBtnActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizar.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 153, 51));
         btnActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -143,33 +144,23 @@ public class PaisABMC extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnActualizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnActualizarMouseExited(evt);
-            }
         });
 
         javax.swing.GroupLayout panelBtnActualizarLayout = new javax.swing.GroupLayout(panelBtnActualizar);
         panelBtnActualizar.setLayout(panelBtnActualizarLayout);
         panelBtnActualizarLayout.setHorizontalGroup(
             panelBtnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
         );
         panelBtnActualizarLayout.setVerticalGroup(
             panelBtnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+            .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
-        panelBtnActualizar1.setBackground(new java.awt.Color(255, 255, 255));
-        panelBtnActualizar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        panelBtnActualizar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelBtnActualizar1MouseEntered(evt);
-            }
-        });
+        panelBtnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        panelBtnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 153, 51));
         btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,28 +170,23 @@ public class PaisABMC extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseExited(evt);
-            }
         });
 
-        javax.swing.GroupLayout panelBtnActualizar1Layout = new javax.swing.GroupLayout(panelBtnActualizar1);
-        panelBtnActualizar1.setLayout(panelBtnActualizar1Layout);
-        panelBtnActualizar1Layout.setHorizontalGroup(
-            panelBtnActualizar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelBtnEliminarLayout = new javax.swing.GroupLayout(panelBtnEliminar);
+        panelBtnEliminar.setLayout(panelBtnEliminarLayout);
+        panelBtnEliminarLayout.setHorizontalGroup(
+            panelBtnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
         );
-        panelBtnActualizar1Layout.setVerticalGroup(
-            panelBtnActualizar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+        panelBtnEliminarLayout.setVerticalGroup(
+            panelBtnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
         panelBtnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        panelBtnCancelar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelBtnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 153, 51));
         btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -216,11 +202,11 @@ public class PaisABMC extends javax.swing.JFrame {
         panelBtnCancelar.setLayout(panelBtnCancelarLayout);
         panelBtnCancelarLayout.setHorizontalGroup(
             panelBtnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
         );
         panelBtnCancelarLayout.setVerticalGroup(
             panelBtnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelDatosRegistradosLayout = new javax.swing.GroupLayout(panelDatosRegistrados);
@@ -228,54 +214,53 @@ public class PaisABMC extends javax.swing.JFrame {
         panelDatosRegistradosLayout.setHorizontalGroup(
             panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(32, 32, 32)
+                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(separadorNombre)
-                    .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTitulo)
-                        .addComponent(lblId)
-                        .addComponent(lblNombre)
-                        .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(separadorId, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                        .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
-                            .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(panelBtnActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(lblNombre)
+                    .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo)
+                    .addComponent(lblId)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
+                        .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         panelDatosRegistradosLayout.setVerticalGroup(
             panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(lblTitulo)
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addComponent(lblId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelBtnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBtnActualizar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBtnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 420, 330));
+        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 320));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -297,108 +282,121 @@ public class PaisABMC extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaDatos);
 
-        tituloTabla.setBackground(new java.awt.Color(255, 255, 255));
-        tituloTabla.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        tituloTabla.setForeground(new java.awt.Color(255, 255, 255));
-        tituloTabla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tituloTabla.setText("LISTADO DE PAÍSES");
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("LISTADO DE PAÍSES");
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout panelTablaDatosLayout = new javax.swing.GroupLayout(panelTablaDatos);
         panelTablaDatos.setLayout(panelTablaDatosLayout);
         panelTablaDatosLayout.setHorizontalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tituloTabla)
-                .addGap(209, 209, 209))
-            .addGroup(panelTablaDatosLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel7)
+                .addGap(219, 219, 219))
+            .addGroup(panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelTablaDatosLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panelTablaDatosLayout.setVerticalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(tituloTabla)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelTablaDatosLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 31, -1, 330));
+        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 320));
 
-        barraSuperior.setBackground(new java.awt.Color(255, 255, 255));
-        barraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
+        barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                barraSuperiorMouseDragged(evt);
+                barraSuperiorVentanaMouseDragged(evt);
             }
         });
-        barraSuperior.addMouseListener(new java.awt.event.MouseAdapter() {
+        barraSuperiorVentana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                barraSuperiorMousePressed(evt);
+                barraSuperiorVentanaMousePressed(evt);
             }
         });
 
-        btnCerrarVentana.setBackground(new java.awt.Color(255, 255, 255));
-        btnCerrarVentana.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCerrarVentanaMouseClicked(evt);
+                btnCerrarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCerrarVentanaMouseEntered(evt);
+                btnCerrarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCerrarVentanaMouseExited(evt);
+                btnCerrarMouseExited(evt);
             }
         });
 
-        lblCerrarVentana.setBackground(new java.awt.Color(255, 255, 255));
-        lblCerrarVentana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCerrarVentana.setText("X");
-        lblCerrarVentana.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblBtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        lblBtnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnCerrar.setText("X");
+        lblBtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCerrarVentanaMouseClicked(evt);
+                lblBtnCerrarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblCerrarVentanaMouseEntered(evt);
+                lblBtnCerrarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblCerrarVentanaMouseExited(evt);
+                lblBtnCerrarMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout btnCerrarVentanaLayout = new javax.swing.GroupLayout(btnCerrarVentana);
-        btnCerrarVentana.setLayout(btnCerrarVentanaLayout);
-        btnCerrarVentanaLayout.setHorizontalGroup(
-            btnCerrarVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCerrarVentana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
         );
-        btnCerrarVentanaLayout.setVerticalGroup(
-            btnCerrarVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCerrarVentana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout barraSuperiorLayout = new javax.swing.GroupLayout(barraSuperior);
-        barraSuperior.setLayout(barraSuperiorLayout);
-        barraSuperiorLayout.setHorizontalGroup(
-            barraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraSuperiorLayout.createSequentialGroup()
-                .addGap(0, 1051, Short.MAX_VALUE)
-                .addComponent(btnCerrarVentana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        barraSuperiorLayout.setVerticalGroup(
-            barraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCerrarVentana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        panelGeneral.add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 30));
+        javax.swing.GroupLayout barraSuperiorVentanaLayout = new javax.swing.GroupLayout(barraSuperiorVentana);
+        barraSuperiorVentana.setLayout(barraSuperiorVentanaLayout);
+        barraSuperiorVentanaLayout.setHorizontalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraSuperiorVentanaLayout.createSequentialGroup()
+                .addGap(0, 1041, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        barraSuperiorVentanaLayout.setVerticalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        panelGeneral.add(barraSuperiorVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,7 +421,7 @@ public class PaisABMC extends javax.swing.JFrame {
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.white);
-        Border borderButtonRegistrar = new EtchedBorder(EtchedBorder.LOWERED);
+        LineBorder borderButtonRegistrar = new LineBorder(colorBorderButton);
         panelBtnRegistrar.setBorder(borderButtonRegistrar);
 
         //this.cboPais
@@ -434,13 +432,13 @@ public class PaisABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCerrarVentanaMouseClicked
 
     private void lblCerrarVentanaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarVentanaMouseEntered
-        btnCerrarVentana.setBackground(Color.red);
-        lblCerrarVentana.setForeground(Color.white);
+        btnCerrar.setBackground(Color.red);
+        lblBtnCerrar.setForeground(Color.white);
     }//GEN-LAST:event_lblCerrarVentanaMouseEntered
 
     private void lblCerrarVentanaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarVentanaMouseExited
-        btnCerrarVentana.setBackground(Color.white);
-        lblCerrarVentana.setForeground(Color.black);
+        btnCerrar.setBackground(Color.white);
+        lblBtnCerrar.setForeground(Color.black);
     }//GEN-LAST:event_lblCerrarVentanaMouseExited
 
     private void btnCerrarVentanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarVentanaMouseClicked
@@ -455,17 +453,75 @@ public class PaisABMC extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCerrarVentanaMouseExited
 
-    private void barraSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMouseDragged
+    private void barraSuperiorVentanaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
 
-    }//GEN-LAST:event_barraSuperiorMouseDragged
+    }//GEN-LAST:event_barraSuperiorVentanaMouseDragged
 
-    private void barraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMousePressed
+    private void barraSuperiorVentanaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
-    }//GEN-LAST:event_barraSuperiorMousePressed
+    }//GEN-LAST:event_barraSuperiorVentanaMousePressed
+
+    private void btnActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarMouseEntered
+
+    private void btnActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseExited
+
+    }//GEN-LAST:event_btnActualizarMouseExited
+
+    private void panelBtnActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnActualizarMouseEntered
+
+    }//GEN-LAST:event_panelBtnActualizarMouseEntered
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void panelBtnActualizar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnActualizar1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelBtnActualizar1MouseEntered
+
+    private void lblBtnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseClicked
+        dispose();
+    }//GEN-LAST:event_lblBtnCerrarMouseClicked
+
+    private void lblBtnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseEntered
+        btnCerrar.setBackground(Color.red);
+        lblBtnCerrar.setForeground(Color.white);
+    }//GEN-LAST:event_lblBtnCerrarMouseEntered
+
+    private void lblBtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseExited
+        btnCerrar.setBackground(Color.white);
+        lblBtnCerrar.setForeground(Color.black);
+    }//GEN-LAST:event_lblBtnCerrarMouseExited
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
+
+    }//GEN-LAST:event_btnCerrarMouseEntered
+
+    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
+
+    }//GEN-LAST:event_btnCerrarMouseExited
+
+    private void barraSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel5MouseDragged
+
+    private void barraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel5MousePressed
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         gestor.registrarPais();
@@ -482,20 +538,7 @@ public class PaisABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
-        
     }//GEN-LAST:event_btnActualizarMouseClicked
-
-    private void btnActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarMouseEntered
-
-    private void btnActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseExited
-
-    }//GEN-LAST:event_btnActualizarMouseExited
-
-    private void panelBtnActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnActualizarMouseEntered
-
-    }//GEN-LAST:event_panelBtnActualizarMouseEntered
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
@@ -506,18 +549,6 @@ public class PaisABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnEliminarMouseClicked
-
-    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarMouseEntered
-
-    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarMouseExited
-
-    private void panelBtnActualizar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnActualizar1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_panelBtnActualizar1MouseEntered
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
         limpiarEntradas();
@@ -567,20 +598,22 @@ public class PaisABMC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel barraSuperior;
+    private javax.swing.JPanel barraSuperiorVentana;
     private javax.swing.JLabel btnActualizar;
     private javax.swing.JLabel btnCancelar;
-    private javax.swing.JPanel btnCerrarVentana;
+    private javax.swing.JPanel btnCerrar;
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnRegistrar;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCerrarVentana;
+    private javax.swing.JLabel lblBtnCerrar;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelBtnActualizar;
-    private javax.swing.JPanel panelBtnActualizar1;
     private javax.swing.JPanel panelBtnCancelar;
+    private javax.swing.JPanel panelBtnEliminar;
     private javax.swing.JPanel panelBtnRegistrar;
     private javax.swing.JPanel panelDatosRegistrados;
     private javax.swing.JPanel panelGeneral;
@@ -588,7 +621,6 @@ public class PaisABMC extends javax.swing.JFrame {
     private javax.swing.JSeparator separadorId;
     private javax.swing.JSeparator separadorNombre;
     private javax.swing.JTable tablaDatos;
-    private javax.swing.JLabel tituloTabla;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
