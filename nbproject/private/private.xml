@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/hibernate/dao/MarcaDao.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/concesionaria/MarcaABMC.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/hibernate/model/Marca.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/concesionaria/GestorMarcaABMC.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/nbactions.xml</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/pom.xml</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/hibernate/util/HibernateUtil.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/concesionaria/GestorApp.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/hibernate/dao/PaisDao.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/hibernate/model/Pais.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Lucas%20Ortiz/Unversidad/2022/Programacion%20Avanzada/TP1/Concesionaria/src/main/java/net/javaguides/concesionaria/GestorMarcaABMC.java</file>
-        </group>
-    </open-files>
 </project-private>
+
