@@ -17,7 +17,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
-        conocergestor(gestorPadre);
+        conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
 
         actualizarComboPaises();
