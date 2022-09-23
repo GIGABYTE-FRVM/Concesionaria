@@ -3,4 +3,5 @@
 */private.xml
 */private.properties
 
-/target/*
+target/classes/*
+target/test-classes/*
