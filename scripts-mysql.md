@@ -30,3 +30,8 @@ CREATE TABLE `modelo` ( `id` int(11) NOT NULL, `nombre` varchar(50) DEFAULT NULL
 DROP TABLE IF EXISTS `combustible`;
 CREATE TABLE `combustible` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ~~~
+
+## Auto
+~~~
+DROP TABLE IF EXISTS `auto`; CREATE TABLE `auto` ( `id` bigint(20) NOT NULL, `anioFabricacion` int(10) NOT NULL, `color` varchar(255) NOT NULL, `id_combustible` int(11) NOT NULL, `id_marca` int(11) NOT NULL, `id_modelo` int(11) NOT NULL, `precio` double NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+~~~
