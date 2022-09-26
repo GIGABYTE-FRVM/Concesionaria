@@ -29,7 +29,7 @@ public class GestorModeloABMC {
         Marca marca = listaMarcas.get(pantallaModelo.getMarca());
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         //ps.setString(4, cboModelo.getSelectedItem().toString());
-        if (esValido(modeloObject)) {
+        if (esValido(modeloObject,0)) {
             modeloDao.saveModelo(modeloObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaModelo.limpiarEntradas();
@@ -45,7 +45,7 @@ public class GestorModeloABMC {
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
         modeloObject.setMarca(listaMarcas.get(pantallaModelo.getMarca()));
-        if (esValido(modeloObject)) {
+        if (esValido(modeloObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             modeloDao.updateModelo(modeloObject);
             mostrarDatos();
@@ -135,15 +135,16 @@ public class GestorModeloABMC {
         pantallaModelo.setVisible(visible);
     }
 
-    public boolean esValido(Modelo modelo) {
+    public boolean esValido(Modelo modelo,int tipo) {
         if ((modelo.getVersion().length() == 0) || (modelo.getNombre().length() == 0) || (modelo.getAñoLanzamiento().length() == 0)) {
             return false;
         }
+        if(tipo==0){
         for (Modelo modeloOfList : listaModelos) {
             if (modeloOfList.getNombre().equalsIgnoreCase(modelo.getNombre())) {
                 return false;
             }
-        }
+        }}
         return true;
     }
 }
