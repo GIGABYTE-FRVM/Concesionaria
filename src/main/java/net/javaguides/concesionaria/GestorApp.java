@@ -59,6 +59,5 @@ public class GestorApp {
     void menuModeloActionPerformed() {
         GestorModeloABMC gestorModelo = new GestorModeloABMC();
         gestorModelo.mostrarPantalla();
-
     }
 }

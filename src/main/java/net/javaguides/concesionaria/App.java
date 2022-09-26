@@ -64,6 +64,7 @@ public class App extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         menuCombustible = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -135,6 +136,7 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem1);
+
         menuCombustible.setText("Combustible");
         menuCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +248,15 @@ public class App extends javax.swing.JFrame {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Modelo");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jCheckBoxMenuItem1);
+
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -382,6 +393,11 @@ public class App extends javax.swing.JFrame {
     private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCombustibleActionPerformed
         gestor.menuCombustibleActionPerformed();
     }//GEN-LAST:event_menuCombustibleActionPerformed
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        gestor.menuModeloActionPerformed();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -420,6 +436,7 @@ public class App extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
