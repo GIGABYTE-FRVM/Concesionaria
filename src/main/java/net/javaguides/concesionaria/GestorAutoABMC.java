@@ -23,10 +23,10 @@ public class GestorAutoABMC {
     List<Auto> listaAutos;
 
 
-    GestorMarcaABMC gestorMarca = new GestorMarcaABMC(this);
-    GestorModeloABMC gestorModelo = new GestorModeloABMC(this);
-    GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC(this);
-    GestorColorABMC gestorColor = new GestorColorABMC(this);
+    GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
+    GestorModeloABMC gestorModelo = new GestorModeloABMC();
+    GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
+    GestorColorABMC gestorColor = new GestorColorABMC();
 
     AutoABMC pantallaAuto;
     MarcaDao marcaDao = new MarcaDao();
