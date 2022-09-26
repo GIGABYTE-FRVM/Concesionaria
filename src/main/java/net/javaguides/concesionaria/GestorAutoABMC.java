@@ -37,7 +37,6 @@ public class GestorAutoABMC {
         gestorMarca.mostrarPantalla(false);
         gestorModelo.mostrarPantalla(false);
         gestorCombustible.mostrarPantalla(false);
-
     }
 
     public void conocerMarcas() {
@@ -143,7 +142,7 @@ public class GestorAutoABMC {
     void mostrarMarcaABMC() {
         gestorMarca.mostrarPantalla(true);
     }
-    
+
     void mostrarModeloABMC() {
         gestorModelo.mostrarPantalla(true);
     }
