@@ -39,7 +39,6 @@ public class GestorAutoABMC {
         gestorModelo.mostrarPantalla(false);
         gestorCombustible.mostrarPantalla(false);
         pantallaAuto = new AutoABMC(this);
-        pantallaAuto.setVisible(true);
     }
 
     public void conocerMarcas() {

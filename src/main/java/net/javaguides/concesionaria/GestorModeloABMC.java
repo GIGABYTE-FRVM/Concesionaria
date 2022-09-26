@@ -20,7 +20,6 @@ public class GestorModeloABMC {
         gestorMarca = new GestorMarcaABMC();
         gestorMarca.mostrarPantalla(false);
         pantallaModelo = new ModeloABMC(this);
-        this.mostrarPantalla(true);
     }
 
     public void registrarModelo() {
@@ -30,9 +29,10 @@ public class GestorModeloABMC {
         Marca marca = listaMarcas.get(pantallaModelo.getMarca());
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         //ps.setString(4, cboModelo.getSelectedItem().toString());
-        if ((nombre.length() != 0) && (version.length() != 0) && (añoLanzamiento.length() != 0)) {
+        if (esValido(modeloObject)) {
             modeloDao.saveModelo(modeloObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
@@ -45,10 +45,11 @@ public class GestorModeloABMC {
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
         modeloObject.setMarca(listaMarcas.get(pantallaModelo.getMarca()));
-        if (true) {
+        if (esValido(modeloObject)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             modeloDao.updateModelo(modeloObject);
             mostrarDatos();
+            pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
@@ -134,4 +135,15 @@ public class GestorModeloABMC {
         pantallaModelo.setVisible(visible);
     }
 
+    public boolean esValido(Modelo modelo) {
+        if ((modelo.getVersion().length() == 0) || (modelo.getNombre().length() == 0) || (modelo.getAñoLanzamiento().length() == 0)) {
+            return false;
+        }
+        for (Modelo modeloOfList : listaModelos) {
+            if (modeloOfList.getNombre().equalsIgnoreCase(modelo.getNombre())) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

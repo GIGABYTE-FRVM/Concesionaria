@@ -42,10 +42,11 @@ public class GestorMarcaABMC {
         marcaObject.setCodigo(marca.getTxtCodigo());
         marcaObject.setDescripcion(marca.getTxtDescripcion());
         marcaObject.setPais(listaPaises.get(marca.getPais()));
-        if (true) {
+        if (esValido(marcaObject)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             marcaDao.updateMarca(marcaObject);
             mostrarDatos();
+            marca.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
@@ -86,11 +87,12 @@ public class GestorMarcaABMC {
         Pais pais = listaPaises.get(marca.getPais());
         Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
         //ps.setString(4, cboPais.getSelectedItem().toString());
-        if ((codigo.length() != 0) && (nombre.length() != 0) && (descripcion.length() != 0)) {
+        if (esValido(marcaObject)) {
             marcaDao.saveMarca(marcaObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            marca.limpiarEntradas();
         } else {
-            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
+            JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE LA ENTRADA");
         }
 
     }
@@ -119,6 +121,17 @@ public class GestorMarcaABMC {
     public List<Marca> conocerListaMarcas(){
         conocerMarcas();
         return listaMarcas;
+    }
+    public boolean esValido(Marca marca){
+        for(Marca marcaOfList : listaMarcas){
+            if(marcaOfList.getNombre().equalsIgnoreCase(marca.getNombre())){
+                return false;
+            }
+        }
+        if((marca.getCodigo().length() == 0) || (marca.getNombre().length() == 0) || (marca.getDescripcion().length() == 0)){
+            return false;
+        }
+        return true;
     }
 
 }

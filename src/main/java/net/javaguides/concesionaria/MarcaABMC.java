@@ -630,7 +630,6 @@ public class MarcaABMC extends javax.swing.JFrame {
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         gestor.registrarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         actualizarComboPaises();
     }//GEN-LAST:event_btnRegistrarMouseClicked
@@ -639,7 +638,6 @@ public class MarcaABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.modificarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         actualizarComboPaises();
     }//GEN-LAST:event_btnActualizarMouseClicked
@@ -721,7 +719,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtCodigo.setText("");
         txtNombre.setText("");

@@ -12,11 +12,10 @@ public class GestorClienteABMC {
     ClienteABMC pantallaCliente;
     ClienteDao clienteDao = new ClienteDao();
 
-    
     public GestorClienteABMC() {
         pantallaCliente = new ClienteABMC(this);
     }
-    
+
     public void registrarCliente() {
         String nombre = pantallaCliente.getTxtNombre();
         String apellido = pantallaCliente.getTxtApellido();
@@ -27,15 +26,15 @@ public class GestorClienteABMC {
         String fechaNacimiento = pantallaCliente.getTxtFechaNacimiento();
         Cliente clienteObject = new Cliente(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento);
         //ps.setString(4, cboPais.getSelectedItem().toString());
-        if ((nombre.length() != 0) && (apellido.length() != 0) && (direccion.length() != 0) && (documento.length() != 0)
-                && (email.length() != 0) && (telefono.length() != 0) && (fechaNacimiento.length() != 0)) {
+        if (esValido(clienteObject,0)) {
             clienteDao.saveCliente(clienteObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaCliente.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
     }
-    
+
     public void modificarCliente() {
         Cliente clienteObject;
         clienteObject = clienteDao.getClienteById(Integer.parseInt(pantallaCliente.getTxtId()));
@@ -47,27 +46,32 @@ public class GestorClienteABMC {
         clienteObject.setTelefono(pantallaCliente.getTxtTelefono());
         clienteObject.setFechaNacimiento(pantallaCliente.getTxtFechaNacimiento());
         System.out.println(clienteObject);
-        
-        if (true) {
+
+        if (esValido(clienteObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             clienteDao.updateCliente(clienteObject);
             mostrarDatos();
+            pantallaCliente.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
-        } 
-    };
-    
-    public void conocerClientes(){
-        listaClientes = clienteDao.getAllCliente();
+        }
     }
+
+    ;
     
-    public List<Cliente> conocerListclientes(){
+    public void conocerClientes() {
+        listaClientes = clienteDao.getAllCliente();
+        System.out.println("hola");
+    }
+
+    public List<Cliente> conocerListclientes() {
         conocerClientes();
         return listaClientes;
     }
-    
+
     public DefaultTableModel mostrarDatos() {
         this.conocerClientes();
+        System.out.println("hola");
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
         modelo.addColumn("Nombre");
@@ -79,7 +83,8 @@ public class GestorClienteABMC {
         modelo.addColumn("FechaNacimiento");
         modelo.addColumn("esCliente");
         String data[] = new String[9];
-        try {for(Cliente cliente : listaClientes){
+        try {
+            for (Cliente cliente : listaClientes) {
                 data[0] = Integer.toString(cliente.getId());
                 data[1] = cliente.getNombre();
                 data[2] = cliente.getApellido();
@@ -89,7 +94,6 @@ public class GestorClienteABMC {
                 data[6] = cliente.getTelefono();
                 data[7] = cliente.getFechaNacimiento();
                 data[8] = Boolean.toString(cliente.isEsCliente());
-
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -97,8 +101,8 @@ public class GestorClienteABMC {
         }
         return modelo;
     }
-    
-    public void eliminarCliente(){
+
+    public void eliminarCliente() {
         String id = pantallaCliente.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
@@ -108,8 +112,24 @@ public class GestorClienteABMC {
             //No hace nada
         }
     }
-    
+
     public void mostrarPantalla() {
         pantallaCliente.setVisible(true);
+    }
+
+    public boolean esValido(Cliente cliente,int tipo) {
+        
+        if (cliente.getNombre().length() == 0 || cliente.getApellido().length() == 0 || cliente.getDireccion().length() == 0
+                || cliente.getDocumento().length() == 0 || cliente.getEmail().length() == 0 || cliente.getFechaNacimiento().length() == 0) {
+            return false;
+        }
+        if (tipo==0){
+        for (Cliente clienteOfList : listaClientes) {
+            if (clienteOfList.getDocumento().equalsIgnoreCase(cliente.getDocumento())) {
+                return false;
+            }
+        }
+        }
+        return true;
     }
 }

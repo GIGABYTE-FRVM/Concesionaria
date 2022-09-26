@@ -640,7 +640,7 @@ public class ClienteABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtNombre.setText("");
         txtApellido.setText("");

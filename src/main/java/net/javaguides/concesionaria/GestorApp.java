@@ -54,7 +54,7 @@ public class GestorApp {
     
     public void menuMarcaActionPerformed() {
         gestorMarca = new GestorMarcaABMC();
-        //gestorMarca.mostrarPantalla(); 
+        gestorMarca.mostrarPantalla(true); 
 
     }
     public void menuAutoActionPerformed() {
