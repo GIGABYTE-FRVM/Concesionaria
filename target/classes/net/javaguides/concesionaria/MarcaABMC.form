@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="jPanel4">
 
@@ -21,6 +25,13 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
+<<<<<<< HEAD
+=======
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -46,16 +57,28 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
+<<<<<<< HEAD
+=======
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei" size="12" style="1"/>
         </Property>
@@ -63,11 +86,55 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
+=======
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="2" title="ABMC Marca">
+              <Font PropertyName="font" name="Segoe UI" size="14" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel3" max="32767" attributes="0"/>
+                      <Component id="jPanel2" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Microsoft YaHei" size="12" style="1"/>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
+<<<<<<< HEAD
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -79,10 +146,31 @@
               <AbsoluteConstraints x="0" y="30" width="420" height="640"/>
             </Constraint>
           </Constraints>
+=======
+              <Color blue="ff" green="cc" red="99" type="rgb"/>
+=======
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft YaHei Light" size="12" style="0"/>
+            </Property>
+          </Properties>
+<<<<<<< HEAD
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="30" width="420" height="640"/>
+            </Constraint>
+          </Constraints>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+<<<<<<< HEAD
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -145,15 +233,92 @@
                               <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+=======
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+=======
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator4" min="-2" pref="354" max="-2" attributes="0"/>
+                                  <Component id="txtDescripcion" min="-2" pref="354" max="-2" attributes="0"/>
+                                  <Component id="jSeparator3" alignment="0" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtId" alignment="0" pref="80" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtCodigo" pref="252" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="txtNombre" alignment="0" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnEliminar" min="-2" pref="71" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                                      <Component id="jToggleButton1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="cboPais" min="-2" pref="247" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jPanel7" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+<<<<<<< HEAD
+                      <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,6 +365,62 @@
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+=======
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtCodigo" max="32767" attributes="0"/>
+                          <Component id="txtId" min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jSeparator1" min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="jSeparator2" min="-2" pref="9" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNombre" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtDescripcion" min="-2" pref="133" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jSeparator4" min="-2" pref="3" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jToggleButton1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      </Group>
+<<<<<<< HEAD
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="cboPais" min="-2" pref="43" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnRegistrar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btnActualizar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btnCancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btnEliminar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   </Group>
               </Group>
             </DimensionLayout>
@@ -207,12 +428,17 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtCodigo">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
+<<<<<<< HEAD
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -221,6 +447,22 @@
                 </Property>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="null"/>
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Codigo"/>
+                  </Border>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 </Property>
               </Properties>
               <Events>
@@ -230,6 +472,8 @@
             <Component class="javax.swing.JTextField" name="txtId">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
@@ -243,6 +487,28 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="ID"/>
+                  </Border>
+                </Property>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdActionPerformed"/>
@@ -250,6 +516,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtDescripcion">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
@@ -257,8 +527,19 @@
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
+<<<<<<< HEAD
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Descripcion"/>
+                  </Border>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 </Property>
               </Properties>
               <Events>
@@ -267,14 +548,29 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombre">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
+<<<<<<< HEAD
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Nombre"/>
+                  </Border>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 </Property>
               </Properties>
               <Events>
@@ -283,12 +579,21 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="cboPais">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
+<<<<<<< HEAD
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
                     <StringItem index="0" value="Argentina"/>
@@ -298,7 +603,17 @@
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+<<<<<<< HEAD
+<<<<<<< HEAD
                   <Border info="null"/>
+=======
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Pais"/>
+                  </Border>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                  <Border info="null"/>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 </Property>
               </Properties>
               <Events>
@@ -310,9 +625,18 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnRegistrar">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <Events>
@@ -321,9 +645,18 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnActualizar">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
               <Events>
@@ -332,9 +665,18 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnEliminar">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -348,9 +690,18 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnCancelar">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
               <Events>
@@ -359,9 +710,18 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton1">
               <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Leelawadee UI" size="12" style="0"/>
                 </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="12" style="0"/>
+                </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                 <Property name="text" type="java.lang.String" value="ABMC Pais"/>
                 <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
@@ -369,6 +729,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
               </Events>
             </Component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -472,11 +836,18 @@
                 </Component>
               </SubComponents>
             </Container>
+<<<<<<< HEAD
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
+<<<<<<< HEAD
               <Color blue="33" green="cc" red="ff" type="rgb"/>
             </Property>
           </Properties>
@@ -485,26 +856,71 @@
               <AbsoluteConstraints x="420" y="30" width="690" height="640"/>
             </Constraint>
           </Constraints>
+=======
+              <Color blue="ff" green="cc" red="99" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Listado clientes"/>
+              </Border>
+            </Property>
+          </Properties>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+              <Color blue="33" green="cc" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="420" y="30" width="690" height="640"/>
+            </Constraint>
+          </Constraints>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="225" max="32767" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="661" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="575" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
+=======
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="370" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   </Group>
               </Group>
             </DimensionLayout>
@@ -519,9 +935,18 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="tablaDatos">
                   <Properties>
+<<<<<<< HEAD
+<<<<<<< HEAD
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Leelawadee UI" size="12" style="0"/>
                     </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Leelawadee UI" size="12" style="0"/>
+                    </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -530,9 +955,18 @@
                         <Column editable="true" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
+<<<<<<< HEAD
+<<<<<<< HEAD
                     <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="cc" red="ff" type="rgb"/>
                     </Property>
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+                    <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="cc" red="ff" type="rgb"/>
+                    </Property>
+>>>>>>> 70328f8 (R 7/16 Fix .class)
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaDatosMouseClicked"/>
@@ -540,6 +974,10 @@
                 </Component>
               </SubComponents>
             </Container>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -630,6 +1068,11 @@
                 </Component>
               </SubComponents>
             </Container>
+<<<<<<< HEAD
+=======
+>>>>>>> 81acc1d (Merge ui interfaz)
+=======
+>>>>>>> 70328f8 (R 7/16 Fix .class)
           </SubComponents>
         </Container>
       </SubComponents>

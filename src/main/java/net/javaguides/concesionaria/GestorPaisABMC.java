@@ -16,7 +16,9 @@ public class GestorPaisABMC {
     
     public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
         pantallaPais = new PaisABMC(this);
-        pantallaPais.setVisible(true);
+    }
+    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
+        this.gestorMarca = gestorMarca;
     }
     public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
         this.gestorMarca = gestorMarca;
