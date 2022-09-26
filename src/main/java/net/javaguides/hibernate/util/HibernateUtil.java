@@ -1,4 +1,4 @@
-package main.java.net.javaguides.hibernate.util;
+package net.javaguides.hibernate.util;
 
 import java.util.Properties;
 
