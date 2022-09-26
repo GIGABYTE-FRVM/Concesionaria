@@ -2,6 +2,7 @@ package net.javaguides.hibernate.util;
 
 import java.util.Properties;
 import net.javaguides.hibernate.model.Auto;
+import net.javaguides.hibernate.model.Cliente;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,7 +16,6 @@ import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Personal;
 
 import org.hibernate.HibernateException;
-
 
 import net.javaguides.hibernate.model.Combustible;
 
@@ -39,8 +39,6 @@ public class HibernateUtil {
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                
-
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Marca.class);
@@ -49,7 +47,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Combustible.class);
                 configuration.addAnnotatedClass(Modelo.class);
                 configuration.addAnnotatedClass(Auto.class);
-
+                configuration.addAnnotatedClass(Cliente.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

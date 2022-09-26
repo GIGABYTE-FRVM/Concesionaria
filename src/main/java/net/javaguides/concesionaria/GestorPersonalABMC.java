@@ -12,11 +12,10 @@ public class GestorPersonalABMC {
     PersonalABMC pantallaPersonal;
     PersonalDao personalDao = new PersonalDao();
 
-    
     public GestorPersonalABMC() {
         pantallaPersonal = new PersonalABMC(this);
     }
-    
+
     public void registrarPersonal() {
         String nombre = pantallaPersonal.getTxtNombre();
         String apellido = pantallaPersonal.getTxtApellido();
@@ -25,8 +24,11 @@ public class GestorPersonalABMC {
         String email = pantallaPersonal.getTxtEmail();
         String telefono = pantallaPersonal.getTxtTelefono();
         String fechaNacimiento = pantallaPersonal.getTxtFechaNacimiento();
-        
-        Personal personalObject = new Personal(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento);
+        String fechaIngresoEmpresa = pantallaPersonal.getTxtFechaIngresoEmpresa();
+        String horaEntrada = pantallaPersonal.getTxtHoraEntrada();
+        String horaSalida = pantallaPersonal.getTxtHoraSalida();
+
+        Personal personalObject = new Personal(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento, fechaIngresoEmpresa, horaEntrada, horaSalida);
         //ps.setString(4, cboPais.getSelectedItem().toString());
         if ((nombre.length() != 0) && (apellido.length() != 0) && (direccion.length() != 0) && (documento.length() != 0)
                 && (email.length() != 0) && (telefono.length() != 0) && (fechaNacimiento.length() != 0)) {
@@ -36,7 +38,7 @@ public class GestorPersonalABMC {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
     }
-    
+
     public void modificarPersonal() {
         Personal personalObject;
         personalObject = personalDao.getPersonalById(Integer.parseInt(pantallaPersonal.getTxtId()));
@@ -47,26 +49,31 @@ public class GestorPersonalABMC {
         personalObject.setEmail(pantallaPersonal.getTxtEmail());
         personalObject.setTelefono(pantallaPersonal.getTxtTelefono());
         personalObject.setFechaNacimiento(pantallaPersonal.getTxtFechaNacimiento());
+        personalObject.setFechaIngresoEmpresa(pantallaPersonal.getTxtFechaIngresoEmpresa());
+        personalObject.setHoraEntrada(pantallaPersonal.getTxtHoraEntrada());
+        personalObject.setHoraSalida(pantallaPersonal.getTxtHoraSalida());
         System.out.println(personalObject);
-        
+
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             personalDao.updatePersonal(personalObject);
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
-        } 
-    };
+        }
+    }
+
+    ;
     
-    public void conocerPersonales(){
+    public void conocerPersonales() {
         listaPersonales = personalDao.getAllpersonal();
     }
-    
-    public List<Personal> conocerListpersonales(){
+
+    public List<Personal> conocerListpersonales() {
         conocerPersonales();
         return listaPersonales;
     }
-    
+
     public DefaultTableModel mostrarDatos() {
         this.conocerPersonales();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -77,9 +84,14 @@ public class GestorPersonalABMC {
         modelo.addColumn("Documento");
         modelo.addColumn("Email");
         modelo.addColumn("Telefono");
-        modelo.addColumn("FechaNacimiento");
-        String data[] = new String[8];
-        try {for(Personal personal : listaPersonales){
+        modelo.addColumn("FechaNacimiento");        
+        modelo.addColumn("Fecha Ingreso Empresa");
+        modelo.addColumn("Hora Entrada");
+        modelo.addColumn("Hora Salida");
+
+        String data[] = new String[11];
+        try {
+            for (Personal personal : listaPersonales) {
                 data[0] = Integer.toString(personal.getId());
                 data[1] = personal.getNombre();
                 data[2] = personal.getApellido();
@@ -88,6 +100,9 @@ public class GestorPersonalABMC {
                 data[5] = personal.getEmail();
                 data[6] = personal.getTelefono();
                 data[7] = personal.getFechaNacimiento();
+                data[8] = personal.getFechaIngresoEmpresa();
+                data[9] = personal.getHoraEntrada();
+                data[10] = personal.getHoraSalida();
 
                 modelo.addRow(data);
             }
@@ -96,8 +111,8 @@ public class GestorPersonalABMC {
         }
         return modelo;
     }
-    
-    public void eliminarPersonal(){
+
+    public void eliminarPersonal() {
         String id = pantallaPersonal.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este personal?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
@@ -107,7 +122,7 @@ public class GestorPersonalABMC {
             //No hace nada
         }
     }
-    
+
     public void mostrarPantalla() {
         pantallaPersonal.setVisible(true);
     }
