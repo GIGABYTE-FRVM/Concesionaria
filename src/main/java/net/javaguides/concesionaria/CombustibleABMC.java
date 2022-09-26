@@ -20,6 +20,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
     Color colorBackgroundButton = new Color(255,153,0);
     Color colorBorderButton = new Color(204,204,204);
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
+    int xMouse, yMouse;
     
 
 
@@ -62,8 +63,12 @@ public class CombustibleABMC extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
         lblTituloTabla = new javax.swing.JLabel();
+        barraSuperiorVentana = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
+        lblBtnCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelGeneral.setBackground(new java.awt.Color(255, 255, 255));
         panelGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,10 +251,10 @@ public class CombustibleABMC extends javax.swing.JFrame {
                     .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 35, 410, 330));
+        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 410, 340));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -272,7 +277,6 @@ public class CombustibleABMC extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaDatos);
 
-
         lblTituloTabla.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         lblTituloTabla.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloTabla.setText("LISTADO DE COMBUSTIBLES");
@@ -285,7 +289,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
                 .addGap(150, 150, 150)
                 .addComponent(lblTituloTabla)
                 .addContainerGap(177, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
         );
         panelTablaDatosLayout.setVerticalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,19 +297,84 @@ public class CombustibleABMC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTituloTabla)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
         );
 
-        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 34, 650, 330));
+        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 650, 340));
         panelTablaDatos.getAccessibleContext().setAccessibleDescription("");
 
+        barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
+        barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraSuperiorVentanaMouseDragged(evt);
+            }
+        });
+        barraSuperiorVentana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraSuperiorVentanaMousePressed(evt);
+            }
+        });
+
+        btnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseExited(evt);
+            }
+        });
+
+        lblBtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        lblBtnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnCerrar.setText("X");
+        lblBtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+        );
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout barraSuperiorVentanaLayout = new javax.swing.GroupLayout(barraSuperiorVentana);
+        barraSuperiorVentana.setLayout(barraSuperiorVentanaLayout);
+        barraSuperiorVentanaLayout.setHorizontalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraSuperiorVentanaLayout.createSequentialGroup()
+                .addGap(0, 1011, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        barraSuperiorVentanaLayout.setVerticalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        panelGeneral.add(barraSuperiorVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +384,6 @@ public class CombustibleABMC extends javax.swing.JFrame {
         );
 
         panelGeneral.getAccessibleContext().setAccessibleName("ABMC Combustible");
-
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,6 +457,43 @@ public class CombustibleABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnCancelarMouseClicked
 
+    private void lblBtnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseClicked
+        dispose();
+    }//GEN-LAST:event_lblBtnCerrarMouseClicked
+
+    private void lblBtnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseEntered
+        btnCerrar.setBackground(Color.red);
+        lblBtnCerrar.setForeground(Color.white);
+    }//GEN-LAST:event_lblBtnCerrarMouseEntered
+
+    private void lblBtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseExited
+        btnCerrar.setBackground(Color.white);
+        lblBtnCerrar.setForeground(Color.black);
+    }//GEN-LAST:event_lblBtnCerrarMouseExited
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
+
+    }//GEN-LAST:event_btnCerrarMouseEntered
+
+    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
+
+    }//GEN-LAST:event_btnCerrarMouseExited
+
+    private void barraSuperiorVentanaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraSuperiorVentanaMouseDragged
+
+    private void barraSuperiorVentanaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_barraSuperiorVentanaMousePressed
+
 
     /**
      * @param args the command line arguments
@@ -414,11 +519,14 @@ public class CombustibleABMC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel barraSuperiorVentana;
     private javax.swing.JLabel btnActualizar;
     private javax.swing.JLabel btnCancelar;
+    private javax.swing.JPanel btnCerrar;
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnRegistrar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBtnCerrar;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
