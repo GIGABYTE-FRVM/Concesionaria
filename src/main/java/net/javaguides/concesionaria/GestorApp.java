@@ -17,11 +17,7 @@ public class GestorApp {
     GestorMarcaABMC gestorMarca;    
     GestorAutoABMC gestorAuto;
     GestorPaisABMC gestorPais;
-
-    
-    GestorAutoABMC gestorAuto;
-    GestorMarcaABMC gestorMarca;
-    GestorPaisABMC gestorPais;
+    GestorPersonalABMC gestorPersonal;
 
     
     public static void main(String[] args) {
@@ -30,11 +26,6 @@ public class GestorApp {
         app.setVisible(true);
         var gestor = new GestorApp();
         gestor.conocerPantalla();
-        
-    }
-
-    public GestorApp() {
-        
     }
     
     public void conocerPantalla() {
@@ -44,18 +35,19 @@ public class GestorApp {
     public void menuPaisActionPerformed() {
         menuMarcaActionPerformed();
         gestorMarca.mostrarPantalla(false);
-        this.gestorPais = new GestorPaisABMC(gestorMarca);
+        gestorPais = new GestorPaisABMC(gestorMarca);
         gestorPais.mostrarPantalla();
     }
     
     public void menuPersonalActionPerformed() {
-        GestorPersonalABMC gestorPersonal = new GestorPersonalABMC();
+        gestorPersonal = new GestorPersonalABMC();
         gestorPersonal.mostrarPantalla();
     }
     
     public void menuMarcaActionPerformed() {
-        this.gestorMarca = new GestorMarcaABMC();
-        gestorMarca.mostrarPantalla(true); 
+        gestorMarca = new GestorMarcaABMC();
+        //gestorMarca.mostrarPantalla(); 
+
     }
     public void menuAutoActionPerformed() {
         this.gestorAuto = new GestorAutoABMC();
@@ -65,11 +57,6 @@ public class GestorApp {
     public void menuCombustibleActionPerformed() {
         GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
         gestorCombustible.mostrarPantalla();
-
     }
-
-    void menuModeloActionPerformed() {
-        GestorModeloABMC gestorModelo = new GestorModeloABMC();
-        gestorModelo.mostrarPantalla();
-    }
+    
 }
