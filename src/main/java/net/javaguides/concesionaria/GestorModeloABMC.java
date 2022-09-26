@@ -11,6 +11,7 @@ public class GestorModeloABMC {
 
     List<Marca> listaMarcas;
     private List<Modelo> listaModelos;
+    private List<Modelo> listaModelosMarca;
     ModeloABMC pantallaModelo;
     ModeloDao modeloDao = new ModeloDao();
     GestorMarcaABMC gestorMarca;
@@ -110,9 +111,15 @@ public class GestorModeloABMC {
             //No hace nada
         }
     }
-    public List<Modelo> conocerListaModelo(){
+
+    public List<Modelo> conocerListaModelos() {
         conocerModelos();
         return listaModelos;
+    }
+
+    public List<Modelo> conocerModelosDeMarca(Marca marca) {
+        listaModelosMarca = modeloDao.getModelosOfMarca(marca);
+        return listaModelosMarca;
     }
 
     void mostrarMarcaABMC() {
@@ -126,8 +133,5 @@ public class GestorModeloABMC {
     public void mostrarPantalla(boolean visible) {
         pantallaModelo.setVisible(visible);
     }
-    public List<Modelo> conocerListaModelos(){
-        conocerModelos();
-        return listaModelos;
-    }
+
 }

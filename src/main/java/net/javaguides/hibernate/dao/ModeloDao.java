@@ -5,6 +5,7 @@
 package net.javaguides.hibernate.dao;
 
 import java.util.List;
+import net.javaguides.hibernate.model.Marca;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import net.javaguides.hibernate.model.Modelo;
@@ -76,6 +77,24 @@ public class ModeloDao implements iModeloDao {
             transaction = session.beginTransaction();
 
             modelos = session.createQuery("from Modelo").list();
+
+            transaction.commit();
+                
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return modelos;
+    }
+    public List<Modelo> getModelosOfMarca(Marca marca) {
+        Transaction transaction = null;
+        List<Modelo> modelos = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            modelos = session.createQuery("from Modelo where id_marca ="+ marca.getId()).list();
 
             transaction.commit();
                 
