@@ -1,6 +1,8 @@
 package net.javaguides.concesionaria;
 
-import java.util.ArrayList;
+
+
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +23,10 @@ public class GestorMarcaABMC {
     public GestorMarcaABMC() {
         marca = new MarcaABMC(this);
         marca.setVisible(true);
+    }
+    public List<Marca> conocerListMarcas(){
+        conocerMarcas();
+        return listaMarcas;
     }
 
     
@@ -57,7 +63,7 @@ public class GestorMarcaABMC {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Pais");
-        String data[] = new String[5];
+        String data[] = new String[4];
         try {
             for (Marca marca : listaMarcas) {
                 data[0] = Integer.toString((int) marca.getId());
@@ -109,6 +115,10 @@ public class GestorMarcaABMC {
     }
     public void mostrarPantalla(boolean visible) {
         marca.setVisible(visible);
+    }
+    public List<Marca> conocerListaMarcas(){
+        conocerMarcas();
+        return listaMarcas;
     }
 
 }
