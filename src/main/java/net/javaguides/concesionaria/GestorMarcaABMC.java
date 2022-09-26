@@ -63,7 +63,7 @@ public class GestorMarcaABMC {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Pais");
-        String data[] = new String[4];
+        String data[] = new String[5];
         try {
             for (Marca marca : listaMarcas) {
                 data[0] = Integer.toString((int) marca.getId());
