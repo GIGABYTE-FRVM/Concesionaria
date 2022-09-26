@@ -21,6 +21,10 @@ public class GestorCombustibleABMC {
         pantallaCombustible = new CombustibleABMC(this);
         pantallaCombustible.setVisible(true);
     }
+
+    GestorCombustibleABMC(GestorAutoABMC aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public void registrarCombustible() {
         String nombre = pantallaCombustible.getTxtNombre();
