@@ -14,7 +14,8 @@ public class GestorApp {
      * @param args the command line arguments
      */
     static App app;
-    GestorMarcaABMC gestorMarca;
+    GestorMarcaABMC gestorMarca;    
+    GestorAutoABMC gestorAuto;
     GestorPaisABMC gestorPais;
 
     
@@ -32,7 +33,7 @@ public class GestorApp {
     }
     
     public void conocerPantalla() {
-        app.conocergestor(this);
+        app.conocerGestor(this);
     }
     
     public void menuPaisActionPerformed() {
@@ -42,26 +43,22 @@ public class GestorApp {
         gestorPais.mostrarPantalla();
     }
     
-    public void menuPersonalActionPerformed() {
-        GestorPersonalABMC gestorPersonal = new GestorPersonalABMC();
-        gestorPersonal.mostrarPantalla();
-    }
-    
     public void menuMarcaActionPerformed() {
-<<<<<<< HEAD
-        GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-<<<<<<< HEAD
-=======
-        //gestorMarca.mostrarPantalla(); 
-=======
         this.gestorMarca = new GestorMarcaABMC();
         gestorMarca.mostrarPantalla(true); 
->>>>>>> 4659c05 (Fix cboPaises)
+    }
+    public void menuAutoActionPerformed() {
+        this.gestorAuto = new GestorAutoABMC();
+
     }
     
     public void menuCombustibleActionPerformed() {
         GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
         gestorCombustible.mostrarPantalla();
->>>>>>> 0462010 (add abmc combustible)
+    }
+
+    void menuModeloActionPerformed() {
+        GestorModeloABMC gestorModelo = new GestorModeloABMC();
+        gestorModelo.mostrarPantalla();
     }
 }
