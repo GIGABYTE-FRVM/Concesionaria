@@ -13,7 +13,7 @@ public class GestorMarcaABMC {
 
     List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    GestorPaisABMC gestorPais = new GestorPaisABMC();
+    GestorPaisABMC gestorPais = new GestorPaisABMC(this);
     MarcaABMC marca;
     MarcaDao marcaDao = new MarcaDao();
     PaisDao paisDao = new PaisDao();
@@ -102,6 +102,13 @@ public class GestorMarcaABMC {
 
     void mostrarPaisABMC() {
         gestorPais.mostrarPantalla();
+    }
+    
+    void actualizarComboPaises() {
+        marca.actualizarComboPaises();
+    }
+    public void mostrarPantalla(boolean visible) {
+        marca.setVisible(visible);
     }
 
 }
