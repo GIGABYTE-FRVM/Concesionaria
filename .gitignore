@@ -2,12 +2,5 @@
 
 */private.xml
 */private.properties
-<<<<<<< HEAD
 target/classes/*
 target/test-classes/*
-
-=======
-
-target/classes/*
-target/test-classes/*
->>>>>>> 75a65e9 (Update gitignore)
