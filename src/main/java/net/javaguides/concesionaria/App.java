@@ -39,6 +39,7 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         panelGeneral = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -441,6 +442,10 @@ public class App extends javax.swing.JFrame {
 
         gestor.menuCombustibleActionPerformed();
     }                                               
+
+    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        gestor.menuCombustibleActionPerformed();
+    }                                               
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         // TODO add your handling code here:
         gestor.menuModeloActionPerformed();
@@ -548,6 +553,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

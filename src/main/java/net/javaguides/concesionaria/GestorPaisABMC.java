@@ -20,7 +20,6 @@ public class GestorPaisABMC {
     public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
         this.gestorMarca = gestorMarca;
     }
-
     
     public void registrarPais() {
         String nombre = pantallaPais.getTxtNombre();

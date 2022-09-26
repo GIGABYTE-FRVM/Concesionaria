@@ -15,6 +15,7 @@ import net.javaguides.hibernate.model.Personal;
 
 import org.hibernate.HibernateException;
 
+
 import net.javaguides.hibernate.model.Combustible;
 
 public class HibernateUtil {
