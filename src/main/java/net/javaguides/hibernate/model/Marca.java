@@ -46,6 +46,10 @@ public class Marca {
         this.pais = pais;
     }
 
+    public Marca(String hiB2, String hibernate33, String logré_conectar_con_hibernate2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public Pais getPais() {
         return pais;
     }

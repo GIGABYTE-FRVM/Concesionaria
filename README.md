@@ -1,9 +1,9 @@
 # [iCAR](https://www.notion.so/Tablero-general-5f776c6ccce347198fd3acf4c49f6730)
 
 ## Descripción del negocio
-iCAR es una consecionaria de autos que se dedica a:
+iCAR es una consecionaria de paiss que se dedica a:
 
-* **Venta de autos:** brinda acesoramiento personalizado a cada cliente al momento de adquirir un nuevo vehículo. Se encarga de realizar planes de pago que se adecúen a las posibilidades de cada uno de ellos.
+* **Venta de paiss:** brinda acesoramiento personalizado a cada cliente al momento de adquirir un nuevo vehículo. Se encarga de realizar planes de pago que se adecúen a las posibilidades de cada uno de ellos.
 
 
 

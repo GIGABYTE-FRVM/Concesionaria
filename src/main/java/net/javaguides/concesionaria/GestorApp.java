@@ -14,6 +14,15 @@ public class GestorApp {
      * @param args the command line arguments
      */
     static App app;
+    GestorMarcaABMC gestorMarca;    
+    GestorAutoABMC gestorAuto;
+    GestorPaisABMC gestorPais;
+    GestorPersonalABMC gestorPersonal;
+    GestorModeloABMC gestorModelo;    
+    GestorClienteABMC gestorCliente;
+
+    
+
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -24,16 +33,43 @@ public class GestorApp {
     }
     
     public void conocerPantalla() {
-        app.conocerGestor(this);
+        app.conocergestor(this);
     }
     
     public void menuPaisActionPerformed() {
-        GestorPaisABMC gestorPais = new GestorPaisABMC();
+        menuMarcaActionPerformed();
+        gestorMarca.mostrarPantalla(false);
+        gestorPais = new GestorPaisABMC(gestorMarca);
         gestorPais.mostrarPantalla();
     }
     
-    public void menuMarcaActionPerformed() {
-        GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-        
+    public void menuPersonalActionPerformed() {
+        gestorPersonal = new GestorPersonalABMC();
+        gestorPersonal.mostrarPantalla();
     }
+    public void menuClienteActionPerformed() {
+        gestorCliente = new GestorClienteABMC();
+        gestorCliente.mostrarPantalla();
+    }
+    
+    public void menuMarcaActionPerformed() {
+        gestorMarca = new GestorMarcaABMC();
+        gestorMarca.mostrarPantalla(true); 
+
+    }
+    public void menuAutoActionPerformed() {
+        this.gestorAuto = new GestorAutoABMC();
+        gestorAuto.mostrarPantalla(true); 
+    }
+    
+    public void menuCombustibleActionPerformed() {
+        GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
+        gestorCombustible.mostrarPantalla(true);
+    }
+
+    void menuModeloActionPerformed() {
+        this.gestorModelo = new GestorModeloABMC();
+        gestorModelo.mostrarPantalla(true);
+    }
+    
 }

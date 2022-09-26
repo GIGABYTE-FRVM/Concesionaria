@@ -1,9 +1,5 @@
 package net.javaguides.concesionaria;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,10 +11,14 @@ public class GestorPaisABMC {
     private List<Pais> listaPaises;
     PaisABMC pantallaPais;
     PaisDao paisDao = new PaisDao();
+    GestorMarcaABMC gestorMarca;
 
     
-    public GestorPaisABMC() {
+    public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
         pantallaPais = new PaisABMC(this);
+    }
+    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
+        this.gestorMarca = gestorMarca;
     }
     
     public void registrarPais() {
