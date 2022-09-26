@@ -44,10 +44,6 @@ public class Auto {
     @JoinColumn(name = "id_modelo", referencedColumnName = "id")
     private Modelo modelo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_carroceria", referencedColumnName = "id")
-    private Carroceria carroceria;
-
     @Column(name = "precio")
     double precio;
 
@@ -58,7 +54,6 @@ public class Auto {
         this.combustible = combustible;
         this.marca = marca;
         this.modelo = modelo;
-        this.carroceria = carroceria;
         this.precio = precio;
     }
 
@@ -116,14 +111,6 @@ public class Auto {
 
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
-    }
-
-    public Carroceria getCarroceria() {
-        return carroceria;
-    }
-
-    public void setCarroceria(Carroceria carroceria) {
-        this.carroceria = carroceria;
     }
 
     public double getPrecio() {

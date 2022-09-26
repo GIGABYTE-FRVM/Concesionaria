@@ -22,6 +22,10 @@ public class GestorMarcaABMC {
         marca = new MarcaABMC(this);
         marca.setVisible(true);
     }
+    public List<Marca> conocerListMarcas(){
+        conocerMarcas();
+        return listaMarcas;
+    }
 
     
     public void conocerPaises(){
