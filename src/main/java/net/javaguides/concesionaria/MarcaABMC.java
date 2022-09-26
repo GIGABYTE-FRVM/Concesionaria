@@ -612,11 +612,23 @@ public class MarcaABMC extends javax.swing.JFrame {
         gestor.mostrarPaisABMC();
     }//GEN-LAST:event_btnPaisMouseClicked
 
-    private void btnRegistrarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLblMouseClicked
-        
-    }//GEN-LAST:event_btnRegistrarLblMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+        gestor.registrarMarca();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        habilitarBotones(true);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnRegistrarMouseClicked
+
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+        gestor.modificarMarca();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        habilitarBotones(true);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnActualizarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
         gestor.eliminarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
@@ -730,7 +742,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtCodigo.setText("");
         txtNombre.setText("");

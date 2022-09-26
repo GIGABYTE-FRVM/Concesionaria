@@ -650,7 +650,6 @@ public class PersonalABMC extends javax.swing.JFrame {
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         gestor.registrarPersonal();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
@@ -660,7 +659,6 @@ public class PersonalABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.modificarPersonal();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
@@ -826,7 +824,7 @@ public class PersonalABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtNombre.setText("");
         txtApellido.setText("");

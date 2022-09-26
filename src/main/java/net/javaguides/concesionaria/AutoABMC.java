@@ -25,10 +25,10 @@ public class AutoABMC extends javax.swing.JFrame {
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
 
     public AutoABMC(GestorAutoABMC gestorPadre) {
+        conocerGestor(gestorPadre);
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
-        conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
         actualizarCombos();
     }
@@ -139,6 +139,16 @@ public class AutoABMC extends javax.swing.JFrame {
         cboMarca.setForeground(new java.awt.Color(51, 51, 51));
         cboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboMarca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cboMarca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMarcaItemStateChanged(evt);
+            }
+        });
+        cboMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboMarcaMouseClicked(evt);
+            }
+        });
         cboMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboMarcaActionPerformed(evt);
@@ -190,7 +200,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
         cboModelo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboModelo.setForeground(new java.awt.Color(51, 51, 51));
-        cboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Marca..." }));
         cboModelo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cboModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -769,6 +779,8 @@ public class AutoABMC extends javax.swing.JFrame {
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
         // TODO add your handling code here:
+        
+        //
     }//GEN-LAST:event_cboMarcaActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -883,6 +895,18 @@ public class AutoABMC extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_panelSuperiorMousePressed
 
+    private void cboMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMarcaMouseClicked
+        // TODO add your handling code here:
+        gestor.conocerModelos();
+        this.actualizarComboModelo();
+    }//GEN-LAST:event_cboMarcaMouseClicked
+
+    private void cboMarcaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMarcaItemStateChanged
+        // TODO add your handling code here:
+        gestor.conocerModelos();
+        this.actualizarComboModelo();
+    }//GEN-LAST:event_cboMarcaItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -984,7 +1008,6 @@ public class AutoABMC extends javax.swing.JFrame {
 
     public void actualizarCombos() {
         this.actualizarComboMarca();
-        this.actualizarComboModelo();
         this.actualizarComboCombustible();
     }
 

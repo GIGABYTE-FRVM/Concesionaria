@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.util.HibernateUtil;
 
-
 /**
  *
  * @author matya
@@ -22,15 +21,14 @@ public class ClienteDao implements iClienteDao {
     //get Marca By Id
     //Update Marca
     //Delete Marca
-    
     @Override
     public void saveCliente(Cliente cliente) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            
+
             session.persist(cliente);
-            
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -38,7 +36,7 @@ public class ClienteDao implements iClienteDao {
             }
         }
     }
-    
+
     @Override
     public void updateCliente(Cliente cliente) {
         Transaction transaction = null;
@@ -46,7 +44,7 @@ public class ClienteDao implements iClienteDao {
             transaction = session.beginTransaction();
 
             session.saveOrUpdate(cliente);
-            
+
             transaction.commit();
 
         } catch (Exception e) {
@@ -55,6 +53,7 @@ public class ClienteDao implements iClienteDao {
             }
         }
     }
+
     @Override
     public Cliente getClienteById(int id) {
         Transaction transaction = null;
@@ -62,7 +61,7 @@ public class ClienteDao implements iClienteDao {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            cliente = session.get(Cliente.class,id);
+            cliente = session.get(Cliente.class, id);
 
             transaction.commit();
         } catch (Exception e) {
@@ -72,22 +71,28 @@ public class ClienteDao implements iClienteDao {
         }
         return cliente;
     }
-    
+
+    @Override
     public List<Cliente> getAllCliente() {
         Transaction transaction = null;
         List<Cliente> clientes = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            clientes = session.createQuery("from Cliente").list();
+            clientes = session.createQuery("from cliente").list();
+            System.out.println("hola 7");
             transaction.commit();
+            System.out.println("hola 8");
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                System.out.println("hola 2");
+
             }
         }
         return clientes;
     }
-    
+
     @Override
     public void deleteCliente(int id) {
         Transaction transaction = null;
@@ -95,7 +100,7 @@ public class ClienteDao implements iClienteDao {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            cliente = session.get(Cliente.class,id);
+            cliente = session.get(Cliente.class, id);
             session.delete(cliente);
             transaction.commit();
 

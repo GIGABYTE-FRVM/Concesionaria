@@ -554,7 +554,6 @@ public class ModeloABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.registrarModelo();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         btnRegistrar.setForeground(Color.white);
@@ -565,7 +564,6 @@ public class ModeloABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.modificarModelo();
         tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         btnRegistrar.setForeground(Color.white);
@@ -726,7 +724,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtVersion;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtNombre.setText("");
         txtVersion.setText("");

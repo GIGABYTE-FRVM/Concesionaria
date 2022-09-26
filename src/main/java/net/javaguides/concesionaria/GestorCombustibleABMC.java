@@ -19,7 +19,6 @@ public class GestorCombustibleABMC {
    
     public GestorCombustibleABMC() {
         pantallaCombustible = new CombustibleABMC(this);
-        pantallaCombustible.setVisible(true);
     }
 
     GestorCombustibleABMC(GestorAutoABMC aThis) {
@@ -30,7 +29,7 @@ public class GestorCombustibleABMC {
         String nombre = pantallaCombustible.getTxtNombre();
         Combustible combustibleObject = new Combustible( nombre);
         //ps.setString(4, cboPais.getSelectedItem().toString());
-        if (((nombre.length() != 0))) {
+        if (esValido(combustibleObject,0)) {
             combustibleDao.saveCombustible(combustibleObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
@@ -44,7 +43,7 @@ public class GestorCombustibleABMC {
         combustibleObject.setNombre(pantallaCombustible.getTxtNombre());
         
         
-        if (true) {
+        if (esValido(combustibleObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             combustibleDao.updateCombustible(combustibleObject);
             mostrarDatos();
@@ -93,5 +92,17 @@ public class GestorCombustibleABMC {
     }
     public void mostrarPantalla(boolean visible) {
         pantallaCombustible.setVisible(visible);
+    }
+    public boolean esValido(Combustible combustible, int tipo){
+        if(combustible.getNombre().length() == 0){
+            return false;
+        }
+        if (tipo==0){
+        for(Combustible combustibleOfList : listaCombustible){
+            if(combustibleOfList.getNombre().equalsIgnoreCase(combustible.getNombre())){
+                return false;
+            }
+        }}
+        return true;
     }
 }

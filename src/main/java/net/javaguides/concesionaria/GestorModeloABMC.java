@@ -11,6 +11,7 @@ public class GestorModeloABMC {
 
     List<Marca> listaMarcas;
     private List<Modelo> listaModelos;
+    private List<Modelo> listaModelosMarca;
     ModeloABMC pantallaModelo;
     ModeloDao modeloDao = new ModeloDao();
     GestorMarcaABMC gestorMarca;
@@ -19,7 +20,6 @@ public class GestorModeloABMC {
         gestorMarca = new GestorMarcaABMC();
         gestorMarca.mostrarPantalla(false);
         pantallaModelo = new ModeloABMC(this);
-        this.mostrarPantalla(true);
     }
 
     public void registrarModelo() {
@@ -29,9 +29,10 @@ public class GestorModeloABMC {
         Marca marca = listaMarcas.get(pantallaModelo.getMarca());
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         //ps.setString(4, cboModelo.getSelectedItem().toString());
-        if ((nombre.length() != 0) && (version.length() != 0) && (añoLanzamiento.length() != 0)) {
+        if (esValido(modeloObject,0)) {
             modeloDao.saveModelo(modeloObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
@@ -44,10 +45,11 @@ public class GestorModeloABMC {
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
         modeloObject.setMarca(listaMarcas.get(pantallaModelo.getMarca()));
-        if (true) {
+        if (esValido(modeloObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             modeloDao.updateModelo(modeloObject);
             mostrarDatos();
+            pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
@@ -110,9 +112,15 @@ public class GestorModeloABMC {
             //No hace nada
         }
     }
-    public List<Modelo> conocerListaModelo(){
+
+    public List<Modelo> conocerListaModelos() {
         conocerModelos();
         return listaModelos;
+    }
+
+    public List<Modelo> conocerModelosDeMarca(Marca marca) {
+        listaModelosMarca = modeloDao.getModelosOfMarca(marca);
+        return listaModelosMarca;
     }
 
     void mostrarMarcaABMC() {
@@ -126,8 +134,17 @@ public class GestorModeloABMC {
     public void mostrarPantalla(boolean visible) {
         pantallaModelo.setVisible(visible);
     }
-    public List<Modelo> conocerListaModelos(){
-        conocerModelos();
-        return listaModelos;
+
+    public boolean esValido(Modelo modelo,int tipo) {
+        if ((modelo.getVersion().length() == 0) || (modelo.getNombre().length() == 0) || (modelo.getAñoLanzamiento().length() == 0)) {
+            return false;
+        }
+        if(tipo==0){
+        for (Modelo modeloOfList : listaModelos) {
+            if (modeloOfList.getNombre().equalsIgnoreCase(modelo.getNombre())) {
+                return false;
+            }
+        }}
+        return true;
     }
 }

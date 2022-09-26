@@ -21,9 +21,9 @@ public class GestorAutoABMC {
     List<Combustible> listaCombustibles;
     List<Auto> listaAutos;
 
-    GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
-    GestorModeloABMC gestorModelo = new GestorModeloABMC();
-    GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
+    GestorMarcaABMC gestorMarca;
+    GestorModeloABMC gestorModelo;
+    GestorCombustibleABMC gestorCombustible;
 
     AutoABMC pantallaAuto;
     MarcaDao marcaDao = new MarcaDao();
@@ -32,12 +32,13 @@ public class GestorAutoABMC {
     AutoDao autoDao = new AutoDao();
 
     public GestorAutoABMC() {
-        pantallaAuto = new AutoABMC(this);
-        pantallaAuto.setVisible(true);
+        gestorCombustible = new GestorCombustibleABMC();
+        gestorModelo = new GestorModeloABMC();
+        gestorMarca = new GestorMarcaABMC();
         gestorMarca.mostrarPantalla(false);
         gestorModelo.mostrarPantalla(false);
         gestorCombustible.mostrarPantalla(false);
-
+        pantallaAuto = new AutoABMC(this);
     }
 
     public void conocerMarcas() {
@@ -51,7 +52,17 @@ public class GestorAutoABMC {
         if (!(listaModelos == null)) {
             listaModelos.clear();
         }
-        listaModelos = gestorModelo.conocerListaModelos();
+        try{
+            if(!(pantallaAuto==null)){
+                listaModelos = gestorModelo.conocerModelosDeMarca(listaMarcas.get(pantallaAuto.getMarca()));
+            }else{
+                listaModelos = gestorModelo.conocerListaModelos();
+            }
+        
+        }catch(Exception e){
+            System.out.println(e);
+            System.out.println("Agarre la exe");
+        }
     }
 
     public void conocerCombustibles() {
@@ -143,17 +154,13 @@ public class GestorAutoABMC {
     void mostrarMarcaABMC() {
         gestorMarca.mostrarPantalla(true);
     }
-    
+
     void mostrarModeloABMC() {
         gestorModelo.mostrarPantalla(true);
     }
 
     void mostrarCombustibleABMC() {
         gestorCombustible.mostrarPantalla(true);
-    }
-
-    void actualizarComboPaises() {
-        pantallaAuto.actualizarCombos();
     }
 
     public void mostrarPantalla(boolean visible) {

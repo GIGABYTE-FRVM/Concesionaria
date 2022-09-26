@@ -30,12 +30,12 @@ public class GestorPersonalABMC {
 
         Personal personalObject = new Personal(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento, fechaIngresoEmpresa, horaEntrada, horaSalida);
         //ps.setString(4, cboPais.getSelectedItem().toString());
-        if ((nombre.length() != 0) && (apellido.length() != 0) && (direccion.length() != 0) && (documento.length() != 0)
-                && (email.length() != 0) && (telefono.length() != 0) && (fechaNacimiento.length() != 0)) {
+        if (esValido(personalObject,0)) {
             personalDao.savePersonal(personalObject);
+            pantallaPersonal.limpiarEntradas();
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
-            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
+            JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE SU ENTRADA");
         }
     }
 
@@ -54,7 +54,7 @@ public class GestorPersonalABMC {
         personalObject.setHoraSalida(pantallaPersonal.getTxtHoraSalida());
         System.out.println(personalObject);
 
-        if (true) {
+        if (esValido(personalObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             personalDao.updatePersonal(personalObject);
             mostrarDatos();
@@ -125,5 +125,21 @@ public class GestorPersonalABMC {
 
     public void mostrarPantalla() {
         pantallaPersonal.setVisible(true);
+    }
+    
+    public boolean esValido(Personal personal,int tipo){
+        if(personal.getNombre().length() == 0 || personal.getApellido().length() == 0 || personal.getDireccion().length() == 0 ||
+                personal.getDocumento().length() == 0 || personal.getEmail().length() == 0 || personal.getFechaNacimiento().length() == 0 ||
+                personal.getFechaIngresoEmpresa().length() == 0 || personal.getHoraEntrada().length() == 0 ||personal.getHoraSalida().length() == 0 ){
+            return false;
+        }
+        if(tipo==0){
+        for(Personal personalOfList : listaPersonales){
+            if(personalOfList.getDocumento().equalsIgnoreCase(personal.getDocumento())){
+                return false;
+            }
+        }
+        }
+        return true;
     }
 }
