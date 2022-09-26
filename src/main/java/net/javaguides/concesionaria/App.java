@@ -37,11 +37,9 @@ public class App extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         menuMarca = new javax.swing.JMenuItem();
         menuPais = new javax.swing.JMenuItem();
-<<<<<<< HEAD
         menuCombustible = new javax.swing.JMenuItem();
-=======
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
->>>>>>> 3aa08c0 (init ABMC modelo)
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +67,6 @@ public class App extends javax.swing.JFrame {
         });
         jMenu3.add(menuPais);
 
-<<<<<<< HEAD
         menuCombustible.setText("Combustible");
         menuCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +74,6 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(menuCombustible);
-=======
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("Modelo");
         jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +82,13 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jCheckBoxMenuItem1);
->>>>>>> 3aa08c0 (init ABMC modelo)
+        menuCombustible.setText("Combustible");
+        menuCombustible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCombustibleActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuCombustible);
 
         jMenuBar1.add(jMenu3);
 
@@ -121,6 +123,9 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.menuModeloActionPerformed();
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCombustibleActionPerformed
+        gestor.menuCombustibleActionPerformed();
+    }//GEN-LAST:event_menuCombustibleActionPerformed
 
 
     /**
