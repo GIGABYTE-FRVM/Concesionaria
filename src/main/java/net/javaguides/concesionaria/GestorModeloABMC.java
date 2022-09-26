@@ -17,7 +17,9 @@ public class GestorModeloABMC {
 
     public GestorModeloABMC() {
         gestorMarca = new GestorMarcaABMC();
+        gestorMarca.mostrarPantalla(false);
         pantallaModelo = new ModeloABMC(this);
+        this.mostrarPantalla(true);
     }
 
     public void registrarModelo() {
@@ -108,16 +110,24 @@ public class GestorModeloABMC {
             //No hace nada
         }
     }
+    public List<Modelo> conocerListaModelo(){
+        conocerModelos();
+        return listaModelos;
+    }
 
     void mostrarMarcaABMC() {
-        gestorMarca.mostrarPantalla(false);
+        gestorMarca.mostrarPantalla(true);
     }
 
     void actualizarComboPaises() {
         pantallaModelo.actualizarComboMarcas();
     }
 
-    public void mostrarPantalla() {
-        pantallaModelo.setVisible(true);
+    public void mostrarPantalla(boolean visible) {
+        pantallaModelo.setVisible(visible);
+    }
+    public List<Modelo> conocerListaModelos(){
+        conocerModelos();
+        return listaModelos;
     }
 }

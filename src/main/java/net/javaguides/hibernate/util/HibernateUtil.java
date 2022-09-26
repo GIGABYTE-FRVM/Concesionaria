@@ -1,6 +1,7 @@
 package net.javaguides.hibernate.util;
 
 import java.util.Properties;
+import net.javaguides.hibernate.model.Auto;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -47,6 +48,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Personal.class);
                 configuration.addAnnotatedClass(Combustible.class);
                 configuration.addAnnotatedClass(Modelo.class);
+                configuration.addAnnotatedClass(Auto.class);
+
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

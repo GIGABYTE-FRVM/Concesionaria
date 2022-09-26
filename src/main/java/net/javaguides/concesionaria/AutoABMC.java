@@ -1,5 +1,6 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -9,8 +10,6 @@ import net.javaguides.hibernate.model.Combustible;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Combustible;
-import net.javaguides.hibernate.model.Color;
-
 
 /**
  *
@@ -20,7 +19,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
     GestorAutoABMC gestor;
     int xMouse, yMouse;
-    
+
     public AutoABMC(GestorAutoABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
@@ -60,7 +59,7 @@ public class AutoABMC extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        btnABMCMarca = new javax.swing.JLabel();
         cboModelo = new javax.swing.JComboBox<>();
         cboCombustible = new javax.swing.JComboBox<>();
         cboColor = new javax.swing.JComboBox<>();
@@ -68,11 +67,9 @@ public class AutoABMC extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        btnABMCCombustible = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        btnABMCModelo = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -190,11 +187,11 @@ public class AutoABMC extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("ABMC Marca");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnABMCMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnABMCMarca.setText("ABMC Marca");
+        btnABMCMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+                btnABMCMarcaMouseClicked(evt);
             }
         });
 
@@ -202,11 +199,11 @@ public class AutoABMC extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(btnABMCMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(btnABMCMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         cboModelo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
@@ -231,7 +228,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
         cboColor.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboColor.setForeground(new java.awt.Color(51, 51, 51));
-        cboColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Negro", "Gris", "Blanco", "Azul" }));
         cboColor.setBorder(null);
         cboColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,11 +254,11 @@ public class AutoABMC extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("ABMC Combustible");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnABMCCombustible.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnABMCCombustible.setText("ABMC Combustible");
+        btnABMCCombustible.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                btnABMCCombustibleMouseClicked(evt);
             }
         });
 
@@ -270,21 +267,21 @@ public class AutoABMC extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jLabel14)
+                .addComponent(btnABMCCombustible)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(btnABMCCombustible, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("ABMC Modelo");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnABMCModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnABMCModelo.setText("ABMC Modelo");
+        btnABMCModelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
+                btnABMCModeloMouseClicked(evt);
             }
         });
 
@@ -292,32 +289,11 @@ public class AutoABMC extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(btnABMCModelo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-        );
-
-        jPanel13.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("ABMC Color");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+            .addComponent(btnABMCModelo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         jLabel17.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
@@ -390,9 +366,7 @@ public class AutoABMC extends javax.swing.JFrame {
                                                     .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel18))
                                                 .addGap(55, 55, 55)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 82, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -435,8 +409,7 @@ public class AutoABMC extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -595,23 +568,18 @@ public class AutoABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 1).toString());
-        this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 2).toString());
-        for (int i = 0; i < cboMarca.getItemCount(); i++) {
-            this.cboMarca.setSelectedIndex(i);
-            if (this.cboMarca.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 3).toString())) {
-                break;
-            }
-        }
-        getItemCombo(cboModelo,fila,4);
-        getItemCombo(cboCombustible,fila,5);
-        getItemCombo(cboColor,fila,6);
+        this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
+        this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 6).toString());
+        getItemCombo(cboMarca, fila, 1);
+        getItemCombo(cboModelo, fila, 2);
+        getItemCombo(cboCombustible, fila, 4);
+        getItemCombo(cboColor, fila, 5);
 
         habilitarBotones(false);
 
-        
+
     }//GEN-LAST:event_tablaDatosMouseClicked
-    public void getItemCombo(JComboBox<String> combo,  int fila, int columna){
+    public void getItemCombo(JComboBox<String> combo, int fila, int columna) {
         int index = 0;
         for (int i = 0; i < combo.getItemCount(); i++) {
             combo.setSelectedIndex(i);
@@ -629,19 +597,19 @@ public class AutoABMC extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
-        
+
     }//GEN-LAST:event_jPanel5MouseDragged
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-       
+
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        
+
     }//GEN-LAST:event_jPanel6MouseEntered
 
     private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        
+
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
@@ -658,9 +626,9 @@ public class AutoABMC extends javax.swing.JFrame {
         jLabel8.setForeground(Color.black);
     }//GEN-LAST:event_jLabel8MouseExited
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        gestor.mostrarPaisABMC();
-    }//GEN-LAST:event_jLabel9MouseClicked
+    private void btnABMCMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnABMCMarcaMouseClicked
+        gestor.mostrarMarcaABMC();
+    }//GEN-LAST:event_btnABMCMarcaMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limpiarEntradas();
@@ -682,7 +650,7 @@ public class AutoABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
-        actualizarComboPaises();
+        actualizarCombos();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -690,7 +658,7 @@ public class AutoABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
-        actualizarComboPaises();
+        actualizarCombos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
@@ -721,17 +689,13 @@ public class AutoABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+    private void btnABMCCombustibleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnABMCCombustibleMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_btnABMCCombustibleMouseClicked
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+    private void btnABMCModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnABMCModeloMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel15MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel16MouseClicked
+    }//GEN-LAST:event_btnABMCModeloMouseClicked
 
     /**
      * @param args the command line arguments
@@ -745,6 +709,9 @@ public class AutoABMC extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnABMCCombustible;
+    private javax.swing.JLabel btnABMCMarca;
+    private javax.swing.JLabel btnABMCModelo;
     private javax.swing.JToggleButton btnActualizar;
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnEliminar;
@@ -755,9 +722,6 @@ public class AutoABMC extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -766,11 +730,9 @@ public class AutoABMC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -808,58 +770,53 @@ public class AutoABMC extends javax.swing.JFrame {
     public int getMarca() {
         return cboMarca.getSelectedIndex();
     }
+
     public int getModelo() {
         return cboModelo.getSelectedIndex();
     }
+
     public int getCombustible() {
         return cboCombustible.getSelectedIndex();
     }
-    public int getColor() {
-        return cboColor.getSelectedIndex();
+
+    public String getColor() {
+        return cboColor.getSelectedItem().toString();
     }
-    
 
     private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
     }
-    public void actualizarCombos(){
-        this.actualizarComboMarca();        
+
+    public void actualizarCombos() {
+        this.actualizarComboMarca();
         this.actualizarComboModelo();
         this.actualizarComboCombustible();
-        this.actualizarComboColor();
-
     }
 
     public void actualizarComboMarca() {
         cboMarca.removeAllItems();
         gestor.conocerMarcas();
-        for(Marca m : gestor.listaMarcas){
+        for (Marca m : gestor.listaMarcas) {
             cboMarca.addItem(m.getNombre());
         }
     }
+
     public void actualizarComboModelo() {
         cboModelo.removeAllItems();
         gestor.conocerModelos();
-        for(Modelo m : gestor.listaModelos){
+        for (Modelo m : gestor.listaModelos) {
             cboModelo.addItem(m.getNombre());
         }
     }
+
     public void actualizarComboCombustible() {
         cboCombustible.removeAllItems();
         gestor.conocerCombustibles();
-        for(Combustible c : gestor.listaCombustibles){
+        for (Combustible c : gestor.listaCombustibles) {
             cboCombustible.addItem(c.getNombre());
         }
     }
-    public void actualizarComboColor() {
-        cboColor.removeAllItems();
-        gestor.conocerColores();
-        for(Color c : gestor.listaColores){
-            cboColor.addItem(c.getNombre());
-        }
-    }
-    
 
 }

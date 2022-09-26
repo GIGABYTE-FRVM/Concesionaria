@@ -87,8 +87,11 @@ public class GestorCombustibleABMC {
             //No hace nada
         }
     }
-    
-    public void mostrarPantalla() {
-        pantallaCombustible.setVisible(true);
+    public List<Combustible> conocerListaCombustible(){
+        conocerCombustibles();
+        return listaCombustible;
+    }
+    public void mostrarPantalla(boolean visible) {
+        pantallaCombustible.setVisible(visible);
     }
 }

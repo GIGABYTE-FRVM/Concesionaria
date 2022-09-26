@@ -18,6 +18,7 @@ public class GestorApp {
     GestorAutoABMC gestorAuto;
     GestorPaisABMC gestorPais;
     GestorPersonalABMC gestorPersonal;
+    GestorModeloABMC gestorModelo;
 
     
     public static void main(String[] args) {
@@ -56,7 +57,11 @@ public class GestorApp {
     
     public void menuCombustibleActionPerformed() {
         GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
-        gestorCombustible.mostrarPantalla();
+        gestorCombustible.mostrarPantalla(true);
+    }
+
+    void menuModeloActionPerformed() {
+        this.gestorModelo = new GestorModeloABMC();
     }
     
 }

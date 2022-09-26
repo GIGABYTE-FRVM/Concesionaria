@@ -402,49 +402,8 @@ public class App extends javax.swing.JFrame {
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         gestor.menuMarcaActionPerformed();
     }//GEN-LAST:event_jPanel5MouseClicked
-    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        gestor.menuCombustibleActionPerformed();
-    }                                               
-    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        gestor.menuPaisActionPerformed();
-    }                                    
-
-    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        System.exit(0);
-    }                                    
-
-    private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {                                     
-        jPanel8.setBackground(Color.red);
-        jLabel10.setForeground(Color.white);
-    }                                    
-
-    private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {                                    
-        jPanel8.setBackground(Color.white);
-        jLabel10.setForeground(Color.black);
-    }                                   
-
-    private void jPanel3CaretPositionChanged(java.awt.event.InputMethodEvent evt) {                                             
-        // TODO add your handling code here:
-    }                                            
-
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {                                     
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }                                    
-
-    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {                                     
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }                                    
-    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {                                                
-
-        gestor.menuCombustibleActionPerformed();
-    }                                               
-
-    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        gestor.menuCombustibleActionPerformed();
-    }                                               
+                                                                            
+                                           
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         // TODO add your handling code here:
         gestor.menuModeloActionPerformed();
@@ -494,7 +453,7 @@ public class App extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
             // TODO add your handling code here:
-                
+                gestor.menuPersonalActionPerformed();
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked

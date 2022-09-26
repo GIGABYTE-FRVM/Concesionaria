@@ -70,7 +70,7 @@ public class GestorMarcaABMC {
                 data[1] = marca.getCodigo();
                 data[2] = marca.getNombre();
                 data[3] = marca.getDescripcion();
-                //data[4] = marca.getPais().getNombre();
+                data[4] = marca.getPais().getNombre();
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -115,6 +115,10 @@ public class GestorMarcaABMC {
     }
     public void mostrarPantalla(boolean visible) {
         marca.setVisible(visible);
+    }
+    public List<Marca> conocerListaMarcas(){
+        conocerMarcas();
+        return listaMarcas;
     }
 
 }

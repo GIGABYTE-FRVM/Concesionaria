@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "marca")
+@Table(name = "auto")
 
 public class Auto {
 
@@ -22,15 +22,11 @@ public class Auto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "añoFabricacion")
+    @Column(name = "anioFabricacion")
     private int añoFabricacion;
 
-    @Column(name = "cantidadPuertas")
-    private int cantidadPuertas;
-
-    @ManyToOne
-    @JoinColumn(name = "id_color", referencedColumnName = "id")
-    private Color color;
+    @Column(name = "color")
+    private String color;
 
     @ManyToOne
     @JoinColumn(name = "id_combustible", referencedColumnName = "id")
@@ -47,9 +43,8 @@ public class Auto {
     @Column(name = "precio")
     double precio;
 
-    public Auto(int añoFabricacion, int cantidadPuertas, Color color, Combustible combustible, Marca marca, Modelo modelo, Carroceria carroceria, double precio) {
+    public Auto(int añoFabricacion, String color, Combustible combustible, Marca marca, Modelo modelo, Carroceria carroceria, double precio) {
         this.añoFabricacion = añoFabricacion;
-        this.cantidadPuertas = cantidadPuertas;
         this.color = color;
         this.combustible = combustible;
         this.marca = marca;
@@ -73,19 +68,11 @@ public class Auto {
         this.añoFabricacion = añoFabricacion;
     }
 
-    public int getCantidadPuertas() {
-        return cantidadPuertas;
-    }
-
-    public void setCantidadPuertas(int cantidadPuertas) {
-        this.cantidadPuertas = cantidadPuertas;
-    }
-
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
