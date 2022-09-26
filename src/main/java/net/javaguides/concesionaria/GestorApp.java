@@ -41,4 +41,9 @@ public class GestorApp {
         GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
         gestorCombustible.mostrarPantalla();
     }
+
+    void menuModeloActionPerformed() {
+        GestorModeloABMC gestorModelo = new GestorModeloABMC();
+        gestorModelo.mostrarPantalla();
+    }
 }

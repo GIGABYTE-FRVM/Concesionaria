@@ -37,7 +37,11 @@ public class App extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         menuMarca = new javax.swing.JMenuItem();
         menuPais = new javax.swing.JMenuItem();
+<<<<<<< HEAD
         menuCombustible = new javax.swing.JMenuItem();
+=======
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+>>>>>>> 3aa08c0 (init ABMC modelo)
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +69,7 @@ public class App extends javax.swing.JFrame {
         });
         jMenu3.add(menuPais);
 
+<<<<<<< HEAD
         menuCombustible.setText("Combustible");
         menuCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +77,16 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(menuCombustible);
+=======
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Modelo");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jCheckBoxMenuItem1);
+>>>>>>> 3aa08c0 (init ABMC modelo)
 
         jMenuBar1.add(jMenu3);
 
@@ -102,6 +117,11 @@ public class App extends javax.swing.JFrame {
     private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCombustibleActionPerformed
         gestor.menuCombustibleActionPerformed();
     }//GEN-LAST:event_menuCombustibleActionPerformed
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        gestor.menuModeloActionPerformed();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -140,6 +160,7 @@ public class App extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
