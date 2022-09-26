@@ -4,60 +4,103 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.javaguides.hibernate.dao.AutoDao;
+import net.javaguides.hibernate.dao.CombustibleDao;
 import net.javaguides.hibernate.dao.MarcaDao;
 import net.javaguides.hibernate.dao.PaisDao;
+import net.javaguides.hibernate.model.Auto;
 import net.javaguides.hibernate.model.Marca;
-import net.javaguides.hibernate.model.Pais;
+import net.javaguides.hibernate.model.Modelo;
+import net.javaguides.hibernate.model.Combustible;
+import net.javaguides.hibernate.model.Color;
 
-public class GestorMarcaABMC {
+public class GestorAutoABMC {
 
-    List<Pais> listaPaises;
-    private List<Marca> listaMarcas;
-    GestorPaisABMC gestorPais = new GestorPaisABMC(this);
-    MarcaABMC marca;
+    List<Marca> listaMarcas;
+    List<Modelo> listaModelos;
+    List<Combustible> listaCombustibles;
+    List<Color> listaColores;
+    List<Auto> listaAutos;
+
+
+    GestorMarcaABMC gestorMarca = new GestorMarcaABMC(this);
+    GestorModeloABMC gestorModelo = new GestorModeloABMC(this);
+    GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC(this);
+    GestorColorABMC gestorColor = new GestorColorABMC(this);
+
+    AutoABMC pantallaAuto;
     MarcaDao marcaDao = new MarcaDao();
-    PaisDao paisDao = new PaisDao();
+    ModeloDao modeloDao = new ModeloDao();
+    CombustibleDao combustibleDao = new CombustibleDao();
+    ColorDao colorDao = new ColorDao();
+    AutoDao autoDao = new AutoDao();
 
-    public GestorMarcaABMC() {
-        marca = new MarcaABMC(this);
-        marca.setVisible(true);
+    public GestorAutoABMC() {
+        pantallaAuto = new AutoABMC(this);
+        pantallaAuto.setVisible(true);
     }
 
-    
-    public void conocerPaises(){
-        if (!(listaPaises==null)){
-            listaPaises.clear();
+    public void conocerMarcas() {
+        if (!(listaMarcas == null)) {
+            listaMarcas.clear();
         }
-        listaPaises = gestorPais.conocerListPaises();
+        listaMarcas = gestorMarca.conocerListaMarcas();
     }
-    public void modificarMarca() {
-        Marca marcaObject = marcaDao.getMarcaById(Integer.parseInt(marca.getTxtId()));
-        marcaObject.setNombre(marca.getTxtNombre());
-        marcaObject.setCodigo(marca.getTxtCodigo());
-        marcaObject.setDescripcion(marca.getTxtDescripcion());
-        marcaObject.setPais(listaPaises.get(marca.getPais()));
+
+    public void conocerModelo() {
+        if (!(listaModelos == null)) {
+            listaModelos.clear();
+        }
+        listaModelos = gestorModelo.conocerListaModelos();
+    }
+
+    public void conocerCombustibles() {
+        if (!(listaCombustibles == null)) {
+            listaCombustibles.clear();
+        }
+        listaCombustibles = gestorCombustible.conocerListaCombustibles();
+    }
+
+    public void conocerColores() {
+        if (!(listaColores == null)) {
+            listaColores.clear();
+        }
+        listaColores = gestorColor.conocerListaColores();
+    }
+
+    public void modificarAuto() {
+        Auto autoObject = autoDao.getMarcaById(Integer.parseInt(pantallaAuto.getTxtId()));
+        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
+        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
+        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
+        autoObject.setColor(listaColores.get(pantallaAuto.getColor()));
+
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            marcaDao.updateMarca(marcaObject);
+            autoDao.updateAuto(autoObject);
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
     }
-    public void conocerMarcas() {
-        listaMarcas = marcaDao.getAllMarcas();
+
+    public void conocerAutos() {
+        listaAutos = autoDao.getAllAuto();
     }
-        
-    
+
     public DefaultTableModel mostrarDatos() {
         this.conocerMarcas();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Pais");
-        String data[] = new String[5];
+        modelo.addColumn("Marca");
+        modelo.addColumn("Modelo");
+        modelo.addColumn("Año Fabricacion");
+        modelo.addColumn("Combustible");
+        modelo.addColumn("Color");
+        modelo.addColumn("Precio");
+        String data[] = new String[7];
         try {
             for (Marca marca : listaMarcas) {
                 data[0] = Integer.toString((int) marca.getId());
@@ -65,6 +108,9 @@ public class GestorMarcaABMC {
                 data[2] = marca.getNombre();
                 data[3] = marca.getDescripcion();
                 data[4] = marca.getPais().getNombre();
+                data[5] = marca.getDescripcion();
+                data[6] = marca.getDescripcion();
+                data[7] = marca.getDescripcion();
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -73,15 +119,16 @@ public class GestorMarcaABMC {
         return modelo;
     }
 
-    public void registrarMarca() {
-        String codigo = marca.getTxtCodigo();
-        String nombre = marca.getTxtNombre();
-        String descripcion = marca.getTxtDescripcion();
-        Pais pais = listaPaises.get(marca.getPais());
-        Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
-        //ps.setString(4, cboPais.getSelectedItem().toString());
-        if ((codigo.length() != 0) && (nombre.length() != 0) && (descripcion.length() != 0)) {
-            marcaDao.saveMarca(marcaObject);
+    public void registrarAuto() {
+        Auto autoObject = new Auto();
+        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
+        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
+        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
+        autoObject.setColor(listaColores.get(pantallaAuto.getColor()));
+        if ((pantallaAuto.getTxtPrecio().length() != 0) && (pantallaAuto.getTxtAñoFabricacion().length() != 0)) {
+            autoDao.saveAuto(autoObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -89,26 +136,40 @@ public class GestorMarcaABMC {
 
     }
 
-    public void eliminarMarca() {
-        String id = marca.getTxtId();
+    public void eliminarAuto() {
+        String id = pantallaAuto.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            marcaDao.deleteMarca(Integer.parseInt(id));
+            autoDao.deleteAuto(Integer.parseInt(id));
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
         }
     }
 
-    void mostrarPaisABMC() {
-        gestorPais.mostrarPantalla();
+    void mostrarMarcaABMC() {
+        gestorMarca.mostrarPantalla(true);
     }
-    
+    void mostrarModeloABMC() {
+        gestorModelo.mostrarPantalla();
+    }
+    void mostrarCombustibleABMC() {
+        gestorCombustible.mostrarPantalla();
+    }
+    void mostrarColorABMC() {
+        gestorColor.mostrarPantalla();
+    }
+
     void actualizarComboPaises() {
-        marca.actualizarComboPaises();
+        pantallaAuto.actualizarCombos();
     }
+
     public void mostrarPantalla(boolean visible) {
-        marca.setVisible(visible);
+        pantallaAuto.setVisible(visible);
+    }
+
+    void conocerModelos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

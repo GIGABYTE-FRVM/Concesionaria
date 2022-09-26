@@ -2,6 +2,10 @@
 
 */private.xml
 */private.properties
+<<<<<<< HEAD
 target/classes/*
 target/test-classes/*
-
+=======
+target
+*/*.class
+>>>>>>> 59b62a0 (Init ABMC Auto)

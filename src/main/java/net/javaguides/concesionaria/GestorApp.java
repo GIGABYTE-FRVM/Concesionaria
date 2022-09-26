@@ -14,7 +14,8 @@ public class GestorApp {
      * @param args the command line arguments
      */
     static App app;
-    GestorMarcaABMC gestorMarca;
+    GestorMarcaABMC gestorMarca;    
+    GestorAutoABMC gestorAuto;
     GestorPaisABMC gestorPais;
 
     
@@ -45,6 +46,10 @@ public class GestorApp {
     public void menuMarcaActionPerformed() {
         this.gestorMarca = new GestorMarcaABMC();
         gestorMarca.mostrarPantalla(true); 
+    }
+    public void menuAutoActionPerformed() {
+        this.gestorAuto = new GestorAutoABMC();
+        gestorAuto.mostrarPantalla(true); 
     }
     
     public void menuCombustibleActionPerformed() {

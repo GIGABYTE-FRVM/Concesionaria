@@ -7,14 +7,15 @@ package net.javaguides.hibernate.dao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import net.javaguides.hibernate.model.Pais;
+import net.javaguides.hibernate.model.Auto;
 import net.javaguides.hibernate.util.HibernateUtil;
 
 /**
  *
  * @author matya
  */
-public class PaisDao implements iPaisDao {
+public class AutoDao implements iAutoDao {
+    
 
     //save Marca
     //get All Marca
@@ -22,12 +23,12 @@ public class PaisDao implements iPaisDao {
     //Update Marca
     //Delete Marca
     @Override
-    public void savePais(Pais pais) {
+    public void saveAuto(Auto auto) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             
-            session.persist(pais);
+            session.persist(auto);
             
             transaction.commit();
         } catch (Exception e) {
@@ -35,13 +36,14 @@ public class PaisDao implements iPaisDao {
                 transaction.rollback();
             }
         }
-    }@Override
-    public void updatePais(Pais pais) {
+    }
+    @Override
+    public void updateAuto(Auto auto) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.saveOrUpdate(pais);
+            session.saveOrUpdate(auto);
             
             transaction.commit();
 
@@ -52,13 +54,13 @@ public class PaisDao implements iPaisDao {
         }
     }
     @Override
-    public Pais getPaisById(int id) {
+    public Auto getAutoById(int id) {
         Transaction transaction = null;
-        Pais pais = null;
+        Auto auto = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            pais = session.get(Pais.class,id);
+            auto = session.get(Auto.class,id);
 
             transaction.commit();
         } catch (Exception e) {
@@ -66,32 +68,32 @@ public class PaisDao implements iPaisDao {
                 transaction.rollback();
             }
         }
-        return pais;
+        return auto;
     }
     @Override
-    public List<Pais> getAllPais() {
+    public List<Auto> getAllAuto() {
         Transaction transaction = null;
-        List<Pais> paises = null;
+        List<Auto> autoes = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            paises = session.createQuery("from Pais").list();
+            autoes = session.createQuery("from Auto").list();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        return paises;
+        return autoes;
     }
     @Override
-    public void deletePais(int id) {
+    public void deleteAuto(int id) {
         Transaction transaction = null;
-        Pais pais = null;
+        Auto auto = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            pais = session.get(Pais.class,id);
-            session.delete(pais);
+            auto = session.get(Auto.class,id);
+            session.delete(auto);
             transaction.commit();
 
         } catch (Exception e) {

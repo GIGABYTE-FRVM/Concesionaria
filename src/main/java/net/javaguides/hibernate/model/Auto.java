@@ -14,44 +14,52 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="marca")
+@Table(name = "marca")
 
-public class Marca {
+public class Auto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @Column(name = "añoFabricacion")
+    private int añoFabricacion;
 
-    @Column(name = "codigo")
-    private String codigo;
+    @Column(name = "cantidadPuertas")
+    private int cantidadPuertas;
 
-    @Column(name = "nombre")
-    private String nombre;
-
-    @Column(name = "descripcion")
-    private String descripcion;
-    
     @ManyToOne
-    @JoinColumn(name="id_pais",referencedColumnName="id")
-    private Pais pais;
+    @JoinColumn(name = "id_color", referencedColumnName = "id")
+    private Color color;
 
-    public Marca() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_combustible", referencedColumnName = "id")
+    private Combustible combustible;
 
-    public Marca(String codigo, String nombre, String descripcion,Pais pais) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.pais = pais;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_marca", referencedColumnName = "id")
+    private Marca marca;
 
-    public Pais getPais() {
-        return pais;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_modelo", referencedColumnName = "id")
+    private Modelo modelo;
 
-    public void setPais(Pais pais) {
-        this.pais = pais;
+    @ManyToOne
+    @JoinColumn(name = "id_carroceria", referencedColumnName = "id")
+    private Carroceria carroceria;
+
+    @Column(name = "precio")
+    double precio;
+
+    public Auto(int añoFabricacion, int cantidadPuertas, Color color, Combustible combustible, Marca marca, Modelo modelo, Carroceria carroceria, double precio) {
+        this.añoFabricacion = añoFabricacion;
+        this.cantidadPuertas = cantidadPuertas;
+        this.color = color;
+        this.combustible = combustible;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.carroceria = carroceria;
+        this.precio = precio;
     }
 
     public int getId() {
@@ -62,32 +70,71 @@ public class Marca {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getAñoFabricacion() {
+        return añoFabricacion;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setAñoFabricacion(int añoFabricacion) {
+        this.añoFabricacion = añoFabricacion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCantidadPuertas() {
+        return cantidadPuertas;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantidadPuertas(int cantidadPuertas) {
+        this.cantidadPuertas = cantidadPuertas;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Color getColor() {
+        return color;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setColor(Color color) {
+        this.color = color;
     }
 
-    @Override
-    public String toString() {
-        return "Marca [id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+    public Combustible getCombustible() {
+        return combustible;
     }
+
+    public void setCombustible(Combustible combustible) {
+        this.combustible = combustible;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public Carroceria getCarroceria() {
+        return carroceria;
+    }
+
+    public void setCarroceria(Carroceria carroceria) {
+        this.carroceria = carroceria;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Auto() {
+    }
+
 }
