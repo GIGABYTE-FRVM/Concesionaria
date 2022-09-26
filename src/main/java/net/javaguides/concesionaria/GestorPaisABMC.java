@@ -11,11 +11,14 @@ public class GestorPaisABMC {
     private List<Pais> listaPaises;
     PaisABMC pantallaPais;
     PaisDao paisDao = new PaisDao();
+    GestorMarcaABMC gestorMarca;
 
     
-    public GestorPaisABMC() {
+    public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
         pantallaPais = new PaisABMC(this);
-        pantallaPais.setVisible(true);
+    }
+    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
+        this.gestorMarca = gestorMarca;
     }
     
     public void registrarPais() {
