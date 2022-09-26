@@ -14,6 +14,13 @@ public class GestorApp {
      * @param args the command line arguments
      */
     static App app;
+<<<<<<< HEAD
+=======
+    GestorMarcaABMC gestorMarca;    
+    GestorAutoABMC gestorAuto;
+    GestorPaisABMC gestorPais;
+
+>>>>>>> 3dacc7a (R 13/16 Update app.java and fix .class)
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -41,6 +48,10 @@ public class GestorApp {
         GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
 
         //gestorMarca.mostrarPantalla(); 
+    }
+    public void menuAutoActionPerformed() {
+        this.gestorAuto = new GestorAutoABMC();
+        gestorAuto.mostrarPantalla(true); 
     }
     
     public void menuCombustibleActionPerformed() {

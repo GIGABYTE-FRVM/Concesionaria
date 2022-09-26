@@ -1,31 +1,36 @@
 package net.javaguides.concesionaria;
 
-import java.awt.Color;
+import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import net.javaguides.hibernate.model.Pais;
+import net.javaguides.hibernate.model.Combustible;
+import net.javaguides.hibernate.model.Marca;
+import net.javaguides.hibernate.model.Modelo;
+import net.javaguides.hibernate.model.Combustible;
+import net.javaguides.hibernate.model.Color;
+
 
 /**
  *
  * @author matya
  */
-public class MarcaABMC extends javax.swing.JFrame {
+public class AutoABMC extends javax.swing.JFrame {
 
-    GestorMarcaABMC gestor;
+    GestorAutoABMC gestor;
     int xMouse, yMouse;
     
-    public MarcaABMC(GestorMarcaABMC gestorPadre) {
+    public AutoABMC(GestorAutoABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
-
-        actualizarComboPaises();
+        actualizarCombos();
     }
 
-    public void conocerGestor(GestorMarcaABMC gestor) {
+    public void conocerGestor(GestorAutoABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -41,28 +46,36 @@ public class MarcaABMC extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtCodigo = new javax.swing.JTextField();
+        txtAñoFabricacion = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
-        txtDescripcion = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        cboPais = new javax.swing.JComboBox<>();
+        cboMarca = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JToggleButton();
         btnActualizar = new javax.swing.JToggleButton();
         btnEliminar = new javax.swing.JToggleButton();
         btnCancelar = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        cboModelo = new javax.swing.JComboBox<>();
+        cboCombustible = new javax.swing.JComboBox<>();
+        cboColor = new javax.swing.JComboBox<>();
+        txtPrecio = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
@@ -91,14 +104,14 @@ public class MarcaABMC extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 12)); // NOI18N
 
-        txtCodigo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtCodigo.setForeground(new java.awt.Color(51, 51, 51));
-        txtCodigo.setBorder(null);
-        txtCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtCodigo.setHighlighter(null);
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        txtAñoFabricacion.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        txtAñoFabricacion.setForeground(new java.awt.Color(51, 51, 51));
+        txtAñoFabricacion.setBorder(null);
+        txtAñoFabricacion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtAñoFabricacion.setHighlighter(null);
+        txtAñoFabricacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
+                txtAñoFabricacionActionPerformed(evt);
             }
         });
 
@@ -114,32 +127,13 @@ public class MarcaABMC extends javax.swing.JFrame {
             }
         });
 
-        txtDescripcion.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtDescripcion.setForeground(new java.awt.Color(51, 51, 51));
-        txtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtDescripcion.setBorder(null);
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+        cboMarca.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        cboMarca.setForeground(new java.awt.Color(51, 51, 51));
+        cboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboMarca.setBorder(null);
+        cboMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
-
-        txtNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
-        txtNombre.setBorder(null);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
-        cboPais.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        cboPais.setForeground(new java.awt.Color(51, 51, 51));
-        cboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
-        cboPais.setBorder(null);
-        cboPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboPaisActionPerformed(evt);
+                cboMarcaActionPerformed(evt);
             }
         });
 
@@ -176,19 +170,10 @@ public class MarcaABMC extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        jToggleButton1.setText("ABMC Pais");
-        jToggleButton1.setActionCommand("");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("INFORMACIÓN DE LA MARCA");
+        jLabel1.setText("INFORMACIÓN DEL AUTO");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel2.setText("ID");
@@ -196,27 +181,17 @@ public class MarcaABMC extends javax.swing.JFrame {
         jSeparator1.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        jLabel3.setText("CÓDIGO");
+        jLabel3.setText("AÑO FABRICACION");
 
         jSeparator2.setEnabled(false);
 
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        jLabel4.setText("NOMBRE");
-
-        jSeparator3.setEnabled(false);
-
-        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        jLabel5.setText("DESCRIPCIÓN");
-
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        jLabel6.setText("PAIS");
-
-        jSeparator4.setEnabled(false);
+        jLabel6.setText("MARCA");
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("ABMC País");
+        jLabel9.setText("ABMC Marca");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -227,12 +202,132 @@ public class MarcaABMC extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
+
+        cboModelo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        cboModelo.setForeground(new java.awt.Color(51, 51, 51));
+        cboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboModelo.setBorder(null);
+        cboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboModeloActionPerformed(evt);
+            }
+        });
+
+        cboCombustible.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        cboCombustible.setForeground(new java.awt.Color(51, 51, 51));
+        cboCombustible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboCombustible.setBorder(null);
+        cboCombustible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCombustibleActionPerformed(evt);
+            }
+        });
+
+        cboColor.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        cboColor.setForeground(new java.awt.Color(51, 51, 51));
+        cboColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
+        cboColor.setBorder(null);
+        cboColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboColorActionPerformed(evt);
+            }
+        });
+
+        txtPrecio.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        txtPrecio.setForeground(new java.awt.Color(51, 51, 51));
+        txtPrecio.setBorder(null);
+        txtPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtPrecio.setHighlighter(null);
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel10.setText("PRECIO");
+
+        jSeparator5.setEnabled(false);
+
+        jPanel11.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("ABMC Combustible");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+        );
+
+        jPanel12.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("ABMC Modelo");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+        );
+
+        jPanel13.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("ABMC Color");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+        );
+
+        jLabel17.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel17.setText("MODELO");
+
+        jLabel18.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel18.setText("COLOR");
+
+        jLabel19.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jLabel19.setText("COMBUSTIBLE");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -243,49 +338,63 @@ public class MarcaABMC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jSeparator2)
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel10)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnRegistrar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnActualizar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancelar)
-                                .addGap(6, 6, 6))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(227, 227, 227)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cboPais, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(66, 66, 66))))
+                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                                        .addGap(22, 22, 22)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jSeparator2)
+                                            .addComponent(txtAñoFabricacion, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(36, 36, 36)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel19))
+                                        .addGap(60, 60, 60)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel18))
+                                                .addGap(55, 55, 55)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(0, 82, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,44 +406,53 @@ public class MarcaABMC extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCodigo)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAñoFabricacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cboPais, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel18))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel19)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(203, 203, 203))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 420, 640));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 400));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 51));
 
@@ -362,29 +480,32 @@ public class MarcaABMC extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("LISTADO DE MARCAS");
+        jLabel7.setText("LISTADO DE AUTOS");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(366, 366, 366)
                 .addComponent(jLabel7)
-                .addGap(219, 219, 219))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 690, 640));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 960, 290));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -434,7 +555,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -450,13 +571,15 @@ public class MarcaABMC extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 30));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1110, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,86 +591,35 @@ public class MarcaABMC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        gestor.registrarMarca();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        actualizarComboPaises();
-
-
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-        gestor.modificarMarca();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        actualizarComboPaises();
-
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        gestor.eliminarMarca();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        limpiarEntradas();
-        tablaDatos.setCellSelectionEnabled(true);
-        habilitarBotones(true);
-
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        gestor.mostrarPaisABMC();
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void cboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPaisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboPaisActionPerformed
-
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
-        this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
-        for (int i = 0; i < cboPais.getItemCount(); i++) {
-            this.cboPais.setSelectedIndex(i);
-            if (this.cboPais.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString())) {
+        this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 1).toString());
+        this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 2).toString());
+        for (int i = 0; i < cboMarca.getItemCount(); i++) {
+            this.cboMarca.setSelectedIndex(i);
+            if (this.cboMarca.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 3).toString())) {
                 break;
             }
         }
+        getItemCombo(cboModelo,fila,4);
+        getItemCombo(cboCombustible,fila,5);
+        getItemCombo(cboColor,fila,6);
 
         habilitarBotones(false);
 
-        //this.cboPais
+        
     }//GEN-LAST:event_tablaDatosMouseClicked
-
+    public void getItemCombo(JComboBox<String> combo,  int fila, int columna){
+        int index = 0;
+        for (int i = 0; i < combo.getItemCount(); i++) {
+            combo.setSelectedIndex(i);
+            if (combo.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, columna).toString())) {
+                break;
+            }
+        };
+    }
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
@@ -590,6 +662,77 @@ public class MarcaABMC extends javax.swing.JFrame {
         gestor.mostrarPaisABMC();
     }//GEN-LAST:event_jLabel9MouseClicked
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarEntradas();
+        tablaDatos.setCellSelectionEnabled(true);
+        habilitarBotones(true);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        gestor.eliminarAuto();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        gestor.modificarAuto();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        gestor.registrarAuto();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMarcaActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtAñoFabricacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAñoFabricacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAñoFabricacionActionPerformed
+
+    private void cboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboModeloActionPerformed
+
+    private void cboCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCombustibleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboCombustibleActionPerformed
+
+    private void cboColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboColorActionPerformed
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -606,17 +749,28 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnEliminar;
     private javax.swing.JToggleButton btnRegistrar;
-    private javax.swing.JComboBox<String> cboPais;
+    private javax.swing.JComboBox<String> cboColor;
+    private javax.swing.JComboBox<String> cboCombustible;
+    private javax.swing.JComboBox<String> cboMarca;
+    private javax.swing.JComboBox<String> cboModelo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -626,57 +780,86 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable tablaDatos;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtAñoFabricacion;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarEntradas() {
         txtId.setText("");
-        txtCodigo.setText("");
-        txtNombre.setText("");
-        txtDescripcion.setText("");
+        txtAñoFabricacion.setText("");
+        txtPrecio.setText("");
     }
 
-    public String getTxtCodigo() {
-        return txtCodigo.getText();
+    public String getTxtAñoFabricacion() {
+        return txtAñoFabricacion.getText();
     }
 
-    public String getTxtDescripcion() {
-        return txtDescripcion.getText();
+    public String getTxtPrecio() {
+        return txtPrecio.getText();
     }
 
     public String getTxtId() {
         return txtId.getText();
     }
 
-    public String getTxtNombre() {
-        return txtNombre.getText();
+    public int getMarca() {
+        return cboMarca.getSelectedIndex();
     }
-
-    public int getPais() {
-        return cboPais.getSelectedIndex();
+    public int getModelo() {
+        return cboModelo.getSelectedIndex();
     }
+    public int getCombustible() {
+        return cboCombustible.getSelectedIndex();
+    }
+    public int getColor() {
+        return cboColor.getSelectedIndex();
+    }
+    
 
     private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
     }
+    public void actualizarCombos(){
+        this.actualizarComboMarca();        
+        this.actualizarComboModelo();
+        this.actualizarComboCombustible();
+        this.actualizarComboColor();
 
-    public void actualizarComboPaises() {
-        cboPais.removeAllItems();
-        gestor.conocerPaises();
-        
-        for(Pais p : gestor.listaPaises){
-            cboPais.addItem(p.getNombre());
-        }
-        
     }
+
+    public void actualizarComboMarca() {
+        cboMarca.removeAllItems();
+        gestor.conocerMarcas();
+        for(Marca m : gestor.listaMarcas){
+            cboMarca.addItem(m.getNombre());
+        }
+    }
+    public void actualizarComboModelo() {
+        cboModelo.removeAllItems();
+        gestor.conocerModelos();
+        for(Modelo m : gestor.listaModelos){
+            cboModelo.addItem(m.getNombre());
+        }
+    }
+    public void actualizarComboCombustible() {
+        cboCombustible.removeAllItems();
+        gestor.conocerCombustibles();
+        for(Combustible c : gestor.listaCombustibles){
+            cboCombustible.addItem(c.getNombre());
+        }
+    }
+    public void actualizarComboColor() {
+        cboColor.removeAllItems();
+        gestor.conocerColores();
+        for(Color c : gestor.listaColores){
+            cboColor.addItem(c.getNombre());
+        }
+    }
+    
 
 }
