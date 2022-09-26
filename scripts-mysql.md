@@ -14,8 +14,11 @@ CREATE TABLE `pais` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL ) ENG
 
 ## Personal
 ~~~
-DROP TABLE IF EXISTS `personal`;
-CREATE TABLE `personal` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL, `apellido` varchar(50) NOT NULL, `direccion` varchar(50) NOT NULL, `documento` varchar(50) NOT NULL, `email` varchar(50) NOT NULL, `telefono` varchar(50) NOT NULL, `fechaNacimiento` varchar(50) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `personal`; CREATE TABLE `personal` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL, `apellido` varchar(50) NOT NULL, `direccion` varchar(50) NOT NULL, `documento` varchar(50) NOT NULL, `email` varchar(50) NOT NULL, `telefono` varchar(50) NOT NULL, `fechaNacimiento` varchar(50) NOT NULL, `fechaIngresoEmpresa` varchar(255) NOT NULL, `horaEntrada` varchar(255) NOT NULL, `horaSalida` varchar(255) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+~~~
+## Cliente
+~~~
+DROP TABLE IF EXISTS `cliente`; CREATE TABLE `cliente` ( `id` int(11) NOT NULL, `nombre` varchar(50) NOT NULL, `apellido` varchar(50) NOT NULL, `direccion` varchar(50) NOT NULL, `documento` varchar(50) NOT NULL, `email` varchar(50) NOT NULL, `telefono` varchar(50) NOT NULL, `fechaNacimiento` varchar(50) NOT NULL, `esCliente` tinyint(1) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ~~~
 
 ## Modelo
