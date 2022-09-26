@@ -2,5 +2,9 @@
 
 */private.xml
 */private.properties
+<<<<<<< HEAD
 target/classes/*
 target/test-classes/*
+=======
+/target
+>>>>>>> a18dfbb (Modified .gitignore)
