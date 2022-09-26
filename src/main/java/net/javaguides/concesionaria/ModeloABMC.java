@@ -21,6 +21,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     Color colorBackgroundButton = new Color(255, 153, 0);
     Color colorBorderButton = new Color(204, 204, 204);
     LineBorder borderButton = new LineBorder(colorBorderButton);
+    int xMouse, yMouse;
 
     public ModeloABMC(GestorModeloABMC gestorPadre) {
         initComponents();
@@ -46,7 +47,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panelDatosRegistrados = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtAñoLanzamiento = new javax.swing.JTextField();
@@ -67,14 +68,17 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnActualizar = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JLabel();
         panelBtnEliminar = new javax.swing.JPanel();
-        btnEliminar1 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JLabel();
         cboMarca = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
+        btnMarca = new javax.swing.JLabel();
         panelTablaDatos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
         lblTituloTabla = new javax.swing.JLabel();
+        barraSuperiorVentana = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
+        lblBtnCerrar = new javax.swing.JLabel();
 
         cboPais.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboPais.setForeground(new java.awt.Color(51, 51, 51));
@@ -98,10 +102,11 @@ public class ModeloABMC extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelDatosRegistrados.setBackground(new java.awt.Color(255, 255, 255));
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
@@ -196,7 +201,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         );
         panelBtnRegistrarLayout.setVerticalGroup(
             panelBtnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         panelBtnActualizar.setBackground(new java.awt.Color(255, 255, 255));
@@ -227,14 +232,14 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         panelBtnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        btnEliminar1.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 153, 0));
-        btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnEliminar1.setText("Eliminar");
-        btnEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminar1MouseClicked(evt);
+                btnEliminarMouseClicked(evt);
             }
         });
 
@@ -242,11 +247,11 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnEliminar.setLayout(panelBtnEliminarLayout);
         panelBtnEliminarLayout.setHorizontalGroup(
             panelBtnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
         );
         panelBtnEliminarLayout.setVerticalGroup(
             panelBtnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
         );
 
         cboMarca.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
@@ -259,45 +264,50 @@ public class ModeloABMC extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
-        jLabel7.setText("MARCA");
+        lblMarca.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        lblMarca.setText("MARCA");
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("ABMC Marca");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMarca.setBackground(new java.awt.Color(255, 255, 255));
+        btnMarca.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        btnMarca.setForeground(new java.awt.Color(255, 153, 51));
+        btnMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMarca.setText("ABMC Marca");
+        btnMarca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                btnMarcaMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDatosRegistradosLayout = new javax.swing.GroupLayout(panelDatosRegistrados);
+        panelDatosRegistrados.setLayout(panelDatosRegistradosLayout);
+        panelDatosRegistradosLayout.setHorizontalGroup(
+            panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
+                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                             .addGap(23, 23, 23)
                             .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                                     .addGap(97, 97, 97)
                                     .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(18, 18, 18)
                             .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                             .addGap(28, 28, 28)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(separadorAñoLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAñoLanzamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                                     .addComponent(txtVersion, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                                     .addComponent(lblTitulo)
@@ -310,12 +320,12 @@ public class ModeloABMC extends javax.swing.JFrame {
                                     .addComponent(lblAñoLanzamiento)
                                     .addComponent(separadorId)
                                     .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
-                                .addComponent(jLabel7)))))
+                                .addComponent(lblMarca)))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelDatosRegistradosLayout.setVerticalGroup(
+            panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(lblTitulo)
                 .addGap(40, 40, 40)
@@ -333,8 +343,8 @@ public class ModeloABMC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblVersion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                         .addComponent(txtVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separadorVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,23 +355,23 @@ public class ModeloABMC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separadorAñoLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(lblMarca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelBtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelBtnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelBtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBtnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 540));
+        jPanel1.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 540));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -410,6 +420,72 @@ public class ModeloABMC extends javax.swing.JFrame {
         );
 
         jPanel1.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 660, 540));
+
+        barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
+        barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraSuperiorVentanaMouseDragged(evt);
+            }
+        });
+        barraSuperiorVentana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraSuperiorVentanaMousePressed(evt);
+            }
+        });
+
+        btnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseExited(evt);
+            }
+        });
+
+        lblBtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        lblBtnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnCerrar.setText("X");
+        lblBtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBtnCerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+        );
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout barraSuperiorVentanaLayout = new javax.swing.GroupLayout(barraSuperiorVentana);
+        barraSuperiorVentana.setLayout(barraSuperiorVentanaLayout);
+        barraSuperiorVentanaLayout.setHorizontalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraSuperiorVentanaLayout.createSequentialGroup()
+                .addGap(0, 1041, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        barraSuperiorVentanaLayout.setVerticalGroup(
+            barraSuperiorVentanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(barraSuperiorVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -496,7 +572,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnActualizarMouseClicked
 
-    private void btnEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminar1MouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
         gestor.eliminarModelo();
         tablaDatos.setModel(gestor.mostrarDatos());
@@ -505,7 +581,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         btnRegistrar.setForeground(Color.white);
         panelBtnRegistrar.setBorder(null);
-    }//GEN-LAST:event_btnEliminar1MouseClicked
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void cboPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPaisActionPerformed
         // TODO add your handling code here:
@@ -519,9 +595,46 @@ public class ModeloABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboMarcaActionPerformed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+    private void btnMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcaMouseClicked
         gestor.mostrarMarcaABMC();
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_btnMarcaMouseClicked
+
+    private void lblBtnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseClicked
+        dispose();
+    }//GEN-LAST:event_lblBtnCerrarMouseClicked
+
+    private void lblBtnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseEntered
+        btnCerrar.setBackground(Color.red);
+        lblBtnCerrar.setForeground(Color.white);
+    }//GEN-LAST:event_lblBtnCerrarMouseEntered
+
+    private void lblBtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseExited
+        btnCerrar.setBackground(Color.white);
+        lblBtnCerrar.setForeground(Color.black);
+    }//GEN-LAST:event_lblBtnCerrarMouseExited
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
+    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
+
+    }//GEN-LAST:event_btnCerrarMouseEntered
+
+    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
+
+    }//GEN-LAST:event_btnCerrarMouseExited
+
+    private void barraSuperiorVentanaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraSuperiorVentanaMouseDragged
+
+    private void barraSuperiorVentanaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorVentanaMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_barraSuperiorVentanaMousePressed
 
     /**
      * @param args the command line arguments
@@ -575,21 +688,23 @@ public class ModeloABMC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel barraSuperiorVentana;
     private javax.swing.JLabel btnActualizar;
     private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnEliminar1;
+    private javax.swing.JPanel btnCerrar;
+    private javax.swing.JLabel btnEliminar;
+    private javax.swing.JLabel btnMarca;
     private javax.swing.JLabel btnRegistrar;
     private javax.swing.JComboBox<String> cboMarca;
     private javax.swing.JComboBox<String> cboPais;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAñoLanzamiento;
+    private javax.swing.JLabel lblBtnCerrar;
     private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloTabla;
@@ -598,6 +713,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnCancelar;
     private javax.swing.JPanel panelBtnEliminar;
     private javax.swing.JPanel panelBtnRegistrar;
+    private javax.swing.JPanel panelDatosRegistrados;
     private javax.swing.JPanel panelTablaDatos;
     private javax.swing.JSeparator separadorAñoLanzamiento;
     private javax.swing.JSeparator separadorId;
@@ -627,7 +743,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
-        btnCancelar.setEnabled(!estado);
+        btnEliminar.setEnabled(!estado);
     }
 
     String getTxtNombre() {
