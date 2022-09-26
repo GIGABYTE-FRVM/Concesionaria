@@ -39,5 +39,14 @@ public class GestorApp {
     
     public void menuMarcaActionPerformed() {
         GestorMarcaABMC gestorMarca = new GestorMarcaABMC();
+<<<<<<< HEAD
+=======
+        //gestorMarca.mostrarPantalla(); 
+    }
+    
+    public void menuCombustibleActionPerformed() {
+        GestorCombustibleABMC gestorCombustible = new GestorCombustibleABMC();
+        gestorCombustible.mostrarPantalla();
+>>>>>>> 0462010 (add abmc combustible)
     }
 }

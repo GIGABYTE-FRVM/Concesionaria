@@ -13,6 +13,7 @@ import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Personal;
 
 import org.hibernate.HibernateException;
+import net.javaguides.hibernate.model.Combustible;
 
 public class HibernateUtil {
 
@@ -41,6 +42,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Marca.class);
                 configuration.addAnnotatedClass(Pais.class);
                 configuration.addAnnotatedClass(Personal.class);
+                configuration.addAnnotatedClass(Combustible.class);
+
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

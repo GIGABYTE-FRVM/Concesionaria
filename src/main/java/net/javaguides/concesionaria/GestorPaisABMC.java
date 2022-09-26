@@ -15,6 +15,7 @@ public class GestorPaisABMC {
     
     public GestorPaisABMC() {
         pantallaPais = new PaisABMC(this);
+        pantallaPais.setVisible(true);
     }
     
     public void registrarPais() {
