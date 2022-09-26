@@ -49,7 +49,6 @@ public class GestorApp {
     }
     public void menuAutoActionPerformed() {
         this.gestorAuto = new GestorAutoABMC();
-
     }
     
     public void menuCombustibleActionPerformed() {
@@ -60,5 +59,6 @@ public class GestorApp {
     void menuModeloActionPerformed() {
         GestorModeloABMC gestorModelo = new GestorModeloABMC();
         gestorModelo.mostrarPantalla();
+
     }
 }

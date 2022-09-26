@@ -39,7 +39,6 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -48,7 +47,6 @@ public class App extends javax.swing.JFrame {
         menuPais = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         menuCombustible = new javax.swing.JMenuItem();
-=======
         jLabel2 = new javax.swing.JLabel();
         panelGeneral = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -65,7 +63,7 @@ public class App extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
->>>>>>> 4659c05 (Fix cboPaises)
+        menuCombustible = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -184,6 +182,8 @@ public class App extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("iCAR");
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,6 +260,7 @@ public class App extends javax.swing.JFrame {
             }
         });
 
+
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("X");
@@ -305,6 +306,11 @@ public class App extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 263, Short.MAX_VALUE)
         );
 
         pack();
@@ -372,6 +378,10 @@ public class App extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCombustibleActionPerformed
+        gestor.menuCombustibleActionPerformed();
+    }//GEN-LAST:event_menuCombustibleActionPerformed
 
     /**
      * @param args the command line arguments
