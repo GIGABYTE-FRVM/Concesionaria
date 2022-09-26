@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
+
 /**
  *
  * @author matya
@@ -20,6 +21,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
     Color colorBorderButton = new Color(204,204,204);
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
     
+
 
     public CombustibleABMC(GestorCombustibleABMC gestorPadre) {
         initComponents();
@@ -270,6 +272,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaDatos);
 
+
         lblTituloTabla.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         lblTituloTabla.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloTabla.setText("LISTADO DE COMBUSTIBLES");
@@ -297,6 +300,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 34, 650, 330));
         panelTablaDatos.getAccessibleContext().setAccessibleDescription("");
 
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -312,6 +316,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
 
         panelGeneral.getAccessibleContext().setAccessibleName("ABMC Combustible");
 
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -323,6 +328,15 @@ public class CombustibleABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        gestor.registrarCombustible();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
@@ -331,6 +345,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.WHITE);
         panelBtnRegistrar.setBorder(borderButtonDisabled);
+
 
        
     }//GEN-LAST:event_tablaDatosMouseClicked
@@ -345,6 +360,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+
         // TODO add your handling code here:
         gestor.modificarCombustible();
         tablaDatos.setModel(gestor.mostrarDatos());
@@ -355,6 +371,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+
         // TODO add your handling code here:
         gestor.eliminarCombustible();
         tablaDatos.setModel(gestor.mostrarDatos());
@@ -371,6 +388,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnCancelarMouseClicked
+
 
     /**
      * @param args the command line arguments

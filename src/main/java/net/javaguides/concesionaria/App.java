@@ -66,6 +66,7 @@ public class App extends javax.swing.JFrame {
         menuCombustible = new javax.swing.JMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setUndecorated(true);
@@ -136,6 +137,7 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem1);
+
 
         menuCombustible.setText("Combustible");
         menuCombustible.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +258,7 @@ public class App extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jCheckBoxMenuItem1);
+
 
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -397,6 +400,9 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
         gestor.menuModeloActionPerformed();
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    private void menuCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCombustibleActionPerformed
+        gestor.menuCombustibleActionPerformed();
+    }//GEN-LAST:event_menuCombustibleActionPerformed
 
 
     /**
