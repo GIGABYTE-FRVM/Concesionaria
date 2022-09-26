@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="personal")
+@Table(name="cliente")
 
-public class Personal {
+public class Cliente {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,22 +39,19 @@ public class Personal {
     @Column(name = "fechaNacimiento")
     private String fechaNacimiento;
     
-    @Column(name = "fechaIngresoEmpresa")
-    private String fechaIngresoEmpresa;
-    
-    @Column(name = "horaEntrada")
-    private String horaEntrada;
-    
-    @Column(name = "horaSalida")
-    private String horaSalida;
-    
-  
-    
-    
-    public Personal() {
+    @Column(name = "esCliente")
+    private boolean esCliente;
+        
+
+    public boolean isEsCliente() {
+        return esCliente;
     }
 
-    public Personal(String nombre, String apellido, String direccion, String documento, String email, String telefono, String fechaNacimiento, String fechaIngresoEmpresa, String horaEntrada, String horaSalida) {
+    public void setEsCliente(boolean esCliente) {
+        this.esCliente = esCliente;
+    }
+
+    public Cliente(String nombre, String apellido, String direccion, String documento, String email, String telefono, String fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -62,37 +59,9 @@ public class Personal {
         this.email = email;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
-        this.fechaIngresoEmpresa = fechaIngresoEmpresa;
-        this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        this.esCliente = false;
     }
 
-    public String getFechaIngresoEmpresa() {
-        return fechaIngresoEmpresa;
-    }
-
-    public void setFechaIngresoEmpresa(String fechaIngresoEmpresa) {
-        this.fechaIngresoEmpresa = fechaIngresoEmpresa;
-    }
-
-    public String getHoraEntrada() {
-        return horaEntrada;
-    }
-
-    public void setHoraEntrada(String horaEntrada) {
-        this.horaEntrada = horaEntrada;
-    }
-
-    public String getHoraSalida() {
-        return horaSalida;
-    }
-
-    public void setHoraSalida(String horaSalida) {
-        this.horaSalida = horaSalida;
-    }
-
-    
-    
     public int getId() {
         return id;
     }
@@ -156,6 +125,10 @@ public class Personal {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    
+    
+    
     
     @Override
     public String toString() {

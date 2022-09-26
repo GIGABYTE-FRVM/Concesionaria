@@ -18,7 +18,10 @@ public class GestorApp {
     GestorAutoABMC gestorAuto;
     GestorPaisABMC gestorPais;
     GestorPersonalABMC gestorPersonal;
-    GestorModeloABMC gestorModelo;
+    GestorModeloABMC gestorModelo;    
+    GestorClienteABMC gestorCliente;
+
+    
 
     
     public static void main(String[] args) {
@@ -43,6 +46,10 @@ public class GestorApp {
     public void menuPersonalActionPerformed() {
         gestorPersonal = new GestorPersonalABMC();
         gestorPersonal.mostrarPantalla();
+    }
+    public void menuClienteActionPerformed() {
+        gestorCliente = new GestorClienteABMC();
+        gestorCliente.mostrarPantalla();
     }
     
     public void menuMarcaActionPerformed() {
