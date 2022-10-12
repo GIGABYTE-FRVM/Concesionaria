@@ -613,18 +613,19 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaisMouseClicked
 
     private void btnRegistrarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLblMouseClicked
-        
-    }//GEN-LAST:event_btnRegistrarLblMouseClicked
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
-
-        // TODO add your handling code here:
-        gestor.eliminarMarca();
+        gestor.registrarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnRegistrarLblMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+
+        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnCancelarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarLblMouseClicked
@@ -665,6 +666,11 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void btnActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarLblMouseClicked
+        // TODO add your handling code here:
         gestor.modificarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
@@ -672,14 +678,16 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
         actualizarComboPaises();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void btnActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarLblMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarLblMouseClicked
 
     private void btnEliminarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarLblMouseClicked
         // TODO add your handling code here:
+        gestor.eliminarMarca();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+        panelBtnRegistrar.setBackground(colorBackgroundButton);
+        panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnEliminarLblMouseClicked
 
     /**

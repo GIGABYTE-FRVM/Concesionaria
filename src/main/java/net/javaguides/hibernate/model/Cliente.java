@@ -40,15 +40,9 @@ public class Cliente {
     private String fechaNacimiento;
     
     @Column(name = "esCliente")
-    private boolean esCliente;
-        
-
-    public boolean isEsCliente() {
-        return esCliente;
-    }
-
-    public void setEsCliente(boolean esCliente) {
-        this.esCliente = esCliente;
+    private int esCliente;
+    
+    public Cliente() {
     }
 
     public Cliente(String nombre, String apellido, String direccion, String documento, String email, String telefono, String fechaNacimiento) {
@@ -59,9 +53,9 @@ public class Cliente {
         this.email = email;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
-        this.esCliente = false;
+        this.esCliente=0;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -126,9 +120,13 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    
-    
-    
+    public int getEsCliente() {
+        return esCliente;
+    }
+
+    public void setEsCliente(int esCliente) {
+        this.esCliente = esCliente;
+    }
     
     @Override
     public String toString() {

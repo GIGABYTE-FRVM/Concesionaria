@@ -5,8 +5,11 @@
 package net.javaguides.hibernate.util;
 
 import java.util.List;
+import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.dao.MarcaDao;
+import net.javaguides.hibernate.dao.GestorHibernate;
+
 
 /**
  *
@@ -15,22 +18,35 @@ import net.javaguides.hibernate.dao.MarcaDao;
 public class app {
     public static void main(String[] args) {
         MarcaDao marcaDao = new MarcaDao();
-        Marca marca = new Marca("HIB2","Hibernate33","Logré conectar con hibernate2",null);
+        GestorHibernate gestorHib   = new GestorHibernate();
+
+
+        Cliente cliente = new Cliente("Gestor1", "Hibernate", "PDM", 
+                "String documento", "String email", "String telefono"
+                , "String fechaNacimiento");
         // REGISTRAR
-        marcaDao.saveMarca(marca);
-        
+        gestorHib.saveObject(cliente);
+        System.out.println("REGISTRÓ EL OBJETO");
+        //GET ALL
+        List<Cliente> clientes = gestorHib.getAllObjects("Cliente");
+        //List<Marca> marcas = marcaDao.getAllMarcas();
+        System.out.println(clientes);
+        clientes.forEach(cliente1 -> System.out.println(cliente1.getNombre()));
+        System.out.println("CONSULTÓ LOS OBJETOS");
         //ELIMINAR
-        marcaDao.deleteMarca(8);
-        
+        gestorHib.deleteObject("Cliente",4);
+        System.out.println("ELIMINÓ EL OBJETO");
         //MODIFICAR
-        marca.setNombre("HIBERNATE UPDATE");
-        marcaDao.updateMarca(marca);
-        
+        cliente.setNombre("GESTORHIBMOD");
+        gestorHib.updateObject(cliente);
+        System.out.println("MODIFICÓ EL OBJETO");
+
         //CONSULTAR
-        Marca marca2 = marcaDao.getMarcaById(7);
-        List<Marca> marcas = marcaDao.getAllMarcas();
-        //marcas.forEach(marca1 -> System.out.println(marca1.getNombre()));
-        
+        Cliente cliente2 = gestorHib.getObjectById("Cliente",3);
+        System.out.println(cliente2);
+        System.out.println("CONSULTÓ EL OBJETO");
+
+
 
     }
 }

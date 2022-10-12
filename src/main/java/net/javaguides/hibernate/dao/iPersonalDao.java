@@ -19,11 +19,6 @@ public interface iPersonalDao {
 
     Personal getPersonalById(int id);
 
-    //save Marca
-    //get All Marca
-    //get Marca By Id
-    //Update Marca
-    //Delete Marca
     void savePersonal(Personal personal);
 
     void updatePersonal(Personal personal);
