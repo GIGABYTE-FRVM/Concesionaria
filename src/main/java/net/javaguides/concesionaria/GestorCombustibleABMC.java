@@ -7,30 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.javaguides.hibernate.dao.CombustibleDao;
+import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Combustible;
 
 public class GestorCombustibleABMC {
 
     private List<Combustible> listaCombustible;
     CombustibleABMC pantallaCombustible;
-    CombustibleDao combustibleDao = new CombustibleDao();
+    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorAutoABMC gestorAuto;
 
    
     public GestorCombustibleABMC() {
         pantallaCombustible = new CombustibleABMC(this);
     }
-
-    GestorCombustibleABMC(GestorAutoABMC aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     public void registrarCombustible() {
         String nombre = pantallaCombustible.getTxtNombre();
         Combustible combustibleObject = new Combustible( nombre);
+                    notificarSubscriptores();
+
         //ps.setString(4, cboPais.getSelectedItem().toString());
         if (esValido(combustibleObject,0)) {
-            combustibleDao.saveCombustible(combustibleObject);
+            gestorHibernate.saveObject(combustibleObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -39,13 +38,15 @@ public class GestorCombustibleABMC {
     
     public void modificarCombustible() {
         Combustible combustibleObject;
-        combustibleObject = combustibleDao.getCombustibleById(Integer.parseInt(pantallaCombustible.getTxtId()));
+        combustibleObject = gestorHibernate.getObjectById("Combustible",Integer.parseInt(pantallaCombustible.getTxtId()));
         combustibleObject.setNombre(pantallaCombustible.getTxtNombre());
         
         
         if (esValido(combustibleObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            combustibleDao.updateCombustible(combustibleObject);
+            gestorHibernate.updateObject(combustibleObject);
+                        notificarSubscriptores();
+
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
@@ -53,7 +54,7 @@ public class GestorCombustibleABMC {
     };
     
     public void conocerCombustibles(){
-        listaCombustible = combustibleDao.getAllCombustible();
+        listaCombustible = gestorHibernate.getAllObjects("Combustible");
     }
     public List<Combustible> conocerListaCombustibles(){
         conocerCombustibles();
@@ -80,7 +81,9 @@ public class GestorCombustibleABMC {
         String id = pantallaCombustible.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este combustible?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            combustibleDao.deleteCombustible(Integer.parseInt(id));
+            gestorHibernate.deleteObject("Combustible",Integer.parseInt(id));
+                        notificarSubscriptores();
+
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -92,6 +95,15 @@ public class GestorCombustibleABMC {
     }
     public void mostrarPantalla(boolean visible) {
         pantallaCombustible.setVisible(visible);
+    }
+    public void notificarGestor(GestorAutoABMC gestorSubscrito){
+        gestorAuto = gestorSubscrito;
+    }
+
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorAuto == null)) {
+            gestorAuto.notificarActualizacionCombustible();
+        }
     }
     public boolean esValido(Combustible combustible, int tipo){
         if(combustible.getNombre().length() == 0){

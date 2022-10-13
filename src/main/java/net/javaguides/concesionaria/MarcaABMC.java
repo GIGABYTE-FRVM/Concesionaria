@@ -600,6 +600,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarVentanaMouseEntered
 
     private void btnCerrarVentanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarVentanaMouseClicked
+        gestor.notificarSubscriptores();
         dispose();
     }//GEN-LAST:event_btnCerrarVentanaMouseClicked
 

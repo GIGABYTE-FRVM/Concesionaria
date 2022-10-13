@@ -2,6 +2,8 @@ package net.javaguides.concesionaria;
 
 import java.awt.Color;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
@@ -774,7 +776,12 @@ public class AutoABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void btnABMCMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnABMCMarcaMouseClicked
-        gestor.mostrarMarcaABMC();
+        try {
+            gestor.mostrarMarcaABMC();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AutoABMC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Hola");
     }//GEN-LAST:event_btnABMCMarcaMouseClicked
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed

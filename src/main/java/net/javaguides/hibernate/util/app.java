@@ -7,7 +7,6 @@ package net.javaguides.hibernate.util;
 import java.util.List;
 import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.model.Marca;
-import net.javaguides.hibernate.dao.MarcaDao;
 import net.javaguides.hibernate.dao.GestorHibernate;
 
 
@@ -17,7 +16,6 @@ import net.javaguides.hibernate.dao.GestorHibernate;
  */
 public class app {
     public static void main(String[] args) {
-        MarcaDao marcaDao = new MarcaDao();
         GestorHibernate gestorHib   = new GestorHibernate();
 
 

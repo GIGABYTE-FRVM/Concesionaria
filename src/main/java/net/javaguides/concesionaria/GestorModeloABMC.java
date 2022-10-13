@@ -3,18 +3,20 @@ package net.javaguides.concesionaria;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.javaguides.hibernate.dao.ModeloDao;
+import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 
-public class GestorModeloABMC {
+public class GestorModeloABMC{
 
     List<Marca> listaMarcas;
     private List<Modelo> listaModelos;
     private List<Modelo> listaModelosMarca;
     ModeloABMC pantallaModelo;
-    ModeloDao modeloDao = new ModeloDao();
+    GestorHibernate gestorHibernate = new GestorHibernate();
     GestorMarcaABMC gestorMarca;
+    GestorAutoABMC gestorAuto;
+    Notificador notificador;
 
     public GestorModeloABMC() {
         gestorMarca = new GestorMarcaABMC();
@@ -29,9 +31,11 @@ public class GestorModeloABMC {
         Marca marca = listaMarcas.get(pantallaModelo.getMarca());
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         //ps.setString(4, cboModelo.getSelectedItem().toString());
-        if (esValido(modeloObject,0)) {
-            modeloDao.saveModelo(modeloObject);
+        if (esValido(modeloObject, 0)) {
+            gestorHibernate.saveObject(modeloObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            notificarSubscriptores();
+
             pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -40,15 +44,17 @@ public class GestorModeloABMC {
 
     public void modificarModelo() {
         Modelo modeloObject;
-        modeloObject = modeloDao.getModeloById(Integer.parseInt(pantallaModelo.getTxtId()));
+        modeloObject = gestorHibernate.getObjectById("Modelo", Integer.parseInt(pantallaModelo.getTxtId()));
         modeloObject.setNombre(pantallaModelo.getTxtNombre());
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
         modeloObject.setMarca(listaMarcas.get(pantallaModelo.getMarca()));
-        if (esValido(modeloObject,1)) {
+        if (esValido(modeloObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            modeloDao.updateModelo(modeloObject);
+            gestorHibernate.updateObject(modeloObject);
             mostrarDatos();
+            notificarSubscriptores();
+
             pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
@@ -58,7 +64,7 @@ public class GestorModeloABMC {
     ;
     
     public void conocerModelos() {
-        listaModelos = modeloDao.getAllModelos();
+        listaModelos = gestorHibernate.getAllObjects("Modelo");
     }
 
     public List<Modelo> conocerListModelos() {
@@ -106,8 +112,10 @@ public class GestorModeloABMC {
 
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este modelo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            modeloDao.deleteModelo(Integer.parseInt(id));
-            // si selecciona SI (primer boton) ejecuta la eliminacion
+            gestorHibernate.deleteObject("Modelo", Integer.parseInt(id));
+            // si selecciona SI (primer boton) ejecuta la eliminacion            
+            notificarSubscriptores();
+
         } else {
             //No hace nada
         }
@@ -119,12 +127,14 @@ public class GestorModeloABMC {
     }
 
     public List<Modelo> conocerModelosDeMarca(Marca marca) {
-        listaModelosMarca = modeloDao.getModelosOfMarca(marca);
+        listaModelosMarca = gestorHibernate.getAllObjects("Modelo WHERE id_marca=" + marca.getId());
         return listaModelosMarca;
     }
 
     void mostrarMarcaABMC() {
         gestorMarca.mostrarPantalla(true);
+        gestorMarca.notificarGestorModelo(this);
+        solicitarActualizacionMarcas();
     }
 
     void actualizarComboPaises() {
@@ -135,16 +145,42 @@ public class GestorModeloABMC {
         pantallaModelo.setVisible(visible);
     }
 
-    public boolean esValido(Modelo modelo,int tipo) {
+    public void notificarGestor(GestorAutoABMC gestorSubscrito) {
+        gestorAuto = gestorSubscrito;
+    }
+
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorAuto == null)) {
+            gestorAuto.notificarActualizacionModelo();
+        }
+    }
+
+    synchronized void solicitarActualizacionMarcas() {
+        notificador = new Notificador();
+        new Thread(() -> {
+            notificador.solicitar();
+        }).start();
+    }
+
+    synchronized void notificarActualizacionMarcas() {
+        new Thread(() -> {
+            notificador.entregar();
+            conocerMarcas();
+            pantallaModelo.actualizarComboMarcas();
+        }).start();
+    }
+
+    public boolean esValido(Modelo modelo, int tipo) {
         if ((modelo.getVersion().length() == 0) || (modelo.getNombre().length() == 0) || (modelo.getAñoLanzamiento().length() == 0)) {
             return false;
         }
-        if(tipo==0){
-        for (Modelo modeloOfList : listaModelos) {
-            if (modeloOfList.getNombre().equalsIgnoreCase(modelo.getNombre())) {
-                return false;
+        if (tipo == 0) {
+            for (Modelo modeloOfList : listaModelos) {
+                if (modeloOfList.getNombre().equalsIgnoreCase(modelo.getNombre())) {
+                    return false;
+                }
             }
-        }}
+        }
         return true;
     }
 }
