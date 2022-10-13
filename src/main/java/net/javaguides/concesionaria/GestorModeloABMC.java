@@ -21,8 +21,8 @@ public class GestorModeloABMC {
     Notificador notificador;
 
     public GestorModeloABMC() {
+        gestorHibernate = GestorHibernate.getInstancia();
         gestorMarca = new GestorMarcaABMC();
-        gestorHibernate = new GestorHibernate();
         pantallaModelo = new ModeloABMC(this);
         gestorMarca.mostrarPantalla(false);
     }

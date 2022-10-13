@@ -13,23 +13,22 @@ public class GestorMarcaABMC {
 
     List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    
+
     GestorPaisABMC gestorPais;
     GestorAutoABMC gestorAuto;
     GestorModeloABMC gestorModelo;
     GestorHibernate gestorHibernate;
-    
+
     MarcaABMC pantallaMarca;
     Notificador notificador;
 
-
     public GestorMarcaABMC() {
-        pantallaMarca = new MarcaABMC(this);
+        gestorHibernate = GestorHibernate.getInstancia();
         gestorPais = new GestorPaisABMC(this);
-        gestorHibernate = new GestorHibernate();
+        pantallaMarca = new MarcaABMC(this);
         pantallaMarca.setVisible(true);
     }
-    
+
     public void registrarMarca() {
         String codigo = pantallaMarca.getTxtCodigo();
         String nombre = pantallaMarca.getTxtNombre();
@@ -44,7 +43,7 @@ public class GestorMarcaABMC {
             JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE LA ENTRADA");
         }
     }
-    
+
     public void modificarMarca() {
         Marca marcaObject = pantallaMarca.getMarca();
         marcaObject.setNombre(pantallaMarca.getTxtNombre());
@@ -60,7 +59,7 @@ public class GestorMarcaABMC {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
     }
-    
+
     public void eliminarMarca() {
         Marca marcaObject = pantallaMarca.getMarca();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -72,6 +71,7 @@ public class GestorMarcaABMC {
             //No hace nada
         }
     }
+
     public DefaultTableModel mostrarDatos() {
         this.conocerMarcas();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -111,12 +111,12 @@ public class GestorMarcaABMC {
     public void conocerMarcas() {
         listaMarcas = gestorHibernate.getAllObjects("Marca");
     }
-    
+
     public List<Marca> conocerListaMarcas() {
         conocerMarcas();
         return listaMarcas;
     }
-    
+
     synchronized void solicitarActualizacionPaises() {
         notificador = new Notificador();
         new Thread(() -> {
@@ -131,25 +131,24 @@ public class GestorMarcaABMC {
             pantallaMarca.actualizarComboPaises();
         }).start();
     }
-    public synchronized void notificarSubscriptores(){
-        if (!(gestorAuto == null))
-            {        
-                gestorAuto.notificarActualizacionMarcas();
-            }
-        if (!(gestorModelo == null))
-            {        
-                gestorModelo.notificarActualizacionMarcas();
-            }
+
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorAuto == null)) {
+            gestorAuto.notificarActualizacionMarcas();
+        }
+        if (!(gestorModelo == null)) {
+            gestorModelo.notificarActualizacionMarcas();
+        }
     }
 
-    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito){
+    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito) {
         gestorAuto = gestorSubscrito;
     }
-    
-    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito){
+
+    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito) {
         gestorModelo = gestorSubscrito;
     }
-    
+
     public boolean esValido(Marca marca, int tipo) {
         if ((marca.getCodigo().length() == 0) || (marca.getNombre().length() == 0) || (marca.getDescripcion().length() == 0)) {
             return false;
@@ -163,7 +162,7 @@ public class GestorMarcaABMC {
         }
         return true;
     }
-    
+
     void actualizarComboPaises() {
         pantallaMarca.actualizarComboPaises();
     }
@@ -177,7 +176,5 @@ public class GestorMarcaABMC {
     public void mostrarPantalla(boolean visible) {
         pantallaMarca.setVisible(visible);
     }
-
-
 
 }

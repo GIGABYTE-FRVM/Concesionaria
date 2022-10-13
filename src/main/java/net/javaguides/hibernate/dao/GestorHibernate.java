@@ -14,13 +14,27 @@ import org.hibernate.Transaction;
  * @author matya
  */
 public class GestorHibernate {
+
+    private static GestorHibernate instancia;
+
+    private GestorHibernate(){
+        System.out.println("GestorHibernate Creado");
+    }
+    
+    public static GestorHibernate getInstancia() {
+        if (!(instancia instanceof GestorHibernate)) {
+            instancia = new GestorHibernate();
+        }
+        return instancia;
+    }
+
     public <T> void saveObject(T object) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            
+
             session.persist(object);
-            
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -28,13 +42,14 @@ public class GestorHibernate {
             }
         }
     }
+
     public <T> void updateObject(Object object) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
             session.saveOrUpdate(object);
-            
+
             transaction.commit();
 
         } catch (Exception e) {
@@ -43,6 +58,7 @@ public class GestorHibernate {
             }
         }
     }
+
     public <T> T getObjectById(String query, int id) {
         Transaction transaction = null;
         List<T> objects = null;
@@ -50,7 +66,7 @@ public class GestorHibernate {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            objects = session.createQuery("from "+query+" where id = "+id).list();
+            objects = session.createQuery("from " + query + " where id = " + id).list();
             object = objects.get(0);
             transaction.commit();
         } catch (Exception e) {
@@ -60,6 +76,7 @@ public class GestorHibernate {
         }
         return object;
     }
+
     public <T> List<T> getAllObjects(String query) {
         Transaction transaction = null;
         List<T> objects = null;
@@ -69,7 +86,6 @@ public class GestorHibernate {
             objects = session.createQuery("from " + query).list();
 
             transaction.commit();
-                
 
         } catch (Exception e) {
             if (transaction != null) {
@@ -79,14 +95,14 @@ public class GestorHibernate {
         return objects;
     }
 
-    public <T> void deleteObject(String query,int id) {
+    public <T> void deleteObject(String query, int id) {
         Transaction transaction = null;
         List<T> objects = null;
         T object = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            objects = session.createQuery("from "+query+" where id = "+id).list();
+            objects = session.createQuery("from " + query + " where id = " + id).list();
             object = objects.get(0);
             session.delete(object);
             transaction.commit();
@@ -97,6 +113,7 @@ public class GestorHibernate {
             }
         }
     }
+
     public <T> void deleteObject(T object) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -112,4 +129,3 @@ public class GestorHibernate {
         }
     }
 }
-

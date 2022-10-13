@@ -14,12 +14,13 @@ public class GestorCombustibleABMC {
 
     private List<Combustible> listaCombustible;
 
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorHibernate gestorHibernate;
     GestorAutoABMC gestorAuto;
 
     CombustibleABMC pantallaCombustible;
 
     public GestorCombustibleABMC() {
+        gestorHibernate = GestorHibernate.getInstancia();
         pantallaCombustible = new CombustibleABMC(this);
     }
 

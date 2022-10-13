@@ -10,11 +10,12 @@ public class GestorPersonalABMC {
 
     private List<Personal> listaPersonales;
 
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorHibernate gestorHibernate;
 
     PersonalABMC pantallaPersonal;
 
     public GestorPersonalABMC() {
+        gestorHibernate = GestorHibernate.getInstancia();
         pantallaPersonal = new PersonalABMC(this);
     }
 

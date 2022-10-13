@@ -29,7 +29,7 @@ public class GestorAutoABMC {
     Notificador notificador;
 
     public GestorAutoABMC() {
-        gestorHibernate = new GestorHibernate();
+        gestorHibernate = GestorHibernate.getInstancia();
         gestorCombustible = new GestorCombustibleABMC();
         gestorModelo = new GestorModeloABMC();
         gestorMarca = new GestorMarcaABMC();

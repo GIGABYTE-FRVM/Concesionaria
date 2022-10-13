@@ -19,7 +19,7 @@ public class GestorPaisABMC {
     PaisABMC pantallaPais;
 
     public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
-        gestorHibernate = new GestorHibernate();
+        gestorHibernate = GestorHibernate.getInstancia();
         pantallaPais = new PaisABMC(this);
     }
 
