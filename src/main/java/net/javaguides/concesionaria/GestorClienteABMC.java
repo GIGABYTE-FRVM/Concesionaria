@@ -10,11 +10,12 @@ public class GestorClienteABMC {
 
     private List<Cliente> listaClientes;
 
-    GestorHibernate gestorHib = new GestorHibernate();
+    GestorHibernate gestorHibernate;
 
     ClienteABMC pantallaCliente;
 
     public GestorClienteABMC() {
+        gestorHibernate = GestorHibernate.getInstancia();
         pantallaCliente = new ClienteABMC(this);
     }
 
@@ -28,7 +29,7 @@ public class GestorClienteABMC {
         String fechaNacimiento = pantallaCliente.getTxtFechaNacimiento();
         Cliente clienteObject = new Cliente(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento);
         if (esValido(clienteObject, 0)) {
-            gestorHib.saveObject(clienteObject);
+            gestorHibernate.saveObject(clienteObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaCliente.limpiarEntradas();
         } else {
@@ -38,7 +39,7 @@ public class GestorClienteABMC {
 
     public void modificarCliente() {
         Cliente clienteObject;
-        clienteObject = gestorHib.getObjectById("Cliente", Integer.parseInt(pantallaCliente.getTxtId()));
+        clienteObject = gestorHibernate.getObjectById("Cliente", Integer.parseInt(pantallaCliente.getTxtId()));
         clienteObject.setNombre(pantallaCliente.getTxtNombre());
         clienteObject.setApellido(pantallaCliente.getTxtApellido());
         clienteObject.setDireccion(pantallaCliente.getTxtDireccion());
@@ -48,7 +49,7 @@ public class GestorClienteABMC {
         clienteObject.setFechaNacimiento(pantallaCliente.getTxtFechaNacimiento());
         if (esValido(clienteObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            gestorHib.updateObject(clienteObject);
+            gestorHibernate.updateObject(clienteObject);
             mostrarDatos();
             pantallaCliente.limpiarEntradas();
         } else {
@@ -60,7 +61,7 @@ public class GestorClienteABMC {
         String id = pantallaCliente.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHib.deleteObject("Cliente", Integer.parseInt(id));
+            gestorHibernate.deleteObject("Cliente", Integer.parseInt(id));
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -100,7 +101,7 @@ public class GestorClienteABMC {
     }
 
     public void conocerClientes() {
-        listaClientes = gestorHib.getAllObjects("Cliente");
+        listaClientes = gestorHibernate.getAllObjects("Cliente");
     }
 
     public List<Cliente> conocerListclientes() {
