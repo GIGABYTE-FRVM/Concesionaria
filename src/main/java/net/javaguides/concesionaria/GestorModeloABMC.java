@@ -133,7 +133,7 @@ public class GestorModeloABMC{
 
     void mostrarMarcaABMC() {
         gestorMarca.mostrarPantalla(true);
-        gestorMarca.notificarGestorModelo(this);
+        gestorMarca.suscribirGestorModelo(this);
         solicitarActualizacionMarcas();
     }
 

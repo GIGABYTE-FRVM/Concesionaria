@@ -9,31 +9,16 @@ package net.javaguides.concesionaria;
  * @author matya
  */
 public class Notificador {
-    
-    private boolean disponible;
 
-    public synchronized void solicitar(){
-        while(disponible){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    public synchronized void solicitar() {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            System.out.println(e);
         }
-        this.disponible = true;
-        notify();
     }
 
-    public synchronized void entregar(){
-        while(!disponible){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        this.disponible = false;
+    public synchronized void entregar() {
         notify();
     }
 }
-

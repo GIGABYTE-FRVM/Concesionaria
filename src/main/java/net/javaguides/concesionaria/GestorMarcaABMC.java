@@ -13,38 +13,38 @@ public class GestorMarcaABMC {
 
     List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    GestorPaisABMC gestorPais = new GestorPaisABMC(this);
+    
+    GestorPaisABMC gestorPais;
     GestorAutoABMC gestorAuto;
     GestorModeloABMC gestorModelo;
+    GestorHibernate gestorHibernate;
+    
     MarcaABMC pantallaMarca;
-    GestorHibernate gestorHibernate = new GestorHibernate();
     Notificador notificador;
 
 
     public GestorMarcaABMC() {
         pantallaMarca = new MarcaABMC(this);
+        gestorPais = new GestorPaisABMC(this);
+        gestorHibernate = new GestorHibernate();
         pantallaMarca.setVisible(true);
     }
     
-    public void notificarGestorAuto(GestorAutoABMC gestorSubscrito){
-        gestorAuto = gestorSubscrito;
-    }
-    public void notificarGestorModelo(GestorModeloABMC gestorSubscrito){
-        gestorModelo = gestorSubscrito;
-    }
-
-    public List<Marca> conocerListMarcas() {
-        conocerMarcas();
-        return listaMarcas;
-    }
-
-    public void conocerPaises() {
-        if (!(listaPaises == null)) {
-            listaPaises.clear();
+    public void registrarMarca() {
+        String codigo = pantallaMarca.getTxtCodigo();
+        String nombre = pantallaMarca.getTxtNombre();
+        String descripcion = pantallaMarca.getTxtDescripcion();
+        Pais pais = pantallaMarca.getPais();
+        Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
+        if (esValido(marcaObject, 0)) {
+            gestorHibernate.saveObject(marcaObject);
+            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaMarca.limpiarEntradas();
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE LA ENTRADA");
         }
-        listaPaises = gestorPais.conocerListPaises();
     }
-
+    
     public void modificarMarca() {
         Marca marcaObject = pantallaMarca.getMarca();
         marcaObject.setNombre(pantallaMarca.getTxtNombre());
@@ -54,17 +54,24 @@ public class GestorMarcaABMC {
         if (esValido(marcaObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(marcaObject);
-            mostrarDatos();
             pantallaMarca.limpiarEntradas();
+            mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
     }
-
-    public void conocerMarcas() {
-        listaMarcas = gestorHibernate.getAllObjects("Marca");
+    
+    public void eliminarMarca() {
+        Marca marcaObject = pantallaMarca.getMarca();
+        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (pantallaConfirmarEliminacion == 0) {
+            gestorHibernate.deleteObject(marcaObject);
+            JOptionPane.showMessageDialog(null, "MARCA ELIMINADA CORRECTAMENTE");
+            // si selecciona SI (primer boton) ejecuta la eliminacion
+        } else {
+            //No hace nada
+        }
     }
-
     public DefaultTableModel mostrarDatos() {
         this.conocerMarcas();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -89,32 +96,33 @@ public class GestorMarcaABMC {
         return modelo;
     }
 
-    public void registrarMarca() {
-        String codigo = pantallaMarca.getTxtCodigo();
-        String nombre = pantallaMarca.getTxtNombre();
-        String descripcion = pantallaMarca.getTxtDescripcion();
-        Pais pais = pantallaMarca.getPais();
-        Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
-        if (esValido(marcaObject, 0)) {
-            gestorHibernate.saveObject(marcaObject);
-            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-            pantallaMarca.limpiarEntradas();
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE LA ENTRADA");
-        }
-
+    public List<Marca> conocerListMarcas() {
+        conocerMarcas();
+        return listaMarcas;
     }
 
-    public void eliminarMarca() {
-        Marca marcaObject = pantallaMarca.getMarca();
-        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject(marcaObject);
-            // si selecciona SI (primer boton) ejecuta la eliminacion
-        } else {
-            //No hace nada
+    public void conocerPaises() {
+        if (!(listaPaises == null)) {
+            listaPaises.clear();
         }
+        listaPaises = gestorPais.conocerListPaises();
     }
+
+    public void conocerMarcas() {
+        listaMarcas = gestorHibernate.getAllObjects("Marca");
+    }
+
+    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito){
+        gestorAuto = gestorSubscrito;
+    }
+    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito){
+        gestorModelo = gestorSubscrito;
+    }
+    
+
+    
+
+    
 
     void mostrarPaisABMC() {
         gestorPais.mostrarPantalla();
