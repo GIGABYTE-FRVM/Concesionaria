@@ -781,7 +781,6 @@ public class AutoABMC extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(AutoABMC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Hola");
     }//GEN-LAST:event_btnABMCMarcaMouseClicked
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed

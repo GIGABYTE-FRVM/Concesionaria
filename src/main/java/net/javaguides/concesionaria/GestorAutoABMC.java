@@ -22,9 +22,10 @@ public class GestorAutoABMC {
     GestorMarcaABMC gestorMarca;
     GestorModeloABMC gestorModelo;
     GestorCombustibleABMC gestorCombustible;
+    GestorHibernate gestorHibernate;
+
 
     AutoABMC pantallaAuto;
-    GestorHibernate gestorHibernate;
     Notificador notificador;
 
     public GestorAutoABMC() {
@@ -185,7 +186,7 @@ public class GestorAutoABMC {
 
     public void mostrarMarcaABMC() throws InterruptedException {
         gestorMarca.mostrarPantalla(true);
-        gestorMarca.notificarGestorAuto(this);
+        gestorMarca.suscribirGestorAuto(this);
         solicitarActualizacion();
     }
 
