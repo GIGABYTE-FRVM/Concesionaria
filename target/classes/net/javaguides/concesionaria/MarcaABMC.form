@@ -119,19 +119,21 @@
                                       <Component id="panelBtnPais" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="panelBtnActualizar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="panelBtnEliminar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="panelBtnCancelar" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="panelBtnActualizar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="panelBtnEliminar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="panelBtnCancelar" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblPais" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblPais" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="66" pref="66" max="-2" attributes="0"/>
@@ -181,11 +183,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panelBtnActualizar" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelBtnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="panelBtnActualizar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelBtnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="panelBtnCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>

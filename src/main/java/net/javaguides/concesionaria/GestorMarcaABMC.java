@@ -46,11 +46,11 @@ public class GestorMarcaABMC {
     }
 
     public void modificarMarca() {
-        Marca marcaObject = gestorHibernate.getObjectById("Marca",Integer.parseInt(pantallaMarca.getTxtId()));
+        Marca marcaObject = pantallaMarca.getMarca();
         marcaObject.setNombre(pantallaMarca.getTxtNombre());
         marcaObject.setCodigo(pantallaMarca.getTxtCodigo());
         marcaObject.setDescripcion(pantallaMarca.getTxtDescripcion());
-        marcaObject.setPais(listaPaises.get(pantallaMarca.getPais()));
+        marcaObject.setPais(pantallaMarca.getPais());
         if (esValido(marcaObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(marcaObject);
@@ -73,10 +73,10 @@ public class GestorMarcaABMC {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Pais");
-        String data[] = new String[5];
+        Object data[] = new Object[5];
         try {
             for (Marca marca : listaMarcas) {
-                data[0] = Integer.toString((int) marca.getId());
+                data[0] = marca;
                 data[1] = marca.getCodigo();
                 data[2] = marca.getNombre();
                 data[3] = marca.getDescripcion();
@@ -93,9 +93,8 @@ public class GestorMarcaABMC {
         String codigo = pantallaMarca.getTxtCodigo();
         String nombre = pantallaMarca.getTxtNombre();
         String descripcion = pantallaMarca.getTxtDescripcion();
-        Pais pais = listaPaises.get(pantallaMarca.getPais());
+        Pais pais = pantallaMarca.getPais();
         Marca marcaObject = new Marca(codigo, nombre, descripcion, pais);
-        //ps.setString(4, cboPais.getSelectedItem().toString());
         if (esValido(marcaObject, 0)) {
             gestorHibernate.saveObject(marcaObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
@@ -107,10 +106,10 @@ public class GestorMarcaABMC {
     }
 
     public void eliminarMarca() {
-        String id = pantallaMarca.getTxtId();
+        Marca marcaObject = pantallaMarca.getMarca();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Marca",Integer.parseInt(id));
+            gestorHibernate.deleteObject(marcaObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
