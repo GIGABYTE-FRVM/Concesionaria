@@ -12,7 +12,7 @@ import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Combustible;
 
-public class GestorAutoABMC{
+public class GestorAutoABMC {
 
     List<Marca> listaMarcas;
     List<Modelo> listaModelos;
@@ -24,48 +24,34 @@ public class GestorAutoABMC{
     GestorCombustibleABMC gestorCombustible;
 
     AutoABMC pantallaAuto;
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorHibernate gestorHibernate;
     Notificador notificador;
 
     public GestorAutoABMC() {
+        gestorHibernate = new GestorHibernate();
         gestorCombustible = new GestorCombustibleABMC();
         gestorModelo = new GestorModeloABMC();
         gestorMarca = new GestorMarcaABMC();
+        pantallaAuto = new AutoABMC(this);
         gestorMarca.mostrarPantalla(false);
         gestorModelo.mostrarPantalla(false);
         gestorCombustible.mostrarPantalla(false);
-        pantallaAuto = new AutoABMC(this);
     }
 
-    public void conocerMarcas() {
-        if (!(listaMarcas == null)) {
-            listaMarcas.clear();
+    public void registrarAuto() {
+        Auto autoObject = new Auto();
+        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
+        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
+        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
+        autoObject.setColor(pantallaAuto.getColor());
+        if (esValido(autoObject)) {
+            gestorHibernate.saveObject(autoObject);
+            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+        } else {
+            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
-        listaMarcas = gestorMarca.conocerListaMarcas();
-    }
-
-    public void conocerModelos() {
-        if (!(listaModelos == null)) {
-            listaModelos.clear();
-        }
-        try {
-            if (!(pantallaAuto == null)) {
-                listaModelos = gestorModelo.conocerModelosDeMarca(listaMarcas.get(pantallaAuto.getMarca()));
-            } else {
-                listaModelos = gestorModelo.conocerListaModelos();
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Agarre la exe");
-        }
-    }
-
-    public void conocerCombustibles() {
-        if (!(listaCombustibles == null)) {
-            listaCombustibles.clear();
-        }
-        listaCombustibles = gestorCombustible.conocerListaCombustibles();
     }
 
     public void modificarAuto() {
@@ -76,8 +62,7 @@ public class GestorAutoABMC{
         autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
         autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
         autoObject.setColor(pantallaAuto.getColor());
-
-        if (true) {
+        if (esValido(autoObject)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(autoObject);
             mostrarDatos();
@@ -86,8 +71,16 @@ public class GestorAutoABMC{
         }
     }
 
-    public void conocerAutos() {
-        listaAutos = gestorHibernate.getAllObjects("Auto");
+    public void eliminarAuto() {
+        String id = pantallaAuto.getTxtId();
+        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta auto?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (pantallaConfirmarEliminacion == 0) {
+            gestorHibernate.deleteObject("Auto", Integer.parseInt(id));
+            JOptionPane.showMessageDialog(null, "AUTO ELIMINADO CORRECTAMENTE");
+            // si selecciona SI (primer boton) ejecuta la eliminacion
+        } else {
+            //No hace nada
+        }
     }
 
     public DefaultTableModel mostrarDatos() {
@@ -114,44 +107,42 @@ public class GestorAutoABMC{
                 modelo.addRow(data);
             }
         } catch (Exception e) {
-            System.out.println("Error al mostrar datos" + e);
+            System.out.println("Error al mostrar datos: " + e);
         }
         return modelo;
     }
 
-    public void registrarAuto() {
-        Auto autoObject = new Auto();
-        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
-        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
-        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
-        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
-        autoObject.setColor(pantallaAuto.getColor());
-        if ((pantallaAuto.getTxtPrecio().length() != 0) && (pantallaAuto.getTxtAñoFabricacion().length() != 0)) {
-            gestorHibernate.saveObject(autoObject);
-            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-        } else {
-            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
+    public void conocerMarcas() {
+        if (!(listaMarcas == null)) {
+            listaMarcas.clear();
         }
-
+        listaMarcas = gestorMarca.conocerListaMarcas();
     }
 
-    public void eliminarAuto() {
-        String id = pantallaAuto.getTxtId();
-        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta auto?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Auto", Integer.parseInt(id));
-            // si selecciona SI (primer boton) ejecuta la eliminacion
-        } else {
-            //No hace nada
+    public void conocerModelos() {
+        if (!(listaModelos == null)) {
+            listaModelos.clear();
+        }
+        try {
+            if (!(pantallaAuto == null)) {
+                listaModelos = gestorModelo.conocerModelosDeMarca(listaMarcas.get(pantallaAuto.getMarca()));
+            } else {
+                listaModelos = gestorModelo.conocerListaModelos();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
-    public void mostrarMarcaABMC() throws InterruptedException {
-        gestorMarca.mostrarPantalla(true);
-        gestorMarca.notificarGestorAuto(this);
-        solicitarActualizacion();
+    public void conocerCombustibles() {
+        if (!(listaCombustibles == null)) {
+            listaCombustibles.clear();
+        }
+        listaCombustibles = gestorCombustible.conocerListaCombustibles();
+    }
 
+    public void conocerAutos() {
+        listaAutos = gestorHibernate.getAllObjects("Auto");
     }
 
     synchronized void solicitarActualizacion() {
@@ -168,6 +159,7 @@ public class GestorAutoABMC{
             pantallaAuto.actualizarComboMarca();
         }).start();
     }
+
     synchronized void notificarActualizacionModelo() {
         new Thread(() -> {
             notificador.entregar();
@@ -175,12 +167,26 @@ public class GestorAutoABMC{
             pantallaAuto.actualizarComboModelo();
         }).start();
     }
+
     synchronized void notificarActualizacionCombustible() {
         new Thread(() -> {
             notificador.entregar();
             conocerCombustibles();
             pantallaAuto.actualizarComboCombustible();
         }).start();
+    }
+
+    public boolean esValido(Auto auto) {
+        if ((auto.getPrecio() <= 0) || (auto.getAñoFabricacion() <= 0)) {
+            return false;
+        }
+        return true;
+    }
+
+    public void mostrarMarcaABMC() throws InterruptedException {
+        gestorMarca.mostrarPantalla(true);
+        gestorMarca.notificarGestorAuto(this);
+        solicitarActualizacion();
     }
 
     void mostrarModeloABMC() {
