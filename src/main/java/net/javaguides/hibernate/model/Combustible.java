@@ -58,7 +58,7 @@ public class Combustible {
     
     @Override
     public String toString() {
-        return "Combustible [id=" + id + ", nombre=" + nombre + "]";
+        return nombre;
     } 
 }
 

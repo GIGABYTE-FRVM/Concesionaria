@@ -83,9 +83,9 @@ public class GestorMarcaABMC {
         Object data[] = new Object[5];
         try {
             for (Marca marca : listaMarcas) {
-                data[0] = marca;
+                data[0] = marca.getId();
                 data[1] = marca.getCodigo();
-                data[2] = marca.getNombre();
+                data[2] = marca;
                 data[3] = marca.getDescripcion();
                 data[4] = marca.getPais().getNombre();
                 modelo.addRow(data);

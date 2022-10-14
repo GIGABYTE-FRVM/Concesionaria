@@ -111,4 +111,9 @@ public class Auto {
     public Auto() {
     }
 
+    @Override
+    public String toString() {
+        return Integer.toString(id);
+    }
+    
 }
