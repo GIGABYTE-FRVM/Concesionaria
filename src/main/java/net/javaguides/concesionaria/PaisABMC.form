@@ -98,11 +98,9 @@
                       <Component id="separadorNombre" min="-2" pref="3" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelBtnEliminar" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelBtnCancelar" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="panelBtnRegistrar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelBtnEliminar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelBtnCancelar" min="-2" max="-2" attributes="0"/>
                           <Component id="panelBtnActualizar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="35" max="32767" attributes="0"/>

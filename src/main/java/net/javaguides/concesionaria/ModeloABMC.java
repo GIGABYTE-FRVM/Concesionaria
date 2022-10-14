@@ -598,6 +598,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMarcaMouseClicked
 
     private void lblBtnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCerrarMouseClicked
+        gestor.notificarSubscriptores();
         dispose();
     }//GEN-LAST:event_lblBtnCerrarMouseClicked
 

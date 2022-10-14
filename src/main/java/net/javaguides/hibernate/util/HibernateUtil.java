@@ -2,7 +2,6 @@ package net.javaguides.hibernate.util;
 
 import java.util.Properties;
 import net.javaguides.hibernate.model.Auto;
-import net.javaguides.hibernate.model.Cliente;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -14,6 +13,10 @@ import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Personal;
+import net.javaguides.hibernate.model.Cliente;
+
+
+
 
 import org.hibernate.HibernateException;
 
@@ -38,9 +41,9 @@ public class HibernateUtil {
                 settings.put(Environment.SHOW_SQL, "true");
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-
+                settings.put(Environment.HBM2DDL_AUTO, "update");
                 configuration.setProperties(settings);
-
+                
                 configuration.addAnnotatedClass(Marca.class);
                 configuration.addAnnotatedClass(Pais.class);
                 configuration.addAnnotatedClass(Personal.class);

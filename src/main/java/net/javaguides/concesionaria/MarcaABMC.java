@@ -1,11 +1,13 @@
 package net.javaguides.concesionaria;
 
 import java.awt.Color;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Pais;
 
 
@@ -142,7 +144,6 @@ public class MarcaABMC extends javax.swing.JFrame {
 
         cboPais.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboPais.setForeground(new java.awt.Color(51, 51, 51));
-        cboPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboPais.setBorder(null);
         cboPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,18 +336,19 @@ public class MarcaABMC extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(panelBtnPais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
-                                .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblPais)
-                                .addComponent(lblDescripcion)
-                                .addComponent(lblTitulo)))
+                                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
+                                        .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblPais)
+                                    .addComponent(lblDescripcion)
+                                    .addComponent(lblTitulo))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(66, 66, 66))))
         );
         panelDatosRegistradosLayout.setVerticalGroup(
@@ -386,10 +388,9 @@ public class MarcaABMC extends javax.swing.JFrame {
                     .addComponent(cboPais, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
         );
@@ -551,23 +552,17 @@ public class MarcaABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtCodigo.setText(this.tablaDatos.getValueAt(fila, 1).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 2).toString());
-        this.txtDescripcion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
-        for (int i = 0; i < cboPais.getItemCount(); i++) {
-            this.cboPais.setSelectedIndex(i);
-            if (this.cboPais.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString())) {
-                break;
-            }
-        }
-
+        Marca marcaObject = ((Marca)this.tablaDatos.getValueAt(fila, 0));
+        this.txtId.setText(marcaObject.toString());
+        this.txtCodigo.setText(marcaObject.getCodigo());
+        this.txtNombre.setText(marcaObject.getNombre());
+        this.txtDescripcion.setText(marcaObject.getDescripcion());
+        this.cboPais.getModel().setSelectedItem(marcaObject.getPais());
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.white);
         Border borderButtonRegistrar = new EtchedBorder(EtchedBorder.LOWERED);
         panelBtnRegistrar.setBorder(borderButtonRegistrar);
 
-        //this.cboPais
     }//GEN-LAST:event_tablaDatosMouseClicked
 
     private void barraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMousePressed
@@ -600,6 +595,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarVentanaMouseEntered
 
     private void btnCerrarVentanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarVentanaMouseClicked
+        gestor.notificarSubscriptores();
         dispose();
     }//GEN-LAST:event_btnCerrarVentanaMouseClicked
 
@@ -613,18 +609,19 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaisMouseClicked
 
     private void btnRegistrarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLblMouseClicked
-        
-    }//GEN-LAST:event_btnRegistrarLblMouseClicked
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
-
-        // TODO add your handling code here:
-        gestor.eliminarMarca();
+        gestor.registrarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        actualizarComboPaises();
+    }//GEN-LAST:event_btnRegistrarLblMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+
+        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnCancelarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarLblMouseClicked
@@ -665,6 +662,11 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void btnActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarLblMouseClicked
+        // TODO add your handling code here:
         gestor.modificarMarca();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
@@ -672,14 +674,16 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
         actualizarComboPaises();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void btnActualizarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarLblMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarLblMouseClicked
 
     private void btnEliminarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarLblMouseClicked
         // TODO add your handling code here:
+        gestor.eliminarMarca();
+        tablaDatos.setModel(gestor.mostrarDatos());
+        limpiarEntradas();
+        habilitarBotones(true);
+        panelBtnRegistrar.setBackground(colorBackgroundButton);
+        panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnEliminarLblMouseClicked
 
     /**
@@ -701,7 +705,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     private javax.swing.JLabel btnEliminarLbl;
     private javax.swing.JLabel btnPais;
     private javax.swing.JLabel btnRegistrarLbl;
-    private javax.swing.JComboBox<String> cboPais;
+    private javax.swing.JComboBox<Pais> cboPais;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -749,13 +753,15 @@ public class MarcaABMC extends javax.swing.JFrame {
     public String getTxtId() {
         return txtId.getText();
     }
-
+    public Marca getMarca() {
+        return (Marca)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
+    }
     public String getTxtNombre() {
         return txtNombre.getText();
     }
 
-    public int getPais() {
-        return cboPais.getSelectedIndex();
+    public Pais getPais() {
+        return (Pais)cboPais.getSelectedItem();
     }
 
     private void habilitarBotones(boolean estado) {
@@ -769,7 +775,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         gestor.conocerPaises();
         
         for(Pais p : gestor.listaPaises){
-            cboPais.addItem(p.getNombre());
+            cboPais.addItem(p);
         }
         
     }

@@ -5,29 +5,21 @@
 package net.javaguides.hibernate.dao;
 
 import java.util.List;
+import net.javaguides.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import net.javaguides.hibernate.model.Pais;
-import net.javaguides.hibernate.util.HibernateUtil;
 
 /**
  *
  * @author matya
  */
-public class PaisDao implements iPaisDao {
-
-    //save Marca
-    //get All Marca
-    //get Marca By Id
-    //Update Marca
-    //Delete Marca
-    @Override
-    public void savePais(Pais pais) {
+public class GestorHibernate {
+    public <T> void saveObject(T object) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             
-            session.persist(pais);
+            session.persist(object);
             
             transaction.commit();
         } catch (Exception e) {
@@ -35,13 +27,13 @@ public class PaisDao implements iPaisDao {
                 transaction.rollback();
             }
         }
-    }@Override
-    public void updatePais(Pais pais) {
+    }
+    public <T> void updateObject(Object object) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.saveOrUpdate(pais);
+            session.saveOrUpdate(object);
             
             transaction.commit();
 
@@ -51,47 +43,66 @@ public class PaisDao implements iPaisDao {
             }
         }
     }
-    @Override
-    public Pais getPaisById(int id) {
+    public <T> T getObjectById(String query, int id) {
         Transaction transaction = null;
-        Pais pais = null;
+        List<T> objects = null;
+        T object = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            pais = session.get(Pais.class,id);
-
+            objects = session.createQuery("from "+query+" where id = "+id).list();
+            object = objects.get(0);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        return pais;
+        return object;
     }
-    @Override
-    public List<Pais> getAllPais() {
+    public <T> List<T> getAllObjects(String query) {
         Transaction transaction = null;
-        List<Pais> paises = null;
+        List<T> objects = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            paises = session.createQuery("from Pais").list();
+
+            objects = session.createQuery("from " + query).list();
+
             transaction.commit();
+                
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        return paises;
+        return objects;
     }
-    @Override
-    public void deletePais(int id) {
+
+    public <T> void deleteObject(String query,int id) {
         Transaction transaction = null;
-        Pais pais = null;
+        List<T> objects = null;
+        T object = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            pais = session.get(Pais.class,id);
-            session.delete(pais);
+            objects = session.createQuery("from "+query+" where id = "+id).list();
+            object = objects.get(0);
+            session.delete(object);
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+    public <T> void deleteObject(T object) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            session.delete(object);
             transaction.commit();
 
         } catch (Exception e) {
@@ -101,3 +112,4 @@ public class PaisDao implements iPaisDao {
         }
     }
 }
+

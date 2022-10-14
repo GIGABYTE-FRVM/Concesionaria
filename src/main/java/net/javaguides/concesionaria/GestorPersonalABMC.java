@@ -3,14 +3,14 @@ package net.javaguides.concesionaria;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.javaguides.hibernate.dao.PersonalDao;
+import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Personal;
 
 public class GestorPersonalABMC {
 
     private List<Personal> listaPersonales;
     PersonalABMC pantallaPersonal;
-    PersonalDao personalDao = new PersonalDao();
+    GestorHibernate gestorHibernate = new GestorHibernate();
 
     public GestorPersonalABMC() {
         pantallaPersonal = new PersonalABMC(this);
@@ -31,7 +31,7 @@ public class GestorPersonalABMC {
         Personal personalObject = new Personal(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento, fechaIngresoEmpresa, horaEntrada, horaSalida);
         //ps.setString(4, cboPais.getSelectedItem().toString());
         if (esValido(personalObject,0)) {
-            personalDao.savePersonal(personalObject);
+            gestorHibernate.saveObject(personalObject);
             pantallaPersonal.limpiarEntradas();
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
@@ -41,7 +41,7 @@ public class GestorPersonalABMC {
 
     public void modificarPersonal() {
         Personal personalObject;
-        personalObject = personalDao.getPersonalById(Integer.parseInt(pantallaPersonal.getTxtId()));
+        personalObject = gestorHibernate.getObjectById("Personal",Integer.parseInt(pantallaPersonal.getTxtId()));
         personalObject.setNombre(pantallaPersonal.getTxtNombre());
         personalObject.setApellido(pantallaPersonal.getTxtApellido());
         personalObject.setDireccion(pantallaPersonal.getTxtDireccion());
@@ -56,7 +56,7 @@ public class GestorPersonalABMC {
 
         if (esValido(personalObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            personalDao.updatePersonal(personalObject);
+            gestorHibernate.updateObject(personalObject);
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
@@ -66,7 +66,7 @@ public class GestorPersonalABMC {
     ;
     
     public void conocerPersonales() {
-        listaPersonales = personalDao.getAllpersonal();
+        listaPersonales = gestorHibernate.getAllObjects("Personal");
     }
 
     public List<Personal> conocerListpersonales() {
@@ -116,7 +116,7 @@ public class GestorPersonalABMC {
         String id = pantallaPersonal.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este personal?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            personalDao.deletePersonal(Integer.parseInt(id));
+            gestorHibernate.deleteObject("Personal",Integer.parseInt(id));
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
