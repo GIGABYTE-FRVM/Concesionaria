@@ -1,24 +1,24 @@
 package net.javaguides.concesionaria;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.javaguides.hibernate.dao.PaisDao;
+import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Pais;
 
 public class GestorPaisABMC {
 
     private List<Pais> listaPaises;
     PaisABMC pantallaPais;
-    PaisDao paisDao = new PaisDao();
+    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorMarcaABMC gestorMarca;
 
     
-    public GestorPaisABMC() {
+    public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
         pantallaPais = new PaisABMC(this);
+    }
+    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
+        this.gestorMarca = gestorMarca;
     }
     
     public void registrarPais() {
@@ -26,7 +26,7 @@ public class GestorPaisABMC {
         Pais paisObject = new Pais( nombre);
         //ps.setString(4, cboPais.getSelectedItem().toString());
         if (((nombre.length() != 0))) {
-            paisDao.savePais(paisObject);
+            gestorHibernate.saveObject(paisObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -35,13 +35,13 @@ public class GestorPaisABMC {
     
     public void modificarPais() {
         Pais paisObject;
-        paisObject = paisDao.getPaisById(Integer.parseInt(pantallaPais.getTxtId()));
+        paisObject = gestorHibernate.getObjectById("Pais",Integer.parseInt(pantallaPais.getTxtId()));
         paisObject.setNombre(pantallaPais.getTxtNombre());
         
         
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            paisDao.updatePais(paisObject);
+            gestorHibernate.updateObject(paisObject);
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
@@ -49,7 +49,7 @@ public class GestorPaisABMC {
     };
     
     public void conocerPaises(){
-        listaPaises = paisDao.getAllPais();
+        listaPaises = gestorHibernate.getAllObjects("Pais");
     }
     public List<Pais> conocerListPaises(){
         conocerPaises();
@@ -76,13 +76,21 @@ public class GestorPaisABMC {
         String id = pantallaPais.getTxtId();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este pais?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            paisDao.deletePais(Integer.parseInt(id));
+            gestorHibernate.deleteObject("Pais",Integer.parseInt(id));
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
         }
     }
-    
+    public void notificarGestor(GestorMarcaABMC gestorSubscrito){
+        gestorMarca = gestorSubscrito;
+    }
+    public synchronized void notificarSubscriptores(){
+        if (!(gestorMarca == null))
+            {        
+                gestorMarca.notificarActualizacionPaises();
+            }
+    }
     public void mostrarPantalla() {
         pantallaPais.setVisible(true);
     }
