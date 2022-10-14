@@ -88,6 +88,6 @@ public class Modelo {
     
     @Override
     public String toString() {
-        return "Pais [id=" + id + ", nombre=" + nombre + ", version="+ version + ",añoLanzamiento="+ añoLanzamiento + "]";
+        return nombre;
     }
 }

@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import net.javaguides.hibernate.model.Auto;
 import net.javaguides.hibernate.model.Combustible;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
@@ -139,7 +140,6 @@ public class AutoABMC extends javax.swing.JFrame {
 
         cboMarca.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboMarca.setForeground(new java.awt.Color(51, 51, 51));
-        cboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboMarca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cboMarca.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -202,7 +202,6 @@ public class AutoABMC extends javax.swing.JFrame {
 
         cboModelo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboModelo.setForeground(new java.awt.Color(51, 51, 51));
-        cboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Marca..." }));
         cboModelo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cboModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +211,6 @@ public class AutoABMC extends javax.swing.JFrame {
 
         cboCombustible.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboCombustible.setForeground(new java.awt.Color(51, 51, 51));
-        cboCombustible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboCombustible.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cboCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -714,13 +712,13 @@ public class AutoABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
+        Auto autoObject = ((Auto)this.tablaDatos.getValueAt(fila, 0));
         this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
         this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 6).toString());
-        getItemCombo(cboMarca, fila, 1);
-        getItemCombo(cboModelo, fila, 2);
-        getItemCombo(cboCombustible, fila, 4);
-        getItemCombo(cboColor, fila, 5);
+        cboMarca.getModel().setSelectedItem(autoObject.getMarca());
+        cboModelo.getModel().setSelectedItem(autoObject.getModelo());
+        cboCombustible.getModel().setSelectedItem(autoObject.getCombustible());
+        cboColor.getModel().setSelectedItem(this.tablaDatos.getValueAt(fila, 5).toString());
 
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.WHITE);
@@ -728,15 +726,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_tablaDatosMouseClicked
-    public void getItemCombo(JComboBox<String> combo, int fila, int columna) {
-        int index = 0;
-        for (int i = 0; i < combo.getItemCount(); i++) {
-            combo.setSelectedIndex(i);
-            if (combo.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, columna).toString())) {
-                break;
-            }
-        };
-    }
+
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
@@ -934,9 +924,9 @@ public class AutoABMC extends javax.swing.JFrame {
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnRegistrar;
     private javax.swing.JComboBox<String> cboColor;
-    private javax.swing.JComboBox<String> cboCombustible;
-    private javax.swing.JComboBox<String> cboMarca;
-    private javax.swing.JComboBox<String> cboModelo;
+    private javax.swing.JComboBox<Combustible> cboCombustible;
+    private javax.swing.JComboBox<Marca> cboMarca;
+    private javax.swing.JComboBox<Modelo> cboModelo;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -972,7 +962,7 @@ public class AutoABMC extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarEntradas() {
+    public void limpiarEntradas() {
         txtId.setText("");
         txtAñoFabricacion.setText("");
         txtPrecio.setText("");
@@ -990,20 +980,24 @@ public class AutoABMC extends javax.swing.JFrame {
         return txtId.getText();
     }
 
-    public int getMarca() {
-        return cboMarca.getSelectedIndex();
+    public Marca getMarca() {
+        return (Marca)cboMarca.getSelectedItem();
     }
 
-    public int getModelo() {
-        return cboModelo.getSelectedIndex();
+    public Modelo getModelo() {
+        return (Modelo)cboModelo.getSelectedItem();
     }
 
-    public int getCombustible() {
-        return cboCombustible.getSelectedIndex();
+    public Combustible getCombustible() {
+        return (Combustible)cboCombustible.getSelectedItem();
     }
 
     public String getColor() {
         return cboColor.getSelectedItem().toString();
+    }
+    
+    public Auto getAuto() {
+        return (Auto)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
     }
 
     private void habilitarBotones(boolean estado) {
@@ -1021,7 +1015,7 @@ public class AutoABMC extends javax.swing.JFrame {
         cboMarca.removeAllItems();
         gestor.conocerMarcas();
         for (Marca m : gestor.listaMarcas) {
-            cboMarca.addItem(m.getNombre());
+            cboMarca.addItem(m);
         }
     }
 
@@ -1029,7 +1023,7 @@ public class AutoABMC extends javax.swing.JFrame {
         cboModelo.removeAllItems();
         gestor.conocerModelos();
         for (Modelo m : gestor.listaModelos) {
-            cboModelo.addItem(m.getNombre());
+            cboModelo.addItem(m);
         }
     }
 
@@ -1037,7 +1031,7 @@ public class AutoABMC extends javax.swing.JFrame {
         cboCombustible.removeAllItems();
         gestor.conocerCombustibles();
         for (Combustible c : gestor.listaCombustibles) {
-            cboCombustible.addItem(c.getNombre());
+            cboCombustible.addItem(c);
         }
     }
 

@@ -552,10 +552,10 @@ public class MarcaABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        Marca marcaObject = ((Marca)this.tablaDatos.getValueAt(fila, 0));
-        this.txtId.setText(marcaObject.toString());
+        Marca marcaObject = ((Marca)this.tablaDatos.getValueAt(fila, 2));
+        this.txtId.setText(Integer.toString(marcaObject.getId()));
         this.txtCodigo.setText(marcaObject.getCodigo());
-        this.txtNombre.setText(marcaObject.getNombre());
+        this.txtNombre.setText(marcaObject.toString());
         this.txtDescripcion.setText(marcaObject.getDescripcion());
         this.cboPais.getModel().setSelectedItem(marcaObject.getPais());
         habilitarBotones(false);
@@ -754,7 +754,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         return txtId.getText();
     }
     public Marca getMarca() {
-        return (Marca)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
+        return (Marca)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 2);
     }
     public String getTxtNombre() {
         return txtNombre.getText();

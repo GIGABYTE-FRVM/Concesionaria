@@ -41,31 +41,33 @@ public class GestorAutoABMC {
 
     public void registrarAuto() {
         Auto autoObject = new Auto();
-        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
-        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
-        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
-        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setModelo(pantallaAuto.getModelo());
+        autoObject.setMarca(pantallaAuto.getMarca());
+        autoObject.setCombustible(pantallaAuto.getCombustible());
         autoObject.setColor(pantallaAuto.getColor());
         if (esValido(autoObject)) {
             gestorHibernate.saveObject(autoObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaAuto.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
     }
 
     public void modificarAuto() {
-        Auto autoObject = gestorHibernate.getObjectById("Auto", Integer.parseInt(pantallaAuto.getTxtId()));
-        autoObject.setPrecio(Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
-        autoObject.setModelo(listaModelos.get(pantallaAuto.getModelo()));
-        autoObject.setMarca(listaMarcas.get(pantallaAuto.getMarca()));
-        autoObject.setCombustible(listaCombustibles.get(pantallaAuto.getCombustible()));
+        Auto autoObject = pantallaAuto.getAuto();
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setModelo(pantallaAuto.getModelo());
+        autoObject.setMarca(pantallaAuto.getMarca());
+        autoObject.setCombustible(pantallaAuto.getCombustible());
         autoObject.setColor(pantallaAuto.getColor());
         if (esValido(autoObject)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(autoObject);
+            pantallaAuto.limpiarEntradas();
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
@@ -73,10 +75,10 @@ public class GestorAutoABMC {
     }
 
     public void eliminarAuto() {
-        String id = pantallaAuto.getTxtId();
+        Auto autoObject = pantallaAuto.getAuto();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta auto?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Auto", Integer.parseInt(id));
+            gestorHibernate.deleteObject(autoObject);
             JOptionPane.showMessageDialog(null, "AUTO ELIMINADO CORRECTAMENTE");
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
@@ -94,10 +96,10 @@ public class GestorAutoABMC {
         modelo.addColumn("Combustible");
         modelo.addColumn("Color");
         modelo.addColumn("Precio");
-        String data[] = new String[7];
+        Object data[] = new Object[7];
         try {
             for (Auto auto : listaAutos) {
-                data[0] = Integer.toString((int) auto.getId());
+                data[0] = auto;
                 data[1] = auto.getMarca().getNombre();
                 data[2] = auto.getModelo().getNombre();
                 data[3] = Integer.toString(auto.getAñoFabricacion());
@@ -126,7 +128,7 @@ public class GestorAutoABMC {
         }
         try {
             if (!(pantallaAuto == null)) {
-                listaModelos = gestorModelo.conocerModelosDeMarca(listaMarcas.get(pantallaAuto.getMarca()));
+                listaModelos = gestorModelo.conocerModelosDeMarca(pantallaAuto.getMarca());
             } else {
                 listaModelos = gestorModelo.conocerListaModelos();
             }

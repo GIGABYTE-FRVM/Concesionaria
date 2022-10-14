@@ -92,6 +92,6 @@ public class Marca {
 
     @Override
     public String toString() {
-        return Integer.toString(id);
+        return nombre;
     }
 }
