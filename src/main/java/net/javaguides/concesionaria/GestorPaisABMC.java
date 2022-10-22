@@ -126,6 +126,11 @@ public class GestorPaisABMC {
         }
     }
 
+    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
+        this.gestorMarca = gestorMarca;
+    }
+
+
     public boolean esValido(Pais pais, int tipo) {
         if (pais.getNombre().length() == 0) {
             return false;
