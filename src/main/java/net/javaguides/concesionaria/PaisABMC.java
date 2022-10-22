@@ -13,7 +13,6 @@ import javax.swing.border.LineBorder;
 import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Region;
 
-
 /**
  *
  * @author matya
@@ -22,19 +21,20 @@ public class PaisABMC extends javax.swing.JFrame {
 
     GestorPaisABMC gestor;
     int xMouse, yMouse;
-    Color colorBackgroundButton = new Color(255,153,51);
+    Color colorBackgroundButton = new Color(255, 153, 51);
     Color colorBorderButton = new Color(204, 204, 204);
-    
-    
+
     public PaisABMC(GestorPaisABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        
+        actualizarComboRegiones();
     }
-    
-     public void conocergestor(GestorPaisABMC gestor) {
+
+    public void conocergestor(GestorPaisABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -356,8 +356,8 @@ public class PaisABMC extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelTablaDatosLayout.createSequentialGroup()
@@ -366,7 +366,7 @@ public class PaisABMC extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 320));
+        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 430));
 
         barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -459,8 +459,11 @@ public class PaisABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
+        Pais paisObject = (Pais)this.tablaDatos.getValueAt(fila, 1);
+        this.txtId.setText(Integer.toString(paisObject.getId()));
+        this.txtNombre.setText(paisObject.toString());
+        this.cboRegion.getModel().setSelectedItem(paisObject.getRegion());
+        
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.white);
         LineBorder borderButtonRegistrar = new LineBorder(colorBorderButton);
@@ -594,6 +597,7 @@ public class PaisABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_cboRegionActionPerformed
 
     private void btnRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegionMouseClicked
+        gestor.solicitarActualizacionRegiones();
         gestor.mostrarPaisABMC();
     }//GEN-LAST:event_btnRegionMouseClicked
 
@@ -631,7 +635,7 @@ public class PaisABMC extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //
-                
+
             }
         });
     }
@@ -644,7 +648,7 @@ public class PaisABMC extends javax.swing.JFrame {
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnRegion;
     private javax.swing.JLabel btnRegistrar;
-    private javax.swing.JComboBox<Pais> cboRegion;
+    private javax.swing.JComboBox<Region> cboRegion;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -671,7 +675,8 @@ public class PaisABMC extends javax.swing.JFrame {
         txtId.setText("");
         txtNombre.setText("");
     }
-    private void habilitarBotones(boolean estado){
+
+    private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
@@ -685,18 +690,19 @@ public class PaisABMC extends javax.swing.JFrame {
         return txtId.getText();
     }
 
-    Region getRegion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    void actualizarComboRegiones() {
+        cboRegion.removeAllItems();
+        gestor.conocerRegiones();
+        for (Region r : gestor.listaRegiones) {
+            cboRegion.addItem(r);
+        }
     }
 
     Pais getPais() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return (Pais)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
     }
 
-    void actualizarComboRegiones() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    Region getRegion() {
+        return (Region) cboRegion.getSelectedItem();
     }
- 
-    
- 
 }

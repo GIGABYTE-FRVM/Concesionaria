@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
+import net.javaguides.hibernate.model.Region;
 
 
 /**
@@ -18,13 +19,13 @@ import javax.swing.border.LineBorder;
  */
 public class RegionABMC extends javax.swing.JFrame {
 
-    GestorPaisABMC gestor;
+    GestorRegionABMC gestor;
     int xMouse, yMouse;
     Color colorBackgroundButton = new Color(255,153,51);
     Color colorBorderButton = new Color(204, 204, 204);
     
     
-    public RegionABMC(GestorPaisABMC gestorPadre) {
+    public RegionABMC(GestorRegionABMC gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
@@ -32,7 +33,7 @@ public class RegionABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
     }
     
-     public void conocergestor(GestorPaisABMC gestor) {
+     public void conocergestor(GestorRegionABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -298,8 +299,6 @@ public class RegionABMC extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        lblTitulo.getAccessibleContext().setAccessibleName("INFORMACIÓN DE LA REGION");
-
         panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 350));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 51));
@@ -365,8 +364,6 @@ public class RegionABMC extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-
-        jLabel7.getAccessibleContext().setAccessibleName("LISTADO DE REGIONES");
 
         panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 320));
 
@@ -463,8 +460,10 @@ public class RegionABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
+        Region regionObject =(Region) this.tablaDatos.getValueAt(fila, 1);
+        this.txtId.setText(Integer.toString(regionObject.getId()));
+        this.txtNombre.setText(regionObject.getNombre());
+        this.txtPorcentaje.setText(Double.toString(regionObject.getPorcentaje()));
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.white);
         LineBorder borderButtonRegistrar = new LineBorder(colorBorderButton);
@@ -571,7 +570,7 @@ public class RegionABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarPais();
+        gestor.registrarRegion();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -579,7 +578,7 @@ public class RegionABMC extends javax.swing.JFrame {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         // TODO add your handling code here:
-        gestor.modificarPais();
+        gestor.modificarRegion();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -589,7 +588,7 @@ public class RegionABMC extends javax.swing.JFrame {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
-        gestor.eliminarPais();
+        gestor.eliminarRegion();
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
@@ -609,48 +608,6 @@ public class RegionABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPorcentajeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegionABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegionABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegionABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegionABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
@@ -705,10 +662,9 @@ public class RegionABMC extends javax.swing.JFrame {
     String getTxtPorcentaje() {
         return txtPorcentaje.getText();
     }
-              
-
-   
     
-    
+    Object getRegion(){
+        return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
+    }
  
 }

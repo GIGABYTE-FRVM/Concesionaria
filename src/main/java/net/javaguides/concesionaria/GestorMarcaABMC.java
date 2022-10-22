@@ -24,7 +24,7 @@ public class GestorMarcaABMC {
 
     public GestorMarcaABMC() {
         gestorHibernate = GestorHibernate.getInstancia();
-        gestorPais = new GestorPaisABMC(this);
+        gestorPais = new GestorPaisABMC();
         pantallaMarca = new MarcaABMC(this);
         pantallaMarca.setVisible(true);
     }

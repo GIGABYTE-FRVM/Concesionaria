@@ -10,11 +10,11 @@ public class GestorRegionABMC {
 
     private List<Region> listaRegiones;
     RegionABMC pantallaRegion;
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorHibernate gestorHibernate = GestorHibernate.getInstancia();
     GestorPaisABMC gestorPais;
 
     
-    public GestorRegionABMC(GestorPaisABMC gestorPais) {
+    public GestorRegionABMC() {
         pantallaRegion = new RegionABMC(this);
     }
     public void conocerGestorPais(GestorPaisABMC gestorPais) {
@@ -23,17 +23,9 @@ public class GestorRegionABMC {
     
     public void registrarRegion() {
         String nombre = pantallaRegion.getTxtNombre();
-        Double porcentaje = pantallaRegion.getTxtPorcentaje(); 
+        Double porcentaje = Double.parseDouble(pantallaRegion.getTxtPorcentaje()); 
         Region regionObject = new Region( nombre, porcentaje);
-        //ps.setString(4, cboPais.getSelectedItem().toString());
         if (((nombre.length() != 0))) {
-            gestorHibernate.saveObject(regionObject);
-            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-        } else {
-            JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
-        }
-        
-         if (((porcentaje != 0))) {
             gestorHibernate.saveObject(regionObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
@@ -46,9 +38,8 @@ public class GestorRegionABMC {
         Region regionObject;
         regionObject = gestorHibernate.getObjectById("Region",Integer.parseInt(pantallaRegion.getTxtId()));
         regionObject.setNombre(pantallaRegion.getTxtNombre());
-        regionObject.setPorcentaje(pantallaRegion.getTxtPorcentaje());
-        
-        
+        regionObject.setPorcentaje(Double.parseDouble(pantallaRegion.getTxtPorcentaje()));       
+       
         if (true) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(regionObject);
@@ -61,6 +52,7 @@ public class GestorRegionABMC {
     public void conocerRegiones(){
         listaRegiones = gestorHibernate.getAllObjects("Region");
     }
+    
     public List<Region> conocerListRegiones(){
         conocerRegiones();
         return listaRegiones;
@@ -71,11 +63,11 @@ public class GestorRegionABMC {
         modelo.addColumn("id");
         modelo.addColumn("Nombre");
         modelo.addColumn("Porcentaje Recargo");
-        String data[] = new String[3];
+        Object data[] = new Object[3];
         try {for(Region region : listaRegiones){
-                data[0] = Integer.toString(region.getId());
-                data[1] = region.getNombre();
-                data[2] = String.valueOf(region.getPorcentaje()); 
+                data[0] = region.getId();
+                data[1] = region;
+                data[2] = region.getPorcentaje(); 
                 modelo.addRow(data);
             }
         } catch (Exception e) {
@@ -85,10 +77,10 @@ public class GestorRegionABMC {
     }
     
     public void eliminarRegion(){
-        String id = pantallaRegion.getTxtId();
+        Region regionObject = (Region) pantallaRegion.getRegion();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta region?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Region",Integer.parseInt(id));
+            gestorHibernate.deleteObject(regionObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -103,9 +95,8 @@ public class GestorRegionABMC {
                 gestorPais.notificarActualizacionRegiones();
             }
     }
-    public void mostrarPantalla() {
-        pantallaRegion.setVisible(true);
+    public void mostrarPantalla(Boolean visible) {
+        pantallaRegion.setVisible(visible);
     }
-
-   
+  
 }

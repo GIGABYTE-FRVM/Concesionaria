@@ -39,7 +39,7 @@ public class GestorApp {
     public void menuPaisActionPerformed() {
         menuMarcaActionPerformed();
         gestorMarca.mostrarPantalla(false);
-        gestorPais = new GestorPaisABMC(gestorMarca);
+        gestorPais = new GestorPaisABMC();
         gestorPais.mostrarPantalla();
     }
     

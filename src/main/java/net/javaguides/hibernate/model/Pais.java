@@ -34,9 +34,9 @@ public class Pais {
     }
 
     public Pais(String nombre, Region region) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.nombre = nombre;
+        this.region = region;
     }
-
     
     public int getId() {
         return id;
