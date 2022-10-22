@@ -6,13 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pais")
-public class Pais {
+@Table(name="region")
+public class Region {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,20 +19,16 @@ public class Pais {
     
     @Column(name = "nombre")
     private String nombre;
-
-    public Pais(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @ManyToOne
-    @JoinColumn(name="id_region",referencedColumnName="id")
-    private Region region;
     
-    public Pais() {
+    @Column(name = "porcentaje")
+    private Double porcentaje;
+
+    public Region(String nombre,Double porcentaje) {
+        this.nombre = nombre;
+        this.porcentaje = porcentaje; 
     }
 
-    public Pais(String nombre, Region region) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Region() {
     }
 
     
@@ -53,19 +47,19 @@ public class Pais {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+     public Double getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(Double porcentaje) {
+        this.porcentaje = porcentaje;
+    }
     
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
-    public Pais(int id,  String nombre, Region region) {
+    public Region(int id,  String nombre, Double porcentaje) {
         this.id = id;
         this.nombre = nombre;
-        this.region = region; 
+        this.porcentaje = porcentaje;
     }
     
     @Override

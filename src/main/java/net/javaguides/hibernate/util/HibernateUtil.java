@@ -14,6 +14,7 @@ import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Personal;
 import net.javaguides.hibernate.model.Cliente;
+import net.javaguides.hibernate.model.Region;
 
 
 
@@ -51,7 +52,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Modelo.class);
                 configuration.addAnnotatedClass(Auto.class);
                 configuration.addAnnotatedClass(Cliente.class);
-
+                configuration.addAnnotatedClass(Region.class);
+                
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
 
