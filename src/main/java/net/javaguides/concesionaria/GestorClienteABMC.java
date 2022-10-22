@@ -39,7 +39,7 @@ public class GestorClienteABMC {
 
     public void modificarCliente() {
         Cliente clienteObject;
-        clienteObject = gestorHibernate.getObjectById("Cliente", Integer.parseInt(pantallaCliente.getTxtId()));
+        clienteObject = (Cliente)pantallaCliente.getCliente();
         clienteObject.setNombre(pantallaCliente.getTxtNombre());
         clienteObject.setApellido(pantallaCliente.getTxtApellido());
         clienteObject.setDireccion(pantallaCliente.getTxtDireccion());

@@ -31,7 +31,6 @@ public class GestorPersonalABMC {
         String horaEntrada = pantallaPersonal.getTxtHoraEntrada();
         String horaSalida = pantallaPersonal.getTxtHoraSalida();
         Personal personalObject = new Personal(nombre, apellido, direccion, documento, email, telefono, fechaNacimiento, fechaIngresoEmpresa, horaEntrada, horaSalida);
-        //ps.setString(4, cboPais.getSelectedItem().toString());
         if (esValido(personalObject, 0)) {
             gestorHibernate.saveObject(personalObject);
             pantallaPersonal.limpiarEntradas();
@@ -42,8 +41,7 @@ public class GestorPersonalABMC {
     }
 
     public void modificarPersonal() {
-        Personal personalObject;
-        personalObject = gestorHibernate.getObjectById("Personal", Integer.parseInt(pantallaPersonal.getTxtId()));
+        Personal personalObject = (Personal) pantallaPersonal.getPersonal();
         personalObject.setNombre(pantallaPersonal.getTxtNombre());
         personalObject.setApellido(pantallaPersonal.getTxtApellido());
         personalObject.setDireccion(pantallaPersonal.getTxtDireccion());
@@ -64,10 +62,10 @@ public class GestorPersonalABMC {
     }
 
     public void eliminarPersonal() {
-        String id = pantallaPersonal.getTxtId();
+        Personal personalObject = (Personal)pantallaPersonal.getPersonal();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este personal?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Personal", Integer.parseInt(id));
+            gestorHibernate.deleteObject(personalObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -88,14 +86,14 @@ public class GestorPersonalABMC {
         modelo.addColumn("Fecha Ingreso Empresa");
         modelo.addColumn("Hora Entrada");
         modelo.addColumn("Hora Salida");
-        String data[] = new String[11];
+        Object data[] = new Object[11];
         try {
             for (Personal personal : listaPersonales) {
-                data[0] = Integer.toString(personal.getId());
+                data[0] = personal.getId();
                 data[1] = personal.getNombre();
                 data[2] = personal.getApellido();
                 data[3] = personal.getDireccion();
-                data[4] = personal.getDocumento();
+                data[4] = personal;
                 data[5] = personal.getEmail();
                 data[6] = personal.getTelefono();
                 data[7] = personal.getFechaNacimiento();
