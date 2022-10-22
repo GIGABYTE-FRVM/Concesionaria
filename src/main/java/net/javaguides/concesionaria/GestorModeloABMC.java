@@ -31,7 +31,7 @@ public class GestorModeloABMC {
         String nombre = pantallaModelo.getTxtNombre();
         String version = pantallaModelo.getTxtVersion();
         String añoLanzamiento = pantallaModelo.getTxtAñoLanzamiento();
-        Marca marca = listaMarcas.get(pantallaModelo.getMarca());
+        Marca marca = pantallaModelo.getMarca();
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         if (esValido(modeloObject, 0)) {
             gestorHibernate.saveObject(modeloObject);
@@ -44,11 +44,11 @@ public class GestorModeloABMC {
 
     public void modificarModelo() {
         Modelo modeloObject;
-        modeloObject = gestorHibernate.getObjectById("Modelo", Integer.parseInt(pantallaModelo.getTxtId()));
+        modeloObject = (Modelo)pantallaModelo.getModelo();
         modeloObject.setNombre(pantallaModelo.getTxtNombre());
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
-        modeloObject.setMarca(listaMarcas.get(pantallaModelo.getMarca()));
+        modeloObject.setMarca(pantallaModelo.getMarca());
         if (esValido(modeloObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(modeloObject);
@@ -60,14 +60,11 @@ public class GestorModeloABMC {
     }
 
     public void eliminarModelo() {
-        String id = pantallaModelo.getTxtId();
-        String nombre = pantallaModelo.getTxtNombre();
-        String version = pantallaModelo.getTxtVersion();
-        String añoLanzamiento = pantallaModelo.getTxtAñoLanzamiento();
+        Modelo modeloObject = (Modelo)pantallaModelo.getModelo();
 
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este modelo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Modelo", Integer.parseInt(id));
+            gestorHibernate.deleteObject(modeloObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion            
             notificarSubscriptores();
 
@@ -85,11 +82,11 @@ public class GestorModeloABMC {
         modelo.addColumn("AñoLanzamiento");
         modelo.addColumn("Marca");
 
-        String data[] = new String[5];
+        Object data[] = new Object[5];
         try {
             for (Modelo modeloObject : listaModelos) {
-                data[0] = Integer.toString((int) modeloObject.getId());
-                data[1] = modeloObject.getNombre();
+                data[0] = modeloObject.getId();
+                data[1] = modeloObject;
                 data[2] = modeloObject.getVersion();
                 data[3] = modeloObject.getAñoLanzamiento();
                 data[4] = modeloObject.getMarca().getNombre();
@@ -120,10 +117,6 @@ public class GestorModeloABMC {
     public List<Modelo> conocerModelosDeMarca(Marca marca) {
         listaModelosMarca = gestorHibernate.getAllObjects("Modelo WHERE id_marca=" + marca.getId());
         return listaModelosMarca;
-    }
-
-    void actualizarComboPaises() {
-        pantallaModelo.actualizarComboMarcas();
     }
 
     public void mostrarPantalla(boolean visible) {

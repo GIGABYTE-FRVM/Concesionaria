@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.model.Marca;
+import net.javaguides.hibernate.model.Modelo;
 
 /**
  *
@@ -256,7 +257,6 @@ public class ModeloABMC extends javax.swing.JFrame {
 
         cboMarca.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboMarca.setForeground(new java.awt.Color(51, 51, 51));
-        cboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Alemania", "Brasil", "EEUU" }));
         cboMarca.setBorder(null);
         cboMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,22 +514,16 @@ public class ModeloABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
+        Modelo modeloObject = (Modelo) this.tablaDatos.getValueAt(fila, 1);
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
+        this.txtNombre.setText(modeloObject.toString());
         this.txtVersion.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtAñoLanzamiento.setText(this.tablaDatos.getValueAt(fila, 3).toString());
-
-        for (int i = 0; i < cboMarca.getItemCount(); i++) {
-            this.cboMarca.setSelectedIndex(i);
-            if (this.cboMarca.getItemAt(i).equals(this.tablaDatos.getValueAt(fila, 4).toString())) {
-                break;
-            }
-        }
+        this.cboMarca.getModel().setSelectedItem(modeloObject.getMarca());
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.white);
         panelBtnRegistrar.setBorder(borderButton);
         btnRegistrar.setForeground(colorBackgroundButton);
-
         //this.cboModelo
     }//GEN-LAST:event_tablaDatosMouseClicked
 
@@ -635,57 +629,6 @@ public class ModeloABMC extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_barraSuperiorVentanaMousePressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModeloABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModeloABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModeloABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModeloABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //
-
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
     private javax.swing.JLabel btnActualizar;
@@ -694,7 +637,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnMarca;
     private javax.swing.JLabel btnRegistrar;
-    private javax.swing.JComboBox<String> cboMarca;
+    private javax.swing.JComboBox<Marca> cboMarca;
     private javax.swing.JComboBox<String> cboPais;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
@@ -736,7 +679,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         cboMarca.removeAllItems();
         gestor.conocerMarcas();
         for(Marca m : gestor.listaMarcas){
-            cboMarca.addItem(m.getNombre());
+            cboMarca.addItem(m);
         }
     }
     private void habilitarBotones(boolean estado) {
@@ -760,8 +703,11 @@ public class ModeloABMC extends javax.swing.JFrame {
     String getTxtVersion() {
         return txtVersion.getText();
     }
-    public int getMarca() {
-        return cboMarca.getSelectedIndex();
+    public Marca getMarca() {
+        return (Marca) cboMarca.getSelectedItem();
+    }
+    Object getModelo() {
+        return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
     }
 
 }
