@@ -7,21 +7,24 @@ import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 
-public class GestorModeloABMC{
+public class GestorModeloABMC {
 
     List<Marca> listaMarcas;
-    private List<Modelo> listaModelos;
-    private List<Modelo> listaModelosMarca;
-    ModeloABMC pantallaModelo;
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    List<Modelo> listaModelos;
+    List<Modelo> listaModelosMarca;
+
+    GestorHibernate gestorHibernate;
     GestorMarcaABMC gestorMarca;
     GestorAutoABMC gestorAuto;
+
+    ModeloABMC pantallaModelo;
     Notificador notificador;
 
     public GestorModeloABMC() {
         gestorMarca = new GestorMarcaABMC();
-        gestorMarca.mostrarPantalla(false);
+        gestorHibernate = new GestorHibernate();
         pantallaModelo = new ModeloABMC(this);
+        gestorMarca.mostrarPantalla(false);
     }
 
     public void registrarModelo() {
@@ -30,12 +33,9 @@ public class GestorModeloABMC{
         String añoLanzamiento = pantallaModelo.getTxtAñoLanzamiento();
         Marca marca = listaMarcas.get(pantallaModelo.getMarca());
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
-        //ps.setString(4, cboModelo.getSelectedItem().toString());
         if (esValido(modeloObject, 0)) {
             gestorHibernate.saveObject(modeloObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-            notificarSubscriptores();
-
             pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
@@ -53,30 +53,27 @@ public class GestorModeloABMC{
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(modeloObject);
             mostrarDatos();
-            notificarSubscriptores();
-
             pantallaModelo.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
     }
 
-    ;
-    
-    public void conocerModelos() {
-        listaModelos = gestorHibernate.getAllObjects("Modelo");
-    }
+    public void eliminarModelo() {
+        String id = pantallaModelo.getTxtId();
+        String nombre = pantallaModelo.getTxtNombre();
+        String version = pantallaModelo.getTxtVersion();
+        String añoLanzamiento = pantallaModelo.getTxtAñoLanzamiento();
 
-    public List<Modelo> conocerListModelos() {
-        conocerModelos();
-        return listaModelos;
-    }
+        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este modelo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (pantallaConfirmarEliminacion == 0) {
+            gestorHibernate.deleteObject("Modelo", Integer.parseInt(id));
+            // si selecciona SI (primer boton) ejecuta la eliminacion            
+            notificarSubscriptores();
 
-    public void conocerMarcas() {
-        if (!(listaMarcas == null)) {
-            listaMarcas.clear();
+        } else {
+            //No hace nada
         }
-        listaMarcas = gestorMarca.conocerListMarcas();
     }
 
     public DefaultTableModel mostrarDatos() {
@@ -104,21 +101,15 @@ public class GestorModeloABMC{
         return modelo;
     }
 
-    public void eliminarModelo() {
-        String id = pantallaModelo.getTxtId();
-        String nombre = pantallaModelo.getTxtNombre();
-        String version = pantallaModelo.getTxtVersion();
-        String añoLanzamiento = pantallaModelo.getTxtAñoLanzamiento();
+    public void conocerModelos() {
+        listaModelos = gestorHibernate.getAllObjects("Modelo");
+    }
 
-        int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este modelo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Modelo", Integer.parseInt(id));
-            // si selecciona SI (primer boton) ejecuta la eliminacion            
-            notificarSubscriptores();
-
-        } else {
-            //No hace nada
+    public void conocerMarcas() {
+        if (!(listaMarcas == null)) {
+            listaMarcas.clear();
         }
+        listaMarcas = gestorMarca.conocerListMarcas();
     }
 
     public List<Modelo> conocerListaModelos() {
@@ -131,12 +122,6 @@ public class GestorModeloABMC{
         return listaModelosMarca;
     }
 
-    void mostrarMarcaABMC() {
-        gestorMarca.mostrarPantalla(true);
-        gestorMarca.suscribirGestorModelo(this);
-        solicitarActualizacionMarcas();
-    }
-
     void actualizarComboPaises() {
         pantallaModelo.actualizarComboMarcas();
     }
@@ -145,14 +130,8 @@ public class GestorModeloABMC{
         pantallaModelo.setVisible(visible);
     }
 
-    public void notificarGestor(GestorAutoABMC gestorSubscrito) {
+    public void suscribirGestor(GestorAutoABMC gestorSubscrito) {
         gestorAuto = gestorSubscrito;
-    }
-
-    public synchronized void notificarSubscriptores() {
-        if (!(gestorAuto == null)) {
-            gestorAuto.notificarActualizacionModelo();
-        }
     }
 
     synchronized void solicitarActualizacionMarcas() {
@@ -170,6 +149,12 @@ public class GestorModeloABMC{
         }).start();
     }
 
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorAuto == null)) {
+            gestorAuto.notificarActualizacionModelo();
+        }
+    }
+
     public boolean esValido(Modelo modelo, int tipo) {
         if ((modelo.getVersion().length() == 0) || (modelo.getNombre().length() == 0) || (modelo.getAñoLanzamiento().length() == 0)) {
             return false;
@@ -182,5 +167,11 @@ public class GestorModeloABMC{
             }
         }
         return true;
+    }
+
+    void mostrarMarcaABMC() {
+        gestorMarca.mostrarPantalla(true);
+        gestorMarca.suscribirGestorModelo(this);
+        solicitarActualizacionMarcas();
     }
 }

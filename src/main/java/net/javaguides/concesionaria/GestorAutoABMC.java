@@ -192,7 +192,7 @@ public class GestorAutoABMC {
 
     void mostrarModeloABMC() {
         gestorModelo.mostrarPantalla(true);
-        gestorModelo.notificarGestor(this);
+        gestorModelo.suscribirGestor(this);
         solicitarActualizacion();
     }
 

@@ -12,41 +12,36 @@ public class GestorPaisABMC {
     List<Region> listaRegiones;
     private List<Pais> listaPaises;
     GestorRegionABMC gestorRegion = new GestorRegionABMC(this);
-    PaisABMC pantallaPais;
-    GestorHibernate gestorHibernate = new GestorHibernate();
+    GestorHibernate gestorHibernate;
     GestorMarcaABMC gestorMarca;
     Notificador notificador;
 
-    
+    PaisABMC pantallaPais;
+
     public GestorPaisABMC(GestorMarcaABMC gestorMarca) {
+        gestorHibernate = new GestorHibernate();
         pantallaPais = new PaisABMC(this);
     }
-    public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
-        this.gestorMarca = gestorMarca;
-    }
-    
+
     public void registrarPais() {
         String nombre = pantallaPais.getTxtNombre();
         Region region = pantallaPais.getRegion();
         Pais paisObject = new Pais(nombre, region);
-         
         //ps.setString(4, cboPais.getSelectedItem().toString());
-        if (((nombre.length() != 0))) {
+        if (esValido(paisObject,0)) {
             gestorHibernate.saveObject(paisObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
     }
-    
+
     public void modificarPais() {
         Pais paisObject;
-        paisObject = gestorHibernate.getObjectById("Pais",Integer.parseInt(pantallaPais.getTxtId()));
+        paisObject = gestorHibernate.getObjectById("Pais", Integer.parseInt(pantallaPais.getTxtId()));
         paisObject.setNombre(pantallaPais.getTxtNombre());
         paisObject.setRegion(pantallaPais.getRegion());
-        
-        
-        if (true) {
+        if (esValido(paisObject,1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(paisObject);
             mostrarDatos();
@@ -58,10 +53,6 @@ public class GestorPaisABMC {
     public void conocerPaises(){
         listaPaises = gestorHibernate.getAllObjects("Pais");
     }
-    public List<Pais> conocerListPaises(){
-        conocerPaises();
-        return listaPaises;
-    }
     
     public void conocerRegiones() {
         if (!(listaRegiones == null)){
@@ -69,6 +60,7 @@ public class GestorPaisABMC {
         }
         listaRegiones = gestorRegion.conocerListRegiones();
     }
+
 
     public DefaultTableModel mostrarDatos() {
         this.conocerPaises();
@@ -120,14 +112,34 @@ public class GestorPaisABMC {
   
     
     public void notificarGestor(GestorMarcaABMC gestorSubscrito){
-        gestorMarca = gestorSubscrito;
+        this.gestorMarca = gestorSubscrito;
     }
-    public synchronized void notificarSubscriptores(){
-        if (!(gestorMarca == null))
-            {        
-                gestorMarca.notificarActualizacionPaises();
+
+    public List<Pais> conocerListPaises() {
+        conocerPaises();
+        return listaPaises;
+    }
+
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorMarca == null)) {
+            gestorMarca.notificarActualizacionPaises();
+        }
+    }
+
+    public boolean esValido(Pais pais, int tipo) {
+        if (pais.getNombre().length() == 0) {
+            return false;
+        }
+        if (tipo == 0) {
+            for (Pais paisOfList : listaPaises) {
+                if (paisOfList.getNombre().equalsIgnoreCase(pais.getNombre())) {
+                    return false;
+                }
             }
+        }
+        return true;
     }
+
     public void mostrarPantalla() {
         pantallaPais.setVisible(true);
     }

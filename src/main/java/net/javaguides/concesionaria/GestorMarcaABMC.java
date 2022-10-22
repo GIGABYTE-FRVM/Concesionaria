@@ -111,47 +111,12 @@ public class GestorMarcaABMC {
     public void conocerMarcas() {
         listaMarcas = gestorHibernate.getAllObjects("Marca");
     }
-
-    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito){
-        gestorAuto = gestorSubscrito;
-    }
-    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito){
-        gestorModelo = gestorSubscrito;
-    }
     
-
-    
-
-    
-
-    void mostrarPaisABMC() {
-        gestorPais.mostrarPantalla();
-        gestorPais.notificarGestor(this);
-        solicitarActualizacionPaises();
-    }
-
-    void actualizarComboPaises() {
-        pantallaMarca.actualizarComboPaises();
-    }
-
-    public void mostrarPantalla(boolean visible) {
-        pantallaMarca.setVisible(visible);
-    }
-
     public List<Marca> conocerListaMarcas() {
         conocerMarcas();
         return listaMarcas;
     }
-    public synchronized void notificarSubscriptores(){
-        if (!(gestorAuto == null))
-            {        
-                gestorAuto.notificarActualizacionMarcas();
-            }
-        if (!(gestorModelo == null))
-            {        
-                gestorModelo.notificarActualizacionMarcas();
-            }
-    }
+    
     synchronized void solicitarActualizacionPaises() {
         notificador = new Notificador();
         new Thread(() -> {
@@ -166,7 +131,25 @@ public class GestorMarcaABMC {
             pantallaMarca.actualizarComboPaises();
         }).start();
     }
+    public synchronized void notificarSubscriptores(){
+        if (!(gestorAuto == null))
+            {        
+                gestorAuto.notificarActualizacionMarcas();
+            }
+        if (!(gestorModelo == null))
+            {        
+                gestorModelo.notificarActualizacionMarcas();
+            }
+    }
 
+    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito){
+        gestorAuto = gestorSubscrito;
+    }
+    
+    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito){
+        gestorModelo = gestorSubscrito;
+    }
+    
     public boolean esValido(Marca marca, int tipo) {
         if ((marca.getCodigo().length() == 0) || (marca.getNombre().length() == 0) || (marca.getDescripcion().length() == 0)) {
             return false;
@@ -180,5 +163,21 @@ public class GestorMarcaABMC {
         }
         return true;
     }
+    
+    void actualizarComboPaises() {
+        pantallaMarca.actualizarComboPaises();
+    }
+
+    void mostrarPaisABMC() {
+        gestorPais.mostrarPantalla();
+        gestorPais.notificarGestor(this);
+        solicitarActualizacionPaises();
+    }
+
+    public void mostrarPantalla(boolean visible) {
+        pantallaMarca.setVisible(visible);
+    }
+
+
 
 }
