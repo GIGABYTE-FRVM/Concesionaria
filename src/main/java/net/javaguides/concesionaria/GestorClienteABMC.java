@@ -58,10 +58,10 @@ public class GestorClienteABMC {
     }
 
     public void eliminarCliente() {
-        String id = pantallaCliente.getTxtId();
+        Cliente clienteObject = (Cliente)pantallaCliente.getCliente();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este cliente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Cliente", Integer.parseInt(id));
+            gestorHibernate.deleteObject(clienteObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -80,10 +80,10 @@ public class GestorClienteABMC {
         modelo.addColumn("Telefono");
         modelo.addColumn("FechaNacimiento");
         modelo.addColumn("esCliente");
-        String data[] = new String[9];
+        Object data[] = new Object[9];
         try {
             for (Cliente cliente : listaClientes) {
-                data[0] = Integer.toString(cliente.getId());
+                data[0] = cliente;
                 data[1] = cliente.getNombre();
                 data[2] = cliente.getApellido();
                 data[3] = cliente.getDireccion();
@@ -91,7 +91,7 @@ public class GestorClienteABMC {
                 data[5] = cliente.getEmail();
                 data[6] = cliente.getTelefono();
                 data[7] = cliente.getFechaNacimiento();
-                data[8] = Integer.toString(cliente.getEsCliente());
+                data[8] = cliente.getEsCliente()==0?"No":"Si";
                 modelo.addRow(data);
             }
         } catch (Exception e) {

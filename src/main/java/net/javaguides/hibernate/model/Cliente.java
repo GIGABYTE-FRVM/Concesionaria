@@ -130,6 +130,6 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return "Personal [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", documento=" + documento + ", email=" + email + ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + " ]";
+        return "" + id ;
     }
 }

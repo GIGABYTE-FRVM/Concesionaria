@@ -16,8 +16,7 @@ import net.javaguides.hibernate.dao.GestorHibernate;
  */
 public class app {
     public static void main(String[] args) {
-        GestorHibernate gestorHib   = new GestorHibernate();
-
+        GestorHibernate gestorHib  = GestorHibernate.getInstancia();
 
         Cliente cliente = new Cliente("Gestor1", "Hibernate", "PDM", 
                 "String documento", "String email", "String telefono"

@@ -49,11 +49,10 @@ public class GestorCombustibleABMC {
     }
 
     public void eliminarCombustible() {
-        String id = pantallaCombustible.getTxtId();
+        Combustible combustibleObject = (Combustible) pantallaCombustible.getCombustible();
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este combustible?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
-            gestorHibernate.deleteObject("Combustible", Integer.parseInt(id));
-
+            gestorHibernate.deleteObject(combustibleObject);
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
@@ -65,11 +64,11 @@ public class GestorCombustibleABMC {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("id");
         modelo.addColumn("Nombre");
-        String data[] = new String[2];
+        Object data[] = new Object[2];
         try {
             for (Combustible combustible : listaCombustible) {
-                data[0] = Integer.toString(combustible.getId());
-                data[1] = combustible.getNombre();
+                data[0] = combustible.getId();
+                data[1] = combustible;
                 modelo.addRow(data);
             }
         } catch (Exception e) {

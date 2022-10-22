@@ -22,7 +22,7 @@ public class GestorHibernate {
     }
     
     public static GestorHibernate getInstancia() {
-        if (!(instancia instanceof GestorHibernate)) {
+        if (instancia == null) {
             instancia = new GestorHibernate();
         }
         return instancia;
