@@ -713,6 +713,7 @@ public class AutoABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
         Auto autoObject = ((Auto)this.tablaDatos.getValueAt(fila, 0));
+        this.txtId.setText(autoObject.toString());
         this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
         this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 6).toString());
         cboMarca.getModel().setSelectedItem(autoObject.getMarca());
