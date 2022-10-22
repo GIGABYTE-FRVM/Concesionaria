@@ -624,11 +624,12 @@ public class PersonalABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
+        Object personalObject = this.tablaDatos.getValueAt(fila, 4);
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtApellido.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtDireccion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
-        this.txtDNI.setText(this.tablaDatos.getValueAt(fila, 4).toString());
+        this.txtDNI.setText(personalObject.toString());
         this.txtEmail.setText(this.tablaDatos.getValueAt(fila, 5).toString());
         this.txtTelefono.setText(this.tablaDatos.getValueAt(fila, 6).toString());
         this.txtFechaNacimiento.setText(this.tablaDatos.getValueAt(fila, 7).toString());
@@ -750,45 +751,6 @@ public class PersonalABMC extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PersonalABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PersonalABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PersonalABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PersonalABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //
-
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
@@ -912,6 +874,10 @@ public class PersonalABMC extends javax.swing.JFrame {
 
     String getTxtHoraSalida() {
         return txtHoraSalida.getText();
+    }
+
+    Object getPersonal() {
+        return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 4);
     }
 
 }

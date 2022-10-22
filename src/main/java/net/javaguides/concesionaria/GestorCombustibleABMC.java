@@ -37,7 +37,7 @@ public class GestorCombustibleABMC {
 
     public void modificarCombustible() {
         Combustible combustibleObject;
-        combustibleObject = gestorHibernate.getObjectById("Combustible", Integer.parseInt(pantallaCombustible.getTxtId()));
+        combustibleObject =(Combustible) pantallaCombustible.getCombustible();
         combustibleObject.setNombre(pantallaCombustible.getTxtNombre());
         if (esValido(combustibleObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");

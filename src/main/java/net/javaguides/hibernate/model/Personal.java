@@ -90,8 +90,6 @@ public class Personal {
     public void setHoraSalida(String horaSalida) {
         this.horaSalida = horaSalida;
     }
-
-    
     
     public int getId() {
         return id;
@@ -159,6 +157,6 @@ public class Personal {
     
     @Override
     public String toString() {
-        return "Personal [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", documento=" + documento + ", email=" + email + ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + " ]";
+        return documento;
     }
 }
