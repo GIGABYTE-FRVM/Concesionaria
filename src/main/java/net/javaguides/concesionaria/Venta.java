@@ -4,6 +4,8 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import net.javaguides.concesionaria.herramientas.GestorBuscador;
+import net.javaguides.hibernate.model.Auto;
 import net.javaguides.hibernate.model.Pais;
 
 /**
@@ -12,15 +14,18 @@ import net.javaguides.hibernate.model.Pais;
  */
 public class Venta extends javax.swing.JFrame {
 
-    GestorMarcaABMC gestor;
+    GestorVenta gestor;
     int xMouse, yMouse;
 
     public Venta() {
         initComponents();
     }
 
-    public void conocerGestor(GestorMarcaABMC gestor) {
+    public void conocerGestor(GestorVenta gestor) {
         this.gestor = gestor;
+    }
+    public void setAutoSeleccionado(Auto autoSeleccionado){
+        txtAutoSeleccionado.setText(autoSeleccionado.toStringCompleto());
     }
 
     /**
@@ -42,7 +47,7 @@ public class Venta extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtAutoSeleccionado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -156,16 +161,21 @@ public class Venta extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(247, 246, 246));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Auto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Leelawadee UI", 1, 12))); // NOI18N
 
-        jTextField1.setText("FORD EcoSport 2022");
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtAutoSeleccionado.setText("FORD EcoSport 2022");
+        txtAutoSeleccionado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtAutoSeleccionado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtAutoSeleccionadoActionPerformed(evt);
             }
         });
 
         jButton1.setText("Buscar");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -252,7 +262,7 @@ public class Venta extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAutoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
@@ -295,7 +305,7 @@ public class Venta extends javax.swing.JFrame {
                             .addComponent(jLabel20))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAutoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -726,9 +736,9 @@ public class Venta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtAutoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutoSeleccionadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtAutoSeleccionadoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
@@ -738,14 +748,10 @@ public class Venta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Venta().setVisible(true);
-        });
-    }
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        gestor.buscarAuto();
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -790,7 +796,6 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
@@ -799,5 +804,6 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtAutoSeleccionado;
     // End of variables declaration//GEN-END:variables
 }

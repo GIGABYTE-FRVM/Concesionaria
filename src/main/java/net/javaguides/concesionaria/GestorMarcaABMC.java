@@ -1,10 +1,12 @@
 package net.javaguides.concesionaria;
 
+import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.javaguides.concesionaria.herramientas.GestorBuscador;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Pais;
@@ -176,5 +178,7 @@ public class GestorMarcaABMC {
     public void mostrarPantalla(boolean visible) {
         pantallaMarca.setVisible(visible);
     }
+
+
 
 }

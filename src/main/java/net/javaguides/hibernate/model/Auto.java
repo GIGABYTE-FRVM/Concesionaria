@@ -115,5 +115,9 @@ public class Auto {
     public String toString() {
         return Integer.toString(id);
     }
+
+    public String toStringCompleto() {
+        return this.marca + " " + this. modelo + " " + añoFabricacion;
+    }
     
 }

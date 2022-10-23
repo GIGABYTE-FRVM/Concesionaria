@@ -82,7 +82,6 @@ public class GestorHibernate {
         List<T> objects = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
             objects = session.createQuery("from " + query).list();
 
             transaction.commit();
