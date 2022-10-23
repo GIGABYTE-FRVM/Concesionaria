@@ -136,4 +136,9 @@ public class GestorPersonalABMC {
         }
         return true;
     }
+
+    List<Personal> conocerListVendedores() {
+        conocerPersonales();
+        return listaPersonales;
+    }
 }

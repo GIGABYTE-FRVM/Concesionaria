@@ -1,4 +1,3 @@
-
 package net.javaguides.hibernate.model;
 
 import javax.persistence.Column;

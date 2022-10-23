@@ -15,13 +15,14 @@ import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Personal;
 import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.model.Region;
-
+import net.javaguides.hibernate.model.Combustible;
+import net.javaguides.hibernate.model.Venta;
 
 
 
 import org.hibernate.HibernateException;
 
-import net.javaguides.hibernate.model.Combustible;
+
 
 public class HibernateUtil {
 
@@ -53,6 +54,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Auto.class);
                 configuration.addAnnotatedClass(Cliente.class);
                 configuration.addAnnotatedClass(Region.class);
+                configuration.addAnnotatedClass(Venta.class);
                 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

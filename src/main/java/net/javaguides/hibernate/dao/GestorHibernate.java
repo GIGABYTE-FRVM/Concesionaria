@@ -127,4 +127,45 @@ public class GestorHibernate {
             }
         }
     }
+    
+    public <T> T getLatestIdObject(String table) {
+        Transaction transaction = null;
+        List<T> objects;
+        T object = null;
+        
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            System.out.println("holissw");
+            //objects = session.createQuery("select " + table + ".id from " + table + " where " + table + ".id = (select max("+table+".id) from " + table + ")").list();
+            objects = session.createQuery("select venta.id from venta").list();
+            System.out.println("holis");
+            object = objects.get(0);
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return object;
+    }
+    
+        public <T> T getClienteByDni(String query, int dni) {
+        Transaction transaction = null;
+        List<T> objects = null;
+        T object = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            System.out.println("holis");
+            objects = session.createQuery("from " + query + " where documento = " + Integer.toString(dni)).list();
+            System.out.println("adios");
+            object = objects.get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return object;
+    }
 }
