@@ -82,5 +82,8 @@ public class GestorApp {
             gestorVenta.mostrarPantalla(false);
         }
         gestorVenta.mostrarConsultasVentas(true);
+        gestorVenta.actualizarTabla();
+        
+        
     }
 }

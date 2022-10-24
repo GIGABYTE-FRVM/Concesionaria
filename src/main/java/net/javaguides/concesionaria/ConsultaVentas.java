@@ -40,6 +40,9 @@ public class ConsultaVentas extends javax.swing.JFrame {
         this.gestor = gestor;
     }
 
+    public void actualizarTabla(){
+        tablaDatos.setModel(gestor.mostrarDatos());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
