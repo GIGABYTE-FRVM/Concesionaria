@@ -32,7 +32,8 @@ public class ModeloABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
-
+        setIdUltimaMarca();
+        
         actualizarComboMarcas();
     }
 
@@ -554,6 +555,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         btnRegistrar.setForeground(Color.white);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimaMarca();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -710,6 +712,10 @@ public class ModeloABMC extends javax.swing.JFrame {
     }
     Object getModelo() {
         return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
+    }
+
+    private void setIdUltimaMarca() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdModelo()));
     }
 
 }

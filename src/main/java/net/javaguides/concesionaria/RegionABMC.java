@@ -32,6 +32,7 @@ public class RegionABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimaRegion();
     }
     
      public void conocergestor(GestorRegionABMC gestor) {
@@ -85,6 +86,7 @@ public class RegionABMC extends javax.swing.JFrame {
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         txtId.setBorder(null);
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -575,6 +577,7 @@ public class RegionABMC extends javax.swing.JFrame {
         tablaDatos.setModel(gestor.mostrarDatos());
         limpiarEntradas();
         habilitarBotones(true);
+        setIdUltimaRegion();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -666,6 +669,10 @@ public class RegionABMC extends javax.swing.JFrame {
     
     Object getRegion(){
         return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
+    }
+
+    private void setIdUltimaRegion() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdRegion()));
     }
  
 }

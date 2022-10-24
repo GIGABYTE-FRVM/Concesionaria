@@ -5,14 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Combustible;
+import net.javaguides.hibernate.model.Marca;
 
 public class GestorCombustibleABMC {
 
     private List<Combustible> listaCombustible;
+    private int ultimoIdCombustible;
 
     GestorHibernate gestorHibernate;
     GestorAutoABMC gestorAuto;
@@ -112,5 +115,20 @@ public class GestorCombustibleABMC {
     
     public void mostrarPantalla(boolean visible) {
         pantallaCombustible.setVisible(visible);
+    }
+
+    public int conocerUltimoIdCombustible() {
+        conocerCombustibles();
+        if (listaCombustible.isEmpty()) {
+            ultimoIdCombustible = 0;
+        } else {
+            Optional<Integer> maximoId = listaCombustible.stream()
+                    .map(Combustible::getId)
+                    .max(Integer::compare);
+
+            ultimoIdCombustible = maximoId.get();
+        }
+
+        return ultimoIdCombustible + 1;
     }
 }

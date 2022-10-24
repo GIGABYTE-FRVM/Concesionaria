@@ -21,6 +21,7 @@ public class GestorApp {
     GestorModeloABMC gestorModelo;
     GestorClienteABMC gestorCliente;
     GestorVenta gestorVenta;
+    GestorRegionABMC gestorRegion;
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -84,5 +85,10 @@ public class GestorApp {
         gestorVenta.mostrarConsultasVentas(true);
         gestorVenta.actualizarTabla();
 
+    }
+
+    void menuRegionActionPerformed() {
+        this.gestorRegion = new GestorRegionABMC();
+        gestorRegion.mostrarPantalla(true);
     }
 }

@@ -28,6 +28,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimaMarca();
 
         actualizarComboPaises();
     }
@@ -357,15 +358,15 @@ public class MarcaABMC extends javax.swing.JFrame {
             .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblTitulo)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
                     .addComponent(lblCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCodigo)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(separadorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -430,11 +431,11 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelTablaDatos.setLayout(panelTablaDatosLayout);
         panelTablaDatosLayout.setHorizontalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addContainerGap(225, Short.MAX_VALUE)
                 .addComponent(lblTituloTablaDatos)
                 .addGap(219, 219, 219))
+            .addComponent(jScrollPane1)
         );
         panelTablaDatosLayout.setVerticalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,6 +618,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
         actualizarComboPaises();
+        setIdUltimaMarca();
     }//GEN-LAST:event_btnRegistrarLblMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -780,5 +782,10 @@ public class MarcaABMC extends javax.swing.JFrame {
         }
         
     }
+    
+    public void setIdUltimaMarca(){
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdMarca()));
+    }
+    
 
 }

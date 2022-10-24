@@ -29,7 +29,6 @@ public class VistaVenta extends javax.swing.JFrame {
         actualizarComboVendedores();
         setFechaHoraActual();
         setIdUltimaVenta();
-
     }
 
     public void conocerGestor(GestorVenta gestor) {
@@ -162,7 +161,7 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JFormattedTextField();
+        txtTotal = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtNroVenta = new javax.swing.JTextField();
@@ -348,10 +347,11 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel22.setText("TOTAL VENTA");
 
-        txtTotal.setBackground(new java.awt.Color(204, 204, 204));
-        txtTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(153, 153, 0));
-        txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        txtTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtTotal.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalActionPerformed(evt);
@@ -387,9 +387,9 @@ public class VistaVenta extends javax.swing.JFrame {
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(62, 62, 62)
@@ -757,8 +757,8 @@ public class VistaVenta extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
@@ -813,7 +813,7 @@ public class VistaVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jPanel6.setBackground(Color.red);
+        jPanel8.setBackground(Color.red);
         jLabel8.setForeground(Color.white);
     }//GEN-LAST:event_jLabel8MouseEntered
 
@@ -822,9 +822,13 @@ public class VistaVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jPanel6.setBackground(Color.white);
+        jPanel8.setBackground(Color.white);
         jLabel8.setForeground(Color.black);
     }//GEN-LAST:event_jLabel8MouseExited
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
 
     private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
         // TODO add your handling code here:
@@ -910,10 +914,6 @@ public class VistaVenta extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
@@ -965,7 +965,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtImpuesto;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtNroVenta;
-    private javax.swing.JFormattedTextField txtTotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
 }

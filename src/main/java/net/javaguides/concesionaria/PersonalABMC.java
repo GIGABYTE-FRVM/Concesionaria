@@ -30,6 +30,7 @@ public class PersonalABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimoPersonal();
     }
 
     public void conocergestor(GestorPersonalABMC gestor) {
@@ -682,6 +683,7 @@ public class PersonalABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimoPersonal();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -827,6 +829,7 @@ public class PersonalABMC extends javax.swing.JFrame {
         txtFechaNacimiento.setText("");
         txtHoraEntrada.setText("");
         txtHoraSalida.setText("");
+        
     }
 
     private void habilitarBotones(boolean estado) {
@@ -881,6 +884,10 @@ public class PersonalABMC extends javax.swing.JFrame {
 
     Object getPersonal() {
         return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 4);
+    }
+
+    private void setIdUltimoPersonal() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdPersonal()));
     }
 
 }

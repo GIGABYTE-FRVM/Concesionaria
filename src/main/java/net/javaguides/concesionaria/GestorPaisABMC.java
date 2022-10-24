@@ -2,14 +2,17 @@ package net.javaguides.concesionaria;
 
 import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
+import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Pais;
 import net.javaguides.hibernate.model.Region;
 
 public class GestorPaisABMC {
-
+    
+    private int ultimoIdPais;
     List<Region> listaRegiones;
     private List<Pais> listaPaises;
     GestorRegionABMC gestorRegion;
@@ -33,8 +36,10 @@ public class GestorPaisABMC {
         Pais paisObject = new Pais(nombre, region);
         if (esValido(paisObject, 0)) {
             gestorHibernate.saveObject(paisObject);
-            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaPais.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaPais.setAlwaysOnTop(true);
+            System.out.println("holiwis");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
@@ -165,5 +170,20 @@ public class GestorPaisABMC {
 
     void mostrarPaisABMC() {
         gestorRegion.mostrarPantalla(true);
+    }
+
+    public int conocerUltimoIdPais() {
+        conocerPaises();
+        if (listaPaises.isEmpty()) {
+            ultimoIdPais = 0;
+        } else {
+            Optional<Integer> maximoId = listaPaises.stream()
+                    .map(Pais::getId)
+                    .max(Integer::compare);
+
+            ultimoIdPais = maximoId.get();
+        }
+
+        return ultimoIdPais + 1;
     }
 }

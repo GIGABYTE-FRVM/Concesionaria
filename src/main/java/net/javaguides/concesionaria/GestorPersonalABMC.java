@@ -1,14 +1,18 @@
 package net.javaguides.concesionaria;
 
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
+import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Personal;
 
 public class GestorPersonalABMC {
 
     private List<Personal> listaPersonales;
+    
+    private int ultimoIdPersonal;
 
     GestorHibernate gestorHibernate;
 
@@ -140,5 +144,20 @@ public class GestorPersonalABMC {
     List<Personal> conocerListVendedores() {
         conocerPersonales();
         return listaPersonales;
+    }
+
+    public int conocerUltimoIdPersonal() {
+        conocerPersonales();
+        if (listaPersonales.isEmpty()) {
+            ultimoIdPersonal = 0;
+        } else {
+            Optional<Integer> maximoId = listaPersonales.stream()
+                    .map(Personal::getId)
+                    .max(Integer::compare);
+
+            ultimoIdPersonal = maximoId.get();
+        }
+
+        return ultimoIdPersonal + 1;
     }
 }

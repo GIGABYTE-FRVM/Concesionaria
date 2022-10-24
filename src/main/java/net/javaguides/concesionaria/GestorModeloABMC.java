@@ -2,6 +2,7 @@ package net.javaguides.concesionaria;
 
 import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
@@ -9,7 +10,8 @@ import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Modelo;
 
 public class GestorModeloABMC {
-
+    
+    private int ultimoIdModelo;
     List<Marca> listaMarcas;
     List<Modelo> listaModelos;
     List<Modelo> listaModelosMarca;
@@ -175,5 +177,20 @@ public class GestorModeloABMC {
         gestorMarca.mostrarPantalla(true);
         gestorMarca.suscribirGestorModelo(this);
         solicitarActualizacionMarcas();
+    }
+
+    int conocerUltimoIdModelo() {
+        conocerModelos();
+        if (listaModelos.isEmpty()) {
+            ultimoIdModelo = 0;
+        } else {
+            Optional<Integer> maximoId = listaModelos.stream()
+                    .map(Modelo::getId)
+                    .max(Integer::compare);
+
+            ultimoIdModelo = maximoId.get();
+        }
+
+        return ultimoIdModelo + 1;
     }
 }

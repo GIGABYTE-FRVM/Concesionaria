@@ -3,6 +3,7 @@ package net.javaguides.concesionaria;
 import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,7 +15,8 @@ import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Combustible;
 
 public class GestorAutoABMC {
-
+    
+    private int ultimoIdAuto;
     List<Marca> listaMarcas;
     List<Modelo> listaModelos;
     List<Combustible> listaCombustibles;
@@ -24,6 +26,7 @@ public class GestorAutoABMC {
     GestorModeloABMC gestorModelo;
     GestorCombustibleABMC gestorCombustible;
     GestorHibernate gestorHibernate;
+
 
     AutoABMC pantallaAuto;
     Notificador notificador;
@@ -41,9 +44,8 @@ public class GestorAutoABMC {
 
     public void registrarAuto() {
         Auto autoObject = new Auto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -62,9 +64,8 @@ public class GestorAutoABMC {
 
     public void modificarAuto() {
         Auto autoObject = pantallaAuto.getAuto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -216,5 +217,20 @@ public class GestorAutoABMC {
 
     public void mostrarPantalla(boolean visible) {
         pantallaAuto.setVisible(visible);
+    }
+
+    int conocerUltimoIdAuto() {
+        conocerAutos();
+        if (listaAutos.isEmpty()) {
+            ultimoIdAuto = 0;
+        } else {
+            Optional<Integer> maximoId = listaAutos.stream()
+                    .map(Auto::getId)
+                    .max(Integer::compare);
+
+            ultimoIdAuto = maximoId.get();
+        }
+
+        return ultimoIdAuto + 1;
     }
 }

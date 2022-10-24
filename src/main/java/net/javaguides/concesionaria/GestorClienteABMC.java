@@ -1,14 +1,18 @@
 package net.javaguides.concesionaria;
 
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Cliente;
+import net.javaguides.hibernate.model.Marca;
 
 public class GestorClienteABMC {
 
     private List<Cliente> listaClientes;
+    
+    private int ultimoIdCliente;
 
     GestorHibernate gestorHibernate;
 
@@ -83,8 +87,8 @@ public class GestorClienteABMC {
         Object data[] = new Object[9];
         try {
             for (Cliente cliente : listaClientes) {
-                data[0] = cliente.getId();
-                data[1] = cliente;
+                data[0] = cliente;
+                data[1] = cliente.getNombre();
                 data[2] = cliente.getApellido();
                 data[3] = cliente.getDireccion();
                 data[4] = cliente.getDocumento();
@@ -127,5 +131,20 @@ public class GestorClienteABMC {
 
     public void mostrarPantalla() {
         pantallaCliente.setVisible(true);
+    }
+
+    public int conocerUltimoIdCliente() {
+        conocerClientes();
+        if (listaClientes.isEmpty()) {
+            ultimoIdCliente = 0;
+        } else {
+            Optional<Integer> maximoId = listaClientes.stream()
+                    .map(Cliente::getId)
+                    .max(Integer::compare);
+
+            ultimoIdCliente = maximoId.get();
+        }
+
+        return ultimoIdCliente + 1;
     }
 }

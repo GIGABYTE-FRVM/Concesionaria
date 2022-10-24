@@ -30,6 +30,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimoCliente();
     }
 
     public void conocergestor(GestorClienteABMC gestor) {
@@ -100,6 +101,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setBorder(null);
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -576,6 +578,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimoCliente();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -739,6 +742,10 @@ public class ClienteABMC extends javax.swing.JFrame {
 
     String getTxtFechaNacimiento() {
         return txtFechaNacimiento.getText();
+    }
+
+    private void setIdUltimoCliente() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdCliente()));
     }
 
 }

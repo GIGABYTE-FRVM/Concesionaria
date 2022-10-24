@@ -28,6 +28,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimoCombustible();
     }
 
     public void conocerGestor(GestorCombustibleABMC gestor) {
@@ -79,6 +80,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         txtId.setBorder(null);
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -423,6 +425,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimoCombustible();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -545,6 +548,10 @@ public class CombustibleABMC extends javax.swing.JFrame {
     
     Object getCombustible(){
         return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
+    }
+
+    private void setIdUltimoCombustible() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdCombustible()));
     }
 
 }

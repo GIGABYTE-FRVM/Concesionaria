@@ -1,13 +1,16 @@
 package net.javaguides.concesionaria;
 
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
+import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Region;
 
 public class GestorRegionABMC {
-
+    
+    private int ultimoIdRegion;
     private List<Region> listaRegiones;
     RegionABMC pantallaRegion;
     GestorHibernate gestorHibernate = GestorHibernate.getInstancia();
@@ -97,6 +100,21 @@ public class GestorRegionABMC {
     }
     public void mostrarPantalla(Boolean visible) {
         pantallaRegion.setVisible(visible);
+    }
+
+    int conocerUltimoIdRegion() {
+        conocerRegiones();
+        if (listaRegiones.isEmpty()) {
+            ultimoIdRegion = 0;
+        } else {
+            Optional<Integer> maximoId = listaRegiones.stream()
+                    .map(Region::getId)
+                    .max(Integer::compare);
+
+            ultimoIdRegion = maximoId.get();
+        }
+
+        return ultimoIdRegion + 1;
     }
   
 }

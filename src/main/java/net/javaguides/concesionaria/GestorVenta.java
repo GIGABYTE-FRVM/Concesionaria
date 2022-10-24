@@ -10,7 +10,6 @@ import java.util.List;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Personal;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -34,7 +33,6 @@ public class GestorVenta {
     Integer ultimoIdVenta;
     Cliente cliente;
     double totalVenta;
-    NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
 
     public GestorVenta() {
         gestorVendedor = new GestorPersonalABMC();
@@ -49,7 +47,7 @@ public class GestorVenta {
     void mostrarPantalla(boolean b) {
         pantallaVenta.setVisible(b);
     }
-
+    
     void mostrarConsultasVentas(boolean b) {
         consultaVentas.setVisible(b);
     }
@@ -80,7 +78,7 @@ public class GestorVenta {
     public Integer conocerUltimoIdVenta() {
         conocerVentas();
         if (listadoVentas.isEmpty()) {
-            ultimoIdVenta = 1;
+            ultimoIdVenta = 0;
         } else {
             Optional<Integer> maximoId = listadoVentas.stream()
                     .map(Venta::getId)
@@ -93,14 +91,8 @@ public class GestorVenta {
     }
 
     public Cliente buscarClientePorDni(String dniCliente) {
-        if (!(dniCliente.equals(""))) {
-            cliente = gestorHibernate.getObjectById("Cliente as cliente WHERE cliente.documento LIKE '%" + dniCliente + "%'", 0);
-            return cliente;
-        } else {
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DNI");
-            return null;
-        }
-
+        cliente = gestorHibernate.getObjectById("Cliente as cliente WHERE cliente.documento LIKE '%" + dniCliente + "%'", 0);
+        return cliente;
     }
 
     void buscarAuto() {
@@ -117,7 +109,7 @@ public class GestorVenta {
         pantallaVenta.setAutoSeleccionado(autoSeleccionado);
         pantallaVenta.setTxtCombustible(autoSeleccionado.getCombustible().toString());
         pantallaVenta.setTxtColor(autoSeleccionado.getColor());
-        pantallaVenta.setTxtCosto(formatoImporte.format(autoSeleccionado.getPrecio()));
+        pantallaVenta.setTxtCosto(Double.toString(autoSeleccionado.getPrecio()));
         pantallaVenta.setTxtImpuesto(Double.toString(autoSeleccionado.getMarca().getPais().getRegion().getPorcentaje()));
         calcularTotal();
     }
@@ -127,7 +119,7 @@ public class GestorVenta {
         double costo = autoSeleccionado.getPrecio();
         double impuesto = autoSeleccionado.getMarca().getPais().getRegion().getPorcentaje();
         totalVenta = cantidad * costo + ((cantidad * costo) * impuesto) / 100;
-        pantallaVenta.setTxtTotal(formatoImporte.format(totalVenta));
+        pantallaVenta.setTxtTotal(Double.toString(totalVenta));
     }
 
     public void registrarVenta() {
@@ -141,12 +133,9 @@ public class GestorVenta {
         ventaObject.setPrecio(autoSeleccionado.getPrecio());
         ventaObject.setTotal(totalVenta);
         ventaObject.setVendedor(pantallaVenta.getVendedor());
-        ventaObject.setGanancia((autoSeleccionado.getPrecio()-autoSeleccionado.getPrecioCosto())*pantallaVenta.getCantidad());
         if (esValido(ventaObject)) {
             gestorHibernate.saveObject(ventaObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-            cliente.setEsCliente(1);
-            gestorHibernate.updateObject(cliente);
             pantallaVenta.limpiarEntradas();
             actualizarTabla();
         } else {
@@ -197,9 +186,10 @@ public class GestorVenta {
     private boolean esValido(Venta ventaObject) {
         return autoSeleccionado != null;
     }
-
-    public void actualizarTabla() {
+    public void actualizarTabla(){
         consultaVentas.actualizarTabla();
     }
+
+
 
 }
