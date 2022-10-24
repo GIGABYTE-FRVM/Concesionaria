@@ -46,8 +46,8 @@ public class VistaVenta extends javax.swing.JFrame {
         this.txtAutoSeleccionado = txtAutoSeleccionado;
     }
 
-    public JSpinner getTxtCantidad() {
-        return txtCantidad;
+    public Integer getCantidad() {
+        return (Integer)txtCantidad.getValue();
     }
 
     public void setTxtCantidad(JSpinner txtCantidad) {
@@ -93,7 +93,37 @@ public class VistaVenta extends javax.swing.JFrame {
     public void setTxtTotal(String txtTotal) {
         this.txtTotal.setText(txtTotal);
     }
+    public Personal getVendedor(){
+        return (Personal)cboVendedores.getSelectedItem();
+    }
+    
+    private void actualizarComboVendedores() {
+        cboVendedores.removeAllItems();
+        gestor.conocerVendedores();
+        
+        for(Personal p: gestor.listaVendedores) {
+            cboVendedores.addItem(p);
+        }
+    }
 
+    private void setFechaHoraActual() {
+        txtFecha.setText(gestor.getFechaActual());
+        txtHora.setText(gestor.getHoraActual());
+    }
+
+    private void setIdUltimaVenta() {
+        txtNroVenta.setText(Integer.toString(gestor.conocerUltimoIdVenta()));
+    }
+    public void limpiarEntradas() {
+        txtDniCliente.setText("");
+        txtNombreCliente.setText("");
+        txtAutoSeleccionado.setText("");
+        txtCombustible.setText("");
+        txtColor.setText("");
+        txtCosto.setText("");
+        txtImpuesto.setText("");
+        txtTotal.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -227,7 +257,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(247, 246, 246));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Auto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Leelawadee UI", 1, 12))); // NOI18N
 
-        txtAutoSeleccionado.setText("FORD EcoSport 2022");
         txtAutoSeleccionado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtAutoSeleccionado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +287,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel18.setText("Combustible");
 
         txtCombustible.setEditable(false);
-        txtCombustible.setText("Gasolina");
         txtCombustible.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +298,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel19.setText("Costo");
 
         txtCosto.setEditable(false);
-        txtCosto.setText("$5.955.000");
         txtCosto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,11 +305,21 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
 
+        txtCantidad.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                txtCantidadStateChanged(evt);
+            }
+        });
+        txtCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCantidadMouseClicked(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel4.setText("% de Impuesto");
 
         txtImpuesto.setEditable(false);
-        txtImpuesto.setText("15");
         txtImpuesto.setToolTipText("");
         txtImpuesto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtImpuesto.setEnabled(false);
@@ -296,7 +333,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel20.setText("Color");
 
         txtColor.setEditable(false);
-        txtColor.setText("Rojo");
         txtColor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +346,6 @@ public class VistaVenta extends javax.swing.JFrame {
         txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(153, 153, 0));
-        txtTotal.setText("$6.848.250");
         txtTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtTotal.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +440,6 @@ public class VistaVenta extends javax.swing.JFrame {
 
         txtFecha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txtFecha.setText("23/9/2022");
         txtFecha.setEnabled(false);
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -413,7 +447,6 @@ public class VistaVenta extends javax.swing.JFrame {
 
         txtHora.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txtHora.setText("13:52");
         txtHora.setEnabled(false);
 
         jLabel23.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -476,7 +509,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel10.setText("DNI");
 
         txtNombreCliente.setEditable(false);
-        txtNombreCliente.setText("Zoy, Eder");
         txtNombreCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton2.setText("Buscar");
@@ -492,7 +524,6 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
 
-        txtDniCliente.setText("43188288");
         txtDniCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtDniCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -541,10 +572,25 @@ public class VistaVenta extends javax.swing.JFrame {
 
         jButton3.setActionCommand("Cancelar");
         jButton3.setLabel("Cancelar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Volver");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Registrar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Swis721 Blk BT", 2, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 78, 2));
@@ -830,14 +876,31 @@ public class VistaVenta extends javax.swing.JFrame {
         txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
     }//GEN-LAST:event_jButton2MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Venta().setVisible(true);
-        });
-    }*/
+    private void txtCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCantidadMouseClicked
+        // TODO add your handling code here:
+        System.out.println(txtCantidad.getComponentCount());
+        gestor.calcularTotal();
+    }//GEN-LAST:event_txtCantidadMouseClicked
+
+    private void txtCantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txtCantidadStateChanged
+        // TODO add your handling code here:
+        gestor.calcularTotal();
+    }//GEN-LAST:event_txtCantidadStateChanged
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        gestor.registrarVenta();
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        limpiarEntradas();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -893,21 +956,5 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarComboVendedores() {
-        cboVendedores.removeAllItems();
-        gestor.conocerVendedores();
-        
-        for(Personal p: gestor.listaVendedores) {
-            cboVendedores.addItem(p);
-        }
-    }
 
-    private void setFechaHoraActual() {
-        txtFecha.setText(gestor.getFechaActual());
-        txtHora.setText(gestor.getHoraActual());
-    }
-
-    private void setIdUltimaVenta() {
-        txtNroVenta.setText(Integer.toString(gestor.conocerUltimoIdVenta()));
-    }
 }

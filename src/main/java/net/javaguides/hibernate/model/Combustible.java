@@ -17,13 +17,14 @@ import javax.persistence.Table;
  * @author EderZ
  */
 @Entity
-@Table(name="combustible")
+@Table(name = "combustible")
 public class Combustible {
-   @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
+
     @Column(name = "nombre")
     private String nombre;
 
@@ -34,7 +35,6 @@ public class Combustible {
     public Combustible() {
     }
 
-    
     public int getId() {
         return id;
     }
@@ -51,15 +51,13 @@ public class Combustible {
         this.nombre = nombre;
     }
 
-    public Combustible(int id,  String nombre) {
+    public Combustible(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
-    
+
     @Override
     public String toString() {
         return nombre;
-    } 
+    }
 }
-
-

@@ -82,10 +82,7 @@ public class GestorHibernate {
         List<T> objects = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            System.out.println("hola");
             objects = session.createQuery("from " + query).list();
-            System.out.println("hola ww");
-
             transaction.commit();
 
         } catch (Exception e) {
