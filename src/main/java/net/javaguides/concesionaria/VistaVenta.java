@@ -23,6 +23,7 @@ public class VistaVenta extends javax.swing.JFrame {
 
     public VistaVenta(GestorVenta gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         conocerGestor(gestorPadre);
         actualizarComboVendedores();

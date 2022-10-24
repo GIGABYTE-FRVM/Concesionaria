@@ -26,6 +26,8 @@ public class PaisABMC extends javax.swing.JFrame {
 
     public PaisABMC(GestorPaisABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);

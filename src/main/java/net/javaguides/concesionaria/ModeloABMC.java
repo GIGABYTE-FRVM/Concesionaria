@@ -26,6 +26,8 @@ public class ModeloABMC extends javax.swing.JFrame {
 
     public ModeloABMC(GestorModeloABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);

@@ -23,6 +23,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     
     public MarcaABMC(GestorMarcaABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);

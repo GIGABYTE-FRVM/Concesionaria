@@ -137,13 +137,14 @@ public class GestorVenta {
             gestorHibernate.saveObject(ventaObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaVenta.limpiarEntradas();
+            actualizarTabla();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
     }
 
     public DefaultTableModel mostrarDatos() {
-        this.conocerVentas();
+        conocerVentas();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Fecha");
@@ -156,7 +157,6 @@ public class GestorVenta {
         modelo.addColumn("Cantidad");
         modelo.addColumn("Total");
         modelo.addColumn("Ganancia");
-
         Object data[] = new Object[11];
         try {
             for (Venta venta : listadoVentas) {
@@ -186,5 +186,10 @@ public class GestorVenta {
     private boolean esValido(Venta ventaObject) {
         return autoSeleccionado != null;
     }
+    public void actualizarTabla(){
+        consultaVentas.actualizarTabla();
+    }
+
+
 
 }

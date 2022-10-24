@@ -25,6 +25,7 @@ public class PersonalABMC extends javax.swing.JFrame {
 
     public PersonalABMC(GestorPersonalABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
