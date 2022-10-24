@@ -827,7 +827,6 @@ public class PersonalABMC extends javax.swing.JFrame {
         txtFechaNacimiento.setText("");
         txtHoraEntrada.setText("");
         txtHoraSalida.setText("");
-        
     }
 
     private void habilitarBotones(boolean estado) {

@@ -83,8 +83,8 @@ public class GestorClienteABMC {
         Object data[] = new Object[9];
         try {
             for (Cliente cliente : listaClientes) {
-                data[0] = cliente;
-                data[1] = cliente.getNombre();
+                data[0] = cliente.getId();
+                data[1] = cliente;
                 data[2] = cliente.getApellido();
                 data[3] = cliente.getDireccion();
                 data[4] = cliente.getDocumento();

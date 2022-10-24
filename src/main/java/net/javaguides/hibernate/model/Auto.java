@@ -42,14 +42,18 @@ public class Auto {
 
     @Column(name = "precio")
     double precio;
+    
+    @Column(name = "precio_costo")
+    double precioCosto;
 
-    public Auto(int añoFabricacion, String color, Combustible combustible, Marca marca, Modelo modelo, Carroceria carroceria, double precio) {
+    public Auto(int añoFabricacion, String color, Combustible combustible, Marca marca, Modelo modelo, double precio, double precioCosto) {
         this.añoFabricacion = añoFabricacion;
         this.color = color;
         this.combustible = combustible;
         this.marca = marca;
         this.modelo = modelo;
         this.precio = precio;
+        this.precioCosto = precioCosto;
     }
 
     public int getId() {
@@ -106,6 +110,14 @@ public class Auto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public double getPrecioCosto() {
+        return precioCosto;
+    }
+
+    public void setPrecioCosto(double precioCosto) {
+        this.precioCosto = precioCosto;
     }
 
     public Auto() {

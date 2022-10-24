@@ -52,7 +52,7 @@ public class Buscador extends javax.swing.JFrame {
             }
         });
 
-        comboTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "Color", "Combustible", "Marca", "Modelo", "Version", " ", " " }));
+        comboTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "Color", "Combustible", "Marca", "Modelo", " " }));
         comboTipoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTipoBusquedaActionPerformed(evt);

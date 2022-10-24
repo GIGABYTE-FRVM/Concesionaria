@@ -29,6 +29,7 @@ public class VistaVenta extends javax.swing.JFrame {
         actualizarComboVendedores();
         setFechaHoraActual();
         setIdUltimaVenta();
+        
     }
 
     public void conocerGestor(GestorVenta gestor) {
@@ -157,7 +158,7 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JFormattedTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtNroVenta = new javax.swing.JTextField();
@@ -343,11 +344,10 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel22.setText("TOTAL VENTA");
 
-        txtTotal.setEditable(false);
-        txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtTotal.setBackground(new java.awt.Color(204, 204, 204));
+        txtTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtTotal.setForeground(new java.awt.Color(153, 153, 0));
-        txtTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        txtTotal.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalActionPerformed(evt);
@@ -383,9 +383,9 @@ public class VistaVenta extends javax.swing.JFrame {
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
                             .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel22)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(62, 62, 62)
@@ -822,10 +822,6 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel8.setForeground(Color.black);
     }//GEN-LAST:event_jLabel8MouseExited
 
-    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalActionPerformed
-
     private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniClienteActionPerformed
@@ -873,7 +869,9 @@ public class VistaVenta extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         String dniCliente = txtDniCliente.getText();
         Cliente cliente = gestor.buscarClientePorDni(dniCliente);
-        txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
+        if (cliente!=null){
+            txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void txtCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCantidadMouseClicked
@@ -901,6 +899,10 @@ public class VistaVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -953,7 +955,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtImpuesto;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtNroVenta;
-    private javax.swing.JTextField txtTotal;
+    private javax.swing.JFormattedTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
 

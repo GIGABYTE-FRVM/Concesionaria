@@ -408,7 +408,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -442,7 +442,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        panelGeneral.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 580));
+        panelGeneral.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 600));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -511,7 +511,7 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelGeneral.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 450, 580));
+        panelGeneral.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 450, 600));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -589,7 +589,7 @@ public class App extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
 
         pack();
@@ -814,7 +814,9 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -826,6 +828,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

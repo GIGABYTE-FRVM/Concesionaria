@@ -25,7 +25,6 @@ public class GestorAutoABMC {
     GestorCombustibleABMC gestorCombustible;
     GestorHibernate gestorHibernate;
 
-
     AutoABMC pantallaAuto;
     Notificador notificador;
 
@@ -42,8 +41,9 @@ public class GestorAutoABMC {
 
     public void registrarAuto() {
         Auto autoObject = new Auto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -59,8 +59,9 @@ public class GestorAutoABMC {
 
     public void modificarAuto() {
         Auto autoObject = pantallaAuto.getAuto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -96,8 +97,10 @@ public class GestorAutoABMC {
         modelo.addColumn("Año Fabricacion");
         modelo.addColumn("Combustible");
         modelo.addColumn("Color");
-        modelo.addColumn("Precio");
-        Object data[] = new Object[7];
+        modelo.addColumn("Precio");        
+        modelo.addColumn("Precio Costo");
+
+        Object data[] = new Object[8];
         try {
             for (Auto auto : listaAutos) {
                 data[0] = auto;
@@ -107,6 +110,7 @@ public class GestorAutoABMC {
                 data[4] = auto.getCombustible().getNombre();
                 data[5] = auto.getColor();
                 data[6] = Double.toString(auto.getPrecio());
+                data[7] = Double.toString(auto.getPrecioCosto());
 
                 modelo.addRow(data);
             }
