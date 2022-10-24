@@ -23,6 +23,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
 
     public CombustibleABMC(GestorCombustibleABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);

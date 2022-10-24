@@ -27,6 +27,7 @@ public class RegionABMC extends javax.swing.JFrame {
     
     public RegionABMC(GestorRegionABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);

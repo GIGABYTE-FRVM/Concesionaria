@@ -25,6 +25,7 @@ public class ClienteABMC extends javax.swing.JFrame {
 
     public ClienteABMC(GestorClienteABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
@@ -89,6 +90,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         lblBtnCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
