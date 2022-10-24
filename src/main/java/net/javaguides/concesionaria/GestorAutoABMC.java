@@ -15,7 +15,7 @@ import net.javaguides.hibernate.model.Modelo;
 import net.javaguides.hibernate.model.Combustible;
 
 public class GestorAutoABMC {
-    
+
     private int ultimoIdAuto;
     List<Marca> listaMarcas;
     List<Modelo> listaModelos;
@@ -26,7 +26,6 @@ public class GestorAutoABMC {
     GestorModeloABMC gestorModelo;
     GestorCombustibleABMC gestorCombustible;
     GestorHibernate gestorHibernate;
-
 
     AutoABMC pantallaAuto;
     Notificador notificador;
@@ -44,8 +43,9 @@ public class GestorAutoABMC {
 
     public void registrarAuto() {
         Auto autoObject = new Auto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -56,6 +56,7 @@ public class GestorAutoABMC {
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaAuto.limpiarEntradas();
         } else {
+            pantallaAuto.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
         pantallaAuto.setAlwaysOnTop(true);
@@ -64,8 +65,9 @@ public class GestorAutoABMC {
 
     public void modificarAuto() {
         Auto autoObject = pantallaAuto.getAuto();
-        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length()==0?0:Double.parseDouble(pantallaAuto.getTxtPrecio()));
-        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length()==0?0:Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecio(pantallaAuto.getTxtPrecio().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecio()));
+        autoObject.setAñoFabricacion(pantallaAuto.getTxtAñoFabricacion().length() == 0 ? 0 : Integer.parseInt(pantallaAuto.getTxtAñoFabricacion()));
+        autoObject.setPrecioCosto(pantallaAuto.getTxtPrecioCosto().length() == 0 ? 0 : Double.parseDouble(pantallaAuto.getTxtPrecioCosto()));
         autoObject.setModelo(pantallaAuto.getModelo());
         autoObject.setMarca(pantallaAuto.getMarca());
         autoObject.setCombustible(pantallaAuto.getCombustible());
@@ -77,6 +79,7 @@ public class GestorAutoABMC {
             pantallaAuto.limpiarEntradas();
             mostrarDatos();
         } else {
+            pantallaAuto.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
         pantallaAuto.setAlwaysOnTop(true);

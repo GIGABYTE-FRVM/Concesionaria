@@ -23,8 +23,8 @@ public class AutoABMC extends javax.swing.JFrame {
 
     GestorAutoABMC gestor;
     int xMouse, yMouse;
-    Color colorBackgroundButton = new Color(255,153,0);
-    Color colorBorderButton = new Color(204,204,204);
+    Color colorBackgroundButton = new Color(255, 153, 0);
+    Color colorBorderButton = new Color(204, 204, 204);
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
 
     public AutoABMC(GestorAutoABMC gestorPadre) {
@@ -769,7 +769,7 @@ public class AutoABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        Auto autoObject = ((Auto)this.tablaDatos.getValueAt(fila, 0));
+        Auto autoObject = ((Auto) this.tablaDatos.getValueAt(fila, 0));
         this.txtId.setText(autoObject.toString());
         this.txtAñoFabricacion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
         this.txtPrecio.setText(this.tablaDatos.getValueAt(fila, 6).toString());
@@ -777,7 +777,7 @@ public class AutoABMC extends javax.swing.JFrame {
         cboModelo.getModel().setSelectedItem(autoObject.getModelo());
         cboCombustible.getModel().setSelectedItem(autoObject.getCombustible());
         cboColor.getModel().setSelectedItem(this.tablaDatos.getValueAt(fila, 5).toString());
-
+        this.txtPrecioCosto.setText(this.tablaDatos.getValueAt(fila, 7).toString());
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.WHITE);
         panelBtnRegistrar.setBorder(borderButtonDisabled);
@@ -833,7 +833,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
         // TODO add your handling code here:
-        
+
         //
     }//GEN-LAST:event_cboMarcaActionPerformed
 
@@ -1032,7 +1032,9 @@ public class AutoABMC extends javax.swing.JFrame {
     public void limpiarEntradas() {
         txtId.setText("");
         txtAñoFabricacion.setText("");
-        txtPrecio.setText("");
+        //txtPrecio.setText("");
+        //txtPrecioCosto.setText("");
+
     }
 
     public String getTxtAñoFabricacion() {
@@ -1042,6 +1044,7 @@ public class AutoABMC extends javax.swing.JFrame {
     public String getTxtPrecio() {
         return txtPrecio.getText();
     }
+
     public String getTxtPrecioCosto() {
         return txtPrecioCosto.getText();
     }
@@ -1051,23 +1054,23 @@ public class AutoABMC extends javax.swing.JFrame {
     }
 
     public Marca getMarca() {
-        return (Marca)cboMarca.getSelectedItem();
+        return (Marca) cboMarca.getSelectedItem();
     }
 
     public Modelo getModelo() {
-        return (Modelo)cboModelo.getSelectedItem();
+        return (Modelo) cboModelo.getSelectedItem();
     }
 
     public Combustible getCombustible() {
-        return (Combustible)cboCombustible.getSelectedItem();
+        return (Combustible) cboCombustible.getSelectedItem();
     }
 
     public String getColor() {
         return cboColor.getSelectedItem().toString();
     }
-    
+
     public Auto getAuto() {
-        return (Auto)this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
+        return (Auto) this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
     }
 
     private void habilitarBotones(boolean estado) {

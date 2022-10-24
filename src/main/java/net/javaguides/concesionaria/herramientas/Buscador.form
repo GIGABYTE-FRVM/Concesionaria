@@ -104,15 +104,13 @@
         <Component class="javax.swing.JComboBox" name="comboTipoBusqueda">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="8">
+              <StringArray count="6">
                 <StringItem index="0" value="A&#xf1;o"/>
                 <StringItem index="1" value="Color"/>
                 <StringItem index="2" value="Combustible"/>
                 <StringItem index="3" value="Marca"/>
                 <StringItem index="4" value="Modelo"/>
                 <StringItem index="5" value="Version"/>
-                <StringItem index="6" value=" "/>
-                <StringItem index="7" value=" "/>
               </StringArray>
             </Property>
           </Properties>

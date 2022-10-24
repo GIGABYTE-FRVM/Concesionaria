@@ -39,7 +39,6 @@ public class GestorPaisABMC {
             pantallaPais.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaPais.setAlwaysOnTop(true);
-            System.out.println("holiwis");
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
