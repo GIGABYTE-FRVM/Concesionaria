@@ -59,7 +59,7 @@ public class GestorHibernate {
         }
     }
 
-    public <T> T getObjectById(String query, int id) {
+    public <T> T getObjectById(String query, int id) throws IllegalStateException {
         Transaction transaction = null;
         List<T> objects = null;
         T object = null;

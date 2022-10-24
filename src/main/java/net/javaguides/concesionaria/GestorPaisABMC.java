@@ -34,9 +34,12 @@ public class GestorPaisABMC {
         if (esValido(paisObject, 0)) {
             gestorHibernate.saveObject(paisObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
+            pantallaPais.setAlwaysOnTop(false);
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
+        pantallaPais.setAlwaysOnTop(true);
+
     }
 
     public void modificarPais() {
@@ -47,10 +50,13 @@ public class GestorPaisABMC {
         if (esValido(paisObject, 1)) {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(paisObject);
+            pantallaPais.setAlwaysOnTop(false);
             mostrarDatos();
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
+        pantallaPais.setAlwaysOnTop(true);
+
     }
 
     public void conocerPaises() {
@@ -130,7 +136,6 @@ public class GestorPaisABMC {
     public void conocerGestorMarca(GestorMarcaABMC gestorMarca) {
         this.gestorMarca = gestorMarca;
     }
-
 
     public boolean esValido(Pais pais, int tipo) {
         if (pais.getNombre().length() == 0) {

@@ -32,7 +32,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
-    
+
         actualizarComboMarcas();
     }
 

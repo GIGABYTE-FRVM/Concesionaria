@@ -29,13 +29,14 @@ public class VistaVenta extends javax.swing.JFrame {
         actualizarComboVendedores();
         setFechaHoraActual();
         setIdUltimaVenta();
-        
+
     }
 
     public void conocerGestor(GestorVenta gestor) {
         this.gestor = gestor;
     }
-    public void setAutoSeleccionado(Auto autoSeleccionado){
+
+    public void setAutoSeleccionado(Auto autoSeleccionado) {
         txtAutoSeleccionado.setText(autoSeleccionado.toStringCompleto());
     }
 
@@ -48,7 +49,7 @@ public class VistaVenta extends javax.swing.JFrame {
     }
 
     public Integer getCantidad() {
-        return (Integer)txtCantidad.getValue();
+        return (Integer) txtCantidad.getValue();
     }
 
     public void setTxtCantidad(JSpinner txtCantidad) {
@@ -60,7 +61,7 @@ public class VistaVenta extends javax.swing.JFrame {
     }
 
     public void setTxtCosto(String txtCosto) {
-        this.txtCosto .setText(txtCosto);
+        this.txtCosto.setText(txtCosto);
     }
 
     public String getTxtCombustible() {
@@ -94,15 +95,16 @@ public class VistaVenta extends javax.swing.JFrame {
     public void setTxtTotal(String txtTotal) {
         this.txtTotal.setText(txtTotal);
     }
-    public Personal getVendedor(){
-        return (Personal)cboVendedores.getSelectedItem();
+
+    public Personal getVendedor() {
+        return (Personal) cboVendedores.getSelectedItem();
     }
-    
+
     private void actualizarComboVendedores() {
         cboVendedores.removeAllItems();
         gestor.conocerVendedores();
-        
-        for(Personal p: gestor.listaVendedores) {
+
+        for (Personal p : gestor.listaVendedores) {
             cboVendedores.addItem(p);
         }
     }
@@ -115,6 +117,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private void setIdUltimaVenta() {
         txtNroVenta.setText(Integer.toString(gestor.conocerUltimoIdVenta()));
     }
+
     public void limpiarEntradas() {
         txtDniCliente.setText("");
         txtNombreCliente.setText("");
@@ -125,6 +128,7 @@ public class VistaVenta extends javax.swing.JFrame {
         txtImpuesto.setText("");
         txtTotal.setText("");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -868,10 +872,16 @@ public class VistaVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         String dniCliente = txtDniCliente.getText();
-        Cliente cliente = gestor.buscarClientePorDni(dniCliente);
-        if (cliente!=null){
-            txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
+        try {
+            Cliente cliente = gestor.buscarClientePorDni(dniCliente);
+            if (cliente != null) {
+                txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
+            }
+        } catch (IllegalStateException e) {
+            JOptionPane.showMessageDialog(null, "EL DNI INGRESADO NO ES CORRECTO");
+
         }
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void txtCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCantidadMouseClicked
@@ -957,6 +967,5 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtNroVenta;
     private javax.swing.JFormattedTextField txtTotal;
     // End of variables declaration//GEN-END:variables
-
 
 }

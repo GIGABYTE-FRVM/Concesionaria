@@ -50,11 +50,14 @@ public class GestorAutoABMC {
         autoObject.setColor(pantallaAuto.getColor());
         if (esValido(autoObject)) {
             gestorHibernate.saveObject(autoObject);
+            pantallaAuto.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaAuto.limpiarEntradas();
         } else {
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
+        pantallaAuto.setAlwaysOnTop(true);
+
     }
 
     public void modificarAuto() {
@@ -67,6 +70,7 @@ public class GestorAutoABMC {
         autoObject.setCombustible(pantallaAuto.getCombustible());
         autoObject.setColor(pantallaAuto.getColor());
         if (esValido(autoObject)) {
+            pantallaAuto.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(autoObject);
             pantallaAuto.limpiarEntradas();
@@ -74,6 +78,7 @@ public class GestorAutoABMC {
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
+        pantallaAuto.setAlwaysOnTop(true);
     }
 
     public void eliminarAuto() {
@@ -97,7 +102,7 @@ public class GestorAutoABMC {
         modelo.addColumn("Año Fabricacion");
         modelo.addColumn("Combustible");
         modelo.addColumn("Color");
-        modelo.addColumn("Precio");        
+        modelo.addColumn("Precio");
         modelo.addColumn("Precio Costo");
 
         Object data[] = new Object[8];

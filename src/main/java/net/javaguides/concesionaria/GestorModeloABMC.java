@@ -36,16 +36,20 @@ public class GestorModeloABMC {
         Modelo modeloObject = new Modelo(nombre, version, añoLanzamiento, marca);
         if (esValido(modeloObject, 0)) {
             gestorHibernate.saveObject(modeloObject);
+            pantallaModelo.setAlwaysOnTop(false);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
             pantallaModelo.limpiarEntradas();
         } else {
+
             JOptionPane.showMessageDialog(null, "DEBE COMPLETAR TODOS LOS CAMPOS");
         }
+        pantallaModelo.setAlwaysOnTop(true);
+
     }
 
     public void modificarModelo() {
         Modelo modeloObject;
-        modeloObject = (Modelo)pantallaModelo.getModelo();
+        modeloObject = (Modelo) pantallaModelo.getModelo();
         modeloObject.setNombre(pantallaModelo.getTxtNombre());
         modeloObject.setVersion(pantallaModelo.getTxtVersion());
         modeloObject.setAñoLanzamiento(pantallaModelo.getTxtAñoLanzamiento());
@@ -54,14 +58,18 @@ public class GestorModeloABMC {
             JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
             gestorHibernate.updateObject(modeloObject);
             mostrarDatos();
-            pantallaModelo.limpiarEntradas();
+            pantallaModelo.limpiarEntradas();            
+            pantallaModelo.setAlwaysOnTop(false);
+
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
         }
+                    pantallaModelo.setAlwaysOnTop(true);
+
     }
 
     public void eliminarModelo() {
-        Modelo modeloObject = (Modelo)pantallaModelo.getModelo();
+        Modelo modeloObject = (Modelo) pantallaModelo.getModelo();
 
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este modelo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
