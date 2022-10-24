@@ -75,6 +75,12 @@ public class GestorApp {
     public void crearGestorVenta() {
         gestorVenta = new GestorVenta();
         gestorVenta.mostrarPantalla(true);
-
+    }
+    public void consultarVentas() {
+        if (gestorVenta==null){
+            crearGestorVenta();
+            gestorVenta.mostrarPantalla(false);
+        }
+        gestorVenta.mostrarConsultasVentas(true);
     }
 }

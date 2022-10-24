@@ -129,6 +129,6 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return "" + id ;
+        return "" + nombre ;
     }
 }
