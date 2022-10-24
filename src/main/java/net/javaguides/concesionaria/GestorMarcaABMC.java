@@ -111,7 +111,7 @@ public class GestorMarcaABMC {
     }
 
     public void conocerMarcas() {
-       
+       listaMarcas = gestorHibernate.getAllObjects("Marca");
     }
 
     public List<Marca> conocerListaMarcas() {

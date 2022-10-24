@@ -157,6 +157,6 @@ public class Personal {
     
     @Override
     public String toString() {
-        return documento;
+        return nombre + " " + apellido;
     }
 }

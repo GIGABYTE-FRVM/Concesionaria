@@ -14,18 +14,18 @@ import net.javaguides.hibernate.model.Personal;
  *
  * @author matya
  */
-public class Venta extends javax.swing.JFrame {
+public class VistaVenta extends javax.swing.JFrame {
 
     GestorVenta gestor;
     int xMouse, yMouse;
 
-    public Venta(GestorVenta gestorPadre) {
+    public VistaVenta(GestorVenta gestorPadre) {
         initComponents();
         this.setDefaultCloseOperation(2);
         conocerGestor(gestorPadre);
         actualizarComboVendedores();
         setFechaHoraActual();
-        //setIdUltimaVenta();
+        setIdUltimaVenta();
     }
 
     public void conocerGestor(GestorVenta gestor) {
@@ -360,7 +360,6 @@ public class Venta extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel23.setText("Vendedor");
 
-        cboVendedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ortiz Lucas", "Arias Matias" }));
         cboVendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboVendedoresActionPerformed(evt);
@@ -784,7 +783,7 @@ public class Venta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
-    private javax.swing.JComboBox<String> cboVendedores;
+    private javax.swing.JComboBox<Personal> cboVendedores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -840,7 +839,7 @@ public class Venta extends javax.swing.JFrame {
         gestor.conocerVendedores();
         
         for(Personal p: gestor.listaVendedores) {
-            cboVendedores.addItem(p.getNombre()+ " " + p.getApellido());
+            cboVendedores.addItem(p);
         }
     }
 
@@ -850,6 +849,6 @@ public class Venta extends javax.swing.JFrame {
     }
 
     private void setIdUltimaVenta() {
-        txtNroVenta.setText(gestor.conocerUltimoIdVenta().toString());
+        txtNroVenta.setText(Integer.toString(gestor.conocerUltimoIdVenta()));
     }
 }

@@ -65,8 +65,8 @@ public class GestorHibernate {
         T object = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
-            objects = session.createQuery("from " + query + " where id = " + id).list();
+            System.out.println("from " + query);
+            objects = session.createQuery("from " + query).list();
             object = objects.get(0);
             transaction.commit();
         } catch (Exception e) {
@@ -82,7 +82,9 @@ public class GestorHibernate {
         List<T> objects = null;
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
+            System.out.println("hola");
             objects = session.createQuery("from " + query).list();
+            System.out.println("hola ww");
 
             transaction.commit();
 
@@ -135,10 +137,8 @@ public class GestorHibernate {
         
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            System.out.println("holissw");
             //objects = session.createQuery("select " + table + ".id from " + table + " where " + table + ".id = (select max("+table+".id) from " + table + ")").list();
             objects = session.createQuery("select venta.id from venta").list();
-            System.out.println("holis");
             object = objects.get(0);
             transaction.commit();
 

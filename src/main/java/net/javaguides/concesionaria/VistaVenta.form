@@ -680,19 +680,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboVendedores">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Ortiz Lucas"/>
-                        <StringItem index="1" value="Arias Matias"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboVendedoresActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Personal&gt;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

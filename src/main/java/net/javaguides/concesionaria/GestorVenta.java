@@ -12,11 +12,15 @@ import net.javaguides.hibernate.model.Personal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.stream.Stream;
 import net.javaguides.hibernate.model.Cliente;
+import net.javaguides.hibernate.model.Venta;
 
 public class GestorVenta {
 
-    Venta pantallaVenta;
+    VistaVenta pantallaVenta;
     Auto autoSeleccionado;
     List<Personal> listaVendedores;
     GestorPersonalABMC gestorVendedor;
@@ -24,11 +28,10 @@ public class GestorVenta {
     Integer ultimoIdVenta;
     
     public GestorVenta() {
-        pantallaVenta = new Venta(this);
-        pantallaVenta.conocerGestor(this);
         gestorVendedor = new GestorPersonalABMC();
         gestorHibernate = GestorHibernate.getInstancia();
-        pantallaVenta = new Venta(this);
+        pantallaVenta = new VistaVenta(this);
+        pantallaVenta.conocerGestor(this);
         mostrarPantalla(true);
     }
 
@@ -62,12 +65,22 @@ public class GestorVenta {
     }
     
     public Integer conocerUltimoIdVenta() {
-        ultimoIdVenta = gestorHibernate.getLatestIdObject("venta");
-        return ultimoIdVenta;
+        List<Venta> listadoVentas = gestorHibernate.getAllObjects("Venta");
+        if(listadoVentas.isEmpty()) {
+            ultimoIdVenta = 1;
+        }else {
+            Optional<Integer> maximoId = listadoVentas.stream()
+                    .map(Venta::getId)
+                    .max(Integer::compare);
+            
+            ultimoIdVenta = maximoId.get();
+        }
+        
+        return ultimoIdVenta + 1;
     }
-
     public Cliente buscarClientePorDni(String dniCliente) {
-        Cliente cliente = gestorHibernate.getClienteByDni("cliente", Integer.parseInt(dniCliente));
+        Cliente cliente = gestorHibernate.getObjectById("Cliente as cliente WHERE cliente.documento LIKE '%" + dniCliente + "%'", 0);
+        System.out.println(cliente);
         return cliente;
     }
 
