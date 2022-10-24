@@ -1,8 +1,10 @@
 package net.javaguides.concesionaria;
 
 import java.awt.Color;
+import javax.swing.JFormattedTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import net.javaguides.concesionaria.herramientas.GestorBuscador;
 import net.javaguides.hibernate.model.Auto;
@@ -35,6 +37,62 @@ public class VistaVenta extends javax.swing.JFrame {
         txtAutoSeleccionado.setText(autoSeleccionado.toStringCompleto());
     }
 
+    public JTextField getTxtAutoSeleccionado() {
+        return txtAutoSeleccionado;
+    }
+
+    public void setTxtAutoSeleccionado(JTextField txtAutoSeleccionado) {
+        this.txtAutoSeleccionado = txtAutoSeleccionado;
+    }
+
+    public JSpinner getTxtCantidad() {
+        return txtCantidad;
+    }
+
+    public void setTxtCantidad(JSpinner txtCantidad) {
+        this.txtCantidad = txtCantidad;
+    }
+
+    public JTextField getTxtCosto() {
+        return txtCosto;
+    }
+
+    public void setTxtCosto(String txtCosto) {
+        this.txtCosto .setText(txtCosto);
+    }
+
+    public String getTxtCombustible() {
+        return txtCombustible.getText();
+    }
+
+    public void setTxtCombustible(String txtGasolina) {
+        this.txtCombustible.setText(txtGasolina);
+    }
+
+    public String getTxtImpuesto() {
+        return txtImpuesto.getText();
+    }
+
+    public void setTxtImpuesto(String txtImpuesto) {
+        this.txtImpuesto.setText(txtImpuesto);
+    }
+
+    public String getTxtColor() {
+        return txtColor.getText();
+    }
+
+    public void setTxtColor(String txtRojo) {
+        this.txtColor.setText(txtRojo);
+    }
+
+    public String getTxtTotal() {
+        return txtTotal.getText();
+    }
+
+    public void setTxtTotal(String txtTotal) {
+        this.txtTotal.setText(txtTotal);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,16 +117,16 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtCombustible = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        txtCosto = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtImpuesto = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtColor = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtNroVenta = new javax.swing.JTextField();
@@ -198,65 +256,65 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel18.setText("Combustible");
 
-        jTextField7.setEditable(false);
-        jTextField7.setText("Gasolina");
-        jTextField7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtCombustible.setEditable(false);
+        txtCombustible.setText("Gasolina");
+        txtCombustible.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtCombustible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtCombustibleActionPerformed(evt);
             }
         });
 
         jLabel19.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel19.setText("Costo");
 
-        jTextField8.setEditable(false);
-        jTextField8.setText("$5.955.000");
-        jTextField8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtCosto.setEditable(false);
+        txtCosto.setText("$5.955.000");
+        txtCosto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtCostoActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel4.setText("% de Impuesto");
 
-        jTextField11.setEditable(false);
-        jTextField11.setText("15");
-        jTextField11.setToolTipText("");
-        jTextField11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField11.setEnabled(false);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        txtImpuesto.setEditable(false);
+        txtImpuesto.setText("15");
+        txtImpuesto.setToolTipText("");
+        txtImpuesto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtImpuesto.setEnabled(false);
+        txtImpuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                txtImpuestoActionPerformed(evt);
             }
         });
 
         jLabel20.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel20.setText("Color");
 
-        jTextField9.setEditable(false);
-        jTextField9.setText("Rojo");
-        jTextField9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        txtColor.setEditable(false);
+        txtColor.setText("Rojo");
+        txtColor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                txtColorActionPerformed(evt);
             }
         });
 
         jLabel22.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel22.setText("TOTAL VENTA");
 
-        jTextField13.setEditable(false);
-        jTextField13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTextField13.setForeground(new java.awt.Color(153, 153, 0));
-        jTextField13.setText("$6.848.250");
-        jTextField13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField13.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(153, 153, 0));
+        txtTotal.setText("$6.848.250");
+        txtTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtTotal.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                txtTotalActionPerformed(evt);
             }
         });
 
@@ -275,23 +333,23 @@ public class VistaVenta extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField11))))
+                            .addComponent(txtImpuesto))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(62, 62, 62)
@@ -314,8 +372,8 @@ public class VistaVenta extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -325,10 +383,10 @@ public class VistaVenta extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -717,9 +775,9 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel8.setForeground(Color.black);
     }//GEN-LAST:event_jLabel8MouseExited
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_txtTotalActionPerformed
 
     private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
         // TODO add your handling code here:
@@ -733,17 +791,17 @@ public class VistaVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboVendedoresActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void txtImpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpuestoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_txtImpuestoActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCostoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtCostoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtCombustibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCombustibleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtCombustibleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -757,9 +815,9 @@ public class VistaVenta extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void txtColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_txtColorActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
@@ -820,18 +878,18 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtAutoSeleccionado;
+    private javax.swing.JSpinner txtCantidad;
+    private javax.swing.JTextField txtColor;
+    private javax.swing.JTextField txtCombustible;
+    private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDniCliente;
     private javax.swing.JFormattedTextField txtFecha;
     private javax.swing.JFormattedTextField txtHora;
+    private javax.swing.JTextField txtImpuesto;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtNroVenta;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarComboVendedores() {

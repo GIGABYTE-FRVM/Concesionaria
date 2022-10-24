@@ -117,7 +117,7 @@ public class Auto {
     }
 
     public String toStringCompleto() {
-        return this.marca + " " + this. modelo + " " + añoFabricacion;
+        return this.marca + " " + this.modelo + " " + añoFabricacion;
     }
     
 }

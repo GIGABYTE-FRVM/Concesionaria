@@ -49,14 +49,12 @@ public class GestorVenta {
     public String getFechaActual() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String date = dateFormat.format(Calendar.getInstance().getTime());
-        System.out.println(date);
         return date;
     }
 
     public String getHoraActual() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         String hour = dateFormat.format(Calendar.getInstance().getTime());
-        System.out.println(hour);
         return hour;
     }
     
@@ -80,7 +78,6 @@ public class GestorVenta {
     }
     public Cliente buscarClientePorDni(String dniCliente) {
         Cliente cliente = gestorHibernate.getObjectById("Cliente as cliente WHERE cliente.documento LIKE '%" + dniCliente + "%'", 0);
-        System.out.println(cliente);
         return cliente;
     }
 
@@ -96,8 +93,9 @@ public class GestorVenta {
     public void setAutoSeleccionado(Auto autoSeleccionado) {
         this.autoSeleccionado = autoSeleccionado;
         pantallaVenta.setAutoSeleccionado(autoSeleccionado);
+        pantallaVenta.setTxtCombustible(autoSeleccionado.getCombustible().toString());
+        pantallaVenta.setTxtColor(autoSeleccionado.getColor());
+        pantallaVenta.setTxtCosto(Double.toString(autoSeleccionado.getPrecio()));
+        pantallaVenta.setTxtImpuesto(Double.toString(autoSeleccionado.getMarca().getPais().getRegion().getPorcentaje()));
     }
-    
-    
-    
 }
