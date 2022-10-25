@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +26,17 @@ public class Pais {
         this.nombre = nombre;
     }
 
+    @ManyToOne
+    @JoinColumn(name="id_region",referencedColumnName="id")
+    private Region region;
+    
     public Pais() {
     }
 
+    public Pais(String nombre, Region region) {
+        this.nombre = nombre;
+        this.region = region;
+    }
     
     public int getId() {
         return id;
@@ -43,10 +53,19 @@ public class Pais {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public Region getRegion() {
+        return region;
+    }
 
-    public Pais(int id,  String nombre) {
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public Pais(int id,  String nombre, Region region) {
         this.id = id;
         this.nombre = nombre;
+        this.region = region; 
     }
     
     @Override

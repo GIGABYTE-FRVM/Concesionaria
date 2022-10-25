@@ -8,6 +8,7 @@ import java.util.List;
 import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.dao.GestorHibernate;
+import net.javaguides.hibernate.model.Venta;
 
 
 /**
@@ -16,35 +17,26 @@ import net.javaguides.hibernate.dao.GestorHibernate;
  */
 public class app {
     public static void main(String[] args) {
-        GestorHibernate gestorHib   = new GestorHibernate();
-
+        GestorHibernate gestorHib  = GestorHibernate.getInstancia();
 
         Cliente cliente = new Cliente("Gestor1", "Hibernate", "PDM", 
-                "String documento", "String email", "String telefono"
+                "42980360", "String email", "String telefono"
                 , "String fechaNacimiento");
         // REGISTRAR
-        gestorHib.saveObject(cliente);
-        System.out.println("REGISTRÓ EL OBJETO");
-        //GET ALL
-        List<Cliente> clientes = gestorHib.getAllObjects("Cliente");
-        //List<Marca> marcas = marcaDao.getAllMarcas();
-        System.out.println(clientes);
-        clientes.forEach(cliente1 -> System.out.println(cliente1.getNombre()));
-        System.out.println("CONSULTÓ LOS OBJETOS");
-        //ELIMINAR
-        gestorHib.deleteObject("Cliente",4);
-        System.out.println("ELIMINÓ EL OBJETO");
-        //MODIFICAR
-        cliente.setNombre("GESTORHIBMOD");
-        gestorHib.updateObject(cliente);
-        System.out.println("MODIFICÓ EL OBJETO");
-
-        //CONSULTAR
-        Cliente cliente2 = gestorHib.getObjectById("Cliente",3);
-        System.out.println(cliente2);
-        System.out.println("CONSULTÓ EL OBJETO");
-
-
+        //gestorHib.saveObject(cliente);
+        //Cliente cliente2 = gestorHib.getObjectById("Cliente as cliente WHERE cliente.documento LIKE '%42980360%'", 0);
+        //System.out.println(cliente2);
+        //System.out.println("REGISTRÓ EL OBJETO");
+        
+        /*
+        Venta venta = new Venta("holis");
+        gestorHib.saveObject(venta);
+        
+        List<Venta> listadoVentas;
+        listadoVentas = gestorHib.getAllObjects("Venta");
+        System.out.println(listadoVentas);
+        
+        */
 
     }
 }

@@ -18,20 +18,22 @@ import javax.swing.text.MaskFormatter;
 public class ClienteABMC extends javax.swing.JFrame {
 
     GestorClienteABMC gestor;
-    Color colorBackgroundButton = new Color(255,153,0);
-    Color colorBorderButton = new Color(204,204,204);
+    Color colorBackgroundButton = new Color(255, 153, 0);
+    Color colorBorderButton = new Color(204, 204, 204);
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
-    int xMouse, yMouse; 
+    int xMouse, yMouse;
 
     public ClienteABMC(GestorClienteABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocergestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimoCliente();
     }
-    
-     public void conocergestor(GestorClienteABMC gestor) {
+
+    public void conocergestor(GestorClienteABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -89,6 +91,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         lblBtnCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,6 +101,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setBorder(null);
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -523,7 +527,8 @@ public class ClienteABMC extends javax.swing.JFrame {
     private void tablaDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDatosMouseClicked
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
-        this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
+        Object clienteObject = (this.tablaDatos.getValueAt(fila, 0));
+        this.txtId.setText(clienteObject.toString());
         this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
         this.txtApellido.setText(this.tablaDatos.getValueAt(fila, 2).toString());
         this.txtDireccion.setText(this.tablaDatos.getValueAt(fila, 3).toString());
@@ -573,6 +578,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimoCliente();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -635,69 +641,6 @@ public class ClienteABMC extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteABMC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
@@ -758,48 +701,51 @@ public class ClienteABMC extends javax.swing.JFrame {
         txtTelefono.setText("");
         txtFechaNacimiento.setText("");
     }
-    private void habilitarBotones(boolean estado){
+
+    private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
     }
-    
+
+    Object getCliente() {
+        return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 0);
+    }
+
     String getTxtId() {
         return txtId.getText();
     }
-    
+
     String getTxtNombre() {
         return txtNombre.getText();
     }
-    
+
     String getTxtApellido() {
         return txtApellido.getText();
     }
-    
+
     String getTxtDireccion() {
         return txtDireccion.getText();
     }
-    
+
     String getTxtDNI() {
         return txtDNI.getText();
     }
-    
+
     String getTxtEmail() {
         return txtEmail.getText();
     }
-    
+
     String getTxtTelefono() {
         return txtTelefono.getText();
     }
-    
+
     String getTxtFechaNacimiento() {
         return txtFechaNacimiento.getText();
     }
-    
-   
 
-    
-    
-    
- 
+    private void setIdUltimoCliente() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdCliente()));
+    }
+
 }

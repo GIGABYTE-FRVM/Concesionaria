@@ -1,92 +1,37 @@
 package net.javaguides.concesionaria;
 
+import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.javaguides.concesionaria.herramientas.GestorBuscador;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
 import net.javaguides.hibernate.model.Pais;
+import net.javaguides.hibernate.model.Venta;
 
 public class GestorMarcaABMC {
 
     List<Pais> listaPaises;
     private List<Marca> listaMarcas;
-    GestorPaisABMC gestorPais = new GestorPaisABMC(this);
+    private int ultimoIdMarca;
+
+    GestorPaisABMC gestorPais;
     GestorAutoABMC gestorAuto;
     GestorModeloABMC gestorModelo;
+    GestorHibernate gestorHibernate;
+
     MarcaABMC pantallaMarca;
-    GestorHibernate gestorHibernate = new GestorHibernate();
     Notificador notificador;
 
-
     public GestorMarcaABMC() {
+        gestorHibernate = GestorHibernate.getInstancia();
+        gestorPais = new GestorPaisABMC();
         pantallaMarca = new MarcaABMC(this);
         pantallaMarca.setVisible(true);
-    }
-    
-    public void notificarGestorAuto(GestorAutoABMC gestorSubscrito){
-        gestorAuto = gestorSubscrito;
-    }
-    public void notificarGestorModelo(GestorModeloABMC gestorSubscrito){
-        gestorModelo = gestorSubscrito;
-    }
-
-    public List<Marca> conocerListMarcas() {
-        conocerMarcas();
-        return listaMarcas;
-    }
-
-    public void conocerPaises() {
-        if (!(listaPaises == null)) {
-            listaPaises.clear();
-        }
-        listaPaises = gestorPais.conocerListPaises();
-    }
-
-    public void modificarMarca() {
-        Marca marcaObject = pantallaMarca.getMarca();
-        marcaObject.setNombre(pantallaMarca.getTxtNombre());
-        marcaObject.setCodigo(pantallaMarca.getTxtCodigo());
-        marcaObject.setDescripcion(pantallaMarca.getTxtDescripcion());
-        marcaObject.setPais(pantallaMarca.getPais());
-        if (esValido(marcaObject, 1)) {
-            JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
-            gestorHibernate.updateObject(marcaObject);
-            mostrarDatos();
-            pantallaMarca.limpiarEntradas();
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
-        }
-    }
-
-    public void conocerMarcas() {
-        listaMarcas = gestorHibernate.getAllObjects("Marca");
-    }
-
-    public DefaultTableModel mostrarDatos() {
-        this.conocerMarcas();
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("id");
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Pais");
-        Object data[] = new Object[5];
-        try {
-            for (Marca marca : listaMarcas) {
-                data[0] = marca;
-                data[1] = marca.getCodigo();
-                data[2] = marca.getNombre();
-                data[3] = marca.getDescripcion();
-                data[4] = marca.getPais().getNombre();
-                modelo.addRow(data);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al mostrar datos" + e);
-        }
-        return modelo;
     }
 
     public void registrarMarca() {
@@ -102,7 +47,22 @@ public class GestorMarcaABMC {
         } else {
             JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS. REVISE LA ENTRADA");
         }
+    }
 
+    public void modificarMarca() {
+        Marca marcaObject = pantallaMarca.getMarca();
+        marcaObject.setNombre(pantallaMarca.getTxtNombre());
+        marcaObject.setCodigo(pantallaMarca.getTxtCodigo());
+        marcaObject.setDescripcion(pantallaMarca.getTxtDescripcion());
+        marcaObject.setPais(pantallaMarca.getPais());
+        if (esValido(marcaObject, 1)) {
+            JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS CORRECTAMENTE");
+            gestorHibernate.updateObject(marcaObject);
+            pantallaMarca.limpiarEntradas();
+            mostrarDatos();
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR DATOS");
+        }
     }
 
     public void eliminarMarca() {
@@ -110,40 +70,58 @@ public class GestorMarcaABMC {
         int pantallaConfirmarEliminacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar esta marca?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (pantallaConfirmarEliminacion == 0) {
             gestorHibernate.deleteObject(marcaObject);
+            JOptionPane.showMessageDialog(null, "MARCA ELIMINADA CORRECTAMENTE");
             // si selecciona SI (primer boton) ejecuta la eliminacion
         } else {
             //No hace nada
         }
     }
 
-    void mostrarPaisABMC() {
-        gestorPais.mostrarPantalla();
-        gestorPais.notificarGestor(this);
-        solicitarActualizacionPaises();
+    public DefaultTableModel mostrarDatos() {
+        this.conocerMarcas();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("id");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Pais");
+        Object data[] = new Object[5];
+        try {
+            for (Marca marca : listaMarcas) {
+                data[0] = marca.getId();
+                data[1] = marca.getCodigo();
+                data[2] = marca;
+                data[3] = marca.getDescripcion();
+                data[4] = marca.getPais().getNombre();
+                modelo.addRow(data);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al mostrar datos" + e);
+        }
+        return modelo;
     }
 
-    void actualizarComboPaises() {
-        pantallaMarca.actualizarComboPaises();
+    public List<Marca> conocerListMarcas() {
+        conocerMarcas();
+        return listaMarcas;
     }
 
-    public void mostrarPantalla(boolean visible) {
-        pantallaMarca.setVisible(visible);
+    public void conocerPaises() {
+        if (!(listaPaises == null)) {
+            listaPaises.clear();
+        }
+        listaPaises = gestorPais.conocerListPaises();
+    }
+
+    public void conocerMarcas() {
+       listaMarcas = gestorHibernate.getAllObjects("Marca");
     }
 
     public List<Marca> conocerListaMarcas() {
         conocerMarcas();
         return listaMarcas;
     }
-    public synchronized void notificarSubscriptores(){
-        if (!(gestorAuto == null))
-            {        
-                gestorAuto.notificarActualizacionMarcas();
-            }
-        if (!(gestorModelo == null))
-            {        
-                gestorModelo.notificarActualizacionMarcas();
-            }
-    }
+
     synchronized void solicitarActualizacionPaises() {
         notificador = new Notificador();
         new Thread(() -> {
@@ -159,6 +137,23 @@ public class GestorMarcaABMC {
         }).start();
     }
 
+    public synchronized void notificarSubscriptores() {
+        if (!(gestorAuto == null)) {
+            gestorAuto.notificarActualizacionMarcas();
+        }
+        if (!(gestorModelo == null)) {
+            gestorModelo.notificarActualizacionMarcas();
+        }
+    }
+
+    public void suscribirGestorAuto(GestorAutoABMC gestorSubscrito) {
+        gestorAuto = gestorSubscrito;
+    }
+
+    public void suscribirGestorModelo(GestorModeloABMC gestorSubscrito) {
+        gestorModelo = gestorSubscrito;
+    }
+
     public boolean esValido(Marca marca, int tipo) {
         if ((marca.getCodigo().length() == 0) || (marca.getNombre().length() == 0) || (marca.getDescripcion().length() == 0)) {
             return false;
@@ -172,5 +167,36 @@ public class GestorMarcaABMC {
         }
         return true;
     }
+
+    void actualizarComboPaises() {
+        pantallaMarca.actualizarComboPaises();
+    }
+
+    void mostrarPaisABMC() {
+        gestorPais.mostrarPantalla();
+        gestorPais.notificarGestor(this);
+        solicitarActualizacionPaises();
+    }
+
+    public void mostrarPantalla(boolean visible) {
+        pantallaMarca.setVisible(visible);
+    }
+
+    public int conocerUltimoIdMarca() {
+        conocerMarcas();
+        if (listaMarcas.isEmpty()) {
+            ultimoIdMarca = 0;
+        } else {
+            Optional<Integer> maximoId = listaMarcas.stream()
+                    .map(Marca::getId)
+                    .max(Integer::compare);
+
+            ultimoIdMarca = maximoId.get();
+        }
+
+        return ultimoIdMarca + 1;
+    }
+
+
 
 }

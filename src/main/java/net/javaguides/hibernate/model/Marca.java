@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="marca")
-
 public class Marca {
 
     @Id
@@ -44,10 +43,6 @@ public class Marca {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.pais = pais;
-    }
-
-    public Marca(String hiB2, String hibernate33, String logré_conectar_con_hibernate2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Pais getPais() {
@@ -92,6 +87,6 @@ public class Marca {
 
     @Override
     public String toString() {
-        return Integer.toString(id);
+        return nombre;
     }
 }

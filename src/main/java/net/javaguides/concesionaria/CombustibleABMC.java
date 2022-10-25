@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
-
 /**
  *
  * @author matya
@@ -17,22 +16,22 @@ import javax.swing.border.LineBorder;
 public class CombustibleABMC extends javax.swing.JFrame {
 
     GestorCombustibleABMC gestor;
-    Color colorBackgroundButton = new Color(255,153,0);
-    Color colorBorderButton = new Color(204,204,204);
+    Color colorBackgroundButton = new Color(255, 153, 0);
+    Color colorBorderButton = new Color(204, 204, 204);
     LineBorder borderButtonDisabled = new LineBorder(colorBorderButton);
     int xMouse, yMouse;
-    
-
 
     public CombustibleABMC(GestorCombustibleABMC gestorPadre) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
         conocerGestor(gestorPadre);
         tablaDatos.setModel(gestor.mostrarDatos());
+        setIdUltimoCombustible();
     }
-    
-     public void conocerGestor(GestorCombustibleABMC gestor) {
+
+    public void conocerGestor(GestorCombustibleABMC gestor) {
         this.gestor = gestor;
     }
 
@@ -81,6 +80,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         txtId.setBorder(null);
+        txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -409,13 +409,13 @@ public class CombustibleABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = this.tablaDatos.getSelectedRow();
         this.txtId.setText(this.tablaDatos.getValueAt(fila, 0).toString());
-        this.txtNombre.setText(this.tablaDatos.getValueAt(fila, 1).toString());
+        Object combustibleObject = this.tablaDatos.getValueAt(fila, 1);
+        this.txtNombre.setText(combustibleObject.toString());
+
         habilitarBotones(false);
         panelBtnRegistrar.setBackground(Color.WHITE);
         panelBtnRegistrar.setBorder(borderButtonDisabled);
 
-
-       
     }//GEN-LAST:event_tablaDatosMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
@@ -425,6 +425,7 @@ public class CombustibleABMC extends javax.swing.JFrame {
         habilitarBotones(true);
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
+        setIdUltimoCombustible();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -495,29 +496,9 @@ public class CombustibleABMC extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_barraSuperiorVentanaMousePressed
 
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
@@ -550,7 +531,8 @@ public class CombustibleABMC extends javax.swing.JFrame {
         txtId.setText("");
         txtNombre.setText("");
     }
-    private void habilitarBotones(boolean estado){
+
+    private void habilitarBotones(boolean estado) {
         btnRegistrar.setEnabled(estado);
         btnActualizar.setEnabled(!estado);
         btnEliminar.setEnabled(!estado);
@@ -564,6 +546,12 @@ public class CombustibleABMC extends javax.swing.JFrame {
         return txtId.getText();
     }
     
-    
- 
+    Object getCombustible(){
+        return this.tablaDatos.getValueAt(this.tablaDatos.getSelectedRow(), 1);
+    }
+
+    private void setIdUltimoCombustible() {
+        txtId.setText(Integer.toString(gestor.conocerUltimoIdCombustible()));
+    }
+
 }
