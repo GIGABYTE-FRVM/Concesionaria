@@ -103,10 +103,16 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelDatosRegistrados.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 12)); // NOI18N
 
         txtCodigo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        txtCodigo.setForeground(new java.awt.Color(153, 153, 153));
+        txtCodigo.setText("Ingrese el código de la marca");
         txtCodigo.setBorder(null);
         txtCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCodigo.setHighlighter(null);
+        txtCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCodigoMouseClicked(evt);
+            }
+        });
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -116,7 +122,7 @@ public class MarcaABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtId.setForeground(new java.awt.Color(51, 51, 51));
+        txtId.setForeground(new java.awt.Color(153, 153, 153));
         txtId.setBorder(null);
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -126,9 +132,16 @@ public class MarcaABMC extends javax.swing.JFrame {
         });
 
         txtDescripcion.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtDescripcion.setForeground(new java.awt.Color(51, 51, 51));
+        txtDescripcion.setForeground(new java.awt.Color(153, 153, 153));
         txtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtDescripcion.setText("Ingrese la descripción de la marca");
+        txtDescripcion.setAlignmentY(0.0F);
         txtDescripcion.setBorder(null);
+        txtDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDescripcionMouseClicked(evt);
+            }
+        });
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
@@ -136,8 +149,14 @@ public class MarcaABMC extends javax.swing.JFrame {
         });
 
         txtNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombre.setText("Ingrese el nombre de la marca");
         txtNombre.setBorder(null);
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -688,6 +707,24 @@ public class MarcaABMC extends javax.swing.JFrame {
         panelBtnRegistrar.setBackground(colorBackgroundButton);
         panelBtnRegistrar.setBorder(null);
     }//GEN-LAST:event_btnEliminarLblMouseClicked
+
+    private void txtCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoMouseClicked
+        // TODO add your handling code here:
+        txtCodigo.setText("");
+        txtCodigo.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtCodigoMouseClicked
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDescripcionMouseClicked
+        // TODO add your handling code here:
+        txtDescripcion.setText("");
+        txtDescripcion.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtDescripcionMouseClicked
 
     /**
      * @param args the command line arguments
