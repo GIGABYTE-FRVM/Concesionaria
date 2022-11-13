@@ -1,20 +1,9 @@
 package net.javaguides.concesionaria;
 
 import java.awt.Color;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import net.javaguides.hibernate.model.Auto;
-import net.javaguides.hibernate.model.Combustible;
-import net.javaguides.hibernate.model.Marca;
-import net.javaguides.hibernate.model.Modelo;
-import net.javaguides.hibernate.model.Combustible;
-import net.javaguides.hibernate.model.Venta;
+
 
 /**
  *
@@ -33,7 +22,7 @@ public class ConsultaVentas extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(2);
         DefaultTableModel modelo = new DefaultTableModel();
-        tablaDatos.setModel(gestor.mostrarDatos());
+        tablaDatos.setModel(gestor.mostrarDatos(gestor.conocerVentas()));
     }
 
     public void conocerGestor(GestorVenta gestor) {
@@ -42,7 +31,7 @@ public class ConsultaVentas extends javax.swing.JFrame {
 
 
     public void actualizarTabla(){
-        tablaDatos.setModel(gestor.mostrarDatos());
+        tablaDatos.setModel(gestor.mostrarDatos(gestor.conocerVentas()));
     }
 
     /**
@@ -207,7 +196,6 @@ public class ConsultaVentas extends javax.swing.JFrame {
                         .addComponent(lblTitulo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,7 +218,7 @@ public class ConsultaVentas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 960, 490));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 960, 490));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

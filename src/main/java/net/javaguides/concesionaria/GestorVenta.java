@@ -21,11 +21,15 @@ import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.model.Cliente;
 import net.javaguides.hibernate.model.Venta;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.sql.Date;
 
 public class GestorVenta {
 
     VistaVenta pantallaVenta;
-    ConsultaVentas consultaVentas;
+    ConsultaVenta consultaVentas;
     Auto autoSeleccionado;
     List<Personal> listaVendedores;
     List<Venta> listadoVentas;
@@ -41,7 +45,7 @@ public class GestorVenta {
         gestorHibernate = GestorHibernate.getInstancia();
         pantallaVenta = new VistaVenta(this);
         pantallaVenta.conocerGestor(this);
-        consultaVentas = new ConsultaVentas(this);
+        consultaVentas = new ConsultaVenta(this);
         consultaVentas.conocerGestor(this);
         mostrarPantalla(true);
     }
@@ -49,7 +53,7 @@ public class GestorVenta {
     void mostrarPantalla(boolean b) {
         pantallaVenta.setVisible(b);
     }
-    
+
     void mostrarConsultasVentas(boolean b) {
         consultaVentas.setVisible(b);
     }
@@ -140,7 +144,7 @@ public class GestorVenta {
         ventaObject.setPrecio(autoSeleccionado.getPrecio());
         ventaObject.setTotal(totalVenta);
         ventaObject.setVendedor(pantallaVenta.getVendedor());
-        ventaObject.setGanancia((autoSeleccionado.getPrecio()-autoSeleccionado.getPrecioCosto())*pantallaVenta.getCantidad());
+        ventaObject.setGanancia((autoSeleccionado.getPrecio() - autoSeleccionado.getPrecioCosto()) * pantallaVenta.getCantidad());
         if (esValido(ventaObject)) {
             gestorHibernate.saveObject(ventaObject);
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
@@ -153,8 +157,7 @@ public class GestorVenta {
         }
     }
 
-    public DefaultTableModel mostrarDatos() {
-        conocerVentas();
+    public DefaultTableModel mostrarDatos(List<Venta> listadoVentas) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Fecha");
@@ -189,17 +192,68 @@ public class GestorVenta {
         return modelo;
     }
 
-    private void conocerVentas() {
+    public List<Venta> conocerVentas() {
         listadoVentas = gestorHibernate.getAllObjects("Venta");
+        return listadoVentas;
+    }
+
+    public List<Venta> conocerVentasLimit(int page, int limit) {
+        listadoVentas = gestorHibernate.getObjectsLimit("Venta", page, limit);
+        return listadoVentas;
     }
 
     private boolean esValido(Venta ventaObject) {
         return autoSeleccionado != null;
     }
-    public void actualizarTabla(){
-        consultaVentas.actualizarTabla();
+
+    public void actualizarTabla() {
+        //consultaVentas.actualizarTabla();
     }
 
+    public List<Venta> conocerVentasFiltradas(int page, int limit) {
+        String tipo = consultaVentas.getTipo();
+        String consulta = consultaVentas.getConsulta();
+        String fechaDesdeHasta;
+        if (consultaVentas.getFiltroConFechas()) {
+            String fechaDesde = consultaVentas.getFechaDesde();
+            String fechaHasta = consultaVentas.getFechaHasta();
+            fechaDesdeHasta = "AND venta.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'";
+        } else {
+            fechaDesdeHasta = "";
+        }
+        List<Venta> ventasFiltradas = null;
+        switch (tipo) {
+            case "Cliente" ->
+                ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.cliente.nombre  LIKE '%" + consulta + "%' OR venta.cliente.apellido  LIKE '%" + consulta + "%') " + fechaDesdeHasta, page, limit);
+            case "Empleado" ->
+                ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.vendedor.nombre  LIKE '%" + consulta + "%' OR venta.vendedor.apellido  LIKE '%" + consulta + "%') " + fechaDesdeHasta, page, limit);
+            case "Auto" ->
+                ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.auto.marca.nombre LIKE '%" + consulta + "%' OR venta.auto.marca.nombre LIKE '%" + consulta + "%') "+ fechaDesdeHasta, page, limit);
+        }
+        return ventasFiltradas;
+    }
 
+    public List<Venta> conocerVentasFiltradas() {
+        String tipo = consultaVentas.getTipo();
+        String consulta = consultaVentas.getConsulta();
+        String fechaDesdeHasta;
+        if (consultaVentas.getFiltroConFechas()) {
+            String fechaDesde = consultaVentas.getFechaDesde();
+            String fechaHasta = consultaVentas.getFechaHasta();
+            fechaDesdeHasta = "AND venta.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'";
+        } else {
+            fechaDesdeHasta = "";
+        }
+        List<Venta> ventasFiltradas = null;
+        switch (tipo) {
+            case "Cliente" ->
+                ventasFiltradas = gestorHibernate.getAllObjects("Venta as venta WHERE (venta.cliente.nombre  LIKE '%" + consulta + "%' OR venta.cliente.apellido  LIKE '%" + consulta + "%') "+ fechaDesdeHasta);
+            case "Empleado" ->
+                ventasFiltradas = gestorHibernate.getAllObjects("Venta as venta WHERE (venta.vendedor.nombre  LIKE '%" + consulta + "%' OR venta.vendedor.apellido  LIKE '%" + consulta + "%') "+ fechaDesdeHasta);
+            case "Auto" ->
+                ventasFiltradas = gestorHibernate.getAllObjects("Venta as venta WHERE (venta.auto.marca.nombre LIKE '%" + consulta + "%' OR venta.auto.modelo.nombre LIKE '%" + consulta + "%') "+ fechaDesdeHasta);
+        }
+        return ventasFiltradas;
+    }
 
 }
