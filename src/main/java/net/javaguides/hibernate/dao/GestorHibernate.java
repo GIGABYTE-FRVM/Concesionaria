@@ -4,6 +4,7 @@
  */
 package net.javaguides.hibernate.dao;
 
+import java.sql.Date;
 import java.util.List;
 import net.javaguides.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
@@ -95,6 +96,22 @@ public class GestorHibernate {
         return objects;
     }
 
+    public <T> List<T> getAllObjectsBetween(String query, Date fechaDesde, Date fechaHasta) {
+        Transaction transaction = null;
+        List<T> objects = null;
+        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            objects = session.createQuery("from " + query + "BETWEEN " + fechaDesde + " AND " + fechaHasta).list();
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return objects;
+    }
+
     public <T> void deleteObject(String query, int id) {
         Transaction transaction = null;
         List<T> objects = null;
@@ -173,22 +190,22 @@ public class GestorHibernate {
         List<T> objects = null;
         T object = null;
         try (
-        Session session = HibernateUtil.getSessionFactory().openSession()){
-        session.beginTransaction();
+                 Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
 
-        Query<T> query = session.createQuery("from " + table);
+            Query<T> query = session.createQuery("from " + table);
 
-        // Set the first record position and the max number of record to be
-        // read. The setFirstResult() tell hibernate from which row the data
-        // should be read. In the example if we have pages of 10 records,
-        // passing the page number 2 will read 10 records from the 20th row
-        // in the selected records.
-        query.setFirstResult((pageNumber - 1) * pageSize);
-        query.setMaxResults(pageSize);
+            // Set the first record position and the max number of record to be
+            // read. The setFirstResult() tell hibernate from which row the data
+            // should be read. In the example if we have pages of 10 records,
+            // passing the page number 2 will read 10 records from the 20th row
+            // in the selected records.
+            query.setFirstResult((pageNumber - 1) * pageSize);
+            query.setMaxResults(pageSize);
 
-        objects = query.list();
-        session.getTransaction().commit();}
-        catch (Exception e) {
+            objects = query.list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
