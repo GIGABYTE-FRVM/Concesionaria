@@ -28,6 +28,8 @@ import java.sql.Date;
 
 public class GestorVenta {
 
+
+
     VistaVenta pantallaVenta;
     ConsultaVenta consultaVentas;
     Auto autoSeleccionado;
@@ -125,12 +127,16 @@ public class GestorVenta {
         calcularTotal();
     }
 
-    public void calcularTotal() {
+    public double calcularTotal() {
         int cantidad = pantallaVenta.getCantidad();
         double costo = autoSeleccionado.getPrecio();
         double impuesto = autoSeleccionado.getMarca().getPais().getRegion().getPorcentaje();
+        System.out.println("cantidad:" + cantidad);
+        System.out.println("costo: " + costo);
+        System.out.println("impuesto:" + impuesto);
         totalVenta = cantidad * costo + ((cantidad * costo) * impuesto) / 100;
-        pantallaVenta.setTxtTotal(formatoImporte.format(totalVenta));
+        //pantallaVenta.setTxtTotal(formatoImporte.format(totalVenta));
+        return totalVenta;
     }
 
     public void registrarVenta() {
@@ -254,6 +260,14 @@ public class GestorVenta {
                 ventasFiltradas = gestorHibernate.getAllObjects("Venta as venta WHERE (venta.auto.marca.nombre LIKE '%" + consulta + "%' OR venta.auto.modelo.nombre LIKE '%" + consulta + "%') "+ fechaDesdeHasta);
         }
         return ventasFiltradas;
+    }
+        
+        public VistaVenta getPantallaVenta() {
+        return pantallaVenta;
+    }
+
+    public void setPantallaVenta(VistaVenta pantallaVenta) {
+        this.pantallaVenta = pantallaVenta;
     }
 
 }

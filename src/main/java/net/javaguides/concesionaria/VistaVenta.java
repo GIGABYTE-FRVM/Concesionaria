@@ -1091,4 +1091,5 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
+    
 }
