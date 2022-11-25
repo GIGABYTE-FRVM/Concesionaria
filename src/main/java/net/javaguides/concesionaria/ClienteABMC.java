@@ -100,6 +100,7 @@ public class ClienteABMC extends javax.swing.JFrame {
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setForeground(new java.awt.Color(102, 102, 102));
         txtId.setBorder(null);
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -108,29 +109,57 @@ public class ClienteABMC extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombre.setText("Ingrese el nombre del cliente");
         txtNombre.setBorder(null);
         txtNombre.setName(""); // NOI18N
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
 
+        txtDireccion.setForeground(new java.awt.Color(153, 153, 153));
+        txtDireccion.setText("Ingrese la dirección del cliente");
         txtDireccion.setBorder(null);
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+        });
         txtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionActionPerformed(evt);
             }
         });
 
+        txtEmail.setForeground(new java.awt.Color(153, 153, 153));
+        txtEmail.setText("Ingrese una dirección de correo electronico");
         txtEmail.setBorder(null);
+        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailMouseClicked(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
 
+        txtApellido.setForeground(new java.awt.Color(153, 153, 153));
+        txtApellido.setText("Ingrese el apellido del cliente");
         txtApellido.setBorder(null);
+        txtApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtApellidoMouseClicked(evt);
+            }
+        });
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
@@ -138,7 +167,14 @@ public class ClienteABMC extends javax.swing.JFrame {
         });
 
         txtFechaNacimiento.setBorder(null);
+        txtFechaNacimiento.setForeground(new java.awt.Color(153, 153, 153));
         txtFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtFechaNacimiento.setText("Ingrese la fecha de nacimiento del cliente");
+        txtFechaNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFechaNacimientoMouseClicked(evt);
+            }
+        });
         txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaNacimientoActionPerformed(evt);
@@ -146,9 +182,23 @@ public class ClienteABMC extends javax.swing.JFrame {
         });
 
         txtDNI.setBorder(null);
+        txtDNI.setForeground(new java.awt.Color(153, 153, 153));
         txtDNI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
+        txtDNI.setText("Ingrese el número de DNI del cliente");
+        txtDNI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDNIMouseClicked(evt);
+            }
+        });
 
+        txtTelefono.setForeground(new java.awt.Color(153, 153, 153));
+        txtTelefono.setText("Ingrese un número de telefono");
         txtTelefono.setBorder(null);
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonoMouseClicked(evt);
+            }
+        });
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
@@ -334,7 +384,7 @@ public class ClienteABMC extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,12 +434,12 @@ public class ClienteABMC extends javax.swing.JFrame {
                         .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(36, 36, 36)
                         .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         txtNombre.getAccessibleContext().setAccessibleName("");
@@ -397,7 +447,7 @@ public class ClienteABMC extends javax.swing.JFrame {
         txtDireccion.getAccessibleContext().setAccessibleName("Apellido");
         txtDireccion.getAccessibleContext().setAccessibleDescription("");
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 460, 640));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 460, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -421,7 +471,7 @@ public class ClienteABMC extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("LISTADO CLIENTE");
+        jLabel10.setText("LISTADO DE CLIENTES");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -431,19 +481,18 @@ public class ClienteABMC extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(192, 192, 192))
+                .addGap(177, 177, 177))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(144, 144, 144))
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 630, 640));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 630, 700));
 
         barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -511,7 +560,7 @@ public class ClienteABMC extends javax.swing.JFrame {
 
         jPanel1.add(barraSuperiorVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 670));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -637,6 +686,48 @@ public class ClienteABMC extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_barraSuperiorVentanaMousePressed
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtApellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMouseClicked
+        // TODO add your handling code here:
+        txtApellido.setText("");
+        txtApellido.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtApellidoMouseClicked
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        // TODO add your handling code here:
+        txtDireccion.setText("");
+        txtDireccion.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtDireccionMouseClicked
+
+    private void txtDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDNIMouseClicked
+        // TODO add your handling code here:
+        txtDNI.setText("");
+        txtDNI.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtDNIMouseClicked
+
+    private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
+        // TODO add your handling code here:
+        txtEmail.setText("");
+        txtEmail.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtEmailMouseClicked
+
+    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+        // TODO add your handling code here:
+        txtTelefono.setText("");
+        txtTelefono.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtTelefonoMouseClicked
+
+    private void txtFechaNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFechaNacimientoMouseClicked
+        // TODO add your handling code here:
+        txtFechaNacimiento.setText("");
+        txtFechaNacimiento.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtFechaNacimientoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -115,6 +115,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        txtId.setForeground(new java.awt.Color(102, 102, 102));
         txtId.setBorder(null);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,21 +123,42 @@ public class ModeloABMC extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombre.setText("Ingrese el nombre del modelo");
         txtNombre.setBorder(null);
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
 
+        txtAñoLanzamiento.setForeground(new java.awt.Color(102, 102, 102));
+        txtAñoLanzamiento.setText("Ingrese el año de lanzamiento del modelo");
         txtAñoLanzamiento.setBorder(null);
+        txtAñoLanzamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAñoLanzamientoMouseClicked(evt);
+            }
+        });
         txtAñoLanzamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAñoLanzamientoActionPerformed(evt);
             }
         });
 
+        txtVersion.setForeground(new java.awt.Color(102, 102, 102));
+        txtVersion.setText("Ingrese la versión del modelo");
         txtVersion.setBorder(null);
+        txtVersion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtVersionMouseClicked(evt);
+            }
+        });
         txtVersion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVersionActionPerformed(evt);
@@ -363,7 +385,7 @@ public class ModeloABMC extends javax.swing.JFrame {
                         .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                        .addGap(41, 41, 41)
                         .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panelBtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelBtnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -374,7 +396,7 @@ public class ModeloABMC extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        jPanel1.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 540));
+        jPanel1.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 560));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -416,13 +438,13 @@ public class ModeloABMC extends javax.swing.JFrame {
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTituloTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lblTituloTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 660, 540));
+        jPanel1.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 660, 560));
 
         barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -498,9 +520,7 @@ public class ModeloABMC extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -632,6 +652,24 @@ public class ModeloABMC extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_barraSuperiorVentanaMousePressed
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtVersionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVersionMouseClicked
+        // TODO add your handling code here:
+        txtVersion.setText("");
+        txtVersion.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtVersionMouseClicked
+
+    private void txtAñoLanzamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAñoLanzamientoMouseClicked
+        // TODO add your handling code here:
+        txtAñoLanzamiento.setText("");
+        txtAñoLanzamiento.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtAñoLanzamientoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;

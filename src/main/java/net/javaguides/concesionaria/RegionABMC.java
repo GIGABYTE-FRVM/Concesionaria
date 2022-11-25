@@ -85,6 +85,7 @@ public class RegionABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        txtId.setForeground(new java.awt.Color(204, 204, 204));
         txtId.setBorder(null);
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +94,14 @@ public class RegionABMC extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombre.setText("Ingrese el nombre de la región");
         txtNombre.setBorder(null);
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -106,14 +114,14 @@ public class RegionABMC extends javax.swing.JFrame {
         lblTitulo.setText("INFORMACIÓN DE LA REGION");
         lblTitulo.setDoubleBuffered(true);
 
-        lblId.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        lblId.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         lblId.setText("ID");
 
         separadorId.setEnabled(false);
 
         separadorNombre.setEnabled(false);
 
-        lblNombre.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         lblNombre.setText("NOMBRE");
 
         panelBtnRegistrar.setBackground(new java.awt.Color(255, 153, 51));
@@ -222,14 +230,21 @@ public class RegionABMC extends javax.swing.JFrame {
         lblNombre1.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         lblNombre1.setText("%");
 
+        txtPorcentaje.setForeground(new java.awt.Color(153, 153, 153));
+        txtPorcentaje.setText("Ingrese el porcentaje de recargo");
         txtPorcentaje.setBorder(null);
+        txtPorcentaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPorcentajeMouseClicked(evt);
+            }
+        });
         txtPorcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPorcentajeActionPerformed(evt);
             }
         });
 
-        lblNombre2.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        lblNombre2.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         lblNombre2.setText("PORCENTAJE DE RECARGO");
 
         javax.swing.GroupLayout panelDatosRegistradosLayout = new javax.swing.GroupLayout(panelDatosRegistrados);
@@ -273,7 +288,7 @@ public class RegionABMC extends javax.swing.JFrame {
             .addGroup(panelDatosRegistradosLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblTitulo)
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addComponent(lblId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +300,7 @@ public class RegionABMC extends javax.swing.JFrame {
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
                 .addComponent(lblNombre2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -293,16 +308,16 @@ public class RegionABMC extends javax.swing.JFrame {
                     .addComponent(lblNombre1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addGroup(panelDatosRegistradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 350));
+        panelGeneral.add(panelDatosRegistrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 430, 390));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -343,10 +358,10 @@ public class RegionABMC extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelTablaDatosLayout.createSequentialGroup()
+                .addGap(183, 183, 183)
                 .addComponent(jLabel7)
-                .addGap(219, 219, 219))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelTablaDatosLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -356,10 +371,10 @@ public class RegionABMC extends javax.swing.JFrame {
         panelTablaDatosLayout.setVerticalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelTablaDatosLayout.createSequentialGroup()
@@ -368,7 +383,7 @@ public class RegionABMC extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 320));
+        panelGeneral.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 31, 660, 390));
 
         barraSuperiorVentana.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperiorVentana.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -445,8 +460,8 @@ public class RegionABMC extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -611,6 +626,18 @@ public class RegionABMC extends javax.swing.JFrame {
     private void txtPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPorcentajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPorcentajeActionPerformed
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtPorcentajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPorcentajeMouseClicked
+        // TODO add your handling code here:
+        txtPorcentaje.setText("");
+        txtPorcentaje.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtPorcentajeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

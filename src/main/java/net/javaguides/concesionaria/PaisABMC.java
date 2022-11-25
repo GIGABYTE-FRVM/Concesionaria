@@ -86,6 +86,7 @@ public class PaisABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        txtId.setForeground(new java.awt.Color(153, 153, 153));
         txtId.setBorder(null);
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +95,14 @@ public class PaisABMC extends javax.swing.JFrame {
             }
         });
 
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
+        txtNombre.setText("Ingrese el nombre del país");
         txtNombre.setBorder(null);
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -262,7 +270,6 @@ public class PaisABMC extends javax.swing.JFrame {
                         .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblId, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosRegistradosLayout.createSequentialGroup()
                             .addComponent(panelBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -270,7 +277,8 @@ public class PaisABMC extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(panelBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(panelBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         panelDatosRegistradosLayout.setVerticalGroup(
@@ -605,6 +613,12 @@ public class PaisABMC extends javax.swing.JFrame {
         gestor.solicitarActualizacionRegiones();
         gestor.mostrarPaisABMC();
     }//GEN-LAST:event_btnRegionMouseClicked
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtNombreMouseClicked
 
     /**
      * @param args the command line arguments

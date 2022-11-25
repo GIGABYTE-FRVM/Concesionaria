@@ -70,7 +70,6 @@ public class AutoABMC extends javax.swing.JFrame {
         cboColor = new javax.swing.JComboBox<>();
         txtPrecio = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
-        separadorPrecio = new javax.swing.JSeparator();
         panelBtnCombustible = new javax.swing.JPanel();
         btnABMCCombustible = new javax.swing.JLabel();
         panelBtnModelo = new javax.swing.JPanel();
@@ -91,6 +90,7 @@ public class AutoABMC extends javax.swing.JFrame {
         lblPrecio3 = new javax.swing.JLabel();
         txtPrecioCosto = new javax.swing.JTextField();
         separadorPrecio1 = new javax.swing.JSeparator();
+        separadorPrecio2 = new javax.swing.JSeparator();
         panelTablaDatos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
@@ -123,10 +123,16 @@ public class AutoABMC extends javax.swing.JFrame {
         jPanel2.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 12)); // NOI18N
 
         txtAñoFabricacion.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtAñoFabricacion.setForeground(new java.awt.Color(51, 51, 51));
+        txtAñoFabricacion.setForeground(new java.awt.Color(153, 153, 153));
+        txtAñoFabricacion.setText("Ingrese el año de fabricación del auto");
         txtAñoFabricacion.setBorder(null);
         txtAñoFabricacion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtAñoFabricacion.setHighlighter(null);
+        txtAñoFabricacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAñoFabricacionMouseClicked(evt);
+            }
+        });
         txtAñoFabricacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAñoFabricacionActionPerformed(evt);
@@ -136,7 +142,7 @@ public class AutoABMC extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtId.setForeground(new java.awt.Color(51, 51, 51));
+        txtId.setForeground(new java.awt.Color(153, 153, 153));
         txtId.setBorder(null);
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +194,7 @@ public class AutoABMC extends javax.swing.JFrame {
         btnABMCMarca.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnABMCMarca.setForeground(new java.awt.Color(255, 153, 51));
         btnABMCMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnABMCMarca.setText("ABMC Marca");
+        btnABMCMarca.setText("Nueva marca");
         btnABMCMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnABMCMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -236,10 +242,16 @@ public class AutoABMC extends javax.swing.JFrame {
         });
 
         txtPrecio.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtPrecio.setForeground(new java.awt.Color(51, 51, 51));
+        txtPrecio.setForeground(new java.awt.Color(153, 153, 153));
+        txtPrecio.setText("Ingrese el precio del auto");
         txtPrecio.setBorder(null);
         txtPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtPrecio.setHighlighter(null);
+        txtPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPrecioMouseClicked(evt);
+            }
+        });
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
@@ -249,15 +261,13 @@ public class AutoABMC extends javax.swing.JFrame {
         lblPrecio.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         lblPrecio.setText("PRECIO");
 
-        separadorPrecio.setEnabled(false);
-
         panelBtnCombustible.setBackground(new java.awt.Color(255, 255, 255));
         panelBtnCombustible.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         btnABMCCombustible.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnABMCCombustible.setForeground(new java.awt.Color(255, 153, 51));
         btnABMCCombustible.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnABMCCombustible.setText("ABMC Combustible");
+        btnABMCCombustible.setText("Nuevo Combustible");
         btnABMCCombustible.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnABMCCombustible.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,7 +292,7 @@ public class AutoABMC extends javax.swing.JFrame {
         btnABMCModelo.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
         btnABMCModelo.setForeground(new java.awt.Color(255, 153, 51));
         btnABMCModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnABMCModelo.setText("ABMC Modelo");
+        btnABMCModelo.setText("Nuevo modelo");
         btnABMCModelo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnABMCModelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -419,10 +429,16 @@ public class AutoABMC extends javax.swing.JFrame {
         lblPrecio3.setText("AR$");
 
         txtPrecioCosto.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        txtPrecioCosto.setForeground(new java.awt.Color(51, 51, 51));
+        txtPrecioCosto.setForeground(new java.awt.Color(153, 153, 153));
+        txtPrecioCosto.setText("Ingrese el costo del auto");
         txtPrecioCosto.setBorder(null);
         txtPrecioCosto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtPrecioCosto.setHighlighter(null);
+        txtPrecioCosto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPrecioCostoMouseClicked(evt);
+            }
+        });
         txtPrecioCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioCostoActionPerformed(evt);
@@ -431,23 +447,24 @@ public class AutoABMC extends javax.swing.JFrame {
 
         separadorPrecio1.setEnabled(false);
 
+        separadorPrecio2.setEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(separadorPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(lblCombustible)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboMarca, 0, 265, Short.MAX_VALUE)
+                                    .addComponent(cboCombustible, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(panelBtnCombustible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelBtnMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -483,21 +500,25 @@ public class AutoABMC extends javax.swing.JFrame {
                             .addComponent(txtAñoFabricacion, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPrecio)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addComponent(lblPrecio1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                                    .addComponent(separadorPrecio))))
-                        .addGap(41, 41, 41)
+                                    .addComponent(separadorPrecio1)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)))
+                            .addComponent(lblPrecio))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPrecio2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(lblPrecio2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
                                 .addComponent(lblPrecio3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(separadorPrecio2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPrecioCosto))))))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -513,52 +534,47 @@ public class AutoABMC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAñoFabricacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(separadorAñoFabricacion, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(separadorId, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadorAñoFabricacion, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblModelo))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBtnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBtnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(lblModelo))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelBtnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelBtnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(lblColor))
-                            .addComponent(lblCombustible))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(panelBtnCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(lblPrecio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPrecio1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(separadorPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblPrecio2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPrecio3)
-                            .addComponent(txtPrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(separadorPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(7, 7, 7)
+                        .addComponent(lblColor))
+                    .addComponent(lblCombustible))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboColor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelBtnCombustible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPrecio)
+                    .addComponent(lblPrecio2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPrecio1)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrecio3)
+                    .addComponent(txtPrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(separadorPrecio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadorPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelBtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -567,7 +583,7 @@ public class AutoABMC extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 960, 490));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 960, 520));
 
         panelTablaDatos.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -601,22 +617,22 @@ public class AutoABMC extends javax.swing.JFrame {
         panelTablaDatos.setLayout(panelTablaDatosLayout);
         panelTablaDatosLayout.setHorizontalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
             .addGroup(panelTablaDatosLayout.createSequentialGroup()
-                .addGap(366, 366, 366)
+                .addGap(368, 368, 368)
                 .addComponent(lblTituloTablaDatos)
-                .addContainerGap(370, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTablaDatosLayout.setVerticalGroup(
             panelTablaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaDatosLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTituloTablaDatos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 960, 240));
+        jPanel1.add(panelTablaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 960, 210));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -965,6 +981,24 @@ public class AutoABMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioCostoActionPerformed
 
+    private void txtAñoFabricacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAñoFabricacionMouseClicked
+        // TODO add your handling code here:
+        txtAñoFabricacion.setText("");
+        txtAñoFabricacion.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtAñoFabricacionMouseClicked
+
+    private void txtPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecioMouseClicked
+        // TODO add your handling code here:
+        txtPrecio.setText("");
+        txtPrecio.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtPrecioMouseClicked
+
+    private void txtPrecioCostoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecioCostoMouseClicked
+        // TODO add your handling code here:
+        txtPrecioCosto.setText("");
+        txtPrecioCosto.setForeground(Color.darkGray);
+    }//GEN-LAST:event_txtPrecioCostoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1020,8 +1054,8 @@ public class AutoABMC extends javax.swing.JFrame {
     private javax.swing.JPanel panelTablaDatos;
     private javax.swing.JSeparator separadorAñoFabricacion;
     private javax.swing.JSeparator separadorId;
-    private javax.swing.JSeparator separadorPrecio;
     private javax.swing.JSeparator separadorPrecio1;
+    private javax.swing.JSeparator separadorPrecio2;
     private javax.swing.JTable tablaDatos;
     private javax.swing.JTextField txtAñoFabricacion;
     private javax.swing.JTextField txtId;
