@@ -611,13 +611,16 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void btnRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegionMouseClicked
         gestor.solicitarActualizacionRegiones();
+        this.setAlwaysOnTop(false);
         gestor.mostrarPaisABMC();
     }//GEN-LAST:event_btnRegionMouseClicked
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     /**

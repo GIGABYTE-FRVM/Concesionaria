@@ -830,62 +830,82 @@ public class PersonalABMC extends javax.swing.JFrame {
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtApellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMouseClicked
         // TODO add your handling code here:
-        txtApellido.setText("");
-        txtApellido.setForeground(Color.darkGray);
+        if(txtApellido.getForeground().equals(new Color(153,153,153))) {
+            txtApellido.setText("");
+            txtApellido.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtApellidoMouseClicked
 
     private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
         // TODO add your handling code here:
-        txtDireccion.setText("");
-        txtDireccion.setForeground(Color.darkGray);
+        if(txtDireccion.getForeground().equals(new Color(153,153,153))) {
+            txtDireccion.setText("");
+            txtDireccion.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtDireccionMouseClicked
 
     private void txtDNIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDNIMouseClicked
         // TODO add your handling code here:
-        txtDNI.setText("");
-        txtDNI.setForeground(Color.darkGray);
+        if(txtDNI.getForeground().equals(new Color(153,153,153))) {
+            txtDNI.setText("");
+            txtDNI.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtDNIMouseClicked
 
     private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
         // TODO add your handling code here:
-        txtEmail.setText("");
-        txtEmail.setForeground(Color.darkGray);
+        if(txtEmail.getForeground().equals(new Color(153,153,153))) {
+            txtEmail.setText("");
+            txtEmail.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtEmailMouseClicked
 
     private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
         // TODO add your handling code here:
-        txtTelefono.setText("");
-        txtTelefono.setForeground(Color.darkGray);
+        if(txtTelefono.getForeground().equals(new Color(153,153,153))) {
+            txtTelefono.setText("");
+            txtTelefono.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtTelefonoMouseClicked
 
     private void txtFechaNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFechaNacimientoMouseClicked
         // TODO add your handling code here:
-        txtFechaNacimiento.setText("");
-        txtFechaNacimiento.setForeground(Color.darkGray);
+        if(txtFechaNacimiento.getForeground().equals(new Color(153,153,153))) {
+            txtFechaNacimiento.setText("");
+            txtFechaNacimiento.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtFechaNacimientoMouseClicked
 
     private void txtFechaIngresoEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFechaIngresoEmpresaMouseClicked
         // TODO add your handling code here:
-        txtFechaIngresoEmpresa.setText("");
-        txtFechaIngresoEmpresa.setForeground(Color.darkGray);
+        if(txtFechaIngresoEmpresa.getForeground().equals(new Color(153,153,153))) {
+            txtFechaIngresoEmpresa.setText("");
+            txtFechaIngresoEmpresa.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtFechaIngresoEmpresaMouseClicked
 
     private void txtHoraEntradaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoraEntradaMouseClicked
         // TODO add your handling code here:
-        txtHoraEntrada.setText("");
-        txtHoraEntrada.setForeground(Color.darkGray);
+        if(txtHoraEntrada.getForeground().equals(new Color(153,153,153))) {
+            txtHoraEntrada.setText("");
+            txtHoraEntrada.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtHoraEntradaMouseClicked
 
     private void txtHoraSalidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoraSalidaMouseClicked
         // TODO add your handling code here:
-        txtHoraSalida.setText("");
-        txtHoraSalida.setForeground(Color.darkGray);
+        if(txtHoraSalida.getForeground().equals(new Color(153,153,153))) {
+            txtHoraSalida.setText("");
+            txtHoraSalida.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtHoraSalidaMouseClicked
 
     /**

@@ -937,6 +937,7 @@ public class App extends javax.swing.JFrame {
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // TODO add your handling code here:
+        this.setAlwaysOnTop(false);
         gestor.consultarVentas();
     }//GEN-LAST:event_jLabel22MouseClicked
 

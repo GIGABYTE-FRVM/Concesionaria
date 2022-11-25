@@ -506,8 +506,10 @@ public class CombustibleABMC extends javax.swing.JFrame {
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     /**

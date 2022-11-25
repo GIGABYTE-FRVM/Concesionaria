@@ -983,20 +983,26 @@ public class AutoABMC extends javax.swing.JFrame {
 
     private void txtAñoFabricacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAñoFabricacionMouseClicked
         // TODO add your handling code here:
-        txtAñoFabricacion.setText("");
-        txtAñoFabricacion.setForeground(Color.darkGray);
+        if(txtAñoFabricacion.getForeground().equals(new Color(153,153,153))) {
+            txtAñoFabricacion.setText("");
+            txtAñoFabricacion.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtAñoFabricacionMouseClicked
 
     private void txtPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecioMouseClicked
         // TODO add your handling code here:
-        txtPrecio.setText("");
-        txtPrecio.setForeground(Color.darkGray);
+        if(txtPrecio.getForeground().equals(new Color(153,153,153))) {
+            txtPrecio.setText("");
+            txtPrecio.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtPrecioMouseClicked
 
     private void txtPrecioCostoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPrecioCostoMouseClicked
         // TODO add your handling code here:
-        txtPrecioCosto.setText("");
-        txtPrecioCosto.setForeground(Color.darkGray);
+        if(txtPrecioCosto.getForeground().equals(new Color(153,153,153))) {
+            txtPrecioCosto.setText("");
+            txtPrecioCosto.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtPrecioCostoMouseClicked
 
     /**

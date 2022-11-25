@@ -710,20 +710,27 @@ public class MarcaABMC extends javax.swing.JFrame {
 
     private void txtCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoMouseClicked
         // TODO add your handling code here:
-        txtCodigo.setText("");
-        txtCodigo.setForeground(Color.darkGray);
+        if(txtCodigo.getForeground().equals(new Color(153,153,153))) {
+           txtCodigo.setText("");
+           txtCodigo.setForeground(Color.darkGray); 
+        }
+        
     }//GEN-LAST:event_txtCodigoMouseClicked
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDescripcionMouseClicked
         // TODO add your handling code here:
-        txtDescripcion.setText("");
-        txtDescripcion.setForeground(Color.darkGray);
+        if(txtDescripcion.getForeground().equals(new Color(153,153,153))) {
+            txtDescripcion.setText("");
+            txtDescripcion.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtDescripcionMouseClicked
 
     /**

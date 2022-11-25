@@ -123,7 +123,7 @@ public class ModeloABMC extends javax.swing.JFrame {
             }
         });
 
-        txtNombre.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombre.setForeground(new java.awt.Color(153, 153, 153));
         txtNombre.setText("Ingrese el nombre del modelo");
         txtNombre.setBorder(null);
         txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,7 +137,7 @@ public class ModeloABMC extends javax.swing.JFrame {
             }
         });
 
-        txtAñoLanzamiento.setForeground(new java.awt.Color(102, 102, 102));
+        txtAñoLanzamiento.setForeground(new java.awt.Color(153, 153, 153));
         txtAñoLanzamiento.setText("Ingrese el año de lanzamiento del modelo");
         txtAñoLanzamiento.setBorder(null);
         txtAñoLanzamiento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +151,7 @@ public class ModeloABMC extends javax.swing.JFrame {
             }
         });
 
-        txtVersion.setForeground(new java.awt.Color(102, 102, 102));
+        txtVersion.setForeground(new java.awt.Color(153, 153, 153));
         txtVersion.setText("Ingrese la versión del modelo");
         txtVersion.setBorder(null);
         txtVersion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -655,20 +655,26 @@ public class ModeloABMC extends javax.swing.JFrame {
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtVersionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVersionMouseClicked
         // TODO add your handling code here:
-        txtVersion.setText("");
-        txtVersion.setForeground(Color.darkGray);
+        if(txtVersion.getForeground().equals(new Color(153,153,153))) {
+            txtVersion.setText("");
+            txtVersion.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtVersionMouseClicked
 
     private void txtAñoLanzamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAñoLanzamientoMouseClicked
         // TODO add your handling code here:
-        txtAñoLanzamiento.setText("");
-        txtAñoLanzamiento.setForeground(Color.darkGray);
+        if(txtAñoLanzamiento.getForeground().equals(new Color(153,153,153))) {
+            txtAñoLanzamiento.setText("");
+            txtAñoLanzamiento.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtAñoLanzamientoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

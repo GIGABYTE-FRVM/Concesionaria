@@ -1013,14 +1013,18 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void txtDniClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniClienteMouseClicked
         // TODO add your handling code here:
-        txtDniCliente.setText("");
-        txtDniCliente.setForeground(Color.darkGray);
+        if(txtDniCliente.getForeground().equals(new Color(153,153,153))) {
+            txtDniCliente.setText("");
+            txtDniCliente.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtDniClienteMouseClicked
 
     private void txtAutoSeleccionadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAutoSeleccionadoMouseClicked
         // TODO add your handling code here:
-        txtAutoSeleccionado.setText("");
-        txtAutoSeleccionado.setForeground(Color.darkGray);
+        if(txtAutoSeleccionado.getForeground().equals(new Color(153,153,153))) {
+            txtAutoSeleccionado.setText("");
+            txtAutoSeleccionado.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtAutoSeleccionadoMouseClicked
 
 

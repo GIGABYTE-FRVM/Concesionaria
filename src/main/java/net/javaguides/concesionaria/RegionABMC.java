@@ -629,14 +629,18 @@ public class RegionABMC extends javax.swing.JFrame {
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.darkGray);
+        if(txtNombre.getForeground().equals(new Color(153,153,153))) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtPorcentajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPorcentajeMouseClicked
         // TODO add your handling code here:
-        txtPorcentaje.setText("");
-        txtPorcentaje.setForeground(Color.darkGray);
+        if(txtPorcentaje.getForeground().equals(new Color(153,153,153))) {
+            txtPorcentaje.setText("");
+            txtPorcentaje.setForeground(Color.darkGray);
+        }
     }//GEN-LAST:event_txtPorcentajeMouseClicked
 
 
