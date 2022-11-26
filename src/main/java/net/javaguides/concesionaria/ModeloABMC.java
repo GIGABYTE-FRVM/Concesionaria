@@ -612,6 +612,7 @@ public class ModeloABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_cboMarcaActionPerformed
 
     private void btnMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarcaMouseClicked
+        this.setAlwaysOnTop(false);
         gestor.mostrarMarcaABMC();
     }//GEN-LAST:event_btnMarcaMouseClicked
 

@@ -884,6 +884,7 @@ public class AutoABMC extends javax.swing.JFrame {
 
     private void btnABMCModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnABMCModeloMouseClicked
         // TODO add your handling code here:
+        this.setAlwaysOnTop(false);
         gestor.mostrarModeloABMC();
     }//GEN-LAST:event_btnABMCModeloMouseClicked
 
