@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableRowSorter;
 import net.javaguides.concesionaria.herramientas.VentaTableModel;
 import net.javaguides.hibernate.model.Venta;
 
@@ -104,6 +105,10 @@ public class ConsultaVenta extends javax.swing.JFrame {
         ventaTableModel = new VentaTableModel();
         ventaTableModel.setList(gestor.conocerVentasLimit(page, rowCountPerPage));
         jTableProduct.setModel(ventaTableModel);
+        
+        //ORDENAMIENTO DE REGISTROS POR COLUMNA
+        TableRowSorter<VentaTableModel> sorter = new TableRowSorter<>(ventaTableModel);
+        jTableProduct.setRowSorter(sorter);
 
         jLabelStatusHalaman.setText("Page " + page + " for " + totalPage);
         jLabelTotalData.setText(("Row count " + totalData));
@@ -443,10 +448,11 @@ public class ConsultaVenta extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(habilitarDesdeHasta))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(habilitarDesdeHasta)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(8, 8, 8)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

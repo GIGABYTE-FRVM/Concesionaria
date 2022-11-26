@@ -5,6 +5,7 @@
 package net.javaguides.concesionaria.herramientas;
 
 import java.awt.Color;
+import javax.swing.table.TableRowSorter;
 import net.javaguides.hibernate.model.Auto;
 
 /**
@@ -18,11 +19,15 @@ public class Buscador extends javax.swing.JFrame {
      */
     GestorBuscador gestor;
     int xMouse, yMouse;
+    Integer page = 1;
+    Integer rowCountPerPage = 150;
+    AutoTableModel autoTableModel;
     
     public Buscador(GestorBuscador gestorPadre) {
         conocerGestor(gestorPadre);
         initComponents();
         tablaAutos.setModel(gestor.mostrarAutos());
+        ordenarTabla();
     }
 
     /**
@@ -379,4 +384,15 @@ public class Buscador extends javax.swing.JFrame {
     public String getConsulta(){
         return txtConsulta.getText();
     }
+    
+    public void ordenarTabla() {
+        autoTableModel = new AutoTableModel();
+        autoTableModel.setList(gestor.conocerAutosLimit(page, rowCountPerPage));
+        
+        //ORDENAMIENTO DE REGISTROS POR COLUMNA
+        TableRowSorter<AutoTableModel> sorter = new TableRowSorter<>(autoTableModel);
+        tablaAutos.setRowSorter(sorter);
+    }
+    
+    
 }

@@ -135,7 +135,7 @@ public class GestorVenta {
         System.out.println("costo: " + costo);
         System.out.println("impuesto:" + impuesto);
         totalVenta = cantidad * costo + ((cantidad * costo) * impuesto) / 100;
-        //pantallaVenta.setTxtTotal(formatoImporte.format(totalVenta));
+        pantallaVenta.setTxtTotal(formatoImporte.format(totalVenta));
         return totalVenta;
     }
 

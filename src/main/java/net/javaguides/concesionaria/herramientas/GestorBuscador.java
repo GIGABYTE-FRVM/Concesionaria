@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import net.javaguides.concesionaria.GestorVenta;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Auto;
+import net.javaguides.hibernate.model.Venta;
 
 /**
  *
@@ -106,6 +107,12 @@ public class GestorBuscador {
     }
     void tomarSeleccion(Auto autoSeleccionado){
         gestorVenta.setAutoSeleccionado(autoSeleccionado);
+    }
+    
+    
+    public List<Auto> conocerAutosLimit(int page, int limit) {
+        listaAutos = gestorHibernate.getObjectsLimit("Auto", page, limit);
+        return listaAutos;
     }
 
 }
