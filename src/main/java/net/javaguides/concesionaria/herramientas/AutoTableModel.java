@@ -19,7 +19,7 @@ import net.javaguides.hibernate.model.Venta;
 public class AutoTableModel extends AbstractTableModel {
 
     List<Auto> listAutos = new ArrayList<Auto>();
-    private final String HEADER[] = {"#","id", "Marca", "Modelo", "AnoFabricacion", "Combustible","Color","Precio"};
+    private final String HEADER[] = {"id", "Marca", "Modelo", "Año Fabricacion", "Combustible","Color","Precio"};
 
     public void setList(List<Auto> listVenta) {
         this.listAutos = listVenta;
@@ -62,20 +62,18 @@ public class AutoTableModel extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0:
-                return rowIndex + 1;
-            case 1:
                 return auto.getId();
-            case 2:
+            case 1:
                 return auto.getMarca();
-            case 3:
+            case 2:
                 return auto.getModelo();
-            case 4:
+            case 3:
                 return auto.getAñoFabricacion();
-            case 5:
+            case 4:
                 return auto.getCombustible();
-            case 6:
+            case 5:
                 return auto.getColor();
-            case 7:
+            case 6:
                 return auto.getPrecio();
 
             default:
