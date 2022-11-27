@@ -622,12 +622,18 @@ public class ClienteABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarCliente();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        habilitarBotones(true);
-        panelBtnRegistrar.setBackground(colorBackgroundButton);
-        panelBtnRegistrar.setBorder(null);
-        setIdUltimoCliente();
+        boolean esValido = gestor.validarCamposVacios(txtNombre, txtApellido, txtDireccion, txtDNI, txtEmail, txtTelefono, txtFechaNacimiento);
+        if(esValido) {
+            gestor.registrarCliente();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            habilitarBotones(true);
+            panelBtnRegistrar.setBackground(colorBackgroundButton);
+            panelBtnRegistrar.setBorder(null);
+            setIdUltimoCliente();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
+        
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

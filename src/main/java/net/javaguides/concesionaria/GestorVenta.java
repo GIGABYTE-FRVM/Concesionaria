@@ -4,6 +4,7 @@
  */
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import net.javaguides.concesionaria.herramientas.GestorBuscador;
 import net.javaguides.hibernate.model.Auto;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.sql.Date;
+import javax.swing.JTextField;
 
 public class GestorVenta {
 
@@ -40,6 +42,7 @@ public class GestorVenta {
     Integer ultimoIdVenta;
     Cliente cliente;
     double totalVenta;
+    Color disableColor = new Color(153,153,153);
     NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
 
     public GestorVenta() {
@@ -268,6 +271,15 @@ public class GestorVenta {
 
     public void setPantallaVenta(VistaVenta pantallaVenta) {
         this.pantallaVenta = pantallaVenta;
+    }
+    
+    
+    public boolean validarCamposVacios(JTextField txtDNI, JTextField txtAutoSeleccionado) {
+        if(txtDNI.getForeground().equals(disableColor) || txtAutoSeleccionado.getForeground().equals(disableColor)) {
+            return false;
+        }else {
+            return true;
+        }
     }
 
 }

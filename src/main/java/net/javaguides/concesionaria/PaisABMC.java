@@ -570,11 +570,16 @@ public class PaisABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarPais();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        setIdUltimoPais();
+        boolean esValido = gestor.validarCamposVacios(txtNombre);
+        if(esValido) {
+            gestor.registrarPais();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            limpiarEntradas();
+            habilitarBotones(true);
+            setIdUltimoPais();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        } 
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

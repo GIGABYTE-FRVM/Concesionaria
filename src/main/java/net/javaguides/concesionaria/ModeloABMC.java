@@ -6,6 +6,7 @@ package net.javaguides.concesionaria;
 
 import java.awt.Color;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -569,13 +570,18 @@ public class ModeloABMC extends javax.swing.JFrame {
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         // TODO add your handling code here:
-        gestor.registrarModelo();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        habilitarBotones(true);
-        panelBtnRegistrar.setBackground(colorBackgroundButton);
-        btnRegistrar.setForeground(Color.white);
-        panelBtnRegistrar.setBorder(null);
-        setIdUltimaMarca();
+        boolean esValido = gestor.validarCamposVacios(txtNombre, txtVersion, txtAñoLanzamiento);
+        if(esValido){
+            gestor.registrarModelo();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            habilitarBotones(true);
+            panelBtnRegistrar.setBackground(colorBackgroundButton);
+            btnRegistrar.setForeground(Color.white);
+            panelBtnRegistrar.setBorder(null);
+            setIdUltimaMarca();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

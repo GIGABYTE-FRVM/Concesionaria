@@ -1007,8 +1007,14 @@ public class VistaVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        // TODO add your handling code here:
-        gestor.registrarVenta();
+        // TODO add your handling code here
+        boolean esValido = gestor.validarCamposVacios(txtDniCliente, txtAutoSeleccionado);
+        if(esValido) {
+            gestor.registrarVenta();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
+        
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void txtDniClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniClienteMouseClicked

@@ -889,13 +889,20 @@ public class AutoABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnABMCModeloMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarAuto();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        panelBtnRegistrar.setBackground(colorBackgroundButton);
-        panelBtnRegistrar.setBorder(null);
-        actualizarCombos();
+        boolean esValido = gestor.validarCamposVacios(txtAñoFabricacion, txtPrecio, txtPrecioCosto);
+        if(esValido) {
+            gestor.registrarAuto();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            limpiarEntradas();
+            habilitarBotones(true);
+            panelBtnRegistrar.setBackground(colorBackgroundButton);
+            panelBtnRegistrar.setBorder(null);
+            actualizarCombos();
+        }else {
+            this.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
+        
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

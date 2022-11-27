@@ -1,5 +1,6 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Combustible;
@@ -21,6 +23,7 @@ public class GestorCombustibleABMC {
     GestorAutoABMC gestorAuto;
 
     CombustibleABMC pantallaCombustible;
+    Color disableColor = new Color(153,153,153);
 
     public GestorCombustibleABMC() {
         gestorHibernate = GestorHibernate.getInstancia();
@@ -130,5 +133,13 @@ public class GestorCombustibleABMC {
         }
 
         return ultimoIdCombustible + 1;
+    }
+    
+    public boolean validarCamposVacios(JTextField txtNombre) {
+        if(txtNombre.getForeground().equals(disableColor)) {
+            return false;
+        }else {
+            return true;
+        }
     }
 }

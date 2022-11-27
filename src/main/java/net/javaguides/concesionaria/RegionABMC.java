@@ -588,11 +588,17 @@ public class RegionABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarRegion();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        setIdUltimaRegion();
+        boolean esValido = gestor.validarCamposVacios(txtNombre, txtPorcentaje);
+        if(esValido) {
+            gestor.registrarRegion();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            limpiarEntradas();
+            habilitarBotones(true);
+            setIdUltimaRegion();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
+        
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

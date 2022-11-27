@@ -1,8 +1,10 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
@@ -15,6 +17,7 @@ public class GestorRegionABMC {
     RegionABMC pantallaRegion;
     GestorHibernate gestorHibernate = GestorHibernate.getInstancia();
     GestorPaisABMC gestorPais;
+    Color disableColor = new Color(153,153,153);
 
     
     public GestorRegionABMC() {
@@ -115,6 +118,14 @@ public class GestorRegionABMC {
         }
 
         return ultimoIdRegion + 1;
+    }
+    
+    public boolean validarCamposVacios(JTextField txtNombre, JTextField txtPorcentaje) {
+        if(txtNombre.getForeground().equals(disableColor) || txtPorcentaje.getForeground().equals(disableColor)) {
+            return false;
+        }else {
+            return true;
+        }
     }
   
 }

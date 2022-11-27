@@ -1,11 +1,13 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.concesionaria.herramientas.GestorBuscador;
 import net.javaguides.hibernate.dao.GestorHibernate;
@@ -26,6 +28,7 @@ public class GestorMarcaABMC {
 
     MarcaABMC pantallaMarca;
     Notificador notificador;
+    Color disableColor = new Color(153,153,153);
 
     public GestorMarcaABMC() {
         gestorHibernate = GestorHibernate.getInstancia();
@@ -195,6 +198,14 @@ public class GestorMarcaABMC {
         }
 
         return ultimoIdMarca + 1;
+    }
+    
+    public boolean validarCamposVacios(JTextField txtCodigo, JTextField txtNombre, JTextField txtDescripcion) {
+        if(txtCodigo.getForeground().equals(disableColor) || txtNombre.getForeground().equals(disableColor) || txtDescripcion.getForeground().equals(disableColor)){
+            return false;
+        }else {
+            return true;
+        }
     }
 
 

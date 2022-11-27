@@ -1,8 +1,10 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Marca;
@@ -17,6 +19,8 @@ public class GestorPersonalABMC {
     GestorHibernate gestorHibernate;
 
     PersonalABMC pantallaPersonal;
+    
+    Color disableColor = new Color(153,153,153);
 
     public GestorPersonalABMC() {
         gestorHibernate = GestorHibernate.getInstancia();
@@ -159,5 +163,17 @@ public class GestorPersonalABMC {
         }
 
         return ultimoIdPersonal + 1;
+    }
+    
+    public boolean validarCamposVacios(JTextField txtNombre, JTextField txtApellido, JTextField txtDireccion, JTextField txtDNI, JTextField txtEmail, JTextField txtTelefono, 
+            JTextField txtFechaNacimiento, JTextField txtFechaIngresoEmpresa, JTextField txtHoraEntrada, JTextField txtHoraSalida) {
+        if(txtNombre.getForeground().equals(disableColor) || txtApellido.getForeground().equals(disableColor) || txtDireccion.getForeground().equals(disableColor)
+                || txtDNI.getForeground().equals(disableColor) || txtEmail.getForeground().equals(disableColor) || txtTelefono.getForeground().equals(disableColor)
+                || txtFechaNacimiento.getForeground().equals(disableColor) || txtFechaIngresoEmpresa.getForeground().equals(disableColor) || txtHoraEntrada.getForeground().equals(disableColor)
+                || txtHoraSalida.getForeground().equals(disableColor)) {
+            return false;
+        }else {
+            return true;
+        }
     }
 }

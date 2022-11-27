@@ -21,6 +21,7 @@ public class MarcaABMC extends javax.swing.JFrame {
     int xMouse, yMouse;
     Color colorBackgroundButton = new Color(255,153,51);
     
+    
     public MarcaABMC(GestorMarcaABMC gestorPadre) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -630,14 +631,20 @@ public class MarcaABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaisMouseClicked
 
     private void btnRegistrarLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLblMouseClicked
-        gestor.registrarMarca();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        panelBtnRegistrar.setBackground(colorBackgroundButton);
-        panelBtnRegistrar.setBorder(null);
-        actualizarComboPaises();
-        setIdUltimaMarca();
+        boolean esValido = gestor.validarCamposVacios(txtCodigo, txtNombre, txtDescripcion);
+        if(esValido){
+            gestor.registrarMarca();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            limpiarEntradas();
+            habilitarBotones(true);
+            panelBtnRegistrar.setBackground(colorBackgroundButton);
+            panelBtnRegistrar.setBorder(null);
+            actualizarComboPaises();
+            setIdUltimaMarca(); 
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
+        
     }//GEN-LAST:event_btnRegistrarLblMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

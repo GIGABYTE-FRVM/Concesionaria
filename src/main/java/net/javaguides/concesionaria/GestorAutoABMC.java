@@ -1,5 +1,6 @@
 package net.javaguides.concesionaria;
 
+import java.awt.Color;
 import net.javaguides.concesionaria.herramientas.Notificador;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.javaguides.hibernate.dao.GestorHibernate;
 import net.javaguides.hibernate.model.Auto;
@@ -29,6 +31,7 @@ public class GestorAutoABMC {
 
     AutoABMC pantallaAuto;
     Notificador notificador;
+    Color disableColor = new Color(153,153,153);
 
     public GestorAutoABMC() {
         gestorHibernate = GestorHibernate.getInstancia();
@@ -235,5 +238,13 @@ public class GestorAutoABMC {
         }
 
         return ultimoIdAuto + 1;
+    }
+    
+    public boolean validarCamposVacios(JTextField txtAñoFabricacion, JTextField txtPrecio, JTextField txtPrecioCosto) {
+        if(txtAñoFabricacion.getForeground().equals(disableColor) || txtPrecio.getForeground().equals(disableColor) || txtPrecioCosto.getForeground().equals(disableColor)) {
+            return false;
+        }else {
+            return true;
+        }
     }
 }

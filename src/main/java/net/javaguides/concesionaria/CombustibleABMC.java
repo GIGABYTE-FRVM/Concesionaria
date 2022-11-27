@@ -427,13 +427,18 @@ public class CombustibleABMC extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaDatosMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        gestor.registrarCombustible();
-        tablaDatos.setModel(gestor.mostrarDatos());
-        limpiarEntradas();
-        habilitarBotones(true);
-        panelBtnRegistrar.setBackground(colorBackgroundButton);
-        panelBtnRegistrar.setBorder(null);
-        setIdUltimoCombustible();
+        boolean esValido = gestor.validarCamposVacios(txtNombre);
+        if(esValido) {
+            gestor.registrarCombustible();
+            tablaDatos.setModel(gestor.mostrarDatos());
+            limpiarEntradas();
+            habilitarBotones(true);
+            panelBtnRegistrar.setBackground(colorBackgroundButton);
+            panelBtnRegistrar.setBorder(null);
+            setIdUltimoCombustible();
+        }else {
+            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+        }
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
