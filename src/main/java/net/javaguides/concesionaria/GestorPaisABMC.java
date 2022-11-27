@@ -193,7 +193,12 @@ public class GestorPaisABMC {
         if(txtNombre.getForeground().equals(disableColor)) {
             return false;
         }else {
-            return true;
+            return validarCamposTexto(txtNombre.getText());
         }
+    }
+    
+    public boolean validarCamposTexto(String campoTexto) {
+        campoTexto = campoTexto.toUpperCase();
+        return campoTexto.matches("[A-Z]*");
     }
 }

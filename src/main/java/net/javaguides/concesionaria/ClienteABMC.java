@@ -631,7 +631,7 @@ public class ClienteABMC extends javax.swing.JFrame {
             panelBtnRegistrar.setBorder(null);
             setIdUltimoCliente();
         }else {
-            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+            JOptionPane.showMessageDialog(null, "ASEGURESE DE HABER COMPLETADO TODOS LOS CAMPOS DEL FORMULARIO CORRECTAMENTE");
         }
         
     }//GEN-LAST:event_btnRegistrarMouseClicked

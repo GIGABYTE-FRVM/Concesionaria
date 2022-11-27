@@ -3,6 +3,8 @@ package net.javaguides.concesionaria;
 import java.awt.Color;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -158,7 +160,49 @@ public class GestorClienteABMC {
                 || txtFechaNacimiento.getForeground().equals(disableColor)) {
             return false;
         }else {
-            return true;
+            return (validarCamposNumericos(txtDNI.getText()) && 
+                    validarCamposNumericos(txtTelefono.getText()) &&
+                    validarCamposTexto(txtNombre.getText()) && 
+                    validarCamposTexto(txtApellido.getText()) &&
+                    validarEmail(txtEmail.getText()));
         }
     }
+    
+    public boolean validarCamposNumericos(String campoNumerico) {
+        for (int i = 0; i < campoNumerico.length(); i++)
+        {
+            char c = campoNumerico.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        if(campoNumerico.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+    
+        
+    public boolean validarCamposTexto(String campoTexto) {
+        campoTexto = campoTexto.toUpperCase();
+        return campoTexto.matches("[A-Z]*");
+    }
+
+
+    public boolean validarEmail(String email) {
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(email);
+
+        if (mather.find() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
 }

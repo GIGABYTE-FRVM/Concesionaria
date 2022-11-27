@@ -124,8 +124,31 @@ public class GestorRegionABMC {
         if(txtNombre.getForeground().equals(disableColor) || txtPorcentaje.getForeground().equals(disableColor)) {
             return false;
         }else {
-            return true;
+            return (validarCamposTexto(txtNombre.getText()) &&
+                    validarCamposNumericos(txtPorcentaje.getText()));
         }
+    }
+    
+    
+    public boolean validarCamposTexto(String campoTexto) {
+        campoTexto = campoTexto.toUpperCase();
+        return campoTexto.matches("[A-Z]*");
+    }
+    
+    public boolean validarCamposNumericos(String campoNumerico) {
+        for (int i = 0; i < campoNumerico.length(); i++)
+        {
+            char c = campoNumerico.charAt(i);
+            if (c < '0' || c > '9') {
+                if(!String.valueOf(c).equals(".")) {
+                    return false;
+                }
+            }
+        }
+        if(campoNumerico.isBlank()) {
+            return false;
+        }
+        return true;
     }
   
 }

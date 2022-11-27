@@ -578,7 +578,8 @@ public class PaisABMC extends javax.swing.JFrame {
             habilitarBotones(true);
             setIdUltimoPais();
         }else {
-            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+            this.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(null, "EL NOMBRE INGRESADO NO ES CORRECTO");
         } 
     }//GEN-LAST:event_btnRegistrarMouseClicked
 

@@ -789,7 +789,9 @@ public class App extends javax.swing.JFrame {
 
     private void panelBtnPaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnPaisMouseClicked
         // TODO add your handling code here:
+        this.setCursor(new Cursor(WAIT_CURSOR));
         gestor.menuPaisActionPerformed();
+        this.setCursor(new Cursor(DEFAULT_CURSOR));
     }//GEN-LAST:event_panelBtnPaisMouseClicked
 
     private void panelBtnPaisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnPaisMouseEntered
