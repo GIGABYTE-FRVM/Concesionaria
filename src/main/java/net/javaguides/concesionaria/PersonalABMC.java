@@ -761,7 +761,7 @@ public class PersonalABMC extends javax.swing.JFrame {
             panelBtnRegistrar.setBorder(null);
             setIdUltimoPersonal();
         }else {
-            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+            JOptionPane.showMessageDialog(null, "ASEGURESE DE HABER CARGADO TODOS LOS DATOS SOLICITADOS CORRECTAMENTE");
         }
         
     }//GEN-LAST:event_btnRegistrarMouseClicked
