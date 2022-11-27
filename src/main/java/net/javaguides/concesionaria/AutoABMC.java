@@ -900,7 +900,7 @@ public class AutoABMC extends javax.swing.JFrame {
             actualizarCombos();
         }else {
             this.setAlwaysOnTop(false);
-            JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEL FORMULARIO DEBEN SER COMPLETADOS");
+            JOptionPane.showMessageDialog(null, "ASEGURESE DE HABER CARGADO TODOS LOS DATOS SOLICITADOS CORRECTAMENTE");
         }
         
     }//GEN-LAST:event_btnRegistrarMouseClicked

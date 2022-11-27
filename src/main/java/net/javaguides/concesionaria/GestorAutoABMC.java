@@ -244,7 +244,24 @@ public class GestorAutoABMC {
         if(txtAñoFabricacion.getForeground().equals(disableColor) || txtPrecio.getForeground().equals(disableColor) || txtPrecioCosto.getForeground().equals(disableColor)) {
             return false;
         }else {
-            return true;
+            return (validarCampoNumerico(txtAñoFabricacion.getText()) && 
+                    validarCampoNumerico(txtPrecio.getText()) && 
+                    validarCampoNumerico(txtPrecioCosto.getText())
+                    );
         }
+    }
+    
+    public boolean validarCampoNumerico(String campoNumerico) {
+        for (int i = 0; i < campoNumerico.length(); i++)
+        {
+            char c = campoNumerico.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        if(campoNumerico.isBlank()) {
+            return false;
+        }
+        return true;
     }
 }
