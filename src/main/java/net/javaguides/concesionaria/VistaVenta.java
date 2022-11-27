@@ -980,15 +980,21 @@ public class VistaVenta extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         String dniCliente = txtDniCliente.getText();
-        try {
+        boolean esDniValido = gestor.validarDNI(dniCliente);
+        if(esDniValido) {
+          try {
             Cliente cliente = gestor.buscarClientePorDni(dniCliente);
             if (cliente != null) {
                 txtNombreCliente.setText(cliente.getNombre() + " " + cliente.getApellido());
             }
-        } catch (IllegalStateException e) {
+          } 
+          catch (IllegalStateException e) {
+            JOptionPane.showMessageDialog(null, "EL DNI INGRESADO NO ESTA REGISTRADO");
+          }  
+        }else {
             JOptionPane.showMessageDialog(null, "EL DNI INGRESADO NO ES CORRECTO");
-
         }
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

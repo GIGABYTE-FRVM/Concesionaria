@@ -281,5 +281,18 @@ public class GestorVenta {
             return true;
         }
     }
-
+    
+    public boolean validarDNI(String DNI) {
+        for (int i = 0; i < DNI.length(); i++)
+        {
+            char c = DNI.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        if(DNI.isBlank()) {
+            return false;
+        }
+        return true;
+    }
 }
