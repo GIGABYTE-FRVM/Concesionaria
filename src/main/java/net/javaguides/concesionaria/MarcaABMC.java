@@ -163,6 +163,11 @@ public class MarcaABMC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         cboPais.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         cboPais.setForeground(new java.awt.Color(51, 51, 51));
@@ -740,6 +745,11 @@ public class MarcaABMC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtDescripcionMouseClicked
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        validarString(c, evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -838,5 +848,8 @@ public class MarcaABMC extends javax.swing.JFrame {
         txtId.setText(Integer.toString(gestor.conocerUltimoIdMarca()));
     }
     
+    public void validarString(char c, java.awt.event.KeyEvent evt){
+        if ((c<'a' || c>'z') && (c<'A' || c>'Z')) evt.consume();
+    }
 
 }

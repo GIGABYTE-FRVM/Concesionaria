@@ -123,6 +123,11 @@ public class ClienteABMC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         txtDireccion.setForeground(new java.awt.Color(153, 153, 153));
         txtDireccion.setText("Ingrese la dirección del cliente");
@@ -165,6 +170,11 @@ public class ClienteABMC extends javax.swing.JFrame {
                 txtApellidoActionPerformed(evt);
             }
         });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         txtFechaNacimiento.setBorder(null);
         txtFechaNacimiento.setForeground(new java.awt.Color(153, 153, 153));
@@ -190,6 +200,11 @@ public class ClienteABMC extends javax.swing.JFrame {
                 txtDNIMouseClicked(evt);
             }
         });
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDNIKeyTyped(evt);
+            }
+        });
 
         txtTelefono.setForeground(new java.awt.Color(153, 153, 153));
         txtTelefono.setText("Ingrese un número de telefono");
@@ -202,6 +217,11 @@ public class ClienteABMC extends javax.swing.JFrame {
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
             }
         });
 
@@ -749,6 +769,26 @@ public class ClienteABMC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFechaNacimientoMouseClicked
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        validarString(c, evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        char c = evt.getKeyChar();
+        validarString(c, evt);
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtDNIKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -857,6 +897,14 @@ public class ClienteABMC extends javax.swing.JFrame {
 
     private void setIdUltimoCliente() {
         txtId.setText(Integer.toString(gestor.conocerUltimoIdCliente()));
+    }
+    
+    public void validarString(char c, java.awt.event.KeyEvent evt){
+        if ((c<'a' ||  c>'z') && (c<'A' ||  c>'Z')) evt.consume();
+    }
+    
+    public void validarEntero(char c, java.awt.event.KeyEvent evt) {
+        if (c<'0' || c>'9') evt.consume();
     }
 
 }

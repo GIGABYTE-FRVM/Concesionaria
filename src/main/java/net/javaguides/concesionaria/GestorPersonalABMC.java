@@ -104,7 +104,7 @@ public class GestorPersonalABMC {
                 data[1] = personal.getNombre();
                 data[2] = personal.getApellido();
                 data[3] = personal.getDireccion();
-                data[4] = personal;
+                data[4] = personal.getDocumento();
                 data[5] = personal.getEmail();
                 data[6] = personal.getTelefono();
                 data[7] = personal.getFechaNacimiento();
@@ -137,7 +137,7 @@ public class GestorPersonalABMC {
                 || personal.getDocumento().length() == 0 || personal.getEmail().length() == 0 || personal.getFechaNacimiento().length() == 0
                 || personal.getFechaIngresoEmpresa().length() == 0 || personal.getHoraEntrada().length() == 0 || personal.getHoraSalida().length() == 0) {
             return false;
-        }
+        }  
         if (tipo == 0) {
             for (Personal personalOfList : listaPersonales) {
                 if (personalOfList.getDocumento().equalsIgnoreCase(personal.getDocumento())) {

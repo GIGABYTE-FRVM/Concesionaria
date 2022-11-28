@@ -107,6 +107,11 @@ public class RegionABMC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
         lblTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
@@ -241,6 +246,11 @@ public class RegionABMC extends javax.swing.JFrame {
         txtPorcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPorcentajeActionPerformed(evt);
+            }
+        });
+        txtPorcentaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPorcentajeKeyTyped(evt);
             }
         });
 
@@ -649,6 +659,16 @@ public class RegionABMC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPorcentajeMouseClicked
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        validarString(c, evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtPorcentajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPorcentajeKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtPorcentajeKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
@@ -711,5 +731,12 @@ public class RegionABMC extends javax.swing.JFrame {
     private void setIdUltimaRegion() {
         txtId.setText(Integer.toString(gestor.conocerUltimoIdRegion()));
     }
- 
+    
+    public void validarString(char c, java.awt.event.KeyEvent evt){
+        if ((c<'a' ||  c>'z') && (c<'A' ||  c>'Z')) evt.consume();
+    }
+    
+    public void validarEntero(char c, java.awt.event.KeyEvent evt) {
+        if (c<'0' || c>'9') evt.consume();
+    }
 }
