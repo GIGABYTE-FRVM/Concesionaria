@@ -737,6 +737,11 @@ public class RegionABMC extends javax.swing.JFrame {
     }
     
     public void validarEntero(char c, java.awt.event.KeyEvent evt) {
-        if (c<'0' || c>'9') evt.consume();
+        if (c<'0' || c>'9') {
+            if(!String.valueOf(c).equals(".")) {
+               evt.consume(); 
+            }
+            
+        }
     }
 }

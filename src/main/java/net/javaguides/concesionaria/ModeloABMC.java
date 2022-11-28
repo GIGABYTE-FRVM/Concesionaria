@@ -156,6 +156,11 @@ public class ModeloABMC extends javax.swing.JFrame {
                 txtAñoLanzamientoActionPerformed(evt);
             }
         });
+        txtAñoLanzamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAñoLanzamientoKeyTyped(evt);
+            }
+        });
 
         txtVersion.setForeground(new java.awt.Color(153, 153, 153));
         txtVersion.setText("Ingrese la versión del modelo");
@@ -694,6 +699,12 @@ public class ModeloABMC extends javax.swing.JFrame {
         validarString(c, evt);
     }//GEN-LAST:event_txtNombreKeyTyped
 
+    private void txtAñoLanzamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoLanzamientoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtAñoLanzamientoKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraSuperiorVentana;
     private javax.swing.JLabel btnActualizar;
@@ -781,5 +792,9 @@ public class ModeloABMC extends javax.swing.JFrame {
 
     public void validarString(char c, java.awt.event.KeyEvent evt){
         if ((c<'a' ||  c>'z') && (c<'A' ||  c>'Z')) evt.consume();
+    }
+    
+    public void validarEntero(char c, java.awt.event.KeyEvent evt) {
+        if (c<'0' || c>'9') evt.consume();
     }
 }
