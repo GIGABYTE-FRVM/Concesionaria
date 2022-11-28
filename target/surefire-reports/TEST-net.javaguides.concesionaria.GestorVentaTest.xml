@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="15" failures="0" name="net.javaguides.concesionaria.GestorVentaTest" time="22.674" errors="0" skipped="0">
+<testsuite tests="15" failures="0" name="net.javaguides.concesionaria.GestorVentaTest" time="24.393" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="18.0.2.1+1-1"/>
@@ -60,19 +60,19 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testRegistrarVenta" time="0.017"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testRegistrarVenta" time="0.036"/>
   <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testActualizarTabla" time="0"/>
   <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testBuscarClientePorDni" time="0"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetHoraActual" time="0"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetAutoSeleccionado" time="0.001"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarIdUltimaVenta" time="0.001"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testBuscarAuto" time="0.002"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarConsultasVentas" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetHoraActual" time="0.007"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetAutoSeleccionado" time="0.002"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarIdUltimaVenta" time="0.003"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testBuscarAuto" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarConsultasVentas" time="0.003"/>
   <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarPantalla" time="0.001"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarDatos" time="0.001"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerUltimoIdVenta" time="0"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerVendedores" time="0.001"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testCalcularTotal" time="22.648"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarDatos" time="0.002"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerUltimoIdVenta" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerVendedores" time="0.002"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testCalcularTotal" time="24.335"/>
   <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetFechaActual" time="0"/>
-  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testSetAutoSeleccionado" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testSetAutoSeleccionado" time="0"/>
 </testsuite>

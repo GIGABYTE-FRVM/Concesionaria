@@ -51,6 +51,7 @@ net\javaguides\concesionaria\RegionABMC$11.class
 net\javaguides\concesionaria\reportes\VistaReporte$7.class
 net\javaguides\concesionaria\ClienteABMC$19.class
 net\javaguides\concesionaria\ConsultaVentas$10.class
+net\javaguides\concesionaria\reportes\GenerarReporteVentasPorMarca$1.class
 net\javaguides\concesionaria\VistaVenta$13.class
 net\javaguides\concesionaria\App$2.class
 net\javaguides\concesionaria\ConsultaVentas$7.class
@@ -64,6 +65,7 @@ net\javaguides\concesionaria\ConsultaVentas$8.class
 net\javaguides\hibernate\model\Pais.class
 net\javaguides\concesionaria\ClienteABMC$14.class
 net\javaguides\concesionaria\PaisABMC$3.class
+net\javaguides\concesionaria\reportes\GenerarReporteVentasPorMarca$2.class
 net\javaguides\concesionaria\VistaVenta$12.class
 net\javaguides\concesionaria\App$15.class
 net\javaguides\concesionaria\ConsultaVentas$11.class
@@ -232,6 +234,7 @@ net\javaguides\concesionaria\GestorModeloABMC.class
 net\javaguides\concesionaria\VistaVenta$2.class
 net\javaguides\concesionaria\CombustibleABMC$5.class
 net\javaguides\hibernate\model\Modelo.class
+net\javaguides\concesionaria\reportes\GenerarReporteVentasPorMarca$3.class
 net\javaguides\concesionaria\AutoABMC$24.class
 net\javaguides\concesionaria\App.class
 net\javaguides\concesionaria\PersonalABMC$19.class
@@ -254,6 +257,7 @@ net\javaguides\concesionaria\ConsultaVentas$6.class
 net\javaguides\concesionaria\VistaVenta$17.class
 net\javaguides\concesionaria\RegionABMC$7.class
 net\javaguides\concesionaria\MarcaABMC$17.class
+net\javaguides\concesionaria\reportes\GenerarReporteVentasPorMarca.class
 net\javaguides\concesionaria\ClienteABMC$4.class
 net\javaguides\concesionaria\ModeloABMC$3.class
 net\javaguides\concesionaria\reportes\VistaReporte$4.class
@@ -262,6 +266,7 @@ net\javaguides\concesionaria\ModeloABMC$20.class
 net\javaguides\concesionaria\PaisABMC$10.class
 net\javaguides\concesionaria\CombustibleABMC$7.class
 net\javaguides\concesionaria\PersonalABMC$1.class
+net\javaguides\concesionaria\reportes\GenerarReporteVentasPorMarca$4.class
 net\javaguides\concesionaria\ConsultaVentas$4.class
 net\javaguides\concesionaria\herramientas\Buscador$7.class
 net\javaguides\concesionaria\herramientas\Buscador.class

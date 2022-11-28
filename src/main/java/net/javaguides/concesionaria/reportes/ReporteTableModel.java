@@ -63,12 +63,6 @@ public class ReporteTableModel extends AbstractTableModel {
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         List<Object> filaReporte= listReporte.get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return rowIndex + 1;
-            default:
-                return filaReporte.get(columnIndex);
-        }
-        
+        return columnIndex==0?rowIndex+1:filaReporte.get(columnIndex);
     }
 }

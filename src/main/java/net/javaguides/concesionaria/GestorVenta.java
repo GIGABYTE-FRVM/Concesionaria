@@ -55,7 +55,7 @@ public class GestorVenta {
         mostrarPantalla(true);
     }
 
-    void mostrarPantalla(boolean b) {
+    public void mostrarPantalla(boolean b) {
         pantallaVenta.setVisible(b);
     }
 

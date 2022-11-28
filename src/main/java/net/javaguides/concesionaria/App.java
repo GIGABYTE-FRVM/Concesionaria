@@ -560,11 +560,15 @@ public class App extends javax.swing.JFrame {
         btnRegistrarVenta.setLayout(btnRegistrarVentaLayout);
         btnRegistrarVentaLayout.setHorizontalGroup(
             btnRegistrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBtnRegistrarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+            .addGroup(btnRegistrarVentaLayout.createSequentialGroup()
+                .addComponent(lblBtnRegistrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         btnRegistrarVentaLayout.setVerticalGroup(
             btnRegistrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBtnRegistrarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addGroup(btnRegistrarVentaLayout.createSequentialGroup()
+                .addComponent(lblBtnRegistrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         btnConsultarVentas.setBackground(new java.awt.Color(245, 245, 245));
@@ -654,7 +658,7 @@ public class App extends javax.swing.JFrame {
             btnGenerarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGenerarReportesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblGenerarReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(lblGenerarReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -686,7 +690,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(btnConsultarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGenerarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         panelGeneral.add(panelMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 450, 610));
