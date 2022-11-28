@@ -138,6 +138,11 @@ public class AutoABMC extends javax.swing.JFrame {
                 txtAñoFabricacionActionPerformed(evt);
             }
         });
+        txtAñoFabricacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAñoFabricacionKeyTyped(evt);
+            }
+        });
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
@@ -255,6 +260,11 @@ public class AutoABMC extends javax.swing.JFrame {
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
+            }
+        });
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
             }
         });
 
@@ -442,6 +452,11 @@ public class AutoABMC extends javax.swing.JFrame {
         txtPrecioCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioCostoActionPerformed(evt);
+            }
+        });
+        txtPrecioCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioCostoKeyTyped(evt);
             }
         });
 
@@ -1013,6 +1028,21 @@ public class AutoABMC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrecioCostoMouseClicked
 
+    private void txtAñoFabricacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoFabricacionKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtAñoFabricacionKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtPrecioKeyTyped
+
+    private void txtPrecioCostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioCostoKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtPrecioCostoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1155,5 +1185,8 @@ public class AutoABMC extends javax.swing.JFrame {
             cboCombustible.addItem(c);
         }
     }
-
+    
+    public void validarEntero(char c, java.awt.event.KeyEvent evt) {
+        if (c<'0' || c>'9') evt.consume();
+    }
 }

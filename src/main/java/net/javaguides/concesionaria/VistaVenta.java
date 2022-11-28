@@ -334,6 +334,11 @@ public class VistaVenta extends javax.swing.JFrame {
                 txtDniClienteActionPerformed(evt);
             }
         });
+        txtDniCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniClienteKeyTyped(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 51));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1039,6 +1044,11 @@ public class VistaVenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtAutoSeleccionadoMouseClicked
 
+    private void txtDniClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniClienteKeyTyped
+        char c = evt.getKeyChar();
+        validarEntero(c, evt);
+    }//GEN-LAST:event_txtDniClienteKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCancelar;
@@ -1107,5 +1117,8 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
+    public void validarEntero(char c, java.awt.event.KeyEvent evt) {
+        if (c<'0' || c>'9') evt.consume();
+    }
     
 }

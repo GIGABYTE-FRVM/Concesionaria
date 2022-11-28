@@ -108,6 +108,11 @@ public class PaisABMC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
         lblTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
@@ -629,6 +634,11 @@ public class PaisABMC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNombreMouseClicked
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        validarString(c, evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -736,5 +746,9 @@ public class PaisABMC extends javax.swing.JFrame {
 
     private void setIdUltimoPais() {
         txtId.setText(Integer.toString(gestor.conocerUltimoIdPais()));
+    }
+    
+    public void validarString(char c, java.awt.event.KeyEvent evt){
+        if ((c<'a' ||  c>'z') && (c<'A' ||  c>'Z')) evt.consume();
     }
 }
