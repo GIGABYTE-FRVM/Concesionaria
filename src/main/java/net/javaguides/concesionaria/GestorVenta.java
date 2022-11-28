@@ -233,7 +233,7 @@ public class GestorVenta {
         List<Venta> ventasFiltradas = null;
         switch (tipo) {
             case "Cliente" ->
-                ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.cliente.nombre  LIKE '%" + consulta + "%' OR venta.cliente.apellido  LIKE '%" + consulta + "%') " + fechaDesdeHasta, page, limit);
+                ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.cliente.nombre  LIKE '%" + consulta + "%' OR venta.cliente.apellido  LIKE '%" + consulta + "%')" + fechaDesdeHasta, page, limit);
             case "Empleado" ->
                 ventasFiltradas = gestorHibernate.getObjectsLimit("Venta as venta WHERE (venta.vendedor.nombre  LIKE '%" + consulta + "%' OR venta.vendedor.apellido  LIKE '%" + consulta + "%') " + fechaDesdeHasta, page, limit);
             case "Auto" ->

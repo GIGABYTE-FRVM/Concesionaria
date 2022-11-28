@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="15" failures="0" name="net.javaguides.concesionaria.GestorVentaTest" time="22.674" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="18.0.2.1+1-1"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-18.0.2.1\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\matya\OneDrive\Escritorio\UTN\4° Año\Programacion Avanzada\Practicos\Concesionaria"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="AR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\matya\OneDrive\Escritorio\UTN\4° Año\Programacion Avanzada\Practicos\Concesionaria"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="java.runtime.version" value="18.0.2.1+1-1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\matya\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-14\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="C:\Program Files\NetBeans-14\netbeans\java\maven\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-18.0.2.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\matya\AppData\Local\Programs\Python\Python310;C:\Users\matya\AppData\Local\Programs\Python\Python310\Scripts;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\Java\jdk-18.0.2.1\bin;C:\Program Files (x86)\Python\Scripts;C:\Users\matya\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\matya\AppData\Roaming\npm;C:\Program Files\Java\jdk-18.0.2.1\bin;;C:\Program Files\Azure Data Studio\bin;."/>
+    <property name="maven.conf" value="C:\Program Files\NetBeans-14\netbeans\java\maven/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="62.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="C:\Program Files\NetBeans-14\netbeans\java\maven\lib\jansi-native"/>
+    <property name="user.home" value="C:\Users\matya"/>
+    <property name="user.timezone" value="America/Buenos_Aires"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="18"/>
+    <property name="user.name" value="matya"/>
+    <property name="java.class.path" value="C:\Program Files\NetBeans-14\netbeans\java\maven\boot\plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="18"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files\NetBeans-14\netbeans\java\maven-nblib\netbeans-eventspy.jar clean install"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-18.0.2.1"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="18.0.2.1"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\NetBeans-14\netbeans\java\maven"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2022-08-18"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testRegistrarVenta" time="0.017"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testActualizarTabla" time="0"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testBuscarClientePorDni" time="0"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetHoraActual" time="0"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetAutoSeleccionado" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarIdUltimaVenta" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testBuscarAuto" time="0.002"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarConsultasVentas" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarPantalla" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testMostrarDatos" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerUltimoIdVenta" time="0"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testConocerVendedores" time="0.001"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testCalcularTotal" time="22.648"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testGetFechaActual" time="0"/>
+  <testcase classname="net.javaguides.concesionaria.GestorVentaTest" name="testSetAutoSeleccionado" time="0.001"/>
+</testsuite>

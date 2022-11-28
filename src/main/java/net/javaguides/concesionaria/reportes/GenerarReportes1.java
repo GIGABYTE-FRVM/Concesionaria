@@ -132,7 +132,6 @@ public class GenerarReportes1 extends javax.swing.JFrame {
         );
 
         txtFechaDesde.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        txtFechaDesde.setEnabled(false);
         txtFechaDesde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaDesdeActionPerformed(evt);
@@ -146,7 +145,6 @@ public class GenerarReportes1 extends javax.swing.JFrame {
         jLabel6.setText("HASTA");
 
         txtFechaHasta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        txtFechaHasta.setEnabled(false);
         txtFechaHasta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaHastaActionPerformed(evt);
@@ -212,15 +210,9 @@ public class GenerarReportes1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
-        try {
-            gestor.exportarReporteEmpleados();
-            gestor.exportarReporteOtro();
-
-        } catch (IOException ex) {
-            Logger.getLogger(GenerarReportes1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                        System.out.println("Listo");
+        gestor.exportarReporteVentasPorEmpleado();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
@@ -256,4 +248,12 @@ public class GenerarReportes1 extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtFechaHasta;
     // End of variables declaration//GEN-END:variables
 
+    String getFechaDesde() {
+        return txtFechaDesde.getText();
+    }
+
+    String getFechaHasta() {
+        return txtFechaHasta.getText();
+    }
+ 
 }
