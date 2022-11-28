@@ -7,6 +7,7 @@ package net.javaguides.concesionaria;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import static java.lang.Thread.sleep;
 import java.util.Enumeration;
 import java.util.List;
 import javax.swing.JTable;
@@ -37,6 +38,7 @@ public class ConsultaVenta extends javax.swing.JFrame {
     public ConsultaVenta(GestorVenta gestorPadre) {
         conocerGestor(gestorPadre);
         initComponents();
+        
         setLocationRelativeTo(null);
 
         jComboBoxPage.addItem("5");
@@ -50,7 +52,10 @@ public class ConsultaVenta extends javax.swing.JFrame {
                 initPagination();
             }
         });
+        
         initPagination();
+        //sleep(1000);
+        
     }
 
     public void conocerGestor(GestorVenta gestor) {
@@ -107,15 +112,18 @@ public class ConsultaVenta extends javax.swing.JFrame {
         jTableProduct.setModel(ventaTableModel);
         
         //ORDENAMIENTO DE REGISTROS POR COLUMNA
+        
         TableRowSorter<VentaTableModel> sorter = new TableRowSorter<>(ventaTableModel);
         jTableProduct.setRowSorter(sorter);
 
         jLabelStatusHalaman.setText("Page " + page + " for " + totalPage);
         jLabelTotalData.setText(("Row count " + totalData));
         autoResizeColumn(jTableProduct);
+        
     }
 
     private void initPaginationFiltradas() {
+        jTableProduct.setRowSorter(null);
         if (gestor.conocerVentasFiltradas() != null) {
             totalData = gestor.conocerVentasFiltradas().size();
         } else {
@@ -205,6 +213,11 @@ public class ConsultaVenta extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProductMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableProduct);
 
         jLabelTotalData.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -551,8 +564,13 @@ public class ConsultaVenta extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
-        initPaginationFiltradas();
-        filtroAplicado = true;
+        if(txtConsulta.getText().equals("")) {
+            initPagination();
+            filtroAplicado = true;
+        }else {
+            initPaginationFiltradas();
+        }
+        
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void habilitarDesdeHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habilitarDesdeHastaActionPerformed
@@ -573,6 +591,11 @@ public class ConsultaVenta extends javax.swing.JFrame {
     private void txtFechaHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaHastaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaHastaActionPerformed
+
+    private void jTableProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProductMouseClicked
+        // TODO add your handling code here:
+        habilitarOrdenamiento();
+    }//GEN-LAST:event_jTableProductMouseClicked
 
     private void autoResizeColumn(JTable jTable1) {
         JTableHeader header = jTable1.getTableHeader();
@@ -625,4 +648,11 @@ public class ConsultaVenta extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtFechaHasta;
     // End of variables declaration//GEN-END:variables
 
+    public void habilitarOrdenamiento() {
+        TableRowSorter<VentaTableModel> sorter = new TableRowSorter<>(ventaTableModel);
+        jTableProduct.setRowSorter(sorter);
+
+        jLabelStatusHalaman.setText("Page " + page + " for " + totalPage);
+        jLabelTotalData.setText(("Row count " + totalData));
+    }
 }
