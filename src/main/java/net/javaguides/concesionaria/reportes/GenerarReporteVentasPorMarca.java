@@ -177,8 +177,6 @@ public class GenerarReporteVentasPorMarca extends javax.swing.JFrame {
     
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         gestor.exportarReporteVentasPorMarca();
-        gestor.mostrarPantallaVPE(false);
-    
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked

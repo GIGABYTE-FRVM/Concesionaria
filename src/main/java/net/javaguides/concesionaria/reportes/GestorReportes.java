@@ -117,8 +117,8 @@ public class GestorReportes {
                 System.out.println(filaReporte);
                 dataset.add(filaReporte);
             }
-
         }
+        
     }
     public void mostrarPantallaVPE(boolean b) {
         pantallaReportesVentasPorEmpleado.setVisible(b);

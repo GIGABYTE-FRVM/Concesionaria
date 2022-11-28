@@ -174,7 +174,6 @@ public class GenerarReportes extends javax.swing.JFrame {
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         gestor.crearReporteVentasPorEmpleado();
-        dispose();
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
@@ -185,13 +184,11 @@ public class GenerarReportes extends javax.swing.JFrame {
     private void btnRegistrar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrar3MouseClicked
         // TODO add your handling code here:
        gestor.crearReporteVentasPorMarca();
-       gestor.mostrarPantalla(false);
     }//GEN-LAST:event_btnRegistrar3MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
       gestor.crearReporteVentasPorEmpleado();
-      gestor.mostrarPantalla(false);
     }//GEN-LAST:event_jPanel5MouseClicked
 
 
