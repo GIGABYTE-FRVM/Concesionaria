@@ -79,7 +79,9 @@ public class App extends javax.swing.JFrame {
         btnRegistrarVenta = new javax.swing.JPanel();
         lblBtnRegistrarVenta = new javax.swing.JLabel();
         btnConsultarVentas = new javax.swing.JPanel();
-        lblConsultarVentas = new javax.swing.JLabel();
+        lblConsultarVentas1 = new javax.swing.JLabel();
+        btnGenerarReportes = new javax.swing.JPanel();
+        lblGenerarReportes = new javax.swing.JLabel();
         panelSuperior = new javax.swing.JPanel();
         btnCerrarVentana = new javax.swing.JPanel();
         lblBtnCerrarVentana = new javax.swing.JLabel();
@@ -576,19 +578,19 @@ public class App extends javax.swing.JFrame {
             }
         });
 
-        lblConsultarVentas.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
-        lblConsultarVentas.setForeground(new java.awt.Color(102, 102, 102));
-        lblConsultarVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConsultarVentas.setText("Consultar ventas registradas");
-        lblConsultarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblConsultarVentas1.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        lblConsultarVentas1.setForeground(new java.awt.Color(102, 102, 102));
+        lblConsultarVentas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConsultarVentas1.setText("Consultar ventas registradas");
+        lblConsultarVentas1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblConsultarVentasMouseClicked(evt);
+                lblConsultarVentas1MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblConsultarVentasMouseEntered(evt);
+                lblConsultarVentas1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblConsultarVentasMouseExited(evt);
+                lblConsultarVentas1MouseExited(evt);
             }
         });
 
@@ -596,11 +598,64 @@ public class App extends javax.swing.JFrame {
         btnConsultarVentas.setLayout(btnConsultarVentasLayout);
         btnConsultarVentasLayout.setHorizontalGroup(
             btnConsultarVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+            .addGroup(btnConsultarVentasLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblConsultarVentas1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnConsultarVentasLayout.setVerticalGroup(
             btnConsultarVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblConsultarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addGroup(btnConsultarVentasLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblConsultarVentas1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnGenerarReportes.setBackground(new java.awt.Color(245, 245, 245));
+        btnGenerarReportes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(236, 236, 236), 1, true));
+        btnGenerarReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGenerarReportesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGenerarReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGenerarReportesMouseExited(evt);
+            }
+        });
+
+        lblGenerarReportes.setFont(new java.awt.Font("Leelawadee UI", 1, 12)); // NOI18N
+        lblGenerarReportes.setForeground(new java.awt.Color(102, 102, 102));
+        lblGenerarReportes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGenerarReportes.setText("Generar reportes");
+        lblGenerarReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGenerarReportesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblGenerarReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblGenerarReportesMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnGenerarReportesLayout = new javax.swing.GroupLayout(btnGenerarReportes);
+        btnGenerarReportes.setLayout(btnGenerarReportesLayout);
+        btnGenerarReportesLayout.setHorizontalGroup(
+            btnGenerarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGenerarReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblGenerarReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+        );
+        btnGenerarReportesLayout.setVerticalGroup(
+            btnGenerarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGenerarReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblGenerarReportes, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelMenuPrincipalLayout = new javax.swing.GroupLayout(panelMenuPrincipal);
@@ -613,6 +668,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(panelMenuPrincipalLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(panelMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGenerarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -628,7 +684,9 @@ public class App extends javax.swing.JFrame {
                 .addComponent(btnRegistrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnGenerarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         panelGeneral.add(panelMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 450, 610));
@@ -931,33 +989,62 @@ public class App extends javax.swing.JFrame {
         btnRegistrarVenta.setBackground(colorGris);
     }//GEN-LAST:event_lblBtnRegistrarVentaMouseExited
 
-    private void lblConsultarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentasMouseClicked
+    private void lblGenerarReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarReportesMouseClicked
+        // TODO add your handling code here:
+        this.setAlwaysOnTop(false);
+        this.setCursor(new Cursor(WAIT_CURSOR));
+                gestor.menuGenerarReportesActionPerfomed();
+        this.setCursor(new Cursor(DEFAULT_CURSOR));
+    }//GEN-LAST:event_lblGenerarReportesMouseClicked
+
+    private void lblGenerarReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarReportesMouseEntered
+        // TODO add your handling code here:       
+    }//GEN-LAST:event_lblGenerarReportesMouseEntered
+
+    private void lblGenerarReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarReportesMouseExited
+        // TODO add your handling code here:   
+    }//GEN-LAST:event_lblGenerarReportesMouseExited
+
+    private void btnConsultarVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarVentasMouseEntered
+        // TODO add your handling code here:
+        Color colorGrisHover = new Color(221, 221, 221);
+        btnConsultarVentas.setBackground(colorGrisHover);
+    }//GEN-LAST:event_btnConsultarVentasMouseEntered
+
+    private void btnConsultarVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarVentasMouseExited
+        // TODO add your handling code here:
+        Color colorGris = new Color(245, 245, 245);
+        btnConsultarVentas.setBackground(colorGris);
+    }//GEN-LAST:event_btnConsultarVentasMouseExited
+
+    private void lblConsultarVentas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentas1MouseClicked
         // TODO add your handling code here:
         this.setAlwaysOnTop(false);
         this.setCursor(new Cursor(WAIT_CURSOR));
         gestor.consultarVentas();
         this.setCursor(new Cursor(DEFAULT_CURSOR));
-    }//GEN-LAST:event_lblConsultarVentasMouseClicked
+    }//GEN-LAST:event_lblConsultarVentas1MouseClicked
 
-    private void lblConsultarVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentasMouseEntered
+    private void lblConsultarVentas1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentas1MouseEntered
         // TODO add your handling code here:
-        Color colorGrisHover = new Color(221, 221, 221);
-        btnConsultarVentas.setBackground(colorGrisHover);
-    }//GEN-LAST:event_lblConsultarVentasMouseEntered
+    }//GEN-LAST:event_lblConsultarVentas1MouseEntered
 
-    private void lblConsultarVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentasMouseExited
+    private void lblConsultarVentas1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsultarVentas1MouseExited
         // TODO add your handling code here:
-        Color colorGris = new Color(245, 245, 245);
-        btnConsultarVentas.setBackground(colorGris);
-    }//GEN-LAST:event_lblConsultarVentasMouseExited
+    }//GEN-LAST:event_lblConsultarVentas1MouseExited
 
-    private void btnConsultarVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarVentasMouseEntered
+    private void btnGenerarReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReportesMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarVentasMouseEntered
+    }//GEN-LAST:event_btnGenerarReportesMouseEntered
 
-    private void btnConsultarVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarVentasMouseExited
+    private void btnGenerarReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReportesMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarVentasMouseExited
+    }//GEN-LAST:event_btnGenerarReportesMouseExited
+
+    private void btnGenerarReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReportesMouseClicked
+        // TODO add your handling code here:
+        gestor.menuGenerarReportesActionPerfomed();
+    }//GEN-LAST:event_btnGenerarReportesMouseClicked
 
 
     /**
@@ -999,14 +1086,16 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnCerrarVentana;
     private javax.swing.JPanel btnConsultarVentas;
+    private javax.swing.JPanel btnGenerarReportes;
     private javax.swing.JPanel btnRegistrarVenta;
     private javax.swing.JLabel lblAuto;
     private javax.swing.JLabel lblBtnCerrarVentana;
     private javax.swing.JLabel lblBtnRegistrarVenta;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCombustible;
-    private javax.swing.JLabel lblConsultarVentas;
+    private javax.swing.JLabel lblConsultarVentas1;
     private javax.swing.JLabel lblFechaActual;
+    private javax.swing.JLabel lblGenerarReportes;
     private javax.swing.JLabel lblIconAuto;
     private javax.swing.JLabel lblIconCliente;
     private javax.swing.JLabel lblIconCombustible;

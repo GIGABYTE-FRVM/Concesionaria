@@ -154,7 +154,7 @@ public class Personal {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
+       
     @Override
     public String toString() {
         return nombre + " " + apellido;

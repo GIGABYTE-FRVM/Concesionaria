@@ -4,6 +4,8 @@
  */
 package net.javaguides.concesionaria;
 
+import net.javaguides.concesionaria.reportes.GestorReportes;
+
 /**
  *
  * @author Usuario
@@ -22,6 +24,7 @@ public class GestorApp {
     GestorClienteABMC gestorCliente;
     GestorVenta gestorVenta;
     GestorRegionABMC gestorRegion;
+    GestorReportes gestorReportes;
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -90,5 +93,8 @@ public class GestorApp {
     void menuRegionActionPerformed() {
         this.gestorRegion = new GestorRegionABMC();
         gestorRegion.mostrarPantalla(true);
+    }
+    void menuGenerarReportesActionPerfomed(){
+        this.gestorReportes = new GestorReportes();
     }
 }
